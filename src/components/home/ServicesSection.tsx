@@ -1,9 +1,8 @@
-/* Design: ivory bg, 4 white cards slightly tilted/rotated, each with a
-   colored rounded-square icon background (blue, purple, teal, cream/tan) */
+"use client";
 
 const SERVICES = [
   {
-    iconBg: "#DDEEFF",  // light blue
+    iconBg: "#DDEEFF",
     iconColor: "#4A90D9",
     icon: (
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -12,11 +11,11 @@ const SERVICES = [
       </svg>
     ),
     title: "Lead Generation",
-    desc: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form,",
+    desc: "We target high-intent legal prospects through data-driven digital campaigns that consistently deliver qualified cases to your firm.",
     rotate: "-3deg",
   },
   {
-    iconBg: "#EDE9FE",  // light purple
+    iconBg: "#EDE9FE",
     iconColor: "#7C4DFF",
     icon: (
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -26,11 +25,11 @@ const SERVICES = [
       </svg>
     ),
     title: "Intake Services",
-    desc: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form,",
+    desc: "Our trained intake specialists screen, qualify, and engage every lead — so you only speak with serious, ready-to-sign clients.",
     rotate: "-1deg",
   },
   {
-    iconBg: "#D4F5EC",  // light teal/mint
+    iconBg: "#D4F5EC",
     iconColor: "#2A9D8F",
     icon: (
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -40,11 +39,11 @@ const SERVICES = [
       </svg>
     ),
     title: "Case Acquisition",
-    desc: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form,",
+    desc: "From first contact to signed retainer, we manage the full case acquisition pipeline with performance-based pricing.",
     rotate: "1deg",
   },
   {
-    iconBg: "#F5EDD4",  // cream/tan
+    iconBg: "#F5EDD4",
     iconColor: "#B8860B",
     icon: (
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -54,24 +53,22 @@ const SERVICES = [
       </svg>
     ),
     title: "AI Booking",
-    desc: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form,",
+    desc: "AI-powered scheduling automatically books qualified leads into your calendar — 24/7, without any manual follow-up.",
     rotate: "3deg",
   },
 ];
 
 export default function ServicesSection() {
   return (
-    <section
-      style={{
-        background: "var(--ivory)",
-        paddingBlock: "var(--section-py)",
-      }}
-    >
+    <section style={{
+      background: "var(--ivory)",
+      paddingBlock: "var(--section-py)",
+    }}>
       <div className="wrap">
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: "clamp(3rem,5vw,4.5rem)" }}>
-          <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.75rem", fontWeight: 600, color: "var(--text-mid)", letterSpacing: "0.06em", marginBottom: "0.75rem" }}>
-            About YMG - Legal
+          <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", fontWeight: 600, color: "var(--text-mid)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "0.75rem" }}>
+            What We Do
           </p>
           <h2 style={{
             fontFamily: "var(--font-serif)",
@@ -79,43 +76,52 @@ export default function ServicesSection() {
             fontWeight: 400,
             color: "var(--text-dark)",
             lineHeight: 1.15,
+            marginBottom: "0.875rem",
           }}>
             Full-Funnel Legal Growth Solutions
           </h2>
+          <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.9375rem", color: "var(--text-mid)", maxWidth: "480px", margin: "0 auto", lineHeight: 1.7 }}>
+            Everything your firm needs to grow — from first click to signed retainer.
+          </p>
         </div>
 
         {/* 4 tilted cards */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4,1fr)",
-            gap: "clamp(0.875rem,2vw,1.5rem)",
-            alignItems: "start",
-          }}
-        >
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(4,1fr)",
+          gap: "clamp(0.875rem,2vw,1.5rem)",
+          alignItems: "start",
+        }}>
           {SERVICES.map((svc) => (
             <div
               key={svc.title}
               style={{
                 background: "var(--white)",
                 borderRadius: "1.125rem",
-                padding: "clamp(1.25rem,2.5vw,1.75rem)",
-                boxShadow: "0 4px 24px rgba(0,0,0,0.07)",
+                padding: "clamp(1.375rem,2.5vw,1.875rem)",
+                boxShadow: "0 4px 28px rgba(0,0,0,0.08)",
                 transform: `rotate(${svc.rotate})`,
                 transition: "transform 0.2s, box-shadow 0.2s",
+                cursor: "default",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLDivElement).style.transform = "rotate(0deg) translateY(-4px)";
+                (e.currentTarget as HTMLDivElement).style.boxShadow = "0 12px 40px rgba(0,0,0,0.13)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLDivElement).style.transform = `rotate(${svc.rotate})`;
+                (e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 28px rgba(0,0,0,0.08)";
               }}
             >
               {/* Colored icon square */}
-              <div
-                style={{
-                  width: "52px", height: "52px",
-                  borderRadius: "0.875rem",
-                  background: svc.iconBg,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  marginBottom: "1.125rem",
-                  color: svc.iconColor,
-                }}
-              >
+              <div style={{
+                width: "54px", height: "54px",
+                borderRadius: "0.875rem",
+                background: svc.iconBg,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                marginBottom: "1.25rem",
+                color: svc.iconColor,
+              }}>
                 {svc.icon}
               </div>
 
@@ -131,7 +137,7 @@ export default function ServicesSection() {
               <p style={{
                 fontFamily: "var(--font-sans)",
                 fontSize: "0.825rem",
-                lineHeight: 1.65,
+                lineHeight: 1.7,
                 color: "var(--text-mid)",
               }}>
                 {svc.desc}
@@ -142,8 +148,13 @@ export default function ServicesSection() {
       </div>
 
       <style>{`
-        @media (max-width: 900px) { .svc-grid { grid-template-columns: repeat(2,1fr) !important; } }
-        @media (max-width: 540px) { .svc-grid { grid-template-columns: 1fr !important; } }
+        @media (max-width: 900px) {
+          .svc-grid { grid-template-columns: repeat(2,1fr) !important; }
+          .svc-grid > div { transform: none !important; }
+        }
+        @media (max-width: 540px) {
+          .svc-grid { grid-template-columns: 1fr !important; }
+        }
       `}</style>
     </section>
   );

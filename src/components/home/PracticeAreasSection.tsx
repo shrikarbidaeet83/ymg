@@ -1,5 +1,4 @@
-/* Design: white horizontal bar, 5 items in a row separated by vertical dividers,
-   each item has a small icon on the left + text label */
+"use client";
 
 const AREAS = [
   {
@@ -49,22 +48,27 @@ export default function PracticeAreasSection() {
   return (
     <section style={{ background: "var(--ivory)", paddingBlock: "var(--section-py)" }}>
       <div className="wrap">
+
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: "clamp(2rem,4vw,3.5rem)" }}>
-          <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.75rem", fontWeight: 600, color: "var(--text-mid)", letterSpacing: "0.06em", marginBottom: "0.625rem" }}>
-            What We Serve
-          </p>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.5rem", marginBottom: "0.75rem" }}>
+            <div style={{ width: "24px", height: "1.5px", background: "var(--gold)" }}/>
+            <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", fontWeight: 600, color: "var(--text-mid)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+              What We Serve
+            </p>
+            <div style={{ width: "24px", height: "1.5px", background: "var(--gold)" }}/>
+          </div>
           <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.75rem,3.5vw,2.75rem)", fontWeight: 400, color: "var(--text-dark)" }}>
             Practice Areas We <em style={{ fontStyle: "italic" }}>Specialize in</em>
           </h2>
         </div>
 
-        {/* White bar with 5 items + vertical dividers */}
+        {/* White bar — 5 items with gold vertical dividers */}
         <div style={{
           background: "var(--white)",
-          borderRadius: "0.875rem",
-          boxShadow: "0 2px 20px rgba(0,0,0,0.06)",
-          border: "1px solid rgba(201,168,76,0.1)",
+          borderRadius: "1rem",
+          boxShadow: "0 2px 24px rgba(0,0,0,0.07)",
+          border: "1px solid rgba(201,168,76,0.12)",
           display: "flex",
           alignItems: "stretch",
           overflow: "hidden",
@@ -74,10 +78,15 @@ export default function PracticeAreasSection() {
               flex: 1,
               display: "flex",
               alignItems: "center",
-              gap: "0.75rem",
-              padding: "clamp(1.125rem,2vw,1.625rem) clamp(0.875rem,1.5vw,1.375rem)",
-              borderRight: i < AREAS.length - 1 ? "1px solid rgba(201,168,76,0.18)" : "none",
-            }}>
+              gap: "0.875rem",
+              padding: "clamp(1.25rem,2vw,1.75rem) clamp(0.875rem,1.5vw,1.375rem)",
+              borderRight: i < AREAS.length - 1 ? "1px solid rgba(201,168,76,0.2)" : "none",
+              cursor: "default",
+              transition: "background 0.15s",
+            }}
+            onMouseEnter={(e) => (e.currentTarget as HTMLDivElement).style.background = "rgba(201,168,76,0.04)"}
+            onMouseLeave={(e) => (e.currentTarget as HTMLDivElement).style.background = "transparent"}
+            >
               <div style={{ flexShrink: 0 }}>{area.icon}</div>
               <p style={{
                 fontFamily: "var(--font-sans)",
@@ -97,8 +106,8 @@ export default function PracticeAreasSection() {
       <style>{`
         @media (max-width: 768px) {
           .practice-bar { flex-direction: column !important; }
-          .practice-bar > div { border-right: none !important; border-bottom: 1px solid rgba(201,168,76,0.18); }
-          .practice-bar > div:last-child { border-bottom: none; }
+          .practice-bar > div { border-right: none !important; border-bottom: 1px solid rgba(201,168,76,0.18) !important; }
+          .practice-bar > div:last-child { border-bottom: none !important; }
         }
       `}</style>
     </section>
