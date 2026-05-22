@@ -73,7 +73,7 @@ export default function Footer() {
           <div>
             <div style={{ marginBottom: "1rem" }}>
               <Image
-                src="/images/Footer  Logo.jpg"
+                src="/images/Footer  Logo-Photoroom.png"
                 alt="YMG Legal"
                 width={145}
                 height={54}

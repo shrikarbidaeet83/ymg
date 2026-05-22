@@ -23,7 +23,7 @@ export default function AboutSection() {
       {/* Section Gradient bg fills the whole section */}
       <div aria-hidden style={{ position: "absolute", inset: 0, zIndex: 0 }}>
         <Image
-          src="/images/Section Grediant.jpg"
+          src="/images/Section Grediant-Photoroom.png"
           alt=""
           fill
           style={{ objectFit: "cover" }}
@@ -36,7 +36,7 @@ export default function AboutSection() {
         width: "clamp(300px,42vw,560px)", height: "clamp(300px,42vw,560px)",
         pointerEvents: "none", zIndex: 1, opacity: 0.25,
       }}>
-        <Image src="/images/about-section-rings-bg.jpg" alt="" fill style={{ objectFit: "contain" }}/>
+        <Image src="/images/about-section-rings-bg-Photoroom.png" alt="" fill style={{ objectFit: "contain" }}/>
       </div>
 
       <div className="wrap" style={{ position: "relative", zIndex: 2 }}>

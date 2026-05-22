@@ -20,7 +20,7 @@ export default function TrustedBySection() {
         width: "clamp(240px,32vw,420px)", height: "clamp(240px,32vw,420px)",
         opacity: 0.5, pointerEvents: "none",
       }}>
-        <Image src="/images/Home page Small Flower light mode.jpg" alt="" fill style={{ objectFit: "contain" }}/>
+        <Image src="/images/Home page Small Flower light mode-Photoroom.png" alt="" fill style={{ objectFit: "contain" }}/>
       </div>
 
       <div className="wrap" style={{ position: "relative", zIndex: 1 }}>
@@ -54,7 +54,7 @@ export default function TrustedBySection() {
             {LOGOS.map((logo) => (
               <div key={logo.name} style={{ position: "relative", aspectRatio: "3/2" }}>
                 <Image
-                  src="/images/our partner logo bg.jpg"
+                  src="/images/our partner logo bg-Photoroom.png"
                   alt=""
                   fill
                   style={{ objectFit: "fill", borderRadius: "0.875rem" }}

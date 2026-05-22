@@ -73,7 +73,7 @@ export default function HowItWorksSection() {
           {/* The arc illustration */}
           <div style={{ position: "relative", width: "100%" }}>
             <Image
-              src="/images/Case Acquisition System illustration.jpg"
+              src="/images/Case Acquisition System illustration-Photoroom.png"
               alt="5-step case acquisition arc diagram"
               width={860}
               height={440}

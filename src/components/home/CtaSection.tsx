@@ -6,7 +6,7 @@ export default function CtaSection() {
     <section style={{ position: "relative", overflow: "hidden" }}>
       {/* Section Gradient bg */}
       <div aria-hidden style={{ position: "absolute", inset: 0, zIndex: 0 }}>
-        <Image src="/images/Section Grediant.jpg" alt="" fill style={{ objectFit: "cover" }}/>
+        <Image src="/images/Section Grediant-Photoroom.png" alt="" fill style={{ objectFit: "cover" }}/>
       </div>
 
       <div className="wrap" style={{ position: "relative", zIndex: 1, paddingBlock: "clamp(3.5rem,6vw,5.5rem)" }}>
@@ -29,7 +29,7 @@ export default function CtaSection() {
               position: "relative",
             }}>
               <Image
-                src="/images/justice-scale grow your firm section icon.jpg"
+                src="/images/justice-scale grow your firm section icon-Photoroom.png"
                 alt="Justice Scale"
                 fill
                 style={{ objectFit: "contain" }}
