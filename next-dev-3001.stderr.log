@@ -1,0 +1,8 @@
+⨯ Another next dev server is already running.
+
+- Local:        http://localhost:3000
+- PID:          14872
+- Dir:          C:\Users\Netizens\Desktop\ymg-org\ymg-legal.com
+- Log:          .next\dev\logs\next-development.log
+
+Run taskkill /PID 14872 /F to stop it.

@@ -1,0 +1,9 @@
+
+> ymg-legal.com@0.1.0 dev
+> next dev --hostname 0.0.0.0
+
+▲ Next.js 16.2.7 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://0.0.0.0:3000
+✓ Ready in 756ms
+[?25h

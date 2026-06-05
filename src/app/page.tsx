@@ -252,14 +252,15 @@ export default function HomePage() {
                          lg:bottom-[34px] lg:left-auto lg:right-[3.25rem]
                          lg:w-[240px] lg:translate-x-0
                          xl:right-[4.25rem]
-                         lg:bottom-[40px]
+                         
                          "
             >
               <Link
                 href="/contact"
                 className="inline-flex h-10 items-center justify-between rounded-[4px]
                            bg-[#d9ae5d] px-4 text-xs font-bold text-[#36383b]
-                           shadow-[0_8px_20px_rgba(98,75,36,0.28)]"
+                           shadow-[0_8px_20px_rgba(98,75,36,0.28)]
+                           "
               >
                 Book Strategy call
                 <CalendarDays size={14} />
