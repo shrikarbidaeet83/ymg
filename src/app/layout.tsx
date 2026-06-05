@@ -1,27 +1,32 @@
 import type { Metadata } from "next";
+import { playfairDisplay, inter } from "@/lib/fonts";
+import SmoothScroll from "@/components/layout/SmoothScroll";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "YMG Legal — Legal Marketing & Intake",
-  description:
-    "YMG Legal is a premier legal marketing firm with 15+ years of experience helping law firms grow with a steady pipeline of qualified cases.",
+  title: "YMG Legal",
+  description: "Full Funnel Legal Growth Solutions — From Intake to Retainer",
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('ymg-theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark');}}catch(e){}})();`,
-          }}
-        />
-      </head>
-      <body>{children}</body>
+    <html
+      lang="en"
+      className={`${playfairDisplay.variable} ${inter.variable}`}
+    >
+      <body>
+        <SmoothScroll>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </SmoothScroll>
+      </body>
     </html>
   );
 }
