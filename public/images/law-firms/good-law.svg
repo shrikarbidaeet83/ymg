@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 150">
+  <rect width="260" height="150" fill="none"/>
+  <g text-anchor="middle">
+    <path d="M45 66c18-30 51-44 92-38" fill="none" stroke="#d2bf6a" stroke-width="10" stroke-linecap="round"/>
+    <path d="M52 87 82 107 161 42" fill="none" stroke="#082749" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M66 102V52h18v66H66zm-18 16h58v7H48z" fill="#d2bf6a"/>
+    <text x="174" y="90" font-family="Georgia, serif" font-size="34" fill="#082749">GOOD LAW</text>
+    <text x="174" y="115" font-family="Arial, sans-serif" font-size="15" font-weight="800" fill="#d2bf6a">SLOGAN HERE</text>
+  </g>
+</svg>

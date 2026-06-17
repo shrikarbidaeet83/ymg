@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 150">
+  <rect width="260" height="150" fill="none"/>
+  <g fill="#25282d" text-anchor="middle">
+    <circle cx="130" cy="45" r="28" fill="#101214"/>
+    <path d="M130 24v38M108 43h44M119 43l-12 21h24zm22 0-12 21h24z" fill="none" stroke="#d9ae5d" stroke-width="3"/>
+    <text x="130" y="101" font-family="Georgia, serif" font-size="17">EROL GULISTAN LAW FIRM</text>
+  </g>
+</svg>

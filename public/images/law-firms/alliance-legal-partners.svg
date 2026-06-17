@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 150">
+  <rect width="260" height="150" fill="none"/>
+  <g fill="#25282d" text-anchor="middle">
+    <path d="M130 22 176 50v51h-15V58l-31-18-31 18v43H84V50z"/>
+    <path d="M114 61h12v37h-12zM134 61h12v37h-12z"/>
+    <text x="130" y="124" font-family="Arial, sans-serif" font-size="18" font-weight="800">ALLIANCE LEGAL</text>
+    <text x="130" y="142" font-family="Arial, sans-serif" font-size="15" font-weight="800">PARTNERS</text>
+  </g>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 150">
+  <rect width="260" height="150" fill="none"/>
+  <g fill="#25282d" text-anchor="middle">
+    <circle cx="130" cy="38" r="25" fill="none" stroke="#25282d" stroke-width="3"/>
+    <path d="M130 18v39M105 37h50M116 37l-13 25h26zm28 0-13 25h26z" fill="none" stroke="#25282d" stroke-width="3"/>
+    <text x="130" y="93" font-family="Georgia, serif" font-size="23" letter-spacing="4">HALAVANAU</text>
+    <text x="130" y="117" font-family="Georgia, serif" font-size="17" letter-spacing="4">LAW OFFICE, P.C.</text>
+    <text x="130" y="140" font-family="Arial, sans-serif" font-size="8" letter-spacing="2">Subtitle Goes Here</text>
+  </g>
+</svg>

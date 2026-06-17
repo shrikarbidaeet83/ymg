@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 150">
+  <rect width="260" height="150" fill="none"/>
+  <g fill="#25282d" text-anchor="middle">
+    <path d="M130 22c18 0 34 8 44 20l-8 7c-8-10-21-16-36-16s-28 6-36 16l-8-7c10-12 26-20 44-20z"/>
+    <path d="M112 47h36v8h-36zM107 96h46v8h-46zM113 60h8v31h-8zM128 60h8v31h-8zM143 60h8v31h-8z"/>
+    <text x="130" y="124" font-family="Georgia, serif" font-size="23" font-weight="700">LAW LOGO</text>
+    <text x="130" y="140" font-family="Arial, sans-serif" font-size="8" letter-spacing="4">TAGLINE HERE</text>
+  </g>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 150">
+  <rect width="260" height="150" fill="none"/>
+  <g fill="#25282d" text-anchor="middle">
+    <path d="M76 61h108v8H76zM86 53h88v8H86zM97 44h66v8H97zM105 36h50v8h-50zM80 105h100v6H80z"/>
+    <path d="M93 70h9v32h-9zM113 70h9v32h-9zM133 70h9v32h-9zM153 70h9v32h-9z"/>
+    <text x="130" y="127" font-family="Georgia, serif" font-size="21" letter-spacing="3">MORGAN MAXWELL</text>
+    <text x="130" y="143" font-family="Arial, sans-serif" font-size="8" letter-spacing="4">ATTORNEY &amp; LAW</text>
+  </g>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 150">
+  <rect width="260" height="150" fill="none"/>
+  <g fill="#25282d" text-anchor="middle">
+    <circle cx="130" cy="55" r="38" fill="none" stroke="#25282d" stroke-width="5"/>
+    <circle cx="130" cy="55" r="28" fill="none" stroke="#25282d" stroke-width="2"/>
+    <text x="130" y="68" font-family="Georgia, serif" font-size="38" font-weight="700">III</text>
+    <text x="130" y="118" font-family="Georgia, serif" font-size="18" font-weight="700">III</text>
+    <text x="130" y="136" font-family="Arial, sans-serif" font-size="9" letter-spacing="2">TRIAL LAWYERS</text>
+  </g>
+</svg>

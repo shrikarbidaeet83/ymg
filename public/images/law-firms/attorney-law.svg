@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 150">
+  <rect width="260" height="150" fill="none"/>
+  <g fill="#25282d" text-anchor="middle">
+    <path d="M130 20v49M104 42h52M116 42l-14 28h28zm28 0-14 28h28z" fill="none" stroke="#25282d" stroke-width="4"/>
+    <path d="M98 70h36c-5 12-31 12-36 0zm28 0h36c-5 12-31 12-36 0z"/>
+    <text x="130" y="105" font-family="Georgia, serif" font-size="21" font-weight="700">ATTORNEY &amp; LAW</text>
+    <text x="130" y="125" font-family="Arial, sans-serif" font-size="8" letter-spacing="3">SLOGAN TAGLINE GOES HERE</text>
+  </g>
+</svg>
