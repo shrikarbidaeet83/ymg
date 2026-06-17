@@ -7,13 +7,13 @@ const quickLinks = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Services", href: "/services" },
-  { label: "How it Works", href: "/about#how-it-works" },
+  { label: "How it Works", href: "/how-it-works" },
 ];
 
 const resourceLinks = [
   { label: "Case Results", href: "/blog" },
   { label: "Blog", href: "/blog" },
-  { label: "FAQ's", href: "/contact#faq" },
+  { label: "FAQ's", href: "/faqs" },
   { label: "Terms & Conditions", href: "/terms" },
   { label: "Privacy Policy", href: "/privacy-policy" },
 ];
@@ -31,7 +31,7 @@ const serviceLinks = [
 
 function FooterHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="text-body-dark font-semibold text-[0.9rem] mb-5">
+    <h3 className="mb-5 text-[1rem] font-semibold text-body-dark lg:text-[0.9rem]">
       {children}
     </h3>
   );
@@ -41,7 +41,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
   return (
     <Link
       href={href}
-      className="block mb-2.5 text-sm text-body-dark/55 hover:text-dark transition-colors duration-200"
+      className="mb-2.5 block whitespace-nowrap text-[0.68rem] text-body-dark/55 transition-colors duration-200 hover:text-dark lg:text-sm"
     >
       {children}
     </Link>
@@ -54,29 +54,52 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 pt-14 pb-10">
 
         {/* Main grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1.15fr_1.35fr] gap-10 lg:gap-0">
+        <div className="grid grid-cols-[0.98fr_1.02fr] gap-x-5 gap-y-10 lg:grid-cols-[1.25fr_1fr_1fr_1fr] lg:gap-0 lg:justify-items-center">
 
           {/* Column 1 — Brand */}
-          <div className="lg:pr-12 lg:border-r lg:border-body-dark/10">
+          <div className="border-r border-body-dark/10 pr-5 lg:pr-12 lg:justify-self-start">
             <YMGLogo variant="dark" />
 
-            <p className="mt-5 text-sm text-body-dark/55 leading-[1.75] max-w-[230px]">
-              We help law firm grow with a steady pipeline of qualified cases
+            <p className="mt-5 max-w-none text-[0.56rem] leading-[1.35] text-body-dark/55 lg:max-w-[230px] lg:text-sm lg:leading-[1.75]">
+              We help law firm grow with a steady pipeline
+              <span className="block">of qualified cases</span>
             </p>
+
+            <div className="mt-7 h-px w-full max-w-[180px] bg-gold lg:hidden" />
+
+            <div className="mt-7 lg:hidden">
+              <FooterHeading>Services</FooterHeading>
+              {serviceLinks.map((link) => (
+                <FooterLink key={link.label} href={link.href}>
+                  {link.label}
+                </FooterLink>
+              ))}
+            </div>
           </div>
 
           {/* Column 2 — Quick Links */}
-          <div className="lg:pl-12">
+          <div className="lg:pl-0">
             <FooterHeading>Quick Links</FooterHeading>
             {quickLinks.map((link) => (
               <FooterLink key={link.label} href={link.href}>
                 {link.label}
               </FooterLink>
             ))}
+
+            <div className="mt-7 h-px w-full max-w-[180px] bg-gold lg:hidden" />
+
+            <div className="mt-7 lg:hidden">
+              <FooterHeading>Resources</FooterHeading>
+              {resourceLinks.map((link) => (
+                <FooterLink key={link.label} href={link.href}>
+                  {link.label}
+                </FooterLink>
+              ))}
+            </div>
           </div>
 
           {/* Column 3 — Resources */}
-          <div className="lg:pl-8">
+          <div className="hidden lg:block lg:pl-0">
             <FooterHeading>Resources</FooterHeading>
             {resourceLinks.map((link) => (
               <FooterLink key={link.label} href={link.href}>
@@ -86,7 +109,7 @@ export default function Footer() {
           </div>
 
           {/* Column 4 — Services */}
-          <div className="lg:pl-8">
+          <div className="hidden lg:block lg:pl-0">
             <FooterHeading>Services</FooterHeading>
             {serviceLinks.map((link) => (
               <FooterLink key={link.label} href={link.href}>
