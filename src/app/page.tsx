@@ -1,11 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import CaseAcquisitionSystem from "@/components/sections/CaseAcquisitionSystem";
+import HeroOrbitAnimation from "@/components/sections/HeroOrbitAnimation";
 import {
-  BadgeDollarSign,
-  BarChart3,
   Bot,
-  CalendarDays,
   Check,
   ClipboardList,
   ExternalLink,
@@ -16,22 +14,13 @@ import {
   Mail,
   MapPin,
   Magnet,
-  Network,
   Phone,
   Plus,
-  Scale,
-  ShieldCheck,
   Sparkles,
 } from "lucide-react";
+import TouchPopCard from "@/components/sections/TouchPopCard";
 
 /* ─── data ─────────────────────────────────────────────────── */
-
-const proofItems = [
-  { icon: ShieldCheck, label: "15+ Years", detail: "Experience" },
-  { icon: BadgeDollarSign, label: "Millions in Case", detail: "Value Generated" },
-  { icon: Network, label: "Trusted by", detail: "100+ Law Firms" },
-  { icon: MapPin, label: "Las Vegas", detail: "Based" },
-];
 
 const missionBullets = [
   "Performance-based pricing",
@@ -102,52 +91,6 @@ const practiceAreas = [
 
 /* ─── proof bar (desktop 4-col grid) ───────────────────────── */
 
-function ProofBar({ className = "" }: { className?: string }) {
-  return (
-    <div
-      className={`grid overflow-hidden rounded-[6px] border border-[#e7d5ad] bg-white shadow-[0_10px_28px_rgba(73,59,33,0.16)] sm:grid-cols-2 lg:grid-cols-4 ${className}`}
-    >
-      {proofItems.map(({ icon: Icon, label, detail }) => (
-        <div
-          key={label}
-          className="flex min-h-[46px] items-center gap-4 border-[#e3d8be] px-6 py-4
-                     sm:[&:nth-child(odd)]:border-r
-                     lg:border-r lg:last:border-r-0"
-        >
-          <Icon size={31} strokeWidth={1.8} className="shrink-0 text-[#3f4245]" />
-          <div className="text-sm font-semibold leading-tight text-[#4f5356]">
-            {label}
-            <span className="block">{detail}</span>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-/* ─── mobile horizontal scroller ───────────────────────────── */
-
-function MobileProofScroller() {
-  return (
-    <div className="relative z-30 mt-7 w-full min-w-0 lg:hidden">
-      <div className="flex w-full snap-x snap-mandatory overflow-x-auto rounded-[6px] border border-[#e7d5ad] bg-white shadow-[0_10px_28px_rgba(73,59,33,0.16)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        {proofItems.map(({ icon: Icon, label, detail }) => (
-          <div
-            key={label}
-            className="flex min-h-[54px] w-1/3 min-w-0 shrink-0 snap-start items-center justify-center gap-1 border-r border-[#e3d8be] px-1 py-2 last:border-r-0 min-[360px]:gap-2 min-[360px]:px-2"
-          >
-            <Icon size={17} strokeWidth={1.8} className="shrink-0 text-[#3f4245] min-[360px]:size-[19px]" />
-            <div className="min-w-0 text-left text-[0.5rem] font-semibold leading-tight text-[#4f5356] min-[360px]:text-[0.58rem]">
-              {label}
-              <span className="block">{detail}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 /* ─── page ─────────────────────────────────────────────────── */
 
 export default function HomePage() {
@@ -177,7 +120,7 @@ export default function HomePage() {
           style={{ maxWidth: "1440px" }}
         >
           {/* ── Left: copy ── */}
-          <div className="ymg-hero-copy mx-auto flex w-full min-w-0 max-w-xl flex-col items-center pt-8 text-center
+          <div className="ymg-hero-copy mx-auto flex h-full w-full min-w-0 max-w-xl flex-col items-center justify-center pt-8 text-center
                           sm:max-w-[620px] sm:pt-12
                           lg:mx-0 lg:items-start lg:pt-0 lg:text-left">
 
@@ -199,7 +142,7 @@ export default function HomePage() {
             </p>
 
             {/* CTAs */}
-            <div className="ymg-hero-buttons mt-7 flex w-full max-w-[430px] flex-col gap-3
+            <div className="ymg-hero-buttons mt-auto flex w-full max-w-[430px] flex-col gap-3
                             sm:mt-9 sm:flex-row sm:items-center sm:gap-4
                             lg:mt-9">
               <Link
@@ -222,98 +165,20 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* Trust labels */}
-            <div className="ymg-hero-trust mt-5 flex flex-col gap-2 text-[0.75rem] font-semibold text-[#65676a]
-                            sm:flex-row sm:gap-8 lg:mt-6">
-              <span className="inline-flex items-center justify-center gap-1.5 lg:justify-start">
-                <Check size={12} className="text-[#757a70]" strokeWidth={2.5} />
-                Results-focused approach
-              </span>
-              <span className="inline-flex items-center justify-center gap-1.5 lg:justify-start">
-                <Check size={12} className="text-[#757a70]" strokeWidth={2.5} />
-                No long-term contracts
-              </span>
-            </div>
-
-            <MobileProofScroller />
           </div>
 
-          {/* ── Right: image stage ── */}
+          {/* ── Right: orbit animation stage ── */}
           <div
-            className="ymg-hero-stage relative mx-auto flex w-full min-w-0 max-w-[600px] items-end justify-center
+            className="ymg-hero-stage relative mx-auto flex w-full min-w-0 max-w-[600px] items-center justify-center
                        min-h-[330px] pb-16
                        sm:min-h-[520px] sm:pb-20
-                       lg:min-h-[630px] lg:max-w-[640px] lg:justify-end lg:pb-0
+                       lg:min-h-[630px] lg:max-w-[640px] lg:pb-0
                        xl:max-w-[690px]"
           >
-            {/* Rings */}
-            <Image
-              src="/images/hero-rings-bg-Photoroom.png"
-              alt="" width={820} height={820} priority
-              className="ymg-hero-rings pointer-events-none absolute
-                         bottom-[-12%] right-[-18%] z-0
-                         w-[108%] max-w-[820px] opacity-90
-                         sm:right-[-10%] sm:w-[98%]
-                         lg:bottom-[-9%] lg:right-[-8%] lg:w-[112%]"
-            />
-            {/* Woman */}
-            <Image
-              src="/images/girl-hero-Photoroom.png"
-              alt="Smiling woman pointing toward the YMG Legal headline"
-              width={690} height={760} priority
-              className="ymg-hero-girl relative z-10
-                         w-[88%] max-w-[400px] object-contain
-                         drop-shadow-[0_20px_40px_rgba(84,59,29,0.09)]
-                         sm:w-[80%] sm:max-w-[500px]
-                         lg:w-[76%] lg:max-w-[560px]
-                         lg:translate-x-[-1rem] lg:translate-y-[24px]
-                         xl:w-[72%] xl:max-w-[620px]
-                         lg:bottom-[40px]"
-            />
-
-            {/* Floating strategy buttons */}
-            <div
-              className="absolute z-20 flex flex-col gap-2
-                         bottom-5 left-1/2 w-[calc(100%-24px)] max-w-[320px] -translate-x-1/2
-                         sm:bottom-7 sm:w-[300px]
-                         lg:bottom-[14px] lg:left-auto lg:right-[2.25rem]
-                         lg:w-[250px] lg:translate-x-0
-                         xl:left-[15.35rem] xl:right-auto xl:w-[280px] xl:translate-x-0
-
-                         "
-            >
-              <Link
-                href="/contact"
-                className="inline-flex h-10 items-center justify-between rounded-[4px]
-                           bg-[#d9ae5d] px-4   text-xs font-bold text-[#36383b]
-                           shadow-[0_8px_20px_rgba(98,75,36,0.28)]
-                           "
-              >
-                Book Strategy call
-                <CalendarDays size={14} />
-              </Link>
-              <Link
-                href="/services/case-acquisition"
-                className="inline-flex h-10 items-center justify-between rounded-[4px]
-                           bg-[#d9ae5d] px-4 text-xs font-bold text-[#36383b]
-                           shadow-[0_8px_20px_rgba(98,75,36,0.20)]"
-              >
-                Get more cases
-                <BarChart3 size={14} />
-              </Link>
-            </div>
+            <HeroOrbitAnimation className="max-w-[480px] sm:max-w-[560px] lg:max-w-[640px]" />
           </div>
         </div>
 
-        {/* Proof bar — desktop only, pinned to bottom of section */}
-        <div
-          className="ymg-proof-wrap pointer-events-none absolute bottom-8 left-0 right-0 z-20 hidden
-                     px-4 sm:px-8 lg:block lg:px-12"
-        >
-          <div className="pointer-events-auto mx-auto" style={{ maxWidth: "1440px" }}>
-            <ProofBar className="ymg-proof-bar max-w-[930px] xl:max-w-[960px]" />
-          </div>
-        </div>
       </section>
 
       {/* ══════════════════════════════════════════
@@ -444,9 +309,11 @@ export default function HomePage() {
                        lg:mt-16 lg:justify-center lg:overflow-visible lg:px-6 lg:pb-12 lg:pt-6"
           >
             {solutions.map(({ icon: Icon, iconBg, iconColor, title, body, tilt }, i) => (
-              <div
+              <TouchPopCard
+                as="div"
                 key={title}
-                className={`group w-[155px] shrink-0 snap-start
+                activeClassName="max-[1100px]:z-10 max-[1100px]:rotate-0 max-[1100px]:translate-y-0"
+                className={`group w-[155px] shrink-0 snap-start touch-manipulation
                            transition-transform duration-300 ease-out
                            hover:z-10 hover:rotate-0 hover:translate-y-0
                            sm:w-[240px] lg:w-[260px]
@@ -456,6 +323,7 @@ export default function HomePage() {
                   className="flex h-full flex-col rounded-xl bg-white px-4 py-5
                              shadow-[0_12px_28px_rgba(73,59,33,0.08)]
                              transition-all duration-300 ease-out
+                             group-data-[active=true]:-translate-y-3 group-data-[active=true]:scale-[1.06]
                              group-hover:-translate-y-3 group-hover:scale-[1.06]
                              group-hover:shadow-[0_18px_38px_rgba(73,59,33,0.14)]
                              sm:rounded-2xl sm:px-6 sm:py-7"
@@ -472,7 +340,7 @@ export default function HomePage() {
                     {body}
                   </p>
                 </div>
-              </div>
+              </TouchPopCard>
             ))}
           </div>
         </div>
@@ -604,7 +472,7 @@ export default function HomePage() {
                 firm: "Injury Law Group",
                 avatar: "bg-[radial-gradient(circle_at_45%_28%,#efc5ab_0_18%,transparent_19%),linear-gradient(135deg,#7e5ab7,#f3dbff)]",
                 text: "The biggest difference is their intake team. Every lead is handled professionally, and we only speak with serious, qualified clients.",
-                color: "bg-[#c091e8]",
+                color: "bg-[#c091e8] text-white [&_p]:!text-white [&_.testimonial-divider]:!bg-white/60",
                 stars: "text-[#ffd35e]",
                 pos: "left-[28%] top-[140px] z-20 w-[118px] min-h-[158px] -rotate-[4deg] sm:left-[26%] sm:top-[245px] sm:w-[300px] sm:min-h-[330px]",
               },
@@ -618,9 +486,9 @@ export default function HomePage() {
                 pos: "right-[18%] top-[132px] z-10 w-[118px] min-h-[158px] rotate-[20deg] sm:right-[16%] sm:top-[265px] sm:w-[300px] sm:min-h-[330px]",
               },
             ].map(({ name, firm, avatar, text, color, stars, pos }) => (
-              <article
+              <TouchPopCard
                 key={name}
-                className={`absolute ${pos} rounded-bl-none rounded-br-[12px] rounded-tl-[12px] rounded-tr-none border border-[#ead3a0] ${color} p-2 shadow-[0_16px_34px_rgba(87,66,34,0.14)] transition-all duration-300 ease-out hover:z-40 hover:-translate-y-3 hover:scale-105 hover:rotate-0 hover:shadow-[0_24px_48px_rgba(87,66,34,0.24)] sm:rounded-br-[18px] sm:rounded-tl-[18px] sm:p-6`}
+                className={`absolute ${pos} rounded-bl-none rounded-br-[12px] rounded-tl-[12px] rounded-tr-none border border-[#ead3a0] ${color} p-2 shadow-[0_16px_34px_rgba(87,66,34,0.14)] touch-manipulation transition-all duration-300 ease-out hover:z-40 hover:-translate-y-3 hover:scale-105 hover:rotate-0 hover:shadow-[0_24px_48px_rgba(87,66,34,0.24)] sm:rounded-br-[18px] sm:rounded-tl-[18px] sm:p-6`}
               >
                 <div className={`mb-2 flex gap-0.5 sm:mb-4 ${stars}`}>
                   {Array.from({ length: 5 }).map((_, i) => (
@@ -630,7 +498,7 @@ export default function HomePage() {
                 <p className="text-[0.39rem] leading-[1.28] text-[#7c7d80] sm:text-[0.9rem] sm:leading-[1.48]">
                   “{text}”
                 </p>
-                <div className="mt-2 h-px w-12 bg-[#3a3d42]/40 sm:mt-5 sm:w-24" />
+                <div className="testimonial-divider mt-2 h-px w-12 bg-[#3a3d42]/40 sm:mt-5 sm:w-24" />
                 <div className="mt-2 flex items-center gap-1.5 sm:mt-4 sm:gap-3">
                   <div className={`relative h-5 w-5 overflow-hidden rounded-[3px] shadow-inner sm:h-9 sm:w-9 ${avatar}`}>
                     <div className="absolute bottom-0 left-1/2 h-2.5 w-4 -translate-x-1/2 rounded-t-full bg-[#2f3236]/70 sm:h-4 sm:w-6" />
@@ -640,7 +508,7 @@ export default function HomePage() {
                     <p className="text-[0.36rem] text-[#8a8c8e] sm:text-[0.58rem]">{firm}</p>
                   </div>
                 </div>
-              </article>
+              </TouchPopCard>
             ))}
           </div>
         </div>
@@ -655,58 +523,41 @@ export default function HomePage() {
             Practice Areas We Specialize in
           </h2>
 
-          <div className="mx-auto mt-9 flex max-w-[1180px] snap-x snap-mandatory overflow-x-auto rounded-[6px] bg-white shadow-[0_10px_24px_rgba(82,64,34,0.08)] [scrollbar-width:none] sm:grid sm:grid-cols-2 sm:overflow-hidden lg:grid-cols-5 [&::-webkit-scrollbar]:hidden">
-            {practiceAreas.map(({ icon: Icon, label, detail }) => (
-              <div
-                key={`${label}-${detail}`}
-                className="relative flex min-h-[66px] w-1/3 min-w-0 shrink-0 snap-start items-center justify-center gap-2 px-2 py-3 text-left after:absolute after:right-0 after:top-1/2 after:h-8 after:w-px after:-translate-y-1/2 after:bg-[#e1d5bf] last:after:hidden sm:w-auto sm:min-h-[74px] sm:shrink sm:gap-4 sm:px-5 sm:py-4"
-              >
-                <Icon size={21} strokeWidth={1.45} className="shrink-0 text-[#3d4145] sm:size-[31px]" />
-                <p className="min-w-0 text-[0.58rem] font-medium leading-tight text-[#3d4145] sm:text-[0.9rem]">
-                  {label}
-                  <span className="block">{detail}</span>
-                </p>
-              </div>
-            ))}
+          <div className="mx-auto mt-9 max-w-[1180px] overflow-hidden rounded-[6px] bg-white shadow-[0_10px_24px_rgba(82,64,34,0.08)]">
+            <div className="ymg-practice-marquee flex w-max sm:grid sm:w-full sm:grid-cols-2 lg:grid-cols-5">
+              {[...practiceAreas, ...practiceAreas].map(({ icon: Icon, label, detail }, index) => (
+                <div
+                  key={`${label}-${detail}-${index}`}
+                  aria-hidden={index >= practiceAreas.length}
+                  className={`relative flex min-h-[66px] w-[calc((100vw-40px)/3)] shrink-0 items-center justify-center gap-2 px-2 py-3 text-left after:absolute after:right-0 after:top-1/2 after:h-8 after:w-px after:-translate-y-1/2 after:bg-[#e1d5bf] sm:w-auto sm:min-h-[74px] sm:shrink sm:gap-4 sm:px-5 sm:py-4 ${index === practiceAreas.length - 1 ? "sm:after:hidden" : ""} ${index >= practiceAreas.length ? "sm:hidden" : ""}`}
+                >
+                  <Icon size={21} strokeWidth={1.45} className="shrink-0 text-[#3d4145] sm:size-[31px]" />
+                  <p className="min-w-0 text-[0.58rem] font-medium leading-tight text-[#3d4145] sm:text-[0.9rem]">
+                    {label}
+                    <span className="block">{detail}</span>
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       <section className="relative isolate overflow-hidden bg-[#404040] px-5 py-10 text-[#d9b46d] before:pointer-events-none before:absolute before:inset-0 before:z-0 before:bg-[radial-gradient(circle_at_50%_52%,rgba(70,51,15,0.82)_0%,rgba(70,51,15,0.56)_22%,rgba(70,51,15,0.2)_44%,rgba(70,51,15,0)_70%)] sm:px-8 lg:px-12 lg:py-16">
         <div className="relative z-10 mx-auto max-w-7xl">
-          <div className="grid gap-8 text-center lg:grid-cols-12 lg:gap-x-12 lg:gap-y-20 lg:text-left">
-            <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center lg:col-span-8">
-              <div className="flex h-[74px] w-[74px] shrink-0 items-center justify-center rounded-full border border-[#d9b46d] lg:h-[96px] lg:w-[96px]">
-                <Scale size={50} strokeWidth={1.25} className="lg:size-[56px]" />
-              </div>
-              <div>
-                <h2 className="mx-auto max-w-[210px] text-[1.45rem] font-semibold leading-tight sm:max-w-none sm:text-[clamp(2rem,3.2vw,3.1rem)] lg:whitespace-nowrap">
-                  Ready to Grow Your Firm?
-                </h2>
-                <p className="mt-3 text-[0.58rem] font-medium text-[#ecd08c] sm:mt-5 sm:text-[1.25rem]">
-                  Let&apos;s build your pipeline of qualified cases.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex flex-row justify-center gap-3 lg:col-span-3 lg:col-start-10 lg:flex-col lg:items-stretch lg:gap-5 lg:pt-1">
-              <Link
-                href="/services/case-acquisition"
-                className="inline-flex h-8 min-w-[116px] items-center justify-center rounded-[3px] bg-[#d9b46d] px-4 text-[0.56rem] font-bold text-[#262626] lg:h-[58px] lg:px-8 lg:text-[0.9rem]"
-              >
-                Get More Cases
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex h-8 min-w-[116px] items-center justify-center rounded-[3px] border border-[#d9b46d] px-4 text-[0.56rem] font-semibold text-[#d9b46d] lg:h-[48px] lg:px-8 lg:text-[0.86rem]"
-              >
-                Book Strategy Call
-              </Link>
-            </div>
-
+          <div className="grid gap-10 text-left lg:grid-cols-12 lg:gap-x-12 lg:gap-y-16">
             <div className="lg:col-span-6">
+              <h2 className="font-heading text-[clamp(2.25rem,4.2vw,3.8rem)] font-normal leading-tight">
+                Ready to Grow Your Firm?
+              </h2>
+              <p className="mt-4 text-[0.9rem] font-medium text-[#ecd08c] sm:text-[1.2rem]">
+                Let&apos;s build your pipeline of qualified cases.
+              </p>
+            </div>
+
+            <div className="lg:col-span-6 lg:row-start-2">
               <p className="text-[0.7rem] text-[#f0d28a] lg:text-[1.25rem]">Contact Us</p>
-              <h3 className="mx-auto mt-4 max-w-[230px] text-[1.55rem] font-semibold leading-tight lg:mt-6 lg:max-w-none lg:text-[clamp(2rem,3.3vw,3.25rem)] lg:whitespace-nowrap">
+              <h3 className="mt-4 text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-tight lg:mt-6 lg:whitespace-nowrap">
                 Let&apos;s Start a Conversation
               </h3>
 
@@ -725,14 +576,14 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="mx-auto w-full max-w-[320px] rounded-[6px] bg-[#fff4dd] p-5 text-left text-[#3d4145] shadow-[0_18px_40px_rgba(0,0,0,0.18)] lg:col-span-5 lg:col-start-8 lg:max-w-none lg:self-start lg:p-7">
+            <div className="mx-auto w-full max-w-[320px] rounded-[6px] bg-[#fff4dd] p-5 text-left text-[#3d4145] shadow-[0_18px_40px_rgba(0,0,0,0.18)] lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-1 lg:max-w-none lg:self-center lg:p-7">
               <h4 className="text-[0.92rem] font-medium lg:text-[1.25rem]">Book Your Free Strategy Call</h4>
               <p className="mt-2 max-w-[260px] text-[0.52rem] leading-[1.45] text-[#55585a] lg:mt-3 lg:text-[0.75rem]">
                 Tell us about your firm and we&apos;ll show you how we can help.
               </p>
 
               <form className="mt-4 grid gap-2 lg:mt-5 lg:gap-3">
-                <div className="grid gap-2 lg:grid-cols-2 lg:gap-3">
+                <div className="grid gap-3">
                   <input
                     aria-label="Full Name"
                     placeholder="Full Name"
