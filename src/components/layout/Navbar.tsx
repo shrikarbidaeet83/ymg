@@ -22,7 +22,7 @@ const navLinks: NavLink[] = [
   { label: "Blog", href: "/blog" },
   { label: "Practice Areas", href: "/practice-areas", hasDropdown: true },
   { label: "Contact Us", href: "/contact" },
-];
+];  
 
 function getInitialDarkMode() {
   if (typeof window === "undefined") return false;
