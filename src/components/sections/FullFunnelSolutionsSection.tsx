@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Bot, ClipboardList, FileCheck2, Magnet, Scale } from "lucide-react";
+import { Bot, ClipboardList, FileCheck2, Magnet } from "lucide-react";
+import TouchPopCard from "@/components/sections/TouchPopCard";
 
 const solutions = [
   {
@@ -46,13 +47,15 @@ export function FullFunnelSolutionCards({
       className={`flex snap-x snap-mandatory overflow-x-auto px-4 pb-12 pt-5 [scrollbar-width:none] lg:justify-center lg:overflow-visible lg:px-6 lg:pb-16 [&::-webkit-scrollbar]:hidden ${className}`}
     >
       {solutions.map(({ icon: Icon, iconBg, iconColor, title, body, tilt }, index) => (
-        <div
+        <TouchPopCard
+          as="div"
           key={title}
-          className={`group w-[165px] shrink-0 snap-start transition-transform duration-300 ease-out hover:z-10 hover:rotate-0 hover:translate-y-0 sm:w-[250px] lg:w-[285px] ${
+          activeClassName="max-[1100px]:z-10 max-[1100px]:rotate-0 max-[1100px]:translate-y-0"
+          className={`group w-[165px] shrink-0 snap-start touch-manipulation transition-transform duration-300 ease-out hover:z-10 hover:rotate-0 hover:translate-y-0 sm:w-[250px] lg:w-[285px] ${
             index !== 0 ? "-ml-4 sm:-ml-6 lg:-ml-8" : ""
           } ${tilt}`}
         >
-          <div className="flex h-full flex-col rounded-[10px] bg-white px-4 py-5 shadow-[0_10px_24px_rgba(21,16,10,0.12)] transition-all duration-300 ease-out group-hover:-translate-y-3 group-hover:scale-[1.04] group-hover:shadow-[0_16px_30px_rgba(21,16,10,0.16)] sm:px-6 sm:py-7">
+          <div className="flex h-full flex-col rounded-[10px] bg-white px-4 py-5 shadow-[0_10px_24px_rgba(21,16,10,0.12)] transition-all duration-300 ease-out group-data-[active=true]:-translate-y-3 group-data-[active=true]:scale-[1.04] group-hover:-translate-y-3 group-hover:scale-[1.04] group-hover:shadow-[0_16px_30px_rgba(21,16,10,0.16)] sm:px-6 sm:py-7">
             <div className={`mb-4 flex h-10 w-10 items-center justify-center rounded-[6px] sm:mb-5 sm:h-12 sm:w-12 ${iconBg}`}>
               <Icon size={18} strokeWidth={1.8} className={`${iconColor} sm:size-[22px]`} />
             </div>
@@ -63,7 +66,7 @@ export function FullFunnelSolutionCards({
               {body}
             </p>
           </div>
-        </div>
+        </TouchPopCard>
       ))}
     </div>
   );
@@ -84,11 +87,7 @@ export default function FullFunnelSolutionsSection() {
 
         <FullFunnelSolutionCards className="mt-12 sm:mt-14" />
 
-        <div className="grid items-center gap-8 text-center lg:grid-cols-[auto_1fr_220px] lg:gap-10 lg:text-left">
-          <div className="mx-auto flex h-[86px] w-[86px] items-center justify-center rounded-full border border-[#d9b46d] lg:mx-0 lg:h-[104px] lg:w-[104px]">
-            <Scale size={48} strokeWidth={1.25} className="lg:size-[58px]" />
-          </div>
-
+        <div className="grid items-center gap-8 text-left lg:grid-cols-[1fr_220px] lg:gap-12">
           <div>
             <h3 className="font-heading text-[clamp(2rem,4vw,3.35rem)] font-normal leading-tight tracking-[0] text-[#d9b46d]">
               Ready to Grow Your Firm?
