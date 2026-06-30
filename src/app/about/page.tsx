@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink, Mail, MapPin, Phone } from "lucide-react";
+import TouchPopCard from "@/components/sections/TouchPopCard";
 
 const lawFirmLogos = [
   { name: "Law Logo", src: "/images/law-firms/law-logo.svg" },
@@ -29,21 +30,21 @@ export default function AboutPage() {
           </p>
         </div>
       </section>
-      <section className="bg-[#404040] px-5 py-5 text-[#d9b46d]">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-5">
-          <h2 className="max-w-[58%] text-left text-[clamp(1.25rem,6.4vw,2.05rem)] font-semibold leading-[1.08] sm:max-w-none sm:text-[clamp(1.45rem,4vw,2rem)]">
+      <section className="bg-[#404040] px-4 py-6 text-[#d9b46d] sm:px-5 sm:py-5">
+        <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_112px] items-center gap-4 sm:flex sm:justify-between sm:gap-5">
+          <h2 className="text-left text-[clamp(1.25rem,6.4vw,2.05rem)] font-semibold leading-[1.08] sm:text-[clamp(1.45rem,4vw,2rem)]">
             Ready to Scale Your Firm?
           </h2>
-          <div className="flex w-[48%] max-w-[390px] flex-col gap-3 sm:w-auto sm:flex-row">
+          <div className="flex w-full flex-col gap-3 sm:w-auto sm:max-w-[390px] sm:flex-row">
             <Link
               href="/services/case-acquisition"
-              className="inline-flex h-9 flex-1 items-center justify-center rounded-[3px] bg-[#d9b46d] px-3 text-[0.42rem] font-bold tracking-[0.06em] text-[#262626] sm:min-w-[170px] sm:px-6 sm:text-[0.68rem]"
+              className="inline-flex h-9 w-full items-center justify-center whitespace-nowrap rounded-[3px] bg-[#d9b46d] px-2 py-2 text-[0.42rem] font-bold tracking-[0.03em] text-[#262626] sm:min-w-[190px] sm:px-6 sm:text-[0.68rem]"
             >
               Get More Cases
             </Link>
             <Link
               href="/contact"
-              className="inline-flex h-9 flex-1 items-center justify-center rounded-[3px] border border-[#d9b46d] px-3 text-center text-[0.42rem] font-semibold tracking-[0.06em] text-[#d9b46d] sm:min-w-[190px] sm:px-6 sm:text-[0.68rem]"
+              className="inline-flex h-9 w-full items-center justify-center whitespace-nowrap rounded-[3px] border border-[#d9b46d] px-2 py-2 text-center text-[0.4rem] font-semibold tracking-[0.02em] text-[#d9b46d] sm:min-w-[190px] sm:px-6 sm:text-[0.68rem] sm:tracking-[0.06em]"
             >
               Book a Strategy Call
             </Link>
@@ -193,7 +194,7 @@ export default function AboutPage() {
                 firm: "Injury Law Group",
                 avatar: "bg-[radial-gradient(circle_at_45%_28%,#efc5ab_0_18%,transparent_19%),linear-gradient(135deg,#7e5ab7,#f3dbff)]",
                 text: "The biggest difference is their intake team. Every lead is handled professionally, and we only speak with serious, qualified clients.",
-                color: "bg-[#c091e8]",
+                color: "bg-[#c091e8] text-white [&_p]:!text-white [&_.testimonial-divider]:!bg-white/60",
                 stars: "text-[#ffd35e]",
                 pos: "left-[28%] top-[140px] z-20 w-[118px] min-h-[158px] -rotate-[4deg] sm:left-[26%] sm:top-[245px] sm:w-[300px] sm:min-h-[330px]",
               },
@@ -207,9 +208,9 @@ export default function AboutPage() {
                 pos: "right-[18%] top-[132px] z-10 w-[118px] min-h-[158px] rotate-[20deg] sm:right-[16%] sm:top-[265px] sm:w-[300px] sm:min-h-[330px]",
               },
             ].map(({ name, firm, avatar, text, color, stars, pos }) => (
-              <article
+              <TouchPopCard
                 key={name}
-                className={`absolute ${pos} rounded-bl-none rounded-br-[12px] rounded-tl-[12px] rounded-tr-none border border-[#ead3a0] ${color} p-2 shadow-[0_16px_34px_rgba(87,66,34,0.14)] transition-all duration-300 ease-out hover:z-40 hover:-translate-y-3 hover:scale-105 hover:rotate-0 hover:shadow-[0_24px_48px_rgba(87,66,34,0.24)] sm:rounded-br-[18px] sm:rounded-tl-[18px] sm:p-6`}
+                className={`absolute ${pos} rounded-bl-none rounded-br-[12px] rounded-tl-[12px] rounded-tr-none border border-[#ead3a0] ${color} p-2 shadow-[0_16px_34px_rgba(87,66,34,0.14)] touch-manipulation transition-all duration-300 ease-out hover:z-40 hover:-translate-y-3 hover:scale-105 hover:rotate-0 hover:shadow-[0_24px_48px_rgba(87,66,34,0.24)] sm:rounded-br-[18px] sm:rounded-tl-[18px] sm:p-6`}
               >
                 <div className={`mb-2 flex gap-0.5 sm:mb-4 ${stars}`}>
                   {Array.from({ length: 5 }).map((_, i) => (
@@ -219,7 +220,7 @@ export default function AboutPage() {
                 <p className="text-[0.39rem] leading-[1.28] text-[#7c7d80] sm:text-[0.9rem] sm:leading-[1.48]">
                   &quot;{text}&quot;
                 </p>
-                <div className="mt-2 h-px w-12 bg-[#3a3d42]/40 sm:mt-5 sm:w-24" />
+                <div className="testimonial-divider mt-2 h-px w-12 bg-[#3a3d42]/40 sm:mt-5 sm:w-24" />
                 <div className="mt-2 flex items-center gap-1.5 sm:mt-4 sm:gap-3">
                   <div className={`relative h-5 w-5 overflow-hidden rounded-[3px] shadow-inner sm:h-9 sm:w-9 ${avatar}`}>
                     <div className="absolute bottom-0 left-1/2 h-2.5 w-4 -translate-x-1/2 rounded-t-full bg-[#2f3236]/70 sm:h-4 sm:w-6" />
@@ -229,7 +230,7 @@ export default function AboutPage() {
                     <p className="text-[0.36rem] text-[#8a8c8e] sm:text-[0.58rem]">{firm}</p>
                   </div>
                 </div>
-              </article>
+              </TouchPopCard>
             ))}
           </div>
 
@@ -239,34 +240,16 @@ export default function AboutPage() {
               <h3 className="mt-4 text-[clamp(2rem,7vw,3.2rem)] font-semibold leading-tight text-[#d9b46d]">
                 Let&apos;s Start a Conversation
               </h3>
-              <div className="mt-8 grid grid-cols-2 gap-5 text-[0.72rem] text-[#d9b46d] sm:grid-cols-4 sm:text-[0.82rem]">
-                <a href="tel:4244471147" className="flex flex-col items-center gap-3 lg:items-start">
-                  <Phone className="h-4 w-4" />
-                  <span>(424) 447-1147</span>
-                </a>
-                <a href="mailto:info@ymg-legal.com" className="flex flex-col items-center gap-3 lg:items-start">
-                  <Mail className="h-4 w-4" />
-                  <span>info@ymg-legal.com</span>
-                </a>
-                <div className="flex flex-col items-center gap-3 lg:items-start">
-                  <MapPin className="h-4 w-4" />
-                  <span>Las Vegas Nevada</span>
-                </div>
-                <a href="#" className="flex flex-col items-center gap-3 lg:items-start">
-                  <ExternalLink className="h-4 w-4" />
-                  <span>LinkedIn</span>
-                </a>
-              </div>
             </div>
 
-            <form className="mx-auto w-full max-w-[520px] rounded-[6px] bg-[#fff5E0] p-5 text-[#2f3337] shadow-[0_18px_44px_rgba(0,0,0,0.18)] sm:p-7 lg:col-span-5 lg:col-start-8">
+            <form className="mx-auto w-full max-w-[520px] rounded-[6px] bg-[#fff5E0] p-5 text-[#2f3337] shadow-[0_18px_44px_rgba(0,0,0,0.18)] sm:p-7 lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-1">
               <h3 className="text-[1.15rem] font-semibold sm:text-[1.35rem]">
                 Book Your Free Strategy Call
               </h3>
               <p className="mt-3 max-w-[300px] text-[0.76rem] leading-[1.45]">
                 Tell us about your firm and we&apos;ll show you how we can help.
               </p>
-              <div className="mt-5 grid gap-3 sm:grid-cols-2">
+              <div className="mt-5 grid gap-3">
                 <input className="h-10 rounded-[4px] border border-[#b8a57a] bg-transparent px-4 text-[0.8rem] outline-none" placeholder="Full Name" />
                 <input className="h-10 rounded-[4px] border border-[#b8a57a] bg-transparent px-4 text-[0.8rem] outline-none" placeholder="Email" />
                 <input className="h-10 rounded-[4px] border border-[#b8a57a] bg-transparent px-4 text-[0.8rem] outline-none" placeholder="Phone Number" />
@@ -281,6 +264,25 @@ export default function AboutPage() {
                 Book My Free Call
               </button>
             </form>
+
+            <div className="grid w-full grid-cols-4 items-start text-[#d9b46d] lg:col-span-6 lg:gap-5">
+              <a href="tel:4244471147" className="flex min-w-0 flex-col items-center justify-center gap-2 text-center lg:items-start lg:text-left">
+                <Phone className="h-3.5 w-3.5" />
+                <span className="whitespace-nowrap text-[0.48rem] sm:text-[0.68rem] lg:text-[0.82rem]">(424) 447-1147</span>
+              </a>
+              <a href="mailto:info@ymg-legal.com" className="flex min-w-0 flex-col items-center justify-center gap-2 text-center lg:items-start lg:text-left">
+                <Mail className="h-3.5 w-3.5" />
+                <span className="whitespace-nowrap text-[0.45rem] sm:text-[0.65rem] lg:text-[0.82rem]">info@ymg-legal.com</span>
+              </a>
+              <div className="flex min-w-0 flex-col items-center justify-center gap-2 text-center lg:items-start lg:text-left">
+                <MapPin className="h-3.5 w-3.5" />
+                <span className="whitespace-nowrap text-[0.45rem] sm:text-[0.65rem] lg:text-[0.82rem]">Las Vegas Nevada</span>
+              </div>
+              <a href="#" className="flex min-w-0 flex-col items-center justify-center gap-2 text-center lg:items-start lg:text-left">
+                <ExternalLink className="h-3.5 w-3.5" />
+                <span className="whitespace-nowrap text-[0.48rem] sm:text-[0.68rem] lg:text-[0.82rem]">LinkedIn</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>

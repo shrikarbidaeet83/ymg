@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ExternalLink, Mail, MapPin, Phone } from "lucide-react";
+import TouchPopCard from "@/components/sections/TouchPopCard";
 
 const testimonials = [
   {
@@ -34,7 +35,7 @@ const testimonials = [
     firm: "Injury Law Group",
     avatar: "bg-[radial-gradient(circle_at_45%_28%,#efc5ab_0_18%,transparent_19%),linear-gradient(135deg,#7e5ab7,#f3dbff)]",
     text: "The biggest difference is their intake team. Every lead is handled professionally, and we only speak with serious, qualified clients.",
-    color: "bg-[#c091e8]",
+    color: "bg-[#c091e8] text-white [&_p]:!text-white [&_.testimonial-divider]:!bg-white/60",
     stars: "text-[#ffd35e]",
     pos: "left-[28%] top-[140px] z-20 w-[118px] min-h-[158px] -rotate-[4deg] sm:left-[26%] sm:top-[245px] sm:w-[300px] sm:min-h-[330px]",
   },
@@ -109,9 +110,9 @@ export function TestimonialCardsShowcase({
           </div>
 
           {testimonials.map(({ name, firm, avatar, text, color, stars, pos }) => (
-            <article
+            <TouchPopCard
               key={name}
-              className={`absolute ${pos} rounded-bl-none rounded-br-[12px] rounded-tl-[12px] rounded-tr-none border border-[#ead3a0] ${color} p-2 shadow-[0_16px_34px_rgba(87,66,34,0.14)] transition-all duration-300 ease-out hover:z-40 hover:-translate-y-3 hover:scale-105 hover:rotate-0 hover:shadow-[0_24px_48px_rgba(87,66,34,0.24)] sm:rounded-br-[18px] sm:rounded-tl-[18px] sm:p-6`}
+              className={`absolute ${pos} rounded-bl-none rounded-br-[12px] rounded-tl-[12px] rounded-tr-none border border-[#ead3a0] ${color} p-2 shadow-[0_16px_34px_rgba(87,66,34,0.14)] touch-manipulation transition-all duration-300 ease-out hover:z-40 hover:-translate-y-3 hover:scale-105 hover:rotate-0 hover:shadow-[0_24px_48px_rgba(87,66,34,0.24)] sm:rounded-br-[18px] sm:rounded-tl-[18px] sm:p-6`}
             >
               <div className={`mb-2 flex gap-0.5 sm:mb-4 ${stars}`}>
                 {Array.from({ length: 5 }).map((_, index) => (
@@ -123,7 +124,7 @@ export function TestimonialCardsShowcase({
               <p className="text-[0.39rem] leading-[1.28] text-[#7c7d80] sm:text-[0.9rem] sm:leading-[1.48]">
                 &quot;{text}&quot;
               </p>
-              <div className="mt-2 h-px w-12 bg-[#3a3d42]/40 sm:mt-5 sm:w-24" />
+              <div className="testimonial-divider mt-2 h-px w-12 bg-[#3a3d42]/40 sm:mt-5 sm:w-24" />
               <div className="mt-2 flex items-center gap-1.5 sm:mt-4 sm:gap-3">
                 <div className={`relative h-5 w-5 overflow-hidden rounded-[3px] shadow-inner sm:h-9 sm:w-9 ${avatar}`}>
                   <div className="absolute bottom-0 left-1/2 h-2.5 w-4 -translate-x-1/2 rounded-t-full bg-[#2f3236]/70 sm:h-4 sm:w-6" />
@@ -133,7 +134,7 @@ export function TestimonialCardsShowcase({
                   <p className="text-[0.36rem] text-[#8a8c8e] sm:text-[0.58rem]">{firm}</p>
                 </div>
               </div>
-            </article>
+            </TouchPopCard>
           ))}
         </div>
       </div>
@@ -203,9 +204,9 @@ export default function TestimonialContactSection({
               </div>
 
               {testimonials.map(({ name, firm, avatar, text, color, stars, pos }) => (
-                <article
+                <TouchPopCard
                   key={name}
-                  className={`absolute ${pos} rounded-bl-none rounded-br-[12px] rounded-tl-[12px] rounded-tr-none border border-[#ead3a0] ${color} p-2 shadow-[0_16px_34px_rgba(87,66,34,0.14)] transition-all duration-300 ease-out hover:z-40 hover:-translate-y-3 hover:scale-105 hover:rotate-0 hover:shadow-[0_24px_48px_rgba(87,66,34,0.24)] sm:rounded-br-[18px] sm:rounded-tl-[18px] sm:p-6`}
+                  className={`absolute ${pos} rounded-bl-none rounded-br-[12px] rounded-tl-[12px] rounded-tr-none border border-[#ead3a0] ${color} p-2 shadow-[0_16px_34px_rgba(87,66,34,0.14)] touch-manipulation transition-all duration-300 ease-out hover:z-40 hover:-translate-y-3 hover:scale-105 hover:rotate-0 hover:shadow-[0_24px_48px_rgba(87,66,34,0.24)] sm:rounded-br-[18px] sm:rounded-tl-[18px] sm:p-6`}
                 >
                   <div className={`mb-2 flex gap-0.5 sm:mb-4 ${stars}`}>
                     {Array.from({ length: 5 }).map((_, index) => (
@@ -217,7 +218,7 @@ export default function TestimonialContactSection({
                   <p className="text-[0.39rem] leading-[1.28] text-[#7c7d80] sm:text-[0.9rem] sm:leading-[1.48]">
                     &quot;{text}&quot;
                   </p>
-                  <div className="mt-2 h-px w-12 bg-[#3a3d42]/40 sm:mt-5 sm:w-24" />
+                  <div className="testimonial-divider mt-2 h-px w-12 bg-[#3a3d42]/40 sm:mt-5 sm:w-24" />
                   <div className="mt-2 flex items-center gap-1.5 sm:mt-4 sm:gap-3">
                     <div className={`relative h-5 w-5 overflow-hidden rounded-[3px] shadow-inner sm:h-9 sm:w-9 ${avatar}`}>
                       <div className="absolute bottom-0 left-1/2 h-2.5 w-4 -translate-x-1/2 rounded-t-full bg-[#2f3236]/70 sm:h-4 sm:w-6" />
@@ -227,7 +228,7 @@ export default function TestimonialContactSection({
                       <p className="text-[0.36rem] text-[#8a8c8e] sm:text-[0.58rem]">{firm}</p>
                     </div>
                   </div>
-                </article>
+                </TouchPopCard>
               ))}
             </div>
           </>
@@ -266,7 +267,7 @@ export default function TestimonialContactSection({
             <p className="mt-3 max-w-[300px] text-[0.76rem] leading-[1.45]">
               Tell us about your firm and we&apos;ll show you how we can help.
             </p>
-            <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            <div className="mt-5 grid gap-3">
               <input className="h-10 rounded-[4px] border border-[#b8a57a] bg-transparent px-4 text-[0.8rem] outline-none" placeholder="Full Name" />
               <input className="h-10 rounded-[4px] border border-[#b8a57a] bg-transparent px-4 text-[0.8rem] outline-none" placeholder="Email" />
               <input className="h-10 rounded-[4px] border border-[#b8a57a] bg-transparent px-4 text-[0.8rem] outline-none" placeholder="Phone Number" />
