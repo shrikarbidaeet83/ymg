@@ -35,7 +35,7 @@ export function MobileProofScroller({ className = "" }: { className?: string }) 
         {proofItems.map(({ icon: Icon, label, detail }) => (
           <div
             key={label}
-            className="flex min-h-[54px] w-1/3 min-w-0 shrink-0 snap-start items-center justify-center gap-1 border-r border-[#e3d8be] px-1 py-2 last:border-r-0 min-[360px]:gap-2 min-[360px]:px-2"
+            className="flex min-h-[54px] w-1/3 min-w-0 shrink-0 snap-start items-center justify-center gap-1 border-r border-[#e3d8be] px-1 py-2 last:border-r-0 min-[360px]:gap-2 min-[360px]:px-2 sm:w-1/4"
           >
             <Icon size={17} strokeWidth={1.8} className="shrink-0 text-[#3f4245] min-[360px]:size-[19px]" />
             <div className="min-w-0 text-left text-[0.5rem] font-semibold leading-tight text-[#4f5356] min-[360px]:text-[0.58rem]">

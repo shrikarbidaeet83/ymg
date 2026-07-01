@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { playfairDisplay, inter } from "@/lib/fonts";
+import { inter, manrope } from "@/lib/fonts";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfairDisplay.variable} ${inter.variable}`}
+      className={`${manrope.variable} ${inter.variable}`}
     >
       <body>
         <SmoothScroll>

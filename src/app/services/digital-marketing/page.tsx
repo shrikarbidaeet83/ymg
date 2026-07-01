@@ -1,15 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
+import TestimonialContactSection from "@/components/sections/TestimonialContactSection";
 import {
   ChartNoAxesCombined,
   Eye,
   FileText,
   Gauge,
   Handshake,
+  Infinity,
+  LayoutTemplate,
+  Mail,
   MousePointerClick,
   PanelsTopLeft,
+  Phone,
+  Search,
   SearchCheck,
   UserRoundCheck,
+  UsersRound,
   type LucideIcon,
 } from "lucide-react";
 
@@ -85,6 +92,95 @@ const impactCards = [
     iconBackground: "bg-[#fff1d8]",
   },
 ];
+
+const acquisitionInputs = [
+  { title: "Google Ads", Icon: Search, iconClassName: "text-[#4285f4]" },
+  { title: "Meta Ads", Icon: Infinity, iconClassName: "text-[#1677f2]" },
+  { title: "SEO", Icon: SearchCheck, iconClassName: "text-[#3f8c85]" },
+  { title: "Landing Pages", Icon: LayoutTemplate, iconClassName: "text-[#5e9c88]" },
+];
+
+const acquisitionOutputs = [
+  { title: "Call Tracking", Icon: Phone },
+  { title: "CRM Integration", Icon: UsersRound },
+  { title: "Lead Nurturing", Icon: Mail },
+  { title: "Performance Reporting", Icon: ChartNoAxesCombined },
+];
+
+function AcquisitionCard({
+  title,
+  Icon,
+  iconClassName = "text-[#111]",
+}: {
+  title: string;
+  Icon: LucideIcon;
+  iconClassName?: string;
+}) {
+  return (
+    <div className="flex h-[46px] w-full items-center gap-4 rounded-[8px] border border-[#e2b75f] bg-white px-4 shadow-[0_5px_9px_rgba(91,69,34,0.17)]">
+      <Icon className={`h-5 w-5 shrink-0 ${iconClassName}`} strokeWidth={2.2} />
+      <span className="text-[20px] font-medium leading-none text-[#444]">{title}</span>
+    </div>
+  );
+}
+
+function AcquisitionEngine() {
+  return (
+    <div className="relative mx-auto mt-[76px] grid w-full max-w-[1115px] gap-8 min-[1100px]:h-[240px] min-[1100px]:grid-cols-none">
+      <svg
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 hidden h-[240px] w-full min-[1100px]:block"
+        viewBox="0 0 1115 240"
+        fill="none"
+      >
+        <g stroke="#dfa94e" strokeWidth="1">
+          <path d="M304 23L464 80" />
+          <path d="M304 88L464 106" />
+          <path d="M304 153L464 135" />
+          <path d="M304 218L464 160" />
+        </g>
+        <g stroke="#dfa94e" strokeDasharray="11 11" strokeWidth="1">
+          <path d="M651 80L811 23" />
+          <path d="M651 106L811 88" />
+          <path d="M651 135L811 153" />
+          <path d="M651 160L811 218" />
+        </g>
+        <g fill="#dfb15d">
+          <circle cx="304" cy="23" r="5" />
+          <circle cx="304" cy="88" r="5" />
+          <circle cx="304" cy="153" r="5" />
+          <circle cx="304" cy="218" r="5" />
+          <circle cx="811" cy="23" r="5" />
+          <circle cx="811" cy="88" r="5" />
+          <circle cx="811" cy="153" r="5" />
+          <circle cx="811" cy="218" r="5" />
+        </g>
+      </svg>
+
+      <div className="grid gap-5 min-[1100px]:absolute min-[1100px]:left-0 min-[1100px]:top-0 min-[1100px]:w-[304px]">
+        {acquisitionInputs.map((item) => (
+          <AcquisitionCard key={item.title} {...item} />
+        ))}
+      </div>
+
+      <div className="relative z-10 mx-auto flex h-[194px] w-[194px] items-center justify-center rounded-full border border-[#dba849] bg-white shadow-[0_5px_8px_rgba(83,62,27,0.22)] min-[1100px]:absolute min-[1100px]:left-1/2 min-[1100px]:top-[22px] min-[1100px]:-translate-x-1/2">
+        <div className="flex h-[156px] w-[156px] items-center justify-center rounded-full border border-[#c9c9c9] bg-[linear-gradient(145deg,#fafafa,#dedede)] text-center shadow-[inset_0_-8px_14px_rgba(80,80,80,0.08),0_2px_3px_rgba(0,0,0,0.15)]">
+          <p className="text-[14px] font-semibold leading-[1.35] text-[#444]">
+            <span className="text-[#dfb15d]">Lead</span>
+            <br />
+            Generation
+          </p>
+        </div>
+      </div>
+
+      <div className="grid gap-5 min-[1100px]:absolute min-[1100px]:right-0 min-[1100px]:top-0 min-[1100px]:w-[304px]">
+        {acquisitionOutputs.map((item) => (
+          <AcquisitionCard key={item.title} {...item} />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function ServiceCard({ service }: { service: MarketingService }) {
   const { title, Icon, className, iconClassName } = service;
@@ -272,6 +368,23 @@ export default function DigitalMarketingPage() {
           </div>
         </div>
       </section>
+
+      <section className="border-t-[7px] border-[#393a39] bg-[#fff4df] px-5 pb-[90px] pt-[54px] sm:px-8 lg:px-[34px]">
+        <div className="mx-auto max-w-[1180px]">
+          <div className="text-center">
+            <p className="text-[21px] font-normal text-[#474747]">Our Acquisition Engine</p>
+            <h2 className="mt-6 font-heading text-[38px] font-normal leading-[1.28] text-[#444] sm:text-[48px] lg:text-[50px]">
+              A Complete System Built
+              <br />
+              For Case Growth
+            </h2>
+          </div>
+
+          <AcquisitionEngine />
+        </div>
+      </section>
+
+      <TestimonialContactSection showTestimonials={false} />
     </div>
   );
 }

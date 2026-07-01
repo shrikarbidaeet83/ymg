@@ -11,7 +11,7 @@ import {
 export default function TouchPopCard({
   as: Tag = "article",
   className = "",
-  activeClassName = "max-[1100px]:z-40 max-[1100px]:-translate-y-3 max-[1100px]:scale-105 max-[1100px]:rotate-0",
+  activeClassName = "max-[767px]:z-[60] max-[767px]:-translate-y-10 max-[767px]:scale-[1.45] max-[767px]:rotate-0 min-[768px]:max-[1100px]:z-40 min-[768px]:max-[1100px]:-translate-y-3 min-[768px]:max-[1100px]:scale-105 min-[768px]:max-[1100px]:rotate-0",
   children,
   onPointerDown,
   ...props
@@ -37,7 +37,7 @@ export default function TouchPopCard({
       data-active={active || undefined}
       className={`${className} ${active ? activeClassName : ""}`}
       onPointerDown={(event: React.PointerEvent<HTMLElement>) => {
-        if (event.pointerType !== "mouse") setActive(true);
+        setActive(true);
         onPointerDown?.(event);
       }}
       {...props}

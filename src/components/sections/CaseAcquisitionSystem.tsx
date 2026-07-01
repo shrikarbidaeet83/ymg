@@ -293,10 +293,10 @@ export default function CaseAcquisitionSystem({
         <div
           className="relative left-1/2 mt-9 h-[346px] w-full max-w-[350px] -translate-x-1/2 sm:mt-20 sm:h-[500px] sm:max-w-[900px] lg:mt-24 lg:h-[520px] lg:max-w-[980px]"
         >
-          <div className="absolute inset-x-4 inset-y-8 translate-y-5 overflow-visible [clip-path:inset(-25%_-13%_36%_-13%)] sm:inset-0 sm:translate-y-0 sm:[clip-path:inset(-24%_-4%_13%_-4%)] lg:[clip-path:inset(-22%_-3%_11%_-3%)]">
+          <div className="absolute inset-x-4 inset-y-8 translate-y-9 overflow-visible [clip-path:inset(-25%_-13%_36%_-13%)] sm:inset-0 sm:translate-y-1 sm:[clip-path:inset(-24%_-4%_13%_-4%)] lg:translate-y-0 lg:[clip-path:inset(-22%_-3%_11%_-3%)]">
             <svg
               viewBox={`0 ${FRAME.y} ${VB.w} ${FRAME.h}`}
-              className="absolute left-1/2 top-1/2 aspect-[900/560] w-[122%] -translate-x-1/2 -translate-y-1/2 overflow-visible sm:inset-0 sm:h-full sm:w-full sm:translate-x-0 sm:translate-y-0 sm:[aspect-ratio:auto]"
+              className="absolute left-1/2 top-1/2 aspect-[900/560] w-[122%] -translate-x-1/2 -translate-y-1/2 overflow-visible sm:h-full sm:w-auto"
               fill="none"
             >
               <circle
@@ -310,7 +310,7 @@ export default function CaseAcquisitionSystem({
             </svg>
           </div>
 
-          <div className="absolute inset-x-4 inset-y-8 translate-y-5 overflow-visible [clip-path:inset(-25%_0_36%_0)] sm:inset-0 sm:translate-y-0 sm:[clip-path:inset(-24%_0_13%_0)] lg:[clip-path:inset(-22%_0_11%_0)]">
+          <div className="absolute inset-x-4 inset-y-8 translate-y-9 overflow-visible [clip-path:inset(-25%_0_36%_0)] sm:inset-0 sm:translate-y-0 sm:[clip-path:inset(-24%_0_13%_0)] lg:[clip-path:inset(-22%_0_11%_0)]">
           <div className="absolute left-1/2 top-1/2 aspect-[900/560] w-[122%] -translate-x-1/2 -translate-y-1/2 sm:h-full sm:w-auto">
           <div className="wheel-rotor absolute inset-0 [will-change:transform]">
             {nodes.map(({ key, num, dotPos }) => (
@@ -332,7 +332,7 @@ export default function CaseAcquisitionSystem({
           </div>
           </div>
 
-          <div className={`pointer-events-none absolute inset-x-0 bottom-0 z-20 bg-[#fff5E0] ${showResults ? "h-[66px] sm:h-[104px] lg:h-[112px]" : "h-[58px] sm:h-[246px] lg:h-[246px]"}`} />
+          <div className={`pointer-events-none absolute inset-x-0 bottom-0 z-20 bg-[#fff5E0] ${showResults ? "h-[66px] sm:h-[104px] lg:h-[112px]" : "h-[114px] sm:h-[274px] lg:h-[282px]"}`} />
 
           <svg
             viewBox={`0 ${FRAME.y} ${VB.w} ${FRAME.h}`}
@@ -351,17 +351,25 @@ export default function CaseAcquisitionSystem({
             />
           </svg>
 
-          <div className="absolute left-1/2 top-[43%] z-20 min-h-[66px] w-[176px] -translate-x-1/2 text-center sm:top-[24%] sm:min-h-[118px] sm:w-[82%] sm:max-w-[360px] lg:top-[21%]">
+          <div
+            className={`absolute left-1/2 z-20 min-h-[76px] -translate-x-1/2 text-center sm:top-[16%] sm:min-h-[118px] sm:w-[82%] sm:max-w-[360px] lg:top-[21%] ${
+              showResults ? "top-[39%] w-[230px]" : "top-[45%] w-[210px]"
+            }`}
+          >
             {steps.map(({ key, title, desc }) => (
               <div
                 key={key}
                 className={`step-copy step-copy-${key} absolute inset-x-0 top-0 [will-change:transform,opacity]`}
                 style={{ opacity: key === "1" ? 1 : 0 }}
               >
-                <h3 className="text-[1rem] font-semibold leading-tight text-[#2f3236] sm:text-[clamp(1.05rem,5.6vw,2rem)]">
+                <h3 className="text-[1.15rem] font-semibold leading-tight text-[#24282c] sm:text-[clamp(1.05rem,5.6vw,2rem)]">
                   {title}
                 </h3>
-                <p className="mx-auto mt-1.5 max-w-[170px] text-[0.42rem] leading-[1.38] text-[#8a8c8e] sm:mt-3 sm:max-w-[330px] sm:text-[0.9rem] sm:leading-[1.52]">
+                <p
+                  className={`mx-auto mt-2 font-medium leading-[1.42] text-[#666a6d] sm:mt-3 sm:max-w-[330px] sm:text-[0.9rem] sm:font-normal sm:leading-[1.52] ${
+                    showResults ? "max-w-[210px] text-[0.62rem]" : "max-w-[205px] text-[0.56rem]"
+                  }`}
+                >
                   {desc}
                 </p>
               </div>
@@ -370,7 +378,7 @@ export default function CaseAcquisitionSystem({
 
           {showResults ? (
             <>
-              <div className="result-panel absolute bottom-[66px] left-1/2 z-30 w-[calc(100vw-20px)] max-w-[320px] -translate-x-1/2 rounded-[4px] bg-[#36393e] px-4 py-2.5 text-center shadow-[0_10px_24px_rgba(21,16,10,0.12)] sm:bottom-[104px] sm:w-[calc(100vw-46px)] sm:max-w-[900px] sm:px-10 sm:py-7 lg:bottom-[112px]">
+              <div className="result-panel absolute bottom-[58px] left-1/2 z-30 w-[calc(100vw-20px)] max-w-[320px] -translate-x-1/2 rounded-[4px] bg-[#36393e] px-4 py-2.5 text-center shadow-[0_10px_24px_rgba(21,16,10,0.12)] sm:bottom-[104px] sm:w-[calc(100vw-46px)] sm:max-w-[900px] sm:px-10 sm:py-7 lg:bottom-[112px]">
                 <p className="mb-1.5 text-[0.46rem] font-semibold uppercase tracking-[0.16em] text-[#d8ae63] sm:mb-3 sm:text-[0.68rem] sm:tracking-[0.22em]">
                   Case Results
                 </p>
@@ -393,7 +401,7 @@ export default function CaseAcquisitionSystem({
                       {fmt(0, decimals)}
                       {suffix}
                     </p>
-                    <p className="mt-1 text-[0.28rem] leading-tight text-[#6f7174] sm:mt-2 sm:text-[0.68rem]">
+                    <p className="mt-1 text-[0.36rem] leading-tight text-[#6f7174] sm:mt-2 sm:text-[0.68rem]">
                       {label}
                     </p>
                   </div>
@@ -404,10 +412,10 @@ export default function CaseAcquisitionSystem({
             </>
           ) : (
             <>
-              <div className="absolute bottom-[44px] left-1/2 z-30 w-[calc(100vw-20px)] max-w-[320px] -translate-x-1/2 sm:hidden">
+              <div className="absolute bottom-[60px] left-1/2 z-30 w-[calc(100vw-20px)] max-w-[320px] -translate-x-1/2 sm:bottom-[220px] sm:w-[calc(100vw-46px)] sm:max-w-[900px] lg:hidden">
                 <MobileProofScroller />
               </div>
-              <div className="absolute bottom-[204px] left-1/2 z-30 hidden w-[calc(100vw-46px)] max-w-[900px] -translate-x-1/2 sm:block">
+              <div className="absolute bottom-[204px] left-1/2 z-30 hidden w-[calc(100vw-46px)] max-w-[900px] -translate-x-1/2 lg:block">
                 <ProofBar />
               </div>
             </>

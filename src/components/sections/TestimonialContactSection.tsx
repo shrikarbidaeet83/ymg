@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ExternalLink, Mail, MapPin, Phone } from "lucide-react";
+import CardInteractionHint from "@/components/sections/CardInteractionHint";
 import TouchPopCard from "@/components/sections/TouchPopCard";
 
 const testimonials = [
@@ -75,9 +76,10 @@ export function TestimonialCardsShowcase({
           <h2 className="mt-3 mb-6 text-[clamp(1.8rem,7vw,3rem)] font-semibold leading-tight text-[#d9b46d] sm:mb-8">
             What Our Clients Say
           </h2>
+          <CardInteractionHint />
         </div>
 
-        <div className="group/testimonials relative mx-auto mt-8 h-[360px] max-w-[820px] overflow-visible sm:mt-12 sm:h-[560px]">
+        <div className="group/testimonials relative mx-auto mt-7 h-[360px] max-w-[820px] overflow-visible sm:mt-12 sm:h-[560px]">
           <div className="pointer-events-none absolute bottom-12 right-0 z-[5] h-[150px] w-[230px] opacity-25 sm:bottom-10 sm:right-0 sm:h-[180px] sm:w-[280px]">
             <Image
               src="/images/Home page Big Flower light mode (1)-Photoroom.png"
@@ -169,9 +171,10 @@ export default function TestimonialContactSection({
               <h2 className="mt-3 text-[clamp(1.8rem,7vw,3rem)] font-semibold leading-tight text-[#d9b46d]">
                 What Our Clients Say
               </h2>
+              <CardInteractionHint />
             </div>
 
-            <div className="group/testimonials relative mx-auto mt-8 h-[360px] max-w-[820px] overflow-visible sm:mt-16 sm:h-[560px]">
+            <div className="group/testimonials relative mx-auto mt-7 h-[360px] max-w-[820px] overflow-visible sm:mt-14 sm:h-[560px]">
               <div className="pointer-events-none absolute bottom-12 right-0 z-[5] h-[150px] w-[230px] opacity-25 sm:bottom-10 sm:right-0 sm:h-[180px] sm:w-[280px]">
                 <Image
                   src="/images/Home page Big Flower light mode (1)-Photoroom.png"
@@ -234,7 +237,7 @@ export default function TestimonialContactSection({
           </>
         )}
 
-        <div className={`${showTestimonials ? "mt-16 sm:mt-20 lg:mt-28" : ""} grid items-end gap-8 lg:grid-cols-12 lg:gap-12`}>
+        <div className={`${showTestimonials ? "mt-16 sm:mt-20 lg:mt-28" : ""} grid items-center gap-8 lg:grid-cols-12 lg:gap-12`}>
           <div className="text-center lg:col-span-6 lg:text-left">
             <p className="text-[0.9rem] text-[#d9b46d]">Contact Us</p>
             <h3 className="mt-4 text-[clamp(2rem,7vw,3.2rem)] font-semibold leading-tight text-[#d9b46d]">

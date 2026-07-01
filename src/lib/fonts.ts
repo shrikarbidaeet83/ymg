@@ -1,15 +1,15 @@
-import { Playfair_Display, Inter } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 
-export const playfairDisplay = Playfair_Display({
+export const manrope = Manrope({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "600", "700", "900"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
 export const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });

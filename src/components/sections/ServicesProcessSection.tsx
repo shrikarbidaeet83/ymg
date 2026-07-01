@@ -87,24 +87,24 @@ export default function ServicesProcessSection() {
 
         const tl = gsap.timeline({
           defaults: { ease: "power2.out" },
-          paused: true,
           scrollTrigger: {
             trigger: section,
-            start: "top 80%",
+            start: "top 70%",
             toggleActions: "play none none none",
+            once: true,
           },
         });
 
-        tl.to(".process-core", { opacity: 1, scale: 1, duration: 0.6 })
-          .to(".process-title", { opacity: 1, y: 0, duration: 0.5 }, "-=0.3")
-          .to(".process-ring-segment", { opacity: 1, rotate: 0, stagger: 0.06, duration: 0.45 }, "-=0.15");
+        tl.to(".process-core", { opacity: 1, scale: 1, duration: 0.8 }, 0.1)
+          .to(".process-title", { opacity: 1, y: 0, duration: 0.55 }, 0.25)
+          .to(".process-ring-segment", { opacity: 1, rotate: 0, stagger: 0.03, duration: 0.55 }, 0.35);
 
         steps.forEach((_, index) => {
           const step = index + 1;
-          tl.to(`.process-line-${step}`, { opacity: 1, strokeDashoffset: 0, duration: 0.4 }, "+=0.04")
-            .to(`.process-node-${step}`, { opacity: 1, scale: 1, duration: 0.28 }, "-=0.15")
-            .to(`.process-copy-${step}`, { opacity: 1, y: 0, duration: 0.28 }, "-=0.06")
-            .to(`.type-text-${step}`, { width: "100%", duration: 0.4, ease: "none" }, "-=0.16");
+          tl.to(`.process-line-${step}`, { opacity: 1, strokeDashoffset: 0, duration: 0.28 }, step)
+            .to(`.process-node-${step}`, { opacity: 1, scale: 1, duration: 0.3 }, step + 0.14)
+            .to(`.process-copy-${step}`, { opacity: 1, y: 0, duration: 0.28 }, step + 0.34)
+            .to(`.type-text-${step}`, { width: "100%", duration: 0.42, ease: "none" }, step + 0.48);
         });
       }, section);
     };
@@ -140,13 +140,13 @@ export default function ServicesProcessSection() {
         className="pointer-events-none absolute right-[3%] top-[18%] z-0 hidden w-[50px] opacity-[0.06] lg:block"
       />
 
-      <div className="relative z-10 mx-auto h-[820px] w-full max-w-[402px] md:hidden">
-        <h2 className="absolute left-0 top-[96px] w-full max-w-[900px] pl-10 text-left font-heading text-[clamp(1.45rem,7vw,1.8rem)] font-normal leading-[1.08] text-[#e0b767]">
+      <div className="relative z-10 mx-auto h-[600px] w-full max-w-[402px] md:hidden">
+        <h2 className="absolute left-0 top-[72px] w-full max-w-[900px] pl-10 text-left font-heading text-[clamp(1.45rem,7vw,1.8rem)] font-normal leading-[1.08] text-[#e0b767]">
           From First Contact
           <span className="block">to Signed Retainer</span>
         </h2>
 
-        <div className="absolute left-[4.27%] top-[285px] h-[455.73px] w-[94.92%]">
+        <div className="absolute left-[4.27%] top-[195px] h-[455.73px] w-[94.92%]">
           {(() => {
             const core = { x: 88, y: 189 };
             const coreSize = 132;
@@ -241,24 +241,24 @@ export default function ServicesProcessSection() {
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto hidden min-h-[100svh] w-full md:block md:max-w-[700px] md:pb-10 md:pt-16 lg:hidden">
-        <h2 className="process-title max-w-[900px] font-heading text-[clamp(2.25rem,5.2vw,3.4rem)] font-normal md:pl-8 lg:pl-0 xl:pl-0 leading-[1.1] tracking-[0] text-[#e2c681]">
+      <div className="relative z-10 mx-auto hidden w-full md:flex md:max-w-[700px] md:flex-col md:pt-28 md:pb-8 lg:hidden">
+        <h2 className="process-title w-full text-center font-heading text-[clamp(2.25rem,5.2vw,3.4rem)] font-normal leading-[1.1] tracking-[0] text-[#e2c681]">
           From First Contact
           <span className="block">to Signed Retainer</span>
         </h2>
 
-        <div className="relative aspect-[900/590] w-full md:mt-5 lg:-mt-1 xl:-mt-1">
+        <div className="relative mx-auto mt-12 aspect-[900/590] w-full shrink-0">
           {(() => {
             const core = { x: 190, y: 220 };
             const coreSize = 185;
             const coreRadius = coreSize / 2;
             const holeRadius = coreRadius - 9;
             const desktopSteps = [
-              { num: "1", x: 260, y: 65, color: "#A9A891", title: "We Capture Every Lead", desc: "Inbound calls, web forms, and live chats are answered immediately — 24/7, no exceptions.", copy: "left-[34%] top-[8%] w-[30%]" },
+              { num: "1", x: 260, y: 65, color: "#A9A891", title: "We Capture Every Lead", desc: "Inbound calls, web forms, and live chats are answered immediately — 24/7, no exceptions.", copy: "left-[34%] top-0 w-[32%]" },
               { num: "2", x: 395, y: 155, color: "#AECAC9", title: "We Follow Up, Fast", desc: "Rapid outbound follow-up via call, text, and email ensures no lead goes cold.", copy: "left-[54%] top-[22%] w-[27%]" },
               { num: "3", x: 440, y: 275, color: "#577271", title: "We Qualify & Screen", desc: "Trained specialists identify real opportunities and filter out unqualified inquiries.", copy: "left-[60%] top-[43%] w-[28%]" },
               { num: "4", x: 375, y: 390, color: "#6C7249", title: "We Handle the Paperwork", desc: "Intake forms, contracts, and retainer agreements are processed efficiently and securely.", copy: "left-[51%] top-[63%] w-[31%]" },
-              { num: "5", x: 200, y: 405, color: "#8C7272", title: "You Get Signed Cases", desc: "Delivered to you — qualified, retained clients ready to move forward.", copy: "left-[0.5%] top-[66%] w-[18%] text-right" },
+              { num: "5", x: 200, y: 405, color: "#8C7272", title: "You Get Signed Cases", desc: "Delivered to you — qualified, retained clients ready to move forward.", copy: "left-[9.5%] top-[77%] w-[25%] text-center" },
             ].map((step) => {
               const dx = step.x - core.x;
               const dy = step.y - core.y;
@@ -283,10 +283,11 @@ export default function ServicesProcessSection() {
                 </svg>
 
                 <div
-                  className="process-core absolute -translate-x-1/2 -translate-y-1/2 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.18),inset_0_2px_6px_rgba(255,255,255,0.25)]"
+                  className="absolute -translate-x-1/2 -translate-y-1/2"
                   style={{ left: `${(core.x / 900) * 100}%`, top: `${(core.y / 590) * 100}%`, width: `${(coreSize / 900) * 100}%`, aspectRatio: "1" }}
                 >
-                  <div className="process-ring-segment absolute inset-0 rounded-full bg-[conic-gradient(from_8deg,#a9a891_0deg_39deg,#aecac9_39deg_77deg,#577271_77deg_110deg,#6c7249_110deg_147deg,#8c7272_147deg_187deg,#a9a891_187deg_360deg)] shadow-[inset_0_2px_6px_rgba(255,255,255,0.25)]" />
+                  <div className="process-core relative h-full w-full rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.18),inset_0_2px_6px_rgba(255,255,255,0.25)]">
+                    <div className="process-ring-segment absolute inset-0 rounded-full bg-[conic-gradient(from_8deg,#a9a891_0deg_39deg,#aecac9_39deg_77deg,#577271_77deg_110deg,#6c7249_110deg_147deg,#8c7272_147deg_187deg,#a9a891_187deg_360deg)] shadow-[inset_0_2px_6px_rgba(255,255,255,0.25)]" />
                   <div className="absolute inset-[13%] rounded-full border-2 border-white/90 bg-[#f8f8f3] shadow-[inset_0_2px_6px_rgba(255,255,255,0.25)]" />
                   <div className="absolute inset-[23%] rounded-full border border-[#c9c9c9] bg-[linear-gradient(#fafafa,#e8e8e8)] shadow-[inset_0_2px_6px_rgba(0,0,0,0.08)]" />
                   {desktopSteps.map(({ num, holeX, holeY, color }) => (
@@ -300,6 +301,7 @@ export default function ServicesProcessSection() {
                     <span className="text-[clamp(0.72rem,1.3vw,0.95rem)] font-semibold text-[#111]">Our</span>
                     <span className="text-[clamp(1.35rem,2.6vw,1.9rem)] font-extrabold leading-none text-[#9c249f]">Process</span>
                   </div>
+                </div>
                 </div>
 
                 {desktopSteps.map(({ num, x, y, angle, color, title, desc, copy }) => (
@@ -319,8 +321,8 @@ export default function ServicesProcessSection() {
                       {num}
                     </div>
                     <div className={`process-copy process-copy-${num} absolute z-20 ${copy}`}>
-                      <h3 className="text-[clamp(0.68rem,1.35vw,0.9rem)] font-bold leading-tight text-[#e2c681]">{title}</h3>
-                      <p className="mt-2 text-[clamp(0.58rem,1.2vw,0.86rem)] leading-[1.45] lg:mt-3 text-white/60">
+                      <h3 className="text-[clamp(0.75rem,1.45vw,0.9rem)] font-bold leading-tight text-[#e2c681]">{title}</h3>
+                      <p className="mt-2 text-[clamp(0.66rem,1.25vw,0.8rem)] leading-[1.45] text-white/60">
                         <span className={`type-text type-text-${num} inline-block overflow-hidden align-top`}>{desc}</span>
                       </p>
                     </div>
@@ -332,12 +334,12 @@ export default function ServicesProcessSection() {
         </div>
       </div>
       <div className="relative z-10 mx-auto hidden min-h-[100svh] w-full max-w-[1180px] items-center py-16 lg:flex">
-        <h2 className="absolute left-0 top-[12%] max-w-[300px] font-heading text-[clamp(1.65rem,2.35vw,2.3rem)] font-normal leading-[1.08] tracking-[0] text-[#e0b767]">
+        <h2 className="absolute left-1/2 top-[12%] w-full max-w-[520px] -translate-x-1/2 text-center font-heading text-[clamp(1.65rem,2.35vw,2.3rem)] font-normal leading-[1.08] tracking-[0] text-[#e0b767]">
           From First Contact
           <span className="block">to Signed Retainer</span>
         </h2>
 
-        <div className="relative mx-auto h-[600px] w-full max-w-[980px]">
+        <div className="relative mx-auto aspect-[5/3] w-full max-w-[980px]">
           <svg viewBox="0 0 1000 600" className="pointer-events-none absolute inset-0 h-full w-full" fill="none">
             {steps.map(({ num, node, hole, color, lineEndGap }) => {
               const dx = node.x - hole.x;
@@ -363,7 +365,7 @@ export default function ServicesProcessSection() {
             })}
           </svg>
 
-          <div className="process-core absolute h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2" style={{ left: "50%", top: `${(260 / 600) * 100}%` }}>
+          <div className="process-core absolute aspect-square w-[30%] -translate-x-1/2 -translate-y-1/2" style={{ left: "50%", top: `${(260 / 600) * 100}%` }}>
             <Image src="/images/circle.svg" alt="" width={293} height={293} className="process-ring-segment absolute inset-0 h-full w-full" />
             <div className="process-title absolute inset-0 flex flex-col items-center justify-center text-center font-sans">
               <span className="text-[0.95rem] font-semibold text-[#111]">Our</span>
@@ -374,11 +376,11 @@ export default function ServicesProcessSection() {
           {steps.map(({ num, title, desc, node, copy, color, hole }) => (
             <div key={num}>
               <div
-                className={`process-node process-node-${num} absolute z-20 flex h-[64px] w-[64px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-[5px] bg-[#f6f6ef] text-[1.55rem] font-bold shadow-[0_8px_24px_rgba(0,0,0,0.28)]`}
+                className={`process-node process-node-${num} absolute z-20 flex aspect-square w-[6.4%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-[5px] bg-[#f6f6ef] text-[clamp(1.2rem,2.4vw,1.55rem)] font-bold shadow-[0_8px_24px_rgba(0,0,0,0.28)]`}
                 style={{ left: `${(node.x / 1000) * 100}%`, top: `${(node.y / 600) * 100}%`, borderColor: color, color }}
               >
                 <span
-                  className="pointer-events-none absolute inset-[-10px] rounded-full"
+                  className="pointer-events-none absolute inset-[-2px] rounded-full"
                   style={{
                     background: `conic-gradient(from ${(Math.atan2(hole.x - node.x, -(hole.y - node.y)) * 180) / Math.PI - 185}deg, ${color} 0deg 185deg, transparent 185deg 360deg)`,
                     WebkitMask: "radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px))",

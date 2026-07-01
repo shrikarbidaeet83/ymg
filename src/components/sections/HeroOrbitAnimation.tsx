@@ -1,23 +1,22 @@
 "use client";
 
-import type { ReactElement } from "react";
-import { useEffect, useState } from "react";
+import type { CSSProperties, ReactElement } from "react";
+import { useSyncExternalStore } from "react";
 import { motion } from "framer-motion";
 import { BarChart3, CheckCheck, Megaphone, MoreHorizontal, Users } from "lucide-react";
 
 /** True once we know the viewport is at/above Tailwind's `sm` breakpoint (640px). */
 function useIsDesktop() {
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  useEffect(() => {
-    const query = window.matchMedia("(min-width: 640px)");
-    setIsDesktop(query.matches);
-    const handleChange = (event: MediaQueryListEvent) => setIsDesktop(event.matches);
-    query.addEventListener("change", handleChange);
-    return () => query.removeEventListener("change", handleChange);
-  }, []);
-
-  return isDesktop;
+  return useSyncExternalStore(
+    (onStoreChange) => {
+      const query = window.matchMedia("(min-width: 640px)");
+      const handleChange = () => onStoreChange();
+      query.addEventListener("change", handleChange);
+      return () => query.removeEventListener("change", handleChange);
+    },
+    () => window.matchMedia("(min-width: 640px)").matches,
+    () => false,
+  );
 }
 
 /* ─── data ─────────────────────────────────────────────────── */
@@ -75,23 +74,6 @@ function orbitPosition(angle: number, radiusPct: number) {
    many small linear steps removes that lingering pause: each segment
    is short enough that the easing is imperceptible, so the motion
    reads as one continuous, perfectly smooth bob. */
-const FLOAT_STEPS = 32;
-
-function sineFloatKeyframes(amplitude: number) {
-  return Array.from({ length: FLOAT_STEPS + 1 }, (_, i) => {
-    const t = i / FLOAT_STEPS;
-    return -(amplitude / 2) * (1 - Math.cos(t * Math.PI * 2));
-  });
-}
-
-/* Amplitude/duration are tuned together: too small + too slow and the
-   sine curve's natural deceleration near each turn lasts long enough
-   (multiple seconds) to read as "stuck" before the eye notices motion
-   again in the middle of the cycle. This pairing keeps the per-frame
-   displacement perceptible across the whole cycle, not just the
-   midpoint. */
-const FLOAT_KEYFRAMES = sineFloatKeyframes(7);
-
 /* ─── center target icon ───────────────────────────────────── */
 /* Pops in first with a rotating scale-up, then settles into a slow
    continuous pulse once revealed. */
@@ -99,7 +81,7 @@ const FLOAT_KEYFRAMES = sineFloatKeyframes(7);
 function CenterIcon() {
   return (
     <motion.div
-      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+      className="ymg-orbit-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
       initial={{ opacity: 0, scale: 0, rotate: -180 }}
       animate={{ opacity: 1, scale: 1, rotate: 0 }}
       transition={{ duration: 0.8, ease: [0.34, 1.56, 0.64, 1] }}
@@ -506,34 +488,34 @@ function OrbitItemView({ item, index }: { item: OrbitItem; index: number }) {
   const position = orbitPosition(angle, radius);
 
   const popDelay = 0.9 + index * 0.12;
-  const floatDuration = 6 + (index % 4) * 0.7;
-  const floatDelay = (index % 3) * 0.3;
+  const floatDuration = 7.5 + (index % 4) * 0.55;
+  const floatDelay = -(index * 0.85);
+  const floatStyle = {
+    "--ymg-float-duration": `${floatDuration}s`,
+    "--ymg-float-delay": `${floatDelay}s`,
+    "--ymg-float-x": `${2 + (index % 3)}px`,
+    "--ymg-float-y": `${5 + (index % 4)}px`,
+  } as CSSProperties;
 
   return (
     <motion.div
-      className="absolute"
+      className={`absolute ymg-orbit-item-${item.kind}`}
       style={position}
       initial={{ opacity: 0, scale: 0.3 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.6, delay: popDelay, ease: [0.34, 1.56, 0.64, 1] }}
     >
-      <motion.div
-        className="-translate-x-1/2 -translate-y-1/2"
-        animate={{ y: FLOAT_KEYFRAMES }}
-        transition={{
-          duration: floatDuration,
-          delay: floatDelay,
-          repeat: Infinity,
-          repeatType: "loop",
-          ease: "linear",
-        }}
-      >
-        {item.kind === "badge" && <Badge3D glyph={item.glyph} tone={item.tone} label={item.label} />}
-        {item.kind === "caseGrowth" && <CaseGrowthCard />}
-        {item.kind === "campaign" && <CampaignPerformanceCard />}
-        {item.kind === "leads" && <LeadsOverviewCard />}
-        {item.kind === "megaphone" && <MegaphoneCard />}
-      </motion.div>
+      <div className="ymg-orbit-anchor">
+        <div className="ymg-orbit-float" style={floatStyle}>
+          <div className="ymg-orbit-item-content">
+            {item.kind === "badge" && <Badge3D glyph={item.glyph} tone={item.tone} label={item.label} />}
+            {item.kind === "caseGrowth" && <CaseGrowthCard />}
+            {item.kind === "campaign" && <CampaignPerformanceCard />}
+            {item.kind === "leads" && <LeadsOverviewCard />}
+            {item.kind === "megaphone" && <MegaphoneCard />}
+          </div>
+        </div>
+      </div>
     </motion.div>
   );
 }

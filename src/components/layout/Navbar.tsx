@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -74,8 +74,12 @@ function HeaderActions({
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [overDarkBackground, setOverDarkBackground] = useState(false);
+  const [activePill, setActivePill] = useState<{ left: number; width: number } | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(getInitialDarkMode);
+  const headerRef = useRef<HTMLElement>(null);
+  const desktopNavRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -84,6 +88,59 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    let frameId = 0;
+
+    const updateBackgroundTheme = () => {
+      const header = headerRef.current;
+      if (!header) return;
+
+      const sampleY = Math.min(window.innerHeight - 1, header.offsetTop + header.offsetHeight / 2);
+      const elements = document.elementsFromPoint(window.innerWidth / 2, sampleY);
+      let isDark = false;
+
+      outer: for (const element of elements) {
+        if (header.contains(element)) continue;
+
+        let current: Element | null = element;
+        while (current) {
+          const color = window.getComputedStyle(current).backgroundColor;
+          const match = color.match(/rgba?\(([^)]+)\)/);
+
+          if (match) {
+            const values = match[1].split(",").map(Number);
+            const [red, green, blue, alpha = 1] = values;
+
+            if (alpha > 0.15) {
+              const luminance = 0.2126 * red + 0.7152 * green + 0.0722 * blue;
+              isDark = luminance < 125;
+              break outer;
+            }
+          }
+
+          current = current.parentElement;
+        }
+      }
+
+      setOverDarkBackground(isDark);
+    };
+
+    const scheduleThemeUpdate = () => {
+      window.cancelAnimationFrame(frameId);
+      frameId = window.requestAnimationFrame(updateBackgroundTheme);
+    };
+
+    scheduleThemeUpdate();
+    window.addEventListener("scroll", scheduleThemeUpdate, { passive: true });
+    window.addEventListener("resize", scheduleThemeUpdate);
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      window.removeEventListener("scroll", scheduleThemeUpdate);
+      window.removeEventListener("resize", scheduleThemeUpdate);
+    };
+  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = drawerOpen ? "hidden" : "";
@@ -97,17 +154,71 @@ export default function Navbar() {
     window.localStorage.setItem("ymg-theme", darkMode ? "dark" : "light");
   }, [darkMode]);
 
+  useEffect(() => {
+    let frameId = 0;
+
+    const updateActivePill = () => {
+      window.cancelAnimationFrame(frameId);
+      frameId = window.requestAnimationFrame(() => {
+        const nav = desktopNavRef.current;
+        const activeLink = nav?.querySelector<HTMLElement>('[aria-current="page"]');
+
+        if (!nav || !activeLink || activeLink.offsetWidth === 0) return;
+
+        setActivePill({
+          left: activeLink.offsetLeft,
+          width: activeLink.offsetWidth,
+        });
+      });
+    };
+
+    updateActivePill();
+    const resizeObserver = new ResizeObserver(updateActivePill);
+    if (desktopNavRef.current) resizeObserver.observe(desktopNavRef.current);
+    window.addEventListener("resize", updateActivePill);
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", updateActivePill);
+    };
+  }, [pathname]);
+
   const toggleDarkMode = () => setDarkMode((current) => !current);
 
   return (
     <>
-      <header className="ymg-navbar fixed left-0 right-0 top-5 z-50 transition-all duration-300">
-        <div className="ymg-navbar-inner max-w-7xl mx-auto px-6 h-[76px] flex items-center justify-between gap-6">
+      <motion.header
+        ref={headerRef}
+        layoutRoot
+        className={cn(
+          "ymg-navbar fixed left-0 right-0 top-5 z-50 transition-all duration-300",
+          scrolled && "ymg-navbar-scrolled",
+          overDarkBackground && "ymg-navbar-over-dark"
+        )}
+      >
+        <div className="ymg-navbar-shell mx-auto">
+          <div className="ymg-navbar-inner max-w-7xl mx-auto px-6 h-[76px] flex items-center justify-between gap-6">
           {/* Logo */}
           <YMGLogo asLink variant="gold" className="ymg-navbar-logo" />
 
           {/* Desktop nav */}
-          <nav className="ymg-nav-pill relative hidden h-[54px] items-center gap-4 overflow-visible rounded-full border border-white/80 bg-[radial-gradient(circle_at_50%_0%,#EFCD86_0%,#EFCD86_48%,#D88268_100%)] px-4 shadow-[0_7px_12px_rgba(71,56,30,0.22)] lg:flex">
+          <nav ref={desktopNavRef} className="ymg-nav-pill relative hidden h-[54px] items-center gap-4 overflow-visible rounded-full border border-white/80 bg-[radial-gradient(circle_at_50%_0%,#EFCD86_0%,#EFCD86_48%,#D88268_100%)] px-4 shadow-[0_7px_12px_rgba(71,56,30,0.22)] lg:flex">
+            <span className="ymg-nav-morph-surface" aria-hidden="true" />
+            {activePill && (
+              <motion.span
+                className="ymg-nav-indicator absolute"
+                initial={false}
+                animate={{ x: activePill.left, width: activePill.width }}
+                transition={{
+                  type: "spring",
+                  stiffness: 360,
+                  damping: 34,
+                  mass: 0.8,
+                }}
+                aria-hidden="true"
+              />
+            )}
             {navLinks.map((link) => {
               const isActive =
                 link.href === "/"
@@ -118,17 +229,29 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  aria-current={isActive ? "page" : undefined}
                   className={cn(
-                    "ymg-nav-link relative flex h-full items-center gap-1 whitespace-nowrap rounded-full px-4 text-[1.02rem] font-medium text-[#4f5356] transition-all duration-200 hover:text-[#1f2529]",
-                    isActive
-                      ? "ymg-nav-active h-[86px] -my-4 bg-[#EFCD86] px-6 text-[#172022] shadow-[0_4px_10px_rgba(95,72,30,0.22)]"
-                      : ""
+                    "ymg-nav-link relative z-10 flex h-full items-center gap-1 whitespace-nowrap rounded-full px-4 text-[1.02rem] font-medium text-[#4f5356] transition-all duration-200 hover:text-[#1f2529]",
+                    isActive ? "ymg-nav-active" : ""
                   )}
                 >
-                  {link.label}
-                  {link.hasDropdown && (
-                    <ChevronDown size={13} className="opacity-60 mt-px shrink-0" />
-                  )}
+                  <motion.span
+                    className="relative z-10 flex items-center gap-1"
+                    animate={{
+                      scale: isActive ? 1.08 : 1,
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 420,
+                      damping: 28,
+                      mass: 0.55,
+                    }}
+                  >
+                    {link.label}
+                    {link.hasDropdown && (
+                      <ChevronDown size={13} className="mt-px shrink-0 opacity-60" />
+                    )}
+                  </motion.span>
                 </Link>
               );
             })}
@@ -149,8 +272,9 @@ export default function Navbar() {
           >
             <Menu size={22} />
           </button>
+          </div>
         </div>
-      </header>
+      </motion.header>
 
       {/* Mobile drawer */}
       <AnimatePresence>
@@ -196,7 +320,7 @@ export default function Navbar() {
                       href={link.href}
                       onClick={() => setDrawerOpen(false)}
                       className={cn(
-                        "flex items-center justify-between py-3.5 text-[0.95rem] font-medium border-b border-gold/10 transition-colors duration-200",
+                        "flex items-center justify-between border-b border-gold/10 py-3.5 text-[0.95rem] font-semibold transition-colors duration-200",
                         isActive
                           ? "text-gold"
                           : "text-body-light/75 hover:text-gold"
