@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { ExternalLink, Mail, MapPin, Phone } from "lucide-react";
 import CardInteractionHint from "@/components/sections/CardInteractionHint";
+import ContactConversationContent from "@/components/sections/ContactConversationContent";
 import TouchPopCard from "@/components/sections/TouchPopCard";
 
 const testimonials = [
@@ -57,10 +57,10 @@ export function TestimonialCardsShowcase({
   className?: string;
 }) {
   return (
-    <section className={`relative isolate overflow-hidden bg-[#404040] px-5 py-12 text-[#d9b46d] sm:px-8 sm:py-16 lg:px-12 lg:py-20 ${className}`}>
+    <section className={`ymg-section-padding relative isolate overflow-hidden bg-[#404040] text-[#d9b46d] ${className}`}>
       <div className="pointer-events-none absolute bottom-[120px] left-5 hidden h-[170px] w-[250px] opacity-20 brightness-75 contrast-125 saturate-150 sm:block lg:left-12">
         <Image
-          src="/images/Home page Big Flower light mode (1)-Photoroom.png"
+          src="/images/big_flowers.png"
           alt=""
           fill
           sizes="250px"
@@ -70,10 +70,10 @@ export function TestimonialCardsShowcase({
 
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="text-center">
-          <p className="text-[0.82rem] font-medium text-[#d9b46d] sm:text-[0.95rem]">
+          <p className="text-[0.82rem] font-medium text-[#EBC982] sm:text-[0.95rem]">
             Client Testimonials
           </p>
-          <h2 className="mt-3 mb-6 text-[clamp(1.8rem,7vw,3rem)] font-semibold leading-tight text-[#d9b46d] sm:mb-8">
+          <h2 className="mt-3 mb-6 text-[clamp(1.8rem,7vw,3rem)] font-semibold leading-tight text-[#EBC982] sm:mb-8">
             What Our Clients Say
           </h2>
           <CardInteractionHint />
@@ -82,28 +82,28 @@ export function TestimonialCardsShowcase({
         <div className="group/testimonials relative mx-auto mt-7 h-[360px] max-w-[820px] overflow-visible sm:mt-12 sm:h-[560px]">
           <div className="pointer-events-none absolute bottom-12 right-0 z-[5] h-[150px] w-[230px] opacity-25 sm:bottom-10 sm:right-0 sm:h-[180px] sm:w-[280px]">
             <Image
-              src="/images/Home page Big Flower light mode (1)-Photoroom.png"
+              src="/images/big_flowers.png"
               alt=""
               width={200}
               height={200}
               className="absolute right-[72px] top-0 w-[115px] sm:right-[88px] sm:w-[145px]"
             />
             <Image
-              src="/images/Home page Small Flower light mode-Photoroom.png"
+              src="/images/small_flowers.png"
               alt=""
               width={68}
               height={68}
               className="absolute left-0 top-9 w-[42px] sm:w-[50px]"
             />
             <Image
-              src="/images/Home page Small Flower light mode-Photoroom.png"
+              src="/images/small_flowers.png"
               alt=""
               width={68}
               height={68}
               className="absolute right-0 top-16 w-[42px] sm:w-[50px]"
             />
             <Image
-              src="/images/Home page Small Flower light mode-Photoroom.png"
+              src="/images/small_flowers.png"
               alt=""
               width={68}
               height={68}
@@ -113,8 +113,9 @@ export function TestimonialCardsShowcase({
 
           {testimonials.map(({ name, firm, avatar, text, color, stars, pos }) => (
             <TouchPopCard
-              key={name}
-              className={`absolute ${pos} rounded-bl-none rounded-br-[12px] rounded-tl-[12px] rounded-tr-none border border-[#ead3a0] ${color} p-2 shadow-[0_16px_34px_rgba(87,66,34,0.14)] touch-manipulation transition-all duration-300 ease-out hover:z-40 hover:-translate-y-3 hover:scale-105 hover:rotate-0 hover:shadow-[0_24px_48px_rgba(87,66,34,0.24)] sm:rounded-br-[18px] sm:rounded-tl-[18px] sm:p-6`}
+              key={`${name}-${firm}`}
+              centerOnMobile
+              className={`absolute ${pos} rounded-bl-none rounded-br-[12px] rounded-tl-[12px] rounded-tr-none border border-[#ead3a0] ${color} p-2 shadow-[0_16px_34px_rgba(87,66,34,0.14)] touch-manipulation transition-all duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] hover:z-40 hover:-translate-y-3 hover:scale-105 hover:rotate-0 hover:shadow-[0_24px_48px_rgba(87,66,34,0.24)] sm:rounded-br-[18px] sm:rounded-tl-[18px] sm:p-6`}
             >
               <div className={`mb-2 flex gap-0.5 sm:mb-4 ${stars}`}>
                 {Array.from({ length: 5 }).map((_, index) => (
@@ -146,70 +147,42 @@ export function TestimonialCardsShowcase({
 
 export default function TestimonialContactSection({
   showTestimonials = true,
+  contactVariant = "default",
 }: {
   showTestimonials?: boolean;
+  contactVariant?: "default" | "home";
 }) {
-  return (
-    <section className="relative isolate overflow-hidden bg-[#404040] px-5 py-12 text-[#d9b46d] sm:px-8 sm:py-16 lg:px-12 lg:py-20">
-      <div className="pointer-events-none absolute bottom-[260px] left-5 hidden h-[170px] w-[250px] opacity-20 brightness-75 contrast-125 saturate-150 sm:block lg:left-12">
-        <Image
-          src="/images/Home page Big Flower light mode (1)-Photoroom.png"
-          alt=""
-          fill
-          sizes="250px"
-          className="object-contain"
-        />
-      </div>
+  const contactOnly = contactVariant === "home" && !showTestimonials;
 
+  return (
+    <section className={`${contactOnly ? "ymg-section-padding-x py-0" : "ymg-section-padding"} relative isolate overflow-hidden bg-[#404040] text-[#d9b46d] ${contactVariant === "home" ? "pb-0" : ""}`}>
       <div className="relative z-10 mx-auto max-w-7xl">
         {showTestimonials && (
           <>
             <div className="text-center">
-              <p className="text-[0.82rem] font-medium text-[#d9b46d] sm:text-[0.95rem]">
+              <p className="text-[0.82rem] font-medium text-[#EBC982] sm:text-[0.95rem]">
                 Client Testimonials
               </p>
-              <h2 className="mt-3 text-[clamp(1.8rem,7vw,3rem)] font-semibold leading-tight text-[#d9b46d]">
+              <h2 className="mt-3 text-[clamp(1.8rem,7vw,3rem)] font-semibold leading-tight text-[#EBC982]">
                 What Our Clients Say
               </h2>
               <CardInteractionHint />
             </div>
 
             <div className="group/testimonials relative mx-auto mt-7 h-[360px] max-w-[820px] overflow-visible sm:mt-14 sm:h-[560px]">
-              <div className="pointer-events-none absolute bottom-12 right-0 z-[5] h-[150px] w-[230px] opacity-25 sm:bottom-10 sm:right-0 sm:h-[180px] sm:w-[280px]">
-                <Image
-                  src="/images/Home page Big Flower light mode (1)-Photoroom.png"
-                  alt=""
-                  width={200}
-                  height={200}
-                  className="absolute right-[72px] top-0 w-[115px] sm:right-[88px] sm:w-[145px]"
-                />
-                <Image
-                  src="/images/Home page Small Flower light mode-Photoroom.png"
-                  alt=""
-                  width={68}
-                  height={68}
-                  className="absolute left-0 top-9 w-[42px] sm:w-[50px]"
-                />
-                <Image
-                  src="/images/Home page Small Flower light mode-Photoroom.png"
-                  alt=""
-                  width={68}
-                  height={68}
-                  className="absolute right-0 top-16 w-[42px] sm:w-[50px]"
-                />
-                <Image
-                  src="/images/Home page Small Flower light mode-Photoroom.png"
-                  alt=""
-                  width={68}
-                  height={68}
-                  className="absolute bottom-0 left-[70px] w-[46px] sm:left-[86px] sm:w-[54px]"
-                />
-              </div>
+              <Image
+                src="/flowers/psmBG.svg"
+                alt=""
+                width={273}
+                height={196}
+                className="pointer-events-none absolute bottom-[-28px] left-[-52px] z-0 w-[120px] sm:bottom-[-48px] sm:left-[-90px] sm:w-[190px]"
+              />
 
               {testimonials.map(({ name, firm, avatar, text, color, stars, pos }) => (
                 <TouchPopCard
-                  key={name}
-                  className={`absolute ${pos} rounded-bl-none rounded-br-[12px] rounded-tl-[12px] rounded-tr-none border border-[#ead3a0] ${color} p-2 shadow-[0_16px_34px_rgba(87,66,34,0.14)] touch-manipulation transition-all duration-300 ease-out hover:z-40 hover:-translate-y-3 hover:scale-105 hover:rotate-0 hover:shadow-[0_24px_48px_rgba(87,66,34,0.24)] sm:rounded-br-[18px] sm:rounded-tl-[18px] sm:p-6`}
+                  key={`${name}-${firm}`}
+                  centerOnMobile
+                  className={`absolute ${pos} rounded-bl-none rounded-br-[12px] rounded-tl-[12px] rounded-tr-none border border-[#ead3a0] ${color} p-2 shadow-[0_16px_34px_rgba(87,66,34,0.14)] touch-manipulation transition-all duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] hover:z-40 hover:-translate-y-3 hover:scale-105 hover:rotate-0 hover:shadow-[0_24px_48px_rgba(87,66,34,0.24)] sm:rounded-br-[18px] sm:rounded-tl-[18px] sm:p-6`}
                 >
                   <div className={`mb-2 flex gap-0.5 sm:mb-4 ${stars}`}>
                     {Array.from({ length: 5 }).map((_, index) => (
@@ -237,33 +210,36 @@ export default function TestimonialContactSection({
           </>
         )}
 
+        {contactVariant === "home" ? (
+          <ContactConversationContent variant="gold" fullBleed className={showTestimonials ? "mt-16 sm:mt-20 lg:mt-28" : ""} />
+        ) : (
         <div className={`${showTestimonials ? "mt-16 sm:mt-20 lg:mt-28" : ""} grid items-center gap-8 lg:grid-cols-12 lg:gap-12`}>
           <div className="text-center lg:col-span-6 lg:text-left">
-            <p className="text-[0.9rem] text-[#d9b46d]">Contact Us</p>
-            <h3 className="mt-4 text-[clamp(2rem,7vw,3.2rem)] font-semibold leading-tight text-[#d9b46d]">
+            <p className="text-[0.9rem] text-[#EBC982]">Contact Us</p>
+            <h3 className="mt-4 text-[clamp(2rem,7vw,3.2rem)] font-semibold leading-tight text-[#EBC982]">
               Let&apos;s Start a Conversation
             </h3>
             <div className="mt-8 grid grid-cols-2 gap-5 text-[0.72rem] text-[#d9b46d] sm:grid-cols-4 sm:text-[0.82rem]">
               <a href="tel:4244471147" className="flex flex-col items-center gap-3 lg:items-start">
-                <Phone className="h-4 w-4" />
+                <Image src="/contact_icons/phone.png" alt="" width={20} height={20} className="h-5 w-5 object-contain" />
                 <span>(424) 447-1147</span>
               </a>
               <a href="mailto:info@ymg-legal.com" className="flex flex-col items-center gap-3 lg:items-start">
-                <Mail className="h-4 w-4" />
+                <Image src="/contact_icons/message.png" alt="" width={20} height={20} className="h-5 w-5 object-contain" />
                 <span>info@ymg-legal.com</span>
               </a>
               <div className="flex flex-col items-center gap-3 lg:items-start">
-                <MapPin className="h-4 w-4" />
+                <Image src="/contact_icons/location.png" alt="" width={20} height={20} className="h-5 w-5 object-contain" />
                 <span>Las Vegas Nevada</span>
               </div>
               <a href="#" className="flex flex-col items-center gap-3 lg:items-start">
-                <ExternalLink className="h-4 w-4" />
+                <Image src="/contact_icons/Vector (4).png" alt="" width={20} height={20} className="h-5 w-5 object-contain" />
                 <span>LinkedIn</span>
               </a>
             </div>
           </div>
 
-          <form className="mx-auto w-full max-w-[520px] rounded-[6px] bg-[#fff5E0] p-5 text-[#2f3337] shadow-[0_18px_44px_rgba(0,0,0,0.18)] sm:p-7 lg:col-span-5 lg:col-start-8">
+          <form className="mx-auto w-full max-w-[520px] rounded-[6px] bg-[#FFF5E0] p-5 text-[#2f3337] shadow-[0_18px_44px_rgba(0,0,0,0.18)] sm:p-7 lg:col-span-5 lg:col-start-8">
             <h3 className="text-[1.15rem] font-semibold sm:text-[1.35rem]">
               Book Your Free Strategy Call
             </h3>
@@ -286,6 +262,7 @@ export default function TestimonialContactSection({
             </button>
           </form>
         </div>
+        )}
       </div>
     </section>
   );

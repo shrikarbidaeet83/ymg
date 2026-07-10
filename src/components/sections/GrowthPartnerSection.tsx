@@ -1,93 +1,106 @@
 import Image from "next/image";
-import { Check } from "lucide-react";
+import {
+  BarChart3,
+  CalendarDays,
+  CircleDollarSign,
+  Crosshair,
+  ShieldCheck,
+  Target,
+  UserRound,
+} from "lucide-react";
 
 const missionBullets = [
-  "Performance-based pricing",
-  "Expert intake & qualification",
-  "AI-powered call & booking",
-  "Compliant & ethical marketing",
+  { icon: CircleDollarSign, label: "Performance-based pricing" },
+  { icon: UserRound, label: "Expert intake & qualification" },
+  { icon: CalendarDays, label: "AI-powered call & booking" },
+  { icon: ShieldCheck, label: "Compliant & ethical marketing" },
 ];
 
 const stats = [
-  { value: "+42%", label: "Conversion Rate", sub: "Industry Average" },
-  { value: "+42%", label: "Qualified Leads", sub: "vs last quarter" },
-  { value: "$2.3M+", label: "Case Value Generated", sub: "vs last quarter" },
+  { icon: Target, value: "+42%", label: "Conversion Rate", sub: "Industry Average" },
+  { icon: Crosshair, value: "+42%", label: "Qualified Leads", sub: "vs last quarter" },
+  { icon: BarChart3, value: "$2.3M+", label: "Case Value Generated", sub: "vs last quarter" },
 ];
 
-export default function GrowthPartnerSection() {
+export default function GrowthPartnerSection({
+  variant = "dark",
+  backgroundColor,
+  goldText = false,
+  whiteCards = false,
+}: {
+  variant?: "dark" | "light";
+  backgroundColor?: string;
+  goldText?: boolean;
+  whiteCards?: boolean;
+}) {
+  const isLight = variant === "light";
+  const useGoldText = !isLight || goldText;
+
   return (
-    <section className="ymg-about relative isolate overflow-hidden bg-[#404040] py-10 text-white sm:py-14 lg:py-20">
-      <div className="ymg-about-inner relative z-10 mx-auto px-5 sm:px-8 lg:px-12" style={{ maxWidth: "1440px" }}>
-        <div className="ymg-about-grid grid items-center gap-9 lg:grid-cols-[1fr_minmax(430px,520px)] lg:gap-14">
-          <div className="ymg-about-copy order-2 text-center lg:order-1 lg:text-left">
-            <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#d8ae63]">
-              About YMG - Legal
+    <section
+      id="growth-partner"
+      style={backgroundColor ? { backgroundColor } : undefined}
+      className={`ymg-section-padding relative isolate overflow-hidden ${
+        isLight ? "bg-[#FFF5E0] text-[#3d4145]" : "bg-[#404040] text-[#d9ae5d]"
+      }`}
+    >
+      <div className="relative z-10 mx-auto grid w-full max-w-[1120px] items-center gap-10 lg:grid-cols-[minmax(0,1fr)_345px] lg:gap-16">
+        <div className="max-w-[540px] text-left">
+          <p className={`text-[0.95rem] font-normal sm:text-[1.05rem] ${useGoldText ? "text-[#EBC982]" : "text-[#3d4145]"}`}>
+            About YMG - Legal
+          </p>
+
+          <h2 className={`ymg-practice-hero-title mt-4 text-[clamp(2.25rem,5vw,2.85rem)] font-normal leading-[1.16] tracking-[-0.02em] ${useGoldText ? "text-[#EBC982]" : "text-[#3d4145]"}`}>
+            Your Growth Partner
+            <span className="block">in Legal Success</span>
+          </h2>
+
+          <p className={`mt-4 max-w-[520px] text-[0.92rem] leading-[1.42] sm:text-[1rem] ${useGoldText ? "text-[#d9ae5d]" : "text-[#55585a]"}`}>
+            We are full-service legal marketing and intake company specializing
+            in mass torts and personal injury. Our performance driven approach
+            ensures you pay for results, not promises.
+          </p>
+
+          <ul className="mt-6 space-y-3.5">
+            {missionBullets.map(({ icon: Icon, label }) => (
+              <li key={label} className={`flex items-center gap-3 text-[0.92rem] sm:text-[1rem] ${useGoldText ? "text-[#d9ae5d]" : "text-[#8a8c8e]"}`}>
+                <Icon size={17} strokeWidth={1.45} className="shrink-0" />
+                {label}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="w-full lg:justify-self-end">
+          <div className={`relative min-h-[228px] rounded-[5px] border px-7 py-5 ${isLight ? `border-[#D8B26B] ${whiteCards ? "bg-white" : "bg-[#FFF5E0]"} shadow-[3px_4px_8px_rgba(86,65,31,0.08)]` : "border-[#d9ae5d] bg-[#404040]/65"}`}>
+            <Image
+              src="/goal-vec.svg"
+              alt=""
+              width={90}
+              height={90}
+              className="absolute right-5 top-3 h-[72px] w-[72px] object-contain"
+            />
+            <h3 className={`pr-20 text-[1.85rem] font-normal leading-tight ${whiteCards ? "text-[#404040]" : isLight ? "text-[#3d4145]" : "text-[#EBC982]"}`}>
+              Our Mission
+            </h3>
+            <div className={`mt-5 h-px w-[166px] ${isLight ? "bg-[#D8B26B]" : "bg-[#d9ae5d]"}`} />
+            <p className={`mt-7 max-w-[285px] text-[1.35rem] leading-[1.48] sm:text-[1.45rem] ${whiteCards ? "text-[#404040]" : isLight ? "text-[#8a8c8e]" : "text-[#d9ae5d]"}`}>
+              To help law firms grow with a predictable pipeline of qualified cases.
             </p>
-
-            <h2 className="text-[clamp(1.85rem,5vw,3.2rem)] font-semibold leading-[1.08] text-[#d8ae63]">
-              Your Growth Partner
-              <span className="mt-[0.1em] block">in Legal Success</span>
-            </h2>
-
-            <p className="ymg-about-text mx-auto mt-5 max-w-[500px] text-[0.88rem] leading-[1.75] text-[#efd99f] lg:mx-0">
-              We are full-service legal marketing and intake company specializing
-              in mass torts and personal injury. Our performance driven approach
-              ensures you pay for results, not promises.
-            </p>
-
-            <ul className="ymg-about-list mx-auto mt-7 max-w-[340px] space-y-3 text-left lg:mx-0">
-              {missionBullets.map((bullet) => (
-                <li
-                  key={bullet}
-                  className="flex items-center gap-3 text-[0.85rem] font-medium text-[#efd99f]"
-                >
-                  <span className="flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full border border-[#d8ae63]/55 text-[#d8ae63]">
-                    <Check size={8} strokeWidth={3} />
-                  </span>
-                  {bullet}
-                </li>
-              ))}
-            </ul>
           </div>
 
-          <div className="ymg-about-card-wrap order-1 flex justify-center lg:order-2 lg:justify-end">
-            <div className="ymg-about-card-cluster relative w-full max-w-[520px] pb-0 lg:pb-16">
-              <div className="ymg-mission-card relative min-h-[214px] w-full rounded-[8px] bg-white px-7 py-7 shadow-[0_20px_60px_rgba(0,0,0,0.24)] sm:min-h-[240px] sm:px-9 sm:py-9 lg:min-h-[286px]">
-                <Image
-                  src="/images/mission-bullseye.webp"
-                  alt=""
-                  width={120}
-                  height={120}
-                  className="pointer-events-none absolute right-7 top-7 h-16 w-16 object-contain sm:right-8 sm:top-8 sm:h-20 sm:w-20"
-                />
-                <h3 className="mb-2.5 pr-20 text-[1.35rem] font-medium text-[#3a3d42] sm:pr-24 sm:text-[1.65rem]">
-                  Our Mission
-                </h3>
-                <div className="mb-3 h-px w-32 bg-[#d8ae63]" />
-                <p className="max-w-[330px] pt-5 text-[1.08rem] leading-[1.56] text-[#8a8c8e] sm:text-[1.24rem] lg:text-[1.4rem]">
-                  To help law firms grow with a predictable pipeline of qualified
-                  cases.
-                </p>
-              </div>
-
-              <div className="ymg-about-stats mt-3 grid gap-2.5 sm:grid-cols-3 lg:absolute lg:bottom-0 lg:left-1/2 lg:mt-0 lg:w-[calc(100%-40px)] lg:-translate-x-1/2">
-                {stats.map(({ value, label, sub }) => (
-                  <div
-                    key={label}
-                    className="rounded-[6px] border border-[#eadfca] bg-white px-3 py-3 text-left shadow-[0_10px_26px_rgba(0,0,0,0.18)]"
-                  >
-                    <p className="text-[0.56rem] font-semibold leading-tight text-[#3a3d42] sm:text-[0.62rem]">
-                      {label}
-                    </p>
-                    <p className="mt-1.5 text-[1.15rem] font-bold leading-none text-[#3a3d42] sm:text-[1.35rem]">
-                      {value}
-                    </p>
-                    <p className="mt-1 text-[0.54rem] text-[#777] sm:text-[0.58rem]">
-                      {sub}
-                    </p>
-                  </div>
-                ))}
-              </div>
+          <div className={`mt-4 rounded-[5px] border px-5 py-4 ${isLight ? `border-[#D8B26B] ${whiteCards ? "bg-white" : "bg-[#FFF5E0]"} shadow-[3px_4px_8px_rgba(86,65,31,0.08)]` : "border-[#d9ae5d] bg-[#404040]/65"}`}>
+            <div className="space-y-3">
+              {stats.map(({ icon: Icon, value, label, sub }) => (
+                <div key={label} className={`grid grid-cols-[32px_90px_1fr] items-center gap-3 ${whiteCards ? "text-[#404040]" : isLight ? "text-[#8a8c8e]" : "text-[#d9ae5d]"}`}>
+                  <Icon size={27} strokeWidth={1.45} className={isLight ? "text-[#D8B26B]" : ""} />
+                  <p className="text-[1.35rem] font-bold leading-none">{value}</p>
+                  <p className="text-[0.68rem] leading-[1.12]">
+                    {label}
+                    <span className="block">{sub}</span>
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

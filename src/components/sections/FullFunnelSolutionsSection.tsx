@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Bot, ClipboardList, FileCheck2, Magnet } from "lucide-react";
 import TouchPopCard from "@/components/sections/TouchPopCard";
 
@@ -74,44 +73,19 @@ export function FullFunnelSolutionCards({
 
 export default function FullFunnelSolutionsSection() {
   return (
-    <section className="relative isolate overflow-hidden bg-[#404040] px-5 py-14 text-[#d9b46d] sm:px-8 sm:py-18 lg:px-12 lg:py-20">
+    <section className="ymg-section-padding relative isolate overflow-hidden bg-[#404040] text-[#d9b46d]">
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="text-center">
-          <p className="mb-3 text-[0.8rem] font-medium text-[#d9b46d]">
+          <p className="mb-3 text-[0.8rem] font-medium text-[#EBC982]">
             About YMG - Legal
           </p>
-          <h2 className="font-heading text-[clamp(2rem,4.7vw,3.4rem)] font-normal leading-[1.12] tracking-[0] text-[#d9b46d]">
+          <h2 className="font-heading text-[clamp(2rem,4.7vw,3.4rem)] font-normal leading-[1.12] tracking-[0] text-[#EBC982]">
             Full-Funnel Legal Growth Solutions
           </h2>
         </div>
 
         <FullFunnelSolutionCards className="mt-12 sm:mt-14" />
 
-        <div className="grid items-center gap-8 text-left lg:grid-cols-[1fr_220px] lg:gap-12">
-          <div>
-            <h3 className="font-heading text-[clamp(2rem,4vw,3.35rem)] font-normal leading-tight tracking-[0] text-[#d9b46d]">
-              Ready to Grow Your Firm?
-            </h3>
-            <p className="mt-3 text-[0.9rem] font-medium text-[#ecd08c] sm:text-[1.1rem]">
-              Let&apos;s build your pipeline of qualified cases.
-            </p>
-          </div>
-
-          <div className="flex flex-col gap-4">
-            <Link
-              href="/services/case-acquisition"
-              className="inline-flex h-12 items-center justify-center rounded-[3px] bg-[#d9b46d] px-8 text-[0.82rem] font-semibold text-[#262626]"
-            >
-              Get More Cases
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex h-12 items-center justify-center rounded-[3px] border border-[#d9b46d] px-8 text-[0.82rem] font-semibold text-[#d9b46d]"
-            >
-              Book Strategy Call
-            </Link>
-          </div>
-        </div>
       </div>
     </section>
   );
