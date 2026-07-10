@@ -72,10 +72,10 @@ export default function FAQsPage() {
   }, [page]);
 
   return (
-    <main className="min-h-screen bg-[#fff5e0] text-[#3d4145]">
-      <section className="relative isolate overflow-hidden px-5 pb-20 pt-[118px] sm:px-8 lg:px-12 lg:pb-24 lg:pt-[130px]">
+    <main className="min-h-screen bg-[#FFF5E0] text-[#3d4145]">
+      <section className="ymg-section-padding relative isolate overflow-hidden pt-[118px] lg:pt-[130px]">
         <Image
-          src="/images/Home page Big Flower light mode (1)-Photoroom.png"
+          src="/images/big_flowers.png"
           alt=""
           width={220}
           height={220}
@@ -83,7 +83,7 @@ export default function FAQsPage() {
           className="pointer-events-none absolute bottom-[112px] left-[12%] z-0 hidden w-[150px] opacity-[0.06] brightness-90 sepia lg:block"
         />
         <Image
-          src="/images/Home page Small Flower light mode-Photoroom.png"
+          src="/images/small_flowers.png"
           alt=""
           width={74}
           height={74}
@@ -91,7 +91,7 @@ export default function FAQsPage() {
           className="pointer-events-none absolute bottom-[174px] left-[8%] z-0 hidden w-[56px] opacity-[0.06] brightness-90 sepia lg:block"
         />
         <Image
-          src="/images/Home page Small Flower light mode-Photoroom.png"
+          src="/images/small_flowers.png"
           alt=""
           width={74}
           height={74}
@@ -123,7 +123,7 @@ export default function FAQsPage() {
                 return (
                   <article
                     key={question}
-                    className="overflow-hidden rounded-[8px] border border-[#dfbd78] bg-[#fff5e0] shadow-[0_10px_22px_rgba(91,69,34,0.14)]"
+                    className="overflow-hidden rounded-[8px] border border-[#dfbd78] bg-[#FFF5E0] shadow-[0_10px_22px_rgba(91,69,34,0.14)]"
                   >
                     <button
                       type="button"
@@ -208,7 +208,7 @@ export default function FAQsPage() {
           </div>
         </div>
       </section>
-      <section className="overflow-hidden bg-[#fff5e0] px-5 pb-18 sm:px-8 lg:px-12 lg:pb-24">
+      <section className="ymg-section-padding overflow-hidden bg-[#FFF5E0]">
         <div className="mx-auto max-w-7xl">
           <div className="mb-8 text-center sm:mb-10 lg:mb-12 lg:text-left">
             <p className="text-[1rem] font-medium text-[#3d4145] sm:text-[1.08rem]">

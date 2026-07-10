@@ -255,10 +255,10 @@ function MarketingMap() {
 
 export default function DigitalMarketingPage() {
   return (
-    <div className="min-h-screen bg-[#fff4df] text-[#44413e]">
-      <section className="relative isolate min-h-[624px] overflow-hidden px-5 pb-12 pt-[150px] sm:px-8 lg:px-14 lg:pb-10 lg:pt-[160px]">
+    <div className="min-h-screen bg-[#FFF5E0] text-[#44413e]">
+      <section className="ymg-section-padding relative isolate min-h-[624px] overflow-hidden pt-[150px] lg:pt-[160px]">
         <Image
-          src="/images/Home page Big Flower light mode (1)-Photoroom.png"
+          src="/images/big_flowers.png"
           alt=""
           width={190}
           height={190}
@@ -266,7 +266,7 @@ export default function DigitalMarketingPage() {
           className="pointer-events-none absolute bottom-[-16px] left-[9%] z-0 h-auto w-[175px] opacity-[0.045]"
         />
         <Image
-          src="/images/Home page Small Flower light mode-Photoroom.png"
+          src="/images/small_flowers.png"
           alt=""
           width={125}
           height={125}
@@ -314,24 +314,24 @@ export default function DigitalMarketingPage() {
         </div>
       </section>
 
-      <section className="relative isolate overflow-hidden bg-[#393a39] px-5 py-20 sm:px-8 sm:py-24 lg:px-14 lg:py-[92px]">
+      <section className="ymg-section-padding relative isolate overflow-hidden bg-[#393a39]">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_36%,rgba(37,27,12,0.92)_0%,rgba(37,27,12,0.54)_25%,rgba(57,58,57,0)_58%)]" />
         <Image
-          src="/images/Home page Big Flower light mode (1)-Photoroom.png"
+          src="/images/big_flowers.png"
           alt=""
           width={160}
           height={160}
           className="pointer-events-none absolute right-[5%] top-[28px] -z-0 h-auto w-[128px] opacity-[0.055]"
         />
         <Image
-          src="/images/Home page Small Flower light mode-Photoroom.png"
+          src="/images/small_flowers.png"
           alt=""
           width={80}
           height={80}
           className="pointer-events-none absolute right-[15%] top-[66px] -z-0 h-auto w-[42px] opacity-[0.05]"
         />
         <Image
-          src="/images/Home page Small Flower light mode-Photoroom.png"
+          src="/images/small_flowers.png"
           alt=""
           width={80}
           height={80}
@@ -341,7 +341,7 @@ export default function DigitalMarketingPage() {
         <div className="relative z-10 mx-auto max-w-[1084px]">
           <div className="text-center">
             <p className="text-[18px] font-normal text-[#edc269]">Real Impact</p>
-            <h2 className="mx-auto mt-5 max-w-[630px] font-heading text-[38px] font-normal leading-[1.32] text-[#e8c476] sm:text-[46px] lg:text-[48px]">
+            <h2 className="mx-auto mt-5 max-w-[630px] font-heading text-[38px] font-normal leading-[1.32] text-[#EBC982] sm:text-[46px] lg:text-[48px]">
               Digital Marketing That
               <br />
               Delivers What Matters
@@ -369,7 +369,7 @@ export default function DigitalMarketingPage() {
         </div>
       </section>
 
-      <section className="border-t-[7px] border-[#393a39] bg-[#fff4df] px-5 pb-[90px] pt-[54px] sm:px-8 lg:px-[34px]">
+      <section className="ymg-section-padding border-t-[7px] border-[#393a39] bg-[#FFF5E0]">
         <div className="mx-auto max-w-[1180px]">
           <div className="text-center">
             <p className="text-[21px] font-normal text-[#474747]">Our Acquisition Engine</p>
@@ -384,7 +384,7 @@ export default function DigitalMarketingPage() {
         </div>
       </section>
 
-      <TestimonialContactSection showTestimonials={false} />
+      <TestimonialContactSection showTestimonials={false} contactVariant="home" />
     </div>
   );
 }

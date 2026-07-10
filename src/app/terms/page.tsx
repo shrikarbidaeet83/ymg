@@ -39,8 +39,8 @@ const sections = [
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen bg-[#fff5e0] text-[#3d4145]">
-      <section className="flex min-h-[360px] items-center justify-center px-5 pb-14 pt-[126px] text-center sm:px-8 lg:min-h-[400px] lg:px-12 lg:pb-16 lg:pt-[145px]">
+    <main className="min-h-screen bg-[#FFF5E0] text-[#3d4145]">
+      <section className="ymg-section-padding flex min-h-[360px] items-center justify-center pt-[126px] text-center lg:min-h-[400px] lg:pt-[145px]">
         <div className="mx-auto max-w-4xl">
           <h1 className="font-heading text-[clamp(3.1rem,7.2vw,6.4rem)] font-normal leading-none tracking-[0] text-[#3d4145]">
             Terms &amp; Conditions
@@ -53,8 +53,8 @@ export default function TermsPage() {
         </div>
       </section>
 
-      <section className="bg-[#fff5e0]">
-        <div className="bg-[#dfbd78] px-5 py-3 sm:px-8 lg:px-12">
+      <section className="bg-[#FFF5E0]">
+        <div className="ymg-section-padding-x bg-[#dfbd78] py-3">
           <div className="mx-auto max-w-[1120px]">
             <h2 className="font-heading text-[clamp(1.35rem,2.4vw,2rem)] font-normal leading-tight tracking-[0]">
               Effective Date
@@ -62,13 +62,13 @@ export default function TermsPage() {
           </div>
         </div>
 
-        <div className="mx-auto max-w-[1120px] px-5 py-3 sm:px-8 lg:px-12">
+        <div className="mx-auto max-w-[1120px] px-6 py-3 sm:px-10 lg:px-16 xl:px-20">
           <p className="text-[0.92rem] text-[#8a8c8e] sm:text-[1rem]">
             (Insert date)
           </p>
         </div>
 
-        <div className="mx-auto max-w-[1120px] px-5 pb-16 pt-4 sm:px-8 lg:px-12 lg:pb-20">
+        <div className="ymg-section-padding mx-auto max-w-[1120px] pt-4">
           <article className="space-y-8">
             {sections.map(({ title, body }) => (
               <section key={title}>

@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
-import { ExternalLink, Mail, MapPin, Phone } from "lucide-react";
 import CardInteractionHint from "@/components/sections/CardInteractionHint";
+import ContactConversationContent from "@/components/sections/ContactConversationContent";
+import ReadyGrowCtaSection from "@/components/sections/ReadyGrowCtaSection";
 import TouchPopCard from "@/components/sections/TouchPopCard";
 
 const lawFirmLogos = [
@@ -17,42 +17,49 @@ const lawFirmLogos = [
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-[#fff5E0]">
-      <section className="flex min-h-[70svh] items-center justify-center px-5 py-24 text-center text-[#3a3d42]">
-        <div>
-          <p className="mb-4 text-[0.82rem] font-semibold uppercase tracking-[0.22em] text-[#d8ae63]">
-            About YMG - Legal
-          </p>
-          <h1 className="text-[clamp(2.5rem,7vw,5rem)] font-semibold leading-tight">
-            Updating Hero Section
-          </h1>
-          <p className="mx-auto mt-5 max-w-xl text-[1rem] leading-[1.6] text-[#7a7c7e]">
-            Coming soon.
-          </p>
-        </div>
-      </section>
-      <section className="bg-[#404040] px-4 py-6 text-[#d9b46d] sm:px-5 sm:py-5">
-        <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_112px] items-center gap-4 sm:flex sm:justify-between sm:gap-5">
-          <h2 className="text-left text-[clamp(1.25rem,6.4vw,2.05rem)] font-semibold leading-[1.08] sm:text-[clamp(1.45rem,4vw,2rem)]">
-            Ready to Scale Your Firm?
-          </h2>
-          <div className="flex w-full flex-col gap-3 sm:w-auto sm:max-w-[390px] sm:flex-row">
-            <Link
-              href="/services/case-acquisition"
-              className="inline-flex h-9 w-full items-center justify-center whitespace-nowrap rounded-[3px] bg-[#d9b46d] px-2 py-2 text-[0.42rem] font-bold tracking-[0.03em] text-[#262626] sm:min-w-[190px] sm:px-6 sm:text-[0.68rem]"
-            >
-              Get More Cases
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex h-9 w-full items-center justify-center whitespace-nowrap rounded-[3px] border border-[#d9b46d] px-2 py-2 text-center text-[0.4rem] font-semibold tracking-[0.02em] text-[#d9b46d] sm:min-w-[190px] sm:px-6 sm:text-[0.68rem] sm:tracking-[0.06em]"
-            >
-              Book a Strategy Call
-            </Link>
+    <main className="min-h-screen bg-[#FFF5E0]">
+      <section className="ymg-section-padding relative isolate flex min-h-[440px] overflow-hidden bg-[#FFF5E0] pt-[132px] text-[#3f3d3a] min-[900px]:pt-[142px]">
+        <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center md:grid-cols-2 md:gap-12">
+          <div className="relative z-10 max-w-[380px] text-left">
+            <Image
+              src="/flowers/half-circleBG.svg"
+              alt=""
+              width={1180}
+              height={848}
+              className="pointer-events-none absolute -right-[90px] -top-[72px] -z-10 w-[190px] rotate-[18deg] opacity-[0.14] mix-blend-multiply sm:-right-[120px] sm:-top-[82px] sm:w-[230px]"
+            />
+            <Image
+              src="/flowers/3rd-flower.svg"
+              alt=""
+              width={382}
+              height={274}
+              className="pointer-events-none absolute -right-[105px] -top-[72px] -z-10 w-[225px] opacity-[0.18] mix-blend-multiply sm:-right-[158px] sm:-top-[87px] sm:w-[285px]"
+            />
+            <p className="text-[0.78rem] font-normal text-[#4c4945] sm:text-[0.82rem]">
+              About YMG Legal
+            </p>
+            <h1 className="ymg-practice-hero-title mt-4 text-[clamp(2rem,6vw,2rem)] font-normal leading-[1.18] tracking-[-0.025em] text-[#46413d]">
+              Driving Case
+              <span className="block">Growth for Modern</span>
+              <span className="block">Law Firms</span>
+            </h1>
+            <p className="mt-4 max-w-[345px] text-[0.76rem] leading-[1.35] text-[#55514d] sm:text-[0.8rem]">
+              We combine performance marketing, expert intake,
+              <span className="block">and conversion systems to deliver real, measurable</span>
+              <span className="block">results.</span>
+            </p>
           </div>
+          <Image
+            src="/flowers/3rd-flower.svg"
+            alt=""
+            width={382}
+            height={274}
+            className="pointer-events-none absolute right-[-70px] top-[62%] w-[260px] -translate-y-1/2 mix-blend-multiply sm:right-[-40px] sm:w-[310px] md:static md:ml-auto md:mt-12 md:w-[310px] md:translate-y-0 lg:mt-16 lg:w-[350px]"
+          />
         </div>
       </section>
-      <section className="relative isolate overflow-hidden bg-[#fff5E0] px-5 py-14 text-[#3a3d42] sm:px-8 sm:py-20 lg:px-12">
+      <ReadyGrowCtaSection />
+      <section className="ymg-section-padding relative isolate overflow-hidden bg-[#FFF5E0] text-[#3a3d42]">
         <div className="relative z-10 mx-auto grid max-w-7xl gap-8 lg:grid-cols-[minmax(320px,0.76fr)_minmax(520px,1fr)] lg:gap-16">
           <div className="pt-0 text-center lg:text-left">
             <p className="text-[0.72rem] font-medium text-[#54575a] sm:text-[0.9rem] xl:text-[1.05rem]">
@@ -66,13 +73,13 @@ export default function AboutPage() {
               We partner with ambitious law firms nationwide, delivering qualified
               cases, consistent growth, and measurable success.
             </p>
-            <div className="pointer-events-none relative mx-auto mt-24 hidden h-[250px] w-[420px] opacity-100 brightness-75 contrast-125 saturate-150 lg:mx-0 lg:ml-[40px] lg:block">
+            <div className="pointer-events-none relative mx-auto mt-24 hidden h-[250px] w-[420px] opacity-100 lg:mx-0 lg:ml-[40px] lg:block">
               <Image
-                src="/images/Home page Big Flower light mode (1)-Photoroom.png"
+                src="/flowers/3rd-flower.svg"
                 alt=""
-                width={200}
-                height={200}
-                className="absolute left-1/2 top-0 w-[230px] -translate-x-1/2"
+                width={382}
+                height={274}
+                className="absolute inset-0 h-full w-full object-contain object-left-bottom mix-blend-multiply"
               />
             </div>
           </div>
@@ -101,7 +108,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <section className="bg-[#efcd86] px-5 py-5 text-[#404040] sm:px-8 lg:px-12">
+      <section className="ymg-section-padding bg-[#efcd86] text-[#404040]">
         <div className="mx-auto max-w-5xl text-center">
           <p className="text-[0.72rem] leading-[1.45] sm:text-[0.92rem] lg:text-[1rem]">
             We are a performance-driven legal marketing partner helping law firms scale through
@@ -109,60 +116,26 @@ export default function AboutPage() {
           </p>
         </div>
       </section>
-      <section className="relative isolate overflow-hidden bg-[#404040] px-5 py-12 text-[#d9b46d] sm:px-8 sm:py-16 lg:px-12 lg:py-20">
-        <div className="pointer-events-none absolute bottom-[260px] left-5 hidden h-[170px] w-[250px] opacity-20 brightness-75 contrast-125 saturate-150 sm:block lg:left-12">
-          <Image
-            src="/images/Home page Big Flower light mode (1)-Photoroom.png"
-            alt=""
-            fill
-            sizes="250px"
-            className="object-contain"
-          />
-        </div>
-
+      <section className="ymg-section-padding relative isolate overflow-hidden bg-[#404040] pb-0 text-[#d9b46d]">
         <div className="relative z-10 mx-auto max-w-7xl">
           <div className="text-center">
-            <p className="text-[0.82rem] font-medium text-[#d9b46d] sm:text-[0.95rem]">
+            <p className="text-[0.82rem] font-medium text-[#EBC982] sm:text-[0.95rem]">
               Client Testimonials
             </p>
-            <h2 className="mt-3 text-[clamp(1.8rem,7vw,3rem)] font-semibold leading-tight text-[#d9b46d]">
+            <h2 className="mt-3 text-[clamp(1.8rem,7vw,3rem)] font-semibold leading-tight text-[#EBC982]">
               What Our Clients Say
             </h2>
             <CardInteractionHint />
           </div>
 
           <div className="group/testimonials relative mx-auto mt-7 h-[360px] max-w-[820px] overflow-visible sm:mt-14 sm:h-[560px]">
-            <div className="pointer-events-none absolute bottom-12 right-0 z-[5] h-[150px] w-[230px] opacity-25 sm:bottom-10 sm:right-0 sm:h-[180px] sm:w-[280px]">
-              <Image
-                src="/images/Home page Big Flower light mode (1)-Photoroom.png"
-                alt=""
-                width={200}
-                height={200}
-                className="absolute right-[72px] top-0 w-[115px] sm:right-[88px] sm:w-[145px]"
-              />
-              <Image
-                src="/images/Home page Small Flower light mode-Photoroom.png"
-                alt=""
-                width={68}
-                height={68}
-                className="absolute left-0 top-9 w-[42px] sm:w-[50px]"
-              />
-              <Image
-                src="/images/Home page Small Flower light mode-Photoroom.png"
-                alt=""
-                width={68}
-                height={68}
-                className="absolute right-0 top-16 w-[42px] sm:w-[50px]"
-              />
-              <Image
-                src="/images/Home page Small Flower light mode-Photoroom.png"
-                alt=""
-                width={68}
-                height={68}
-                className="absolute bottom-0 left-[70px] w-[46px] sm:left-[86px] sm:w-[54px]"
-              />
-            </div>
-
+            <Image
+              src="/flowers/psmBG.svg"
+              alt=""
+              width={273}
+              height={196}
+              className="pointer-events-none absolute bottom-[-28px] left-[-52px] z-0 w-[120px] sm:bottom-[-48px] sm:left-[-90px] sm:w-[190px]"
+            />
             {[
               {
                 name: "Managing Partner",
@@ -211,8 +184,9 @@ export default function AboutPage() {
               },
             ].map(({ name, firm, avatar, text, color, stars, pos }) => (
               <TouchPopCard
-                key={name}
-                className={`absolute ${pos} rounded-bl-none rounded-br-[12px] rounded-tl-[12px] rounded-tr-none border border-[#ead3a0] ${color} p-2 shadow-[0_16px_34px_rgba(87,66,34,0.14)] touch-manipulation transition-all duration-300 ease-out hover:z-40 hover:-translate-y-3 hover:scale-105 hover:rotate-0 hover:shadow-[0_24px_48px_rgba(87,66,34,0.24)] sm:rounded-br-[18px] sm:rounded-tl-[18px] sm:p-6`}
+                key={`${name}-${firm}`}
+                centerOnMobile
+                className={`absolute ${pos} rounded-bl-none rounded-br-[12px] rounded-tl-[12px] rounded-tr-none border border-[#ead3a0] ${color} p-2 shadow-[0_16px_34px_rgba(87,66,34,0.14)] touch-manipulation transition-all duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] hover:z-40 hover:-translate-y-3 hover:scale-105 hover:rotate-0 hover:shadow-[0_24px_48px_rgba(87,66,34,0.24)] sm:rounded-br-[18px] sm:rounded-tl-[18px] sm:p-6`}
               >
                 <div className={`mb-2 flex gap-0.5 sm:mb-4 ${stars}`}>
                   {Array.from({ length: 5 }).map((_, i) => (
@@ -236,56 +210,7 @@ export default function AboutPage() {
             ))}
           </div>
 
-          <div className="mt-16 grid items-end gap-8 sm:mt-20 lg:mt-28 lg:grid-cols-12 lg:gap-12">
-            <div className="text-center lg:col-span-6 lg:text-left">
-              <p className="text-[0.9rem] text-[#d9b46d]">Contact Us</p>
-              <h3 className="mt-4 text-[clamp(2rem,7vw,3.2rem)] font-semibold leading-tight text-[#d9b46d]">
-                Let&apos;s Start a Conversation
-              </h3>
-            </div>
-
-            <form className="mx-auto w-full max-w-[520px] rounded-[6px] bg-[#fff5E0] p-5 text-[#2f3337] shadow-[0_18px_44px_rgba(0,0,0,0.18)] sm:p-7 lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-1">
-              <h3 className="text-[1.15rem] font-semibold sm:text-[1.35rem]">
-                Book Your Free Strategy Call
-              </h3>
-              <p className="mt-3 max-w-[300px] text-[0.76rem] leading-[1.45]">
-                Tell us about your firm and we&apos;ll show you how we can help.
-              </p>
-              <div className="mt-5 grid gap-3">
-                <input className="h-10 rounded-[4px] border border-[#b8a57a] bg-transparent px-4 text-[0.8rem] outline-none" placeholder="Full Name" />
-                <input className="h-10 rounded-[4px] border border-[#b8a57a] bg-transparent px-4 text-[0.8rem] outline-none" placeholder="Email" />
-                <input className="h-10 rounded-[4px] border border-[#b8a57a] bg-transparent px-4 text-[0.8rem] outline-none" placeholder="Phone Number" />
-                <select className="h-10 rounded-[4px] border border-[#b8a57a] bg-transparent px-4 text-[0.8rem] outline-none">
-                  <option>Practice Area</option>
-                  <option>Mass Torts</option>
-                  <option>Personal Injury</option>
-                  <option>Case Acquisition</option>
-                </select>
-              </div>
-              <button className="mt-4 h-11 w-full rounded-[4px] bg-[#404040] text-[0.78rem] font-semibold text-white">
-                Book My Free Call
-              </button>
-            </form>
-
-            <div className="grid w-full grid-cols-4 items-start text-[#d9b46d] lg:col-span-6 lg:gap-5">
-              <a href="tel:4244471147" className="flex min-w-0 flex-col items-center justify-center gap-2 text-center lg:items-start lg:text-left">
-                <Phone className="h-3.5 w-3.5" />
-                <span className="whitespace-nowrap text-[0.48rem] sm:text-[0.68rem] lg:text-[0.82rem]">(424) 447-1147</span>
-              </a>
-              <a href="mailto:info@ymg-legal.com" className="flex min-w-0 flex-col items-center justify-center gap-2 text-center lg:items-start lg:text-left">
-                <Mail className="h-3.5 w-3.5" />
-                <span className="whitespace-nowrap text-[0.45rem] sm:text-[0.65rem] lg:text-[0.82rem]">info@ymg-legal.com</span>
-              </a>
-              <div className="flex min-w-0 flex-col items-center justify-center gap-2 text-center lg:items-start lg:text-left">
-                <MapPin className="h-3.5 w-3.5" />
-                <span className="whitespace-nowrap text-[0.45rem] sm:text-[0.65rem] lg:text-[0.82rem]">Las Vegas Nevada</span>
-              </div>
-              <a href="#" className="flex min-w-0 flex-col items-center justify-center gap-2 text-center lg:items-start lg:text-left">
-                <ExternalLink className="h-3.5 w-3.5" />
-                <span className="whitespace-nowrap text-[0.48rem] sm:text-[0.68rem] lg:text-[0.82rem]">LinkedIn</span>
-              </a>
-            </div>
-          </div>
+          <ContactConversationContent variant="gold" fullBleed className="mt-16 sm:mt-20 lg:mt-28" />
         </div>
       </section>
     </main>

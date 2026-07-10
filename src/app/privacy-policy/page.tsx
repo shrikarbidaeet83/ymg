@@ -1,7 +1,7 @@
 export default function PrivacyPolicyPage() {
   return (
-    <main className="min-h-screen bg-[#fff5e0]">
-      <section className="flex min-h-[380px] items-center justify-center px-5 pb-16 pt-[128px] text-center text-[#3d4145] sm:px-8 lg:min-h-[430px] lg:px-12 lg:pb-20 lg:pt-[150px]">
+    <main className="min-h-screen bg-[#FFF5E0]">
+      <section className="ymg-section-padding flex min-h-[380px] items-center justify-center pt-[128px] text-center text-[#3d4145] lg:min-h-[430px] lg:pt-[150px]">
         <div className="mx-auto max-w-4xl">
           <h1 className="font-heading text-[clamp(3.4rem,8vw,7rem)] font-normal leading-[0.98] tracking-[0] text-[#3d4145]">
             Privacy Policy
@@ -17,8 +17,8 @@ export default function PrivacyPolicyPage() {
         </div>
       </section>
 
-      <section className="bg-[#fff5e0] text-[#3d4145]">
-        <div className="bg-[#dfbd78] px-5 py-4 sm:px-8 lg:px-12">
+      <section className="bg-[#FFF5E0] text-[#3d4145]">
+        <div className="ymg-section-padding-x bg-[#dfbd78] py-4">
           <div className="mx-auto max-w-[1120px]">
             <p className="font-heading text-[clamp(1.55rem,3vw,2.55rem)] font-normal leading-tight tracking-[0] text-[#3d4145]">
               Last Updated: April 2026
@@ -26,7 +26,7 @@ export default function PrivacyPolicyPage() {
           </div>
         </div>
 
-        <div className="mx-auto max-w-[1120px] px-5 py-10 sm:px-8 sm:py-12 lg:px-12 lg:py-14">
+        <div className="ymg-section-padding mx-auto max-w-[1120px]">
           <article className="space-y-10">
             <section>
               <h2 className="font-heading text-[clamp(1.85rem,3.2vw,2.7rem)] font-normal leading-tight tracking-[0] text-[#3d4145]">

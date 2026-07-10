@@ -17,8 +17,8 @@ export default async function BlogPostPage({
   if (!post) notFound();
 
   return (
-    <main className="min-h-screen bg-[#fff5e0]">
-      <section className="flex min-h-[320px] items-end justify-center px-5 pb-12 pt-[128px] text-[#3d4145] sm:px-8 lg:min-h-[360px] lg:px-12 lg:pb-16 lg:pt-[150px]">
+    <main className="min-h-screen bg-[#FFF5E0]">
+      <section className="ymg-section-padding flex min-h-[320px] items-end justify-center pt-[128px] text-[#3d4145] lg:min-h-[360px] lg:pt-[150px]">
         <div className="mx-auto w-full max-w-[780px]">
           <div className="mb-5 flex items-center gap-3">
             <span className="rounded-full bg-[#fbefd9] px-3 py-1 text-[0.78rem] font-medium text-[#d8ae63]">
@@ -36,12 +36,12 @@ export default async function BlogPostPage({
         </div>
       </section>
 
-      <section className="bg-[#fff5e0]">
-        <div className="bg-[#dfbd78] px-5 py-4 sm:px-8 lg:px-12">
+      <section className="bg-[#FFF5E0]">
+        <div className="ymg-section-padding-x bg-[#dfbd78] py-4">
           <div className="mx-auto max-w-[780px]" />
         </div>
 
-        <div className="mx-auto max-w-[780px] px-5 py-10 sm:px-8 sm:py-12 lg:px-12 lg:py-14">
+        <div className="ymg-section-padding mx-auto max-w-[780px]">
           <article className="text-[1rem] leading-[1.65] text-[#8a8c8e] sm:text-[1.18rem] lg:text-[1.28rem]">
             {post.body.split("\n\n").map((paragraph, i) => (
               <p key={i} className="mb-6">

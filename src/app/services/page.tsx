@@ -82,32 +82,26 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <div className="bg-[#f8efd9]">
-      <section className="relative isolate min-h-[640px] overflow-hidden bg-[#f8efd9] px-4 pb-8 pt-[82px] text-[#3a3d42] sm:px-8 sm:pb-14 sm:pt-[104px] lg:px-12 lg:pb-20 lg:pt-[108px]">
-        <Image
-          src="/images/Home page Big Flower light mode (1)-Photoroom.png"
-          alt=""
-          width={220}
-          height={220}
-          priority
-          className="pointer-events-none absolute bottom-[-16px] left-[-28px] z-0 w-[90px] opacity-[0.08] sm:w-[130px] lg:left-[11%] lg:w-[180px]"
-        />
-        <Image
-          src="/images/Home page Big Flower light mode (1)-Photoroom.png"
-          alt=""
-          width={190}
-          height={190}
-          priority
-          className="pointer-events-none absolute bottom-[28px] right-[-40px] z-0 w-[96px] opacity-[0.08] sm:w-[120px] lg:right-[29%] lg:w-[150px]"
-        />
-        <Image
-          src="/images/Home page Small Flower light mode-Photoroom.png"
-          alt=""
-          width={80}
-          height={80}
-          priority
-          className="pointer-events-none absolute bottom-[42px] right-[22px] z-0 w-[34px] opacity-[0.1] sm:w-[44px] lg:bottom-[67px] lg:right-[25%] lg:w-[54px]"
-        />
+    <div className="bg-[#FFF5E0] pt-20">
+      <section className="ymg-section-padding relative isolate min-h-[calc(100svh-80px)] overflow-hidden bg-[#FFF5E0] pt-16 text-[#3a3d42] sm:pt-20 lg:pt-24 xl:pt-28">
+        <div className="pointer-events-none absolute inset-0 z-0 mx-auto w-full max-w-[1220px]">
+          <Image
+            src="/flowers/half-circleBG.svg"
+            alt=""
+            width={1180}
+            height={848}
+            priority
+            className="absolute bottom-[-70px] left-[-80px] w-[260px] mix-blend-multiply sm:w-[360px] lg:bottom-[-90px] lg:left-[-100px] lg:w-[460px]"
+          />
+          <Image
+            src="/flowers/vcardBG.svg"
+            alt=""
+            width={273}
+            height={196}
+            priority
+            className="absolute bottom-8 right-[-34px] w-[140px] sm:bottom-10 sm:right-[-20px] sm:w-[210px] lg:bottom-12 lg:right-0 lg:w-[273px]"
+          />
+        </div>
 
         <div className="relative z-10 mx-auto grid w-full max-w-[1220px] items-center gap-7 sm:gap-9 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)] lg:gap-[34px] xl:grid-cols-[minmax(0,400px)_minmax(0,1fr)] xl:gap-[54px]">
           <div className="mx-auto max-w-[310px] text-center sm:max-w-[430px] lg:mx-0 lg:max-w-[400px] lg:text-left">
@@ -144,8 +138,8 @@ export default function ServicesPage() {
         </div>
       </section>
       <ServicesProcessSection />
-      <GrowthPartnerSection />
-      <TestimonialContactSection />
+      <GrowthPartnerSection variant="light" />
+      <TestimonialContactSection contactVariant="home" />
     </div>
   );
 }

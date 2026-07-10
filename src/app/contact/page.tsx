@@ -1,39 +1,31 @@
 import Image from "next/image";
-import { MobileProofScroller, ProofBar } from "@/components/sections/ProofHighlights";
-import ReadyGrowCtaSection from "@/components/sections/ReadyGrowCtaSection";
-import {
-  ExternalLink,
-  Mail,
-  MapPin,
-  Phone,
-} from "lucide-react";
 
 const contactItems = [
-  { icon: Phone, label: "(424) 447-1147", href: "tel:4244471147" },
-  { icon: Mail, label: "info@ymg-legal.com", href: "mailto:info@ymg-legal.com" },
-  { icon: MapPin, label: "Las Vegas Nevada" },
-  { icon: ExternalLink, label: "LinkedIn", href: "https://www.linkedin.com/" },
+  { icon: "/contact_icons/phone.png", label: "(424) 447-1147", href: "tel:4244471147" },
+  { icon: "/contact_icons/message.png", label: "info@ymg-legal.com", href: "mailto:info@ymg-legal.com" },
+  { icon: "/contact_icons/location.png", label: "Las Vegas Nevada" },
+  { icon: "/contact_icons/Vector (4).png", label: "LinkedIn", href: "https://www.linkedin.com/" },
 ];
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-[#fff5e0] text-[#3d4145]">
-      <section className="relative isolate overflow-hidden px-5 pb-10 pt-[118px] sm:px-8 lg:px-12 lg:pb-14 lg:pt-[128px]">
+    <main className="min-h-screen bg-[#FFF5E0] pt-20 text-[#3d4145]">
+      <section className="ymg-section-padding relative isolate min-h-[calc(100svh-80px)] overflow-hidden pt-16 sm:pt-20 lg:pt-24 xl:pt-28">
         <Image
-          src="/images/Home page Big Flower light mode (1)-Photoroom.png"
+          src="/flowers/vcardBG.svg"
           alt=""
-          width={230}
-          height={230}
+          width={273}
+          height={196}
           priority
-          className="pointer-events-none absolute bottom-[-36px] left-[-36px] z-0 w-[130px] opacity-[0.07] brightness-90 sepia sm:w-[175px]"
+          className="pointer-events-none absolute bottom-[-20px] left-[-20px] z-0 w-[150px] sm:w-[210px]"
         />
         <Image
-          src="/images/Home page Big Flower light mode (1)-Photoroom.png"
+          src="/flowers/vcardBG.svg"
           alt=""
-          width={220}
-          height={220}
+          width={273}
+          height={196}
           priority
-          className="pointer-events-none absolute right-[-42px] top-[120px] z-0 w-[120px] opacity-[0.06] brightness-90 sepia sm:w-[170px]"
+          className="pointer-events-none absolute right-[-30px] top-[110px] z-0 w-[150px] sm:w-[220px]"
         />
 
         <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(360px,470px)] lg:gap-20">
@@ -41,7 +33,7 @@ export default function ContactPage() {
             <p className="text-[1rem] font-medium text-[#3d4145] sm:text-[1.15rem]">
               Contact Us
             </p>
-            <h1 className="mt-5 max-w-[560px] font-heading text-[clamp(3.1rem,6vw,5.7rem)] font-normal leading-[1.06] tracking-[0] text-[#3d4145] lg:mx-0">
+            <h1 className="mt-5 max-w-[560px] font-heading text-[clamp(2.5rem,5vw,4.4rem)] font-normal leading-[1.06] tracking-[0] text-[#3d4145] lg:mx-0">
               Let&apos;s Grow
               <span className="block">Your Case Volume</span>
             </h1>
@@ -52,17 +44,17 @@ export default function ContactPage() {
 
             <div className="relative mt-16 grid grid-cols-2 gap-x-6 gap-y-8 text-center sm:grid-cols-4 lg:max-w-[680px] lg:text-left">
               <Image
-                src="/images/Home page Big Flower light mode (1)-Photoroom.png"
+                src="/flowers/vcardBG.svg"
                 alt=""
-                width={180}
-                height={180}
-                className="pointer-events-none absolute left-1/2 top-[-82px] hidden w-[145px] -translate-x-1/2 opacity-[0.06] brightness-90 sepia lg:block"
+                width={273}
+                height={196}
+                className="pointer-events-none absolute left-1/2 top-[-100px] hidden w-[180px] -translate-x-1/2 lg:block"
               />
-              {contactItems.map(({ icon: Icon, label, href }) => {
+              {contactItems.map(({ icon, label, href }) => {
                 const content = (
                   <>
                     <span className="mx-auto flex h-10 w-10 items-center justify-center rounded-[4px] border border-[#b8a57a] text-[#3d4145] lg:mx-0">
-                      <Icon size={21} strokeWidth={1.45} />
+                      <Image src={icon} alt="" width={26} height={26} className="h-[22px] w-[22px] object-contain brightness-0" />
                     </span>
                     <span className="mt-4 block text-[0.8rem] text-[#3d4145]">
                       {label}
@@ -81,7 +73,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <form className="mx-auto w-full max-w-[470px] rounded-[6px] bg-[#404040]/[0.06] p-6 text-[#2f3337] shadow-[0_18px_44px_rgba(89,69,35,0.08)] sm:p-8">
+          <form className="mx-auto w-full max-w-[470px] rounded-[6px] bg-[#F4EAD7] p-6 text-[#2f3337] sm:p-8">
             <h2 className="font-heading text-[1.5rem] font-normal leading-tight text-[#3d4145]">
               Book Your Free Strategy Call
             </h2>
@@ -105,12 +97,7 @@ export default function ContactPage() {
           </form>
         </div>
 
-        <div className="relative z-10 mx-auto mt-16 max-w-7xl">
-          <MobileProofScroller className="mt-0" />
-          <ProofBar className="hidden lg:grid" />
-        </div>
       </section>
-      <ReadyGrowCtaSection />
     </main>
   );
 }

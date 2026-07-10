@@ -37,8 +37,6 @@ const planCards = [
         text: "Large-scale advertising and marketing campaigns",
       },
     ],
-    featured: true,
-    ctaClassName: "mt-10",
   },
   {
     title: "Contract & Retainer Services",
@@ -50,16 +48,23 @@ const planCards = [
       { icon: Mail, text: "Personalized welcome email" },
       { icon: ShieldCheck, text: "HIPAA compliant and secure" },
     ],
-    ctaClassName: "mt-10",
   },
 ];
 
 export default function PlansPage() {
   return (
     <>
-      <section className="relative isolate min-h-screen overflow-hidden bg-[#fff5e0] px-5 pb-16 pt-[118px] text-[#3d4145] sm:px-8 lg:px-12 lg:pb-20 lg:pt-[132px]">
+      <section className="ymg-section-padding relative isolate min-h-screen overflow-hidden bg-[#FFF5E0] pt-[118px] text-[#3d4145] lg:pt-[132px]">
         <Image
-          src="/images/Home page Big Flower light mode (1)-Photoroom.png"
+          src="/flowers/3rd-flower.svg"
+          alt=""
+          width={573}
+          height={411}
+          priority
+          className="pointer-events-none absolute left-[5px] top-[500px] z-0 w-[143px] mix-blend-multiply sm:left-[10px] sm:top-[510px] sm:w-[215px] lg:left-[225px] lg:top-[600px] lg:w-[287px]"
+        />
+        <Image
+          src="/images/big_flowers.png"
           alt=""
           width={220}
           height={220}
@@ -67,7 +72,7 @@ export default function PlansPage() {
           className="pointer-events-none absolute bottom-[-32px] left-[-34px] z-0 w-[120px] opacity-[0.08] brightness-90 sepia sm:w-[170px] lg:w-[210px]"
         />
         <Image
-          src="/images/Home page Small Flower light mode-Photoroom.png"
+          src="/images/small_flowers.png"
           alt=""
           width={76}
           height={76}
@@ -85,17 +90,15 @@ export default function PlansPage() {
             </span>
           </h1>
 
-          <div className="mx-auto mt-10 grid max-w-[1180px] items-start gap-5 md:grid-cols-3 lg:mt-14 lg:gap-6">
-            {planCards.map(({ title, description, features, featured, ctaClassName }) => (
+          <div className="mx-auto mt-10 grid max-w-[1180px] auto-rows-fr gap-5 md:grid-cols-3 lg:mt-14 lg:gap-6">
+            {planCards.map(({ title, description, features }) => (
               <article
                 key={title}
-                className={`relative overflow-hidden rounded-[6px] border border-[#dfbd78] bg-[#fff5e0] px-6 py-7 shadow-[0_12px_26px_rgba(86,65,31,0.14)] ${
-                  featured ? "md:-translate-y-0 lg:-translate-y-0" : ""
-                }`}
+                className="relative flex h-full min-h-[430px] overflow-hidden rounded-[6px] border border-[#dfbd78] bg-[#FFF5E0] px-6 py-7 shadow-[4px_5px_8px_rgba(86,65,31,0.16)] sm:min-h-[450px] lg:min-h-[470px]"
               >
                 <div className="pointer-events-none absolute bottom-[-34px] left-[-20px] h-[150px] w-[150px] rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(223,189,120,0.16),rgba(223,189,120,0)_68%)]" />
 
-                <div className="relative z-10 flex flex-col">
+                <div className="relative z-10 flex h-full w-full flex-col">
                   <h2 className="text-[1.25rem] font-semibold leading-tight text-[#3d4145] lg:text-[1.35rem]">
                     {title}
                   </h2>
@@ -115,12 +118,14 @@ export default function PlansPage() {
                     ))}
                   </ul>
 
-                  <button
-                    type="button"
-                    className={`${ctaClassName ?? "mt-8"} h-12 w-full rounded-[4px] bg-[#d9ae5d] text-[0.82rem] font-semibold tracking-[0.08em] text-[#1f2529] shadow-[0_8px_14px_rgba(130,95,35,0.16)] transition-colors hover:bg-[#efcd86]`}
-                  >
-                    Get Started
-                  </button>
+                  <div className="mt-auto pt-10">
+                    <button
+                      type="button"
+                      className="h-12 w-full rounded-[4px] bg-[#d9ae5d] text-[0.82rem] font-semibold tracking-[0.08em] text-[#1f2529] shadow-[3px_4px_7px_rgba(130,95,35,0.16)] transition-colors hover:bg-[#efcd86]"
+                    >
+                      Get Started
+                    </button>
+                  </div>
                 </div>
               </article>
             ))}
