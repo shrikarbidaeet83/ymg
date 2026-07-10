@@ -50,7 +50,7 @@ function HeaderActions({
         rel="noreferrer"
         aria-label="Open LinkedIn"
         onClick={onAction}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/80 bg-[#d9ae5d] text-[#3d4145] shadow-[0_8px_14px_rgba(71,56,30,0.2)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#efcd86]"
+        className="ymg-nav-action-button inline-flex h-10 w-10 items-center justify-center rounded-full text-[#172022] transition-all duration-200 hover:-translate-y-0.5"
       >
         <span className="font-sans text-[1.45rem] font-medium leading-none tracking-[0]">
           in
@@ -64,7 +64,7 @@ function HeaderActions({
           onToggleDarkMode();
           onAction?.();
         }}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/80 bg-[#d9ae5d] text-[#3d4145] shadow-[0_8px_14px_rgba(71,56,30,0.2)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#efcd86]"
+        className="ymg-nav-action-button inline-flex h-10 w-10 items-center justify-center rounded-full text-[#172022] transition-all duration-200 hover:-translate-y-0.5"
       >
         {darkMode ? <Moon size={20} strokeWidth={1.9} /> : <Sun size={20} strokeWidth={1.9} />}
       </button>
@@ -220,9 +220,11 @@ export default function Navbar() {
 
         if (!nav || !activeLink || activeLink.offsetWidth === 0) return;
 
+        const activePillInset = 5;
+
         setActivePill({
-          left: activeLink.offsetLeft,
-          width: activeLink.offsetWidth,
+          left: activeLink.offsetLeft + activePillInset,
+          width: Math.max(0, activeLink.offsetWidth - activePillInset * 2),
         });
       });
     };
@@ -271,7 +273,7 @@ export default function Navbar() {
           </motion.div>
 
           {/* Desktop nav */}
-          <nav ref={desktopNavRef} className="ymg-nav-pill relative hidden h-[54px] items-center gap-4 overflow-visible rounded-full border border-white/80 bg-[radial-gradient(circle_at_50%_0%,#EFCD86_0%,#EFCD86_48%,#D88268_100%)] px-4 shadow-[0_7px_12px_rgba(71,56,30,0.22)] min-[900px]:flex">
+          <nav ref={desktopNavRef} className="ymg-nav-pill relative hidden h-[54px] items-center gap-4 overflow-visible rounded-full bg-[radial-gradient(circle_at_50%_0%,#EFCD86_0%,#EFCD86_48%,#D88268_100%)] px-4 shadow-[0_7px_12px_rgba(71,56,30,0.22)] min-[900px]:flex">
             <span className="ymg-nav-morph-surface" aria-hidden="true" />
             {activePill && (
               <>
