@@ -1,40 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import CardInteractionHint from "@/components/sections/CardInteractionHint";
+import ContactConversationContent from "@/components/sections/ContactConversationContent";
 import CaseAcquisitionSystem from "@/components/sections/CaseAcquisitionSystem";
+import GrowthPartnerSection from "@/components/sections/GrowthPartnerSection";
 import HeroOrbitAnimation from "@/components/sections/HeroOrbitAnimation";
 import {
   Bot,
-  Check,
   ClipboardList,
-  ExternalLink,
   FileCheck2,
-  FileText,
-  FlaskConical,
-  HeartPulse,
-  Mail,
-  MapPin,
   Magnet,
-  Phone,
-  Plus,
-  Sparkles,
 } from "lucide-react";
 import TouchPopCard from "@/components/sections/TouchPopCard";
 
 /* ─── data ─────────────────────────────────────────────────── */
-
-const missionBullets = [
-  "Performance-based pricing",
-  "Expert intake & qualification",
-  "AI-powered call & booking",
-  "Compliant & ethical marketing",
-];
-
-const stats = [
-  { value: "+42%",   label: "Conversion Rate",      sub: "Industry Average" },
-  { value: "+42%",   label: "Qualified Leads",       sub: "vs last quarter"  },
-  { value: "$2.3M+", label: "Case Value Generated",  sub: "vs last quarter"  },
-];
 
 const solutions = [
   {
@@ -83,11 +62,11 @@ const lawFirmLogos = [
 ];
 
 const practiceAreas = [
-  { icon: FileText, label: "Mass", detail: "Torts" },
-  { icon: Plus, label: "Personal", detail: "Injury" },
-  { icon: HeartPulse, label: "Tylenol Pregnancy", detail: "Lawsuits" },
-  { icon: FlaskConical, label: "Hair Relaxer", detail: "Cancer Lawsuit" },
-  { icon: Sparkles, label: "Talcum Powder", detail: "Lawsuits" },
+  { icon: "/Wha-We-Serve/mass-torts.png", label: "Mass", detail: "Torts" },
+  { icon: "/Wha-We-Serve/personal-injury.png", label: "Personal", detail: "Injury" },
+  { icon: "/Wha-We-Serve/Pregnancy-Lawsuits.png", label: "Tylenol Pregnancy", detail: "Lawsuits" },
+  { icon: "/Wha-We-Serve/Hair-Relaxer.png", label: "Hair Relaxer", detail: "Cancer Lawsuit" },
+  { icon: "/Wha-We-Serve/Talcum-Powder.png", label: "Talcum Powder", detail: "Lawsuits" },
 ];
 
 /* ─── proof bar (desktop 4-col grid) ───────────────────────── */
@@ -100,24 +79,24 @@ export default function HomePage() {
       {/* ══════════════════════════════════════════
           HERO
       ══════════════════════════════════════════ */}
-      <section className="ymg-hero relative isolate min-h-[100svh] overflow-hidden bg-[#f8efd9] pt-[76px] text-[#3a3d42]">
+      <section className="ymg-hero relative isolate min-h-[100svh] overflow-hidden bg-[#FFF5E0] pt-[76px] text-[#3a3d42]">
         {/* Decorative flowers — desktop only */}
         <Image
-          src="/images/Home page Big Flower light mode (1)-Photoroom.png"
+          src="/images/big_flowers.png"
           alt="" width={200} height={200} priority
           className="pointer-events-none absolute right-[11%] top-28 z-0 hidden opacity-20 lg:block"
         />
         <Image
-          src="/images/Home page Small Flower light mode-Photoroom.png"
+          src="/images/small_flowers.png"
           alt="" width={68} height={68} priority
           className="pointer-events-none absolute right-[4.5%] top-44 z-0 hidden opacity-20 lg:block"
         />
 
         {/* Main two-column grid */}
         <div
-          className="ymg-hero-grid relative z-10 mx-auto grid w-full items-center px-5 pb-6 sm:px-8
+          className="ymg-section-padding-x ymg-hero-grid relative z-10 mx-auto grid w-full items-center pb-6
                      lg:min-h-[calc(100svh-76px)] lg:grid-cols-[minmax(410px,0.86fr)_minmax(520px,0.92fr)]
-                     lg:gap-8 lg:px-12 lg:pb-[112px] xl:gap-12"
+                     lg:gap-8 lg:pb-[112px] xl:gap-12"
           style={{ maxWidth: "1440px" }}
         >
           {/* ── Left: copy ── */}
@@ -183,115 +162,17 @@ export default function HomePage() {
       </section>
 
       {/* ══════════════════════════════════════════
-          GROWTH PARTNER (dark)
-      ══════════════════════════════════════════ */}
-      <section className="ymg-about relative isolate overflow-hidden bg-[#404040] py-10 text-white sm:py-14 lg:py-20">
-
-        {/* Rings ghost — bottom-right */}
-        <div className="ymg-about-inner relative z-10 mx-auto px-5 sm:px-8 lg:px-12" style={{ maxWidth: "1440px" }}>
-
-          {/* Two-column: copy ← | card → */}
-          <div className="ymg-about-grid grid items-center gap-9 lg:grid-cols-[1fr_minmax(430px,520px)] lg:gap-14">
-
-            {/* Left */}
-            <div className="ymg-about-copy order-2 text-center lg:order-1 lg:text-left">
-              <p className="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#d8ae63]">
-                About YMG - Legal
-              </p>
-
-              <h2
-                className="text-[clamp(1.85rem,5vw,3.2rem)] font-semibold
-                           leading-[1.08] text-[#d8ae63]"
-              >
-                Your Growth Partner
-                <span className="mt-[0.1em] block">in Legal Success</span>
-              </h2>
-
-              <p className="ymg-about-text mx-auto mt-5 max-w-[500px] text-[0.88rem] leading-[1.75] text-[#efd99f] lg:mx-0">
-                We are full-service legal marketing and intake company specializing
-                in mass torts and personal injury. Our performance driven approach
-                ensures you pay for results, not promises.
-              </p>
-
-              <ul className="ymg-about-list mx-auto mt-7 max-w-[340px] space-y-3 text-left lg:mx-0">
-                {missionBullets.map((b) => (
-                  <li
-                    key={b}
-                    className="flex items-center gap-3 text-[0.85rem] font-medium text-[#efd99f]"
-                  >
-                    <span
-                      className="flex h-[18px] w-[18px] shrink-0 items-center justify-center
-                                 rounded-full border border-[#d8ae63]/55 text-[#d8ae63]"
-                    >
-                      <Check size={8} strokeWidth={3} />
-                    </span>
-                    {b}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Right: Our Mission card */}
-            <div className="ymg-about-card-wrap order-1 flex justify-center lg:order-2 lg:justify-end">
-              <div className="ymg-about-card-cluster relative w-full max-w-[520px] pb-0 lg:pb-16">
-              <div
-                className="ymg-mission-card relative min-h-[214px] w-full rounded-[8px] bg-white
-                           px-7 py-7 shadow-[0_20px_60px_rgba(0,0,0,0.24)]
-                           sm:min-h-[240px] sm:px-9 sm:py-9 lg:min-h-[286px]"
-              >
-                <Image
-                  src="/images/mission-bullseye.webp"
-                  alt=""
-                  width={120}
-                  height={120}
-                  className="pointer-events-none absolute right-7 top-7 h-16 w-16 object-contain sm:right-8 sm:top-8 sm:h-20 sm:w-20"
-                />
-                <h3 className="mb-2.5 pr-20 text-[1.35rem] font-medium text-[#3a3d42] sm:pr-24 sm:text-[1.65rem]">
-                  Our Mission
-                </h3>
-                <div className="mb-3 h-px w-32 bg-[#d8ae63]" />
-                <p className="max-w-[330px] pt-5 text-[1.08rem] leading-[1.56] text-[#8a8c8e] sm:text-[1.24rem] lg:text-[1.4rem]">
-                  To help law firms grow with a predictable pipeline of qualified
-                  cases.
-                </p>
-              </div>
-
-              <div className="ymg-about-stats mt-3 grid gap-2.5 sm:grid-cols-3 lg:absolute lg:bottom-0 lg:left-1/2 lg:mt-0 lg:w-[calc(100%-40px)] lg:-translate-x-1/2">
-                {stats.map(({ value, label, sub }) => (
-                  <div
-                    key={label}
-                    className="rounded-[6px] border border-[#eadfca] bg-white px-3 py-3 text-left shadow-[0_10px_26px_rgba(0,0,0,0.18)]"
-                  >
-                    <p className="text-[0.56rem] font-semibold leading-tight text-[#3a3d42] sm:text-[0.62rem]">
-                      {label}
-                    </p>
-                    <p className="mt-1.5 text-[1.15rem] font-bold leading-none text-[#3a3d42] sm:text-[1.35rem]">
-                      {value}
-                    </p>
-                    <p className="mt-1 text-[0.54rem] text-[#777] sm:text-[0.58rem]">
-                      {sub}
-                    </p>
-                  </div>
-                ))}
-              </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════
           FULL-FUNNEL SOLUTIONS (cards)
       ══════════════════════════════════════════ */}
-      <section className="relative isolate overflow-x-clip bg-[#fff5E0] pt-6 lg:pb-10 lg:pt-12">
+      <section className="ymg-section-padding relative isolate overflow-x-clip bg-[#FFF5E0]">
         <Image
-          src="/images/Home page Big Flower light mode (1)-Photoroom.png"
+          src="/images/big_flowers.png"
           alt=""
           width={200}
           height={200}
           className="pointer-events-none absolute right-4 top-4 z-0 w-24 opacity-65 brightness-125 sepia sm:right-8 sm:top-6 sm:w-32 lg:right-12 lg:top-8 lg:w-40"
         />
-        <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-12">
+        <div className="mx-auto max-w-7xl">
 
           {/* Heading */}
           <div className="text-center">
@@ -347,10 +228,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <CaseAcquisitionSystem />
+      <CaseAcquisitionSystem showStepFlower />
 
-      <section className="relative isolate overflow-hidden bg-[#fff5E0] pb-10 pt-0 text-[#3a3d42] sm:pb-20 sm:pt-0 lg:pb-24 lg:pt-0">
-        <div className="relative z-10 mx-auto grid max-w-7xl gap-8 px-5 sm:px-8 lg:grid-cols-[minmax(320px,0.76fr)_minmax(520px,1fr)] lg:gap-16 lg:px-12">
+      <section className="ymg-section-padding relative isolate overflow-hidden bg-[#FFF5E0] text-[#3a3d42]">
+        <div className="relative z-10 mx-auto grid max-w-7xl gap-8 lg:grid-cols-[minmax(320px,0.76fr)_minmax(520px,1fr)] lg:gap-16">
           <div className="pt-0 text-center lg:pt-1 lg:text-left">
             <p className="text-[0.72rem] font-medium text-[#54575a] sm:text-[0.9rem] xl:text-[1.05rem]">
               Trusted by Leading Law Firms
@@ -363,13 +244,13 @@ export default function HomePage() {
               We partner with ambitious law firms nationwide, delivering qualified
               cases, consistent growth, and measurable success.
             </p>
-            <div className="pointer-events-none relative mx-auto mt-28 hidden h-[170px] w-[280px] opacity-100 brightness-75 contrast-125 saturate-150 lg:mx-0 lg:ml-[40px] lg:mt-32 lg:block lg:h-[250px] lg:w-[420px]">
+            <div className="pointer-events-none relative mx-auto mt-28 hidden h-[170px] w-[280px] opacity-100 lg:mx-0 lg:ml-[40px] lg:mt-32 lg:block lg:h-[250px] lg:w-[420px]">
             <Image
-              src="/images/Home page Big Flower light mode (1)-Photoroom.png"
+              src="/flowers/vcardBG.svg"
               alt=""
-              width={200}
-              height={200}
-              className="absolute left-1/2 top-0 w-[150px] -translate-x-1/2 sm:w-[175px] lg:w-[230px]"
+              width={273}
+              height={196}
+              className="absolute inset-0 h-full w-full object-contain object-left-bottom"
             />
             </div>
           </div>
@@ -399,8 +280,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative isolate overflow-hidden bg-[#fff5E0] px-5 py-14 text-[#3a3d42] sm:px-8 sm:py-20 lg:px-12 lg:py-24">
-        <div className="mx-auto max-w-6xl">
+      {/* ══════════════════════════════════════════
+          GROWTH PARTNER (dark)
+      ══════════════════════════════════════════ */}
+      <GrowthPartnerSection variant="light" backgroundColor="#404040" goldText whiteCards />
+
+      <section className="ymg-section-padding relative isolate overflow-hidden bg-[#FFF5E0] text-[#3a3d42]">
+        <Image
+          src="/flowers/vcardBG.svg"
+          alt=""
+          width={273}
+          height={196}
+          className="pointer-events-none absolute bottom-0 right-0 z-0 w-[150px] sm:w-[230px] lg:w-[300px]"
+        />
+        <div className="relative z-10 mx-auto max-w-6xl">
           <div className="text-center">
             <p className="text-[0.7rem] font-medium text-[#54575a] sm:text-[0.9rem]">Client Testimonials</p>
             <h2 className="mt-3 text-[clamp(1.45rem,8vw,2.05rem)] font-semibold leading-tight text-[#3d4145] sm:text-[clamp(2rem,4vw,3rem)]">
@@ -410,37 +303,6 @@ export default function HomePage() {
           </div>
 
           <div className="group/testimonials relative mx-auto mt-7 h-[360px] max-w-[820px] overflow-visible sm:mt-14 sm:h-[560px]">
-            <div className="pointer-events-none absolute bottom-12 right-0 z-[5] h-[150px] w-[230px] opacity-80 sm:bottom-10 sm:right-0 sm:h-[180px] sm:w-[280px]">
-              <Image
-                src="/images/Home page Big Flower light mode (1)-Photoroom.png"
-                alt=""
-                width={200}
-                height={200}
-                className="absolute right-[72px] top-0 w-[115px] sm:right-[88px] sm:w-[145px]"
-              />
-              <Image
-                src="/images/Home page Small Flower light mode-Photoroom.png"
-                alt=""
-                width={68}
-                height={68}
-                className="absolute left-0 top-9 w-[42px] sm:w-[50px]"
-              />
-              <Image
-                src="/images/Home page Small Flower light mode-Photoroom.png"
-                alt=""
-                width={68}
-                height={68}
-                className="absolute right-0 top-16 w-[42px] sm:w-[50px]"
-              />
-              <Image
-                src="/images/Home page Small Flower light mode-Photoroom.png"
-                alt=""
-                width={68}
-                height={68}
-                className="absolute bottom-0 left-[70px] w-[46px] sm:left-[86px] sm:w-[54px]"
-              />
-            </div>
-
             {[
               {
                 name: "Managing Partner",
@@ -489,8 +351,9 @@ export default function HomePage() {
               },
             ].map(({ name, firm, avatar, text, color, stars, pos }) => (
               <TouchPopCard
-                key={name}
-                className={`absolute ${pos} rounded-bl-none rounded-br-[12px] rounded-tl-[12px] rounded-tr-none border border-[#ead3a0] ${color} p-2 shadow-[0_16px_34px_rgba(87,66,34,0.14)] touch-manipulation transition-all duration-300 ease-out hover:z-40 hover:-translate-y-3 hover:scale-105 hover:rotate-0 hover:shadow-[0_24px_48px_rgba(87,66,34,0.24)] sm:rounded-br-[18px] sm:rounded-tl-[18px] sm:p-6`}
+                key={`${name}-${firm}`}
+                centerOnMobile
+                className={`absolute ${pos} rounded-bl-none rounded-br-[12px] rounded-tl-[12px] rounded-tr-none border border-[#ead3a0] ${color} p-2 shadow-[0_16px_34px_rgba(87,66,34,0.14)] touch-manipulation transition-all duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] hover:z-40 hover:-translate-y-3 hover:scale-105 hover:rotate-0 hover:shadow-[0_24px_48px_rgba(87,66,34,0.24)] sm:rounded-br-[18px] sm:rounded-tl-[18px] sm:p-6`}
               >
                 <div className={`mb-2 flex gap-0.5 sm:mb-4 ${stars}`}>
                   {Array.from({ length: 5 }).map((_, i) => (
@@ -516,7 +379,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-[#fff5E0] px-5 pb-14 pt-2 text-[#3a3d42] sm:px-8 sm:pb-20 lg:px-12">
+      <section className="ymg-section-padding bg-[#FFF5E0] text-[#3a3d42]">
         <div className="mx-auto max-w-7xl text-center">
           <p className="text-[0.95rem] font-medium text-[#54575a] sm:text-[1.05rem]">
             What We Serve
@@ -526,14 +389,20 @@ export default function HomePage() {
           </h2>
 
           <div className="mx-auto mt-9 max-w-[1180px] overflow-hidden rounded-[6px] bg-white shadow-[0_10px_24px_rgba(82,64,34,0.08)]">
-            <div className="ymg-practice-marquee flex w-max sm:grid sm:w-full sm:grid-cols-2 lg:grid-cols-5">
-              {[...practiceAreas, ...practiceAreas].map(({ icon: Icon, label, detail }, index) => (
+            <div className="ymg-practice-marquee flex w-max lg:grid lg:w-full lg:grid-cols-5">
+              {[...practiceAreas, ...practiceAreas].map(({ icon, label, detail }, index) => (
                 <div
                   key={`${label}-${detail}-${index}`}
                   aria-hidden={index >= practiceAreas.length}
-                  className={`relative flex min-h-[66px] w-[calc((100vw-40px)/3)] shrink-0 items-center justify-center gap-2 px-2 py-3 text-left after:absolute after:right-0 after:top-1/2 after:h-8 after:w-px after:-translate-y-1/2 after:bg-[#e1d5bf] sm:w-auto sm:min-h-[74px] sm:shrink sm:gap-4 sm:px-5 sm:py-4 ${index === practiceAreas.length - 1 ? "sm:after:hidden" : ""} ${index >= practiceAreas.length ? "sm:hidden" : ""}`}
+                  className={`relative flex min-h-[66px] w-[calc((100vw-40px)/3)] shrink-0 items-center justify-center gap-2 px-2 py-3 text-left after:absolute after:right-0 after:top-1/2 after:h-8 after:w-px after:-translate-y-1/2 after:bg-[#e1d5bf] sm:min-h-[74px] sm:w-[calc((100vw-64px)/3)] sm:gap-4 sm:px-5 sm:py-4 lg:w-auto lg:shrink ${index === practiceAreas.length - 1 ? "lg:after:hidden" : ""} ${index >= practiceAreas.length ? "lg:hidden" : ""}`}
                 >
-                  <Icon size={21} strokeWidth={1.45} className="shrink-0 text-[#3d4145] sm:size-[31px]" />
+                  <Image
+                    src={icon}
+                    alt=""
+                    width={32}
+                    height={32}
+                    className="h-[21px] w-[21px] shrink-0 object-contain sm:h-[31px] sm:w-[31px]"
+                  />
                   <p className="min-w-0 text-[0.58rem] font-medium leading-tight text-[#3d4145] sm:text-[0.9rem]">
                     {label}
                     <span className="block">{detail}</span>
@@ -545,96 +414,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative isolate overflow-hidden bg-[#404040] px-5 py-10 text-[#d9b46d] before:pointer-events-none before:absolute before:inset-0 before:z-0 before:bg-[radial-gradient(circle_at_50%_52%,rgba(70,51,15,0.82)_0%,rgba(70,51,15,0.56)_22%,rgba(70,51,15,0.2)_44%,rgba(70,51,15,0)_70%)] sm:px-8 lg:px-12 lg:py-16">
+      <section className="ymg-section-padding relative isolate overflow-hidden bg-[#D8B26B] text-[#404040]">
         <div className="relative z-10 mx-auto max-w-7xl">
-          <div className="grid gap-10 text-left lg:grid-cols-12 lg:gap-x-12 lg:gap-y-16">
-            <div className="lg:col-span-6">
-              <h2 className="font-heading text-[clamp(2.25rem,4.2vw,3.8rem)] font-normal leading-tight">
-                Ready to Grow Your Firm?
-              </h2>
-              <p className="mt-4 text-[0.9rem] font-medium text-[#ecd08c] sm:text-[1.2rem]">
-                Let&apos;s build your pipeline of qualified cases.
-              </p>
-            </div>
-
-            <div className="lg:col-span-6 lg:row-start-2">
-              <p className="text-[0.7rem] text-[#f0d28a] lg:text-[1.25rem]">Contact Us</p>
-              <h3 className="mt-4 text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-tight lg:mt-6 lg:whitespace-nowrap">
-                Let&apos;s Start a Conversation
-              </h3>
-
-              <div className="mt-7 hidden grid-cols-4 gap-2 text-[#f0d28a] lg:mt-10 lg:grid lg:gap-12">
-                {[
-                  { icon: Phone, value: "(424) 447-1147" },
-                  { icon: Mail, value: "info@ymg-legal.com" },
-                  { icon: MapPin, value: "Las Vegas Nevada" },
-                  { icon: ExternalLink, value: "LinkedIn" },
-                ].map(({ icon: Icon, value }) => (
-                  <div key={value} className="flex flex-col items-center gap-2 lg:items-start lg:gap-5">
-                    <Icon size={13} strokeWidth={1.45} className="lg:size-5" />
-                    <p className="whitespace-nowrap text-[0.42rem] font-medium lg:text-[0.88rem]">{value}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="mx-auto w-full max-w-[320px] rounded-[6px] bg-[#fff4dd] p-5 text-left text-[#3d4145] shadow-[0_18px_40px_rgba(0,0,0,0.18)] lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-1 lg:max-w-none lg:self-center lg:p-7">
-              <h4 className="text-[0.92rem] font-medium lg:text-[1.25rem]">Book Your Free Strategy Call</h4>
-              <p className="mt-2 max-w-[260px] text-[0.52rem] leading-[1.45] text-[#55585a] lg:mt-3 lg:text-[0.75rem]">
-                Tell us about your firm and we&apos;ll show you how we can help.
-              </p>
-
-              <form className="mt-4 grid gap-2 lg:mt-5 lg:gap-3">
-                <div className="grid gap-3">
-                  <input
-                    aria-label="Full Name"
-                    placeholder="Full Name"
-                    className="h-7 rounded-[4px] border border-[#cdbb97] bg-[#fffaf0] px-3 text-[0.55rem] outline-none lg:h-10 lg:px-4 lg:text-[0.75rem]"
-                  />
-                  <input
-                    aria-label="Email"
-                    placeholder="Email"
-                    className="h-7 rounded-[4px] border border-[#cdbb97] bg-[#fffaf0] px-3 text-[0.55rem] outline-none lg:h-10 lg:px-4 lg:text-[0.75rem]"
-                  />
-                  <input
-                    aria-label="Phone Number"
-                    placeholder="Phone Number"
-                    className="h-7 rounded-[4px] border border-[#cdbb97] bg-[#fffaf0] px-3 text-[0.55rem] outline-none lg:h-10 lg:px-4 lg:text-[0.75rem]"
-                  />
-                  <select
-                    aria-label="Practice Area"
-                    className="h-7 rounded-[4px] border border-[#cdbb97] bg-[#fffaf0] px-3 text-[0.55rem] text-[#55585a] outline-none lg:h-10 lg:px-4 lg:text-[0.75rem]"
-                    defaultValue=""
-                  >
-                    <option value="" disabled>Practice Area</option>
-                    <option>Mass Torts</option>
-                    <option>Personal Injury</option>
-                    <option>Tylenol Pregnancy Lawsuits</option>
-                  </select>
-                </div>
-                <button
-                  type="button"
-                  className="mt-1 h-8 rounded-[3px] bg-[#3f3f3f] text-[0.58rem] font-bold text-white lg:h-10 lg:text-[0.78rem]"
-                >
-                  Book My Free Call
-                </button>
-              </form>
-            </div>
-
-            <div className="grid grid-cols-4 gap-2 text-[#f0d28a] lg:hidden">
-              {[
-                { icon: Phone, value: "(424) 447-1147" },
-                { icon: Mail, value: "info@ymg-legal.com" },
-                { icon: MapPin, value: "Las Vegas Nevada" },
-                { icon: ExternalLink, value: "LinkedIn" },
-              ].map(({ icon: Icon, value }) => (
-                <div key={value} className="flex flex-col items-center gap-2">
-                  <Icon size={13} strokeWidth={1.45} />
-                  <p className="whitespace-nowrap text-[0.42rem] font-medium">{value}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+          <ContactConversationContent variant="gold" />
         </div>
       </section>
     </>
