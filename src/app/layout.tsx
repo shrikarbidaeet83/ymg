@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { inter, manrope } from "@/lib/fonts";
+import { afacadFlux, manrope } from "@/lib/fonts";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${inter.variable}`}
+      className={`${afacadFlux.variable} ${manrope.variable}`}
     >
       <body>
         <SmoothScroll>

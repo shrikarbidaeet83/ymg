@@ -74,19 +74,70 @@ function HeaderActions({
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [sideItemsHidden, setSideItemsHidden] = useState(false);
   const [overDarkBackground, setOverDarkBackground] = useState(false);
   const [activePill, setActivePill] = useState<{ left: number; width: number } | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(getInitialDarkMode);
+  const [darkMode, setDarkMode] = useState(false);
+  const [themeReady, setThemeReady] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const desktopNavRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 80);
+    let lastScrollY = window.scrollY;
+    let lastTouchY: number | null = null;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setScrolled(currentScrollY > 80);
+      if (currentScrollY <= 80 || currentScrollY < lastScrollY) {
+        setSideItemsHidden(false);
+      } else if (currentScrollY > lastScrollY) {
+        setSideItemsHidden(true);
+      }
+      lastScrollY = currentScrollY;
+    };
+
+    const handleWheel = (event: WheelEvent) => {
+      if (window.scrollY <= 80) return setSideItemsHidden(false);
+      if (Math.abs(event.deltaY) < 2) return;
+      setSideItemsHidden(event.deltaY > 0);
+    };
+
+    const handleTouchStart = (event: TouchEvent) => {
+      lastTouchY = event.touches[0]?.clientY ?? null;
+    };
+
+    const handleTouchMove = (event: TouchEvent) => {
+      const currentTouchY = event.touches[0]?.clientY;
+      if (lastTouchY === null || currentTouchY === undefined) return;
+      if (Math.abs(currentTouchY - lastTouchY) >= 4) {
+        setSideItemsHidden(currentTouchY < lastTouchY);
+        lastTouchY = currentTouchY;
+      }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (["ArrowUp", "PageUp", "Home"].includes(event.key)) setSideItemsHidden(false);
+      if (["ArrowDown", "PageDown", "End", " "].includes(event.key) && window.scrollY > 80) {
+        setSideItemsHidden(true);
+      }
+    };
+
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    document.addEventListener("wheel", handleWheel, { passive: true, capture: true });
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("wheel", handleWheel, true);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, []);
 
   useEffect(() => {
@@ -105,20 +156,14 @@ export default function Navbar() {
 
         let current: Element | null = element;
         while (current) {
-          const color = window.getComputedStyle(current).backgroundColor;
-          const match = color.match(/rgba?\(([^)]+)\)/);
-
+          const match = window.getComputedStyle(current).backgroundColor.match(/rgba?\(([^)]+)\)/);
           if (match) {
-            const values = match[1].split(",").map(Number);
-            const [red, green, blue, alpha = 1] = values;
-
+            const [red, green, blue, alpha = 1] = match[1].split(",").map(Number);
             if (alpha > 0.15) {
-              const luminance = 0.2126 * red + 0.7152 * green + 0.0722 * blue;
-              isDark = luminance < 125;
+              isDark = 0.2126 * red + 0.7152 * green + 0.0722 * blue < 125;
               break outer;
             }
           }
-
           current = current.parentElement;
         }
       }
@@ -134,7 +179,6 @@ export default function Navbar() {
     scheduleThemeUpdate();
     window.addEventListener("scroll", scheduleThemeUpdate, { passive: true });
     window.addEventListener("resize", scheduleThemeUpdate);
-
     return () => {
       window.cancelAnimationFrame(frameId);
       window.removeEventListener("scroll", scheduleThemeUpdate);
@@ -150,9 +194,20 @@ export default function Navbar() {
   }, [drawerOpen]);
 
   useEffect(() => {
+    const frameId = window.requestAnimationFrame(() => {
+      setDarkMode(getInitialDarkMode());
+      setThemeReady(true);
+    });
+
+    return () => window.cancelAnimationFrame(frameId);
+  }, []);
+
+  useEffect(() => {
+    if (!themeReady) return;
+
     document.documentElement.classList.toggle("dark", darkMode);
     window.localStorage.setItem("ymg-theme", darkMode ? "dark" : "light");
-  }, [darkMode]);
+  }, [darkMode, themeReady]);
 
   useEffect(() => {
     let frameId = 0;
@@ -193,31 +248,48 @@ export default function Navbar() {
         layoutRoot
         className={cn(
           "ymg-navbar fixed left-0 right-0 top-5 z-50 transition-all duration-300",
-          scrolled && "ymg-navbar-scrolled",
-          overDarkBackground && "ymg-navbar-over-dark"
+          scrolled && sideItemsHidden && "ymg-navbar-scrolled",
+          overDarkBackground && sideItemsHidden && "ymg-navbar-over-dark"
         )}
       >
         <div className="ymg-navbar-shell mx-auto">
           <div className="ymg-navbar-inner max-w-7xl mx-auto px-6 h-[76px] flex items-center justify-between gap-6">
           {/* Logo */}
-          <YMGLogo asLink variant="gold" className="ymg-navbar-logo" />
+          <motion.div
+            className="ymg-navbar-logo shrink-0"
+            initial={false}
+            animate={{
+              opacity: sideItemsHidden ? 0 : 1,
+              y: sideItemsHidden ? -10 : 0,
+              scale: sideItemsHidden ? 0.92 : 1,
+              filter: sideItemsHidden ? "blur(5px)" : "blur(0px)",
+            }}
+            transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+            style={{ pointerEvents: sideItemsHidden ? "none" : "auto" }}
+          >
+            <YMGLogo asLink variant="gold" />
+          </motion.div>
 
           {/* Desktop nav */}
-          <nav ref={desktopNavRef} className="ymg-nav-pill relative hidden h-[54px] items-center gap-4 overflow-visible rounded-full border border-white/80 bg-[radial-gradient(circle_at_50%_0%,#EFCD86_0%,#EFCD86_48%,#D88268_100%)] px-4 shadow-[0_7px_12px_rgba(71,56,30,0.22)] lg:flex">
+          <nav ref={desktopNavRef} className="ymg-nav-pill relative hidden h-[54px] items-center gap-4 overflow-visible rounded-full border border-white/80 bg-[radial-gradient(circle_at_50%_0%,#EFCD86_0%,#EFCD86_48%,#D88268_100%)] px-4 shadow-[0_7px_12px_rgba(71,56,30,0.22)] min-[900px]:flex">
             <span className="ymg-nav-morph-surface" aria-hidden="true" />
             {activePill && (
-              <motion.span
-                className="ymg-nav-indicator absolute"
-                initial={false}
-                animate={{ x: activePill.left, width: activePill.width }}
-                transition={{
-                  type: "spring",
-                  stiffness: 360,
-                  damping: 34,
-                  mass: 0.8,
-                }}
-                aria-hidden="true"
-              />
+              <>
+                <motion.span
+                  className="ymg-nav-particle-trail absolute"
+                  initial={false}
+                  animate={{ x: activePill.left, width: activePill.width }}
+                  transition={{ type: "spring", stiffness: 240, damping: 25, mass: 0.95 }}
+                  aria-hidden="true"
+                />
+                <motion.span
+                  className="ymg-nav-indicator absolute"
+                  initial={false}
+                  animate={{ x: activePill.left, width: activePill.width }}
+                  transition={{ type: "spring", stiffness: 390, damping: 32, mass: 0.72 }}
+                  aria-hidden="true"
+                />
+              </>
             )}
             {navLinks.map((link) => {
               const isActive =
@@ -235,37 +307,37 @@ export default function Navbar() {
                     isActive ? "ymg-nav-active" : ""
                   )}
                 >
-                  <motion.span
-                    className="relative z-10 flex items-center gap-1"
-                    animate={{
-                      scale: isActive ? 1.08 : 1,
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 420,
-                      damping: 28,
-                      mass: 0.55,
-                    }}
-                  >
+                  <span className="relative z-10 flex items-center gap-1">
                     {link.label}
                     {link.hasDropdown && (
                       <ChevronDown size={13} className="mt-px shrink-0 opacity-60" />
                     )}
-                  </motion.span>
+                  </span>
                 </Link>
               );
             })}
           </nav>
 
-          <div className="ymg-nav-actions hidden shrink-0 lg:flex">
+          <motion.div
+            className="ymg-nav-actions hidden shrink-0 min-[900px]:flex"
+            initial={false}
+            animate={{
+              opacity: sideItemsHidden ? 0 : 1,
+              y: sideItemsHidden ? -10 : 0,
+              scale: sideItemsHidden ? 0.92 : 1,
+              filter: sideItemsHidden ? "blur(5px)" : "blur(0px)",
+            }}
+            transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+            style={{ pointerEvents: sideItemsHidden ? "none" : "auto" }}
+          >
             <HeaderActions darkMode={darkMode} onToggleDarkMode={toggleDarkMode} />
-          </div>
+          </motion.div>
 
           {/* Mobile hamburger */}
           <button
             className={cn(
-              "lg:hidden p-1.5 -mr-1.5 transition-colors",
-              scrolled ? "text-body-light" : "text-[#3d4145]"
+              "-mr-1.5 p-1.5 transition-colors min-[900px]:hidden",
+              scrolled && sideItemsHidden && overDarkBackground ? "text-body-light" : "text-[#3d4145]"
             )}
             onClick={() => setDrawerOpen(true)}
             aria-label="Open menu"

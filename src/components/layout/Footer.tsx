@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { YMGLogo } from "@/components/ui/logo";
 
 const quickLinks = [
@@ -50,8 +51,15 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
 
 export default function Footer() {
   return (
-    <footer className="bg-cream border-t border-cream-dark">
-      <div className="max-w-7xl mx-auto px-6 pt-14 pb-10">
+    <footer className="ymg-section-padding relative isolate overflow-hidden border-t border-cream-dark bg-cream">
+      <Image
+        src="/flowers/vcardBG.svg"
+        alt=""
+        width={273}
+        height={196}
+        className="pointer-events-none absolute right-0 top-0 z-0 w-[150px] sm:w-[230px] lg:w-[300px]"
+      />
+      <div className="relative z-10 mx-auto max-w-7xl">
 
         {/* Main grid */}
         <div className="grid grid-cols-[0.98fr_1.02fr] gap-x-5 gap-y-10 lg:grid-cols-[1.25fr_1fr_1fr_1fr] lg:gap-0 lg:justify-items-center">
@@ -122,7 +130,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 pt-6 border-t border-body-dark/10 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-[0.7rem] text-body-dark/40">
-            © 2025 YMG Legal. All rights reserved.
+            © 2026 YMG Legal. All rights reserved.
           </p>
 
           <div className="flex items-center gap-4 text-[0.7rem] text-body-dark/40">

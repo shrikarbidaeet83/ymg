@@ -15,7 +15,7 @@ export function YMGLogo({
 }: YMGLogoProps) {
   const logo = (
     <Image
-      src="/images/ymg-legal-logo.svg"
+      src="/LOGO (1).svg"
       alt="YMG Legal"
       width={178}
       height={79}
