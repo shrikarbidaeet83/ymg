@@ -91,7 +91,7 @@ export default function ContactPage() {
                 <option>Case Acquisition</option>
               </select>
             </div>
-            <button type="button" className="mt-4 h-12 w-full rounded-[4px] bg-[#404040] text-[0.82rem] font-semibold text-white">
+            <button type="button" className="mt-4 h-[52px] w-full rounded-[4px] bg-[#d9ae5d] px-8 text-sm font-bold text-[#2e3032] shadow-[0_12px_28px_rgba(168,129,62,0.22)] transition-colors hover:bg-[#c89f4e]">
               Book My Free Call
             </button>
           </form>

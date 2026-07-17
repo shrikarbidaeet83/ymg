@@ -375,13 +375,13 @@ export default function PracticeAreasPage() {
             <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
               <Link
                 href="/services/case-acquisition"
-                className="inline-flex h-[52px] min-w-[182px] items-center justify-center rounded-[4px] bg-[#d9b46d] px-8 text-[0.98rem] font-semibold text-[#262626]"
+                className="inline-flex h-[52px] min-w-[182px] items-center justify-center rounded-[4px] bg-[#d9ae5d] px-8 text-sm font-bold text-[#2e3032] shadow-[0_12px_28px_rgba(168,129,62,0.22)] transition-colors hover:bg-[#c89f4e]"
               >
                 Get More Cases
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex h-[52px] min-w-[246px] items-center justify-center rounded-[4px] border border-[#d9b46d] px-8 text-[0.98rem] font-medium text-[#d9b46d]"
+                className="inline-flex h-[52px] min-w-[246px] items-center justify-center rounded-[4px] border border-[#dfbd78] bg-[#fff6e5]/40 px-8 text-sm font-semibold text-[#d3a65a] transition-colors hover:bg-[#fff6e5]/70"
               >
                 Schedule a Strategy Call
               </Link>

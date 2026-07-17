@@ -121,7 +121,7 @@ export default function PlansPage() {
                   <div className="mt-auto pt-10">
                     <button
                       type="button"
-                      className="h-12 w-full rounded-[4px] bg-[#d9ae5d] text-[0.82rem] font-semibold tracking-[0.08em] text-[#1f2529] shadow-[3px_4px_7px_rgba(130,95,35,0.16)] transition-colors hover:bg-[#efcd86]"
+                      className="h-[52px] w-full rounded-[4px] bg-[#d9ae5d] px-8 text-sm font-bold text-[#2e3032] shadow-[0_12px_28px_rgba(168,129,62,0.22)] transition-colors hover:bg-[#c89f4e]"
                     >
                       Get Started
                     </button>

@@ -51,7 +51,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
 
 export default function Footer() {
   return (
-    <footer className="ymg-section-padding relative isolate overflow-hidden border-t border-cream-dark bg-cream">
+    <footer className="relative isolate overflow-hidden border-t border-cream-dark bg-cream px-5 py-10 sm:px-10 sm:py-12 lg:px-16 lg:py-14 xl:px-20">
       <Image
         src="/flowers/vcardBG.svg"
         alt=""
@@ -62,7 +62,7 @@ export default function Footer() {
       <div className="relative z-10 mx-auto max-w-7xl">
 
         {/* Main grid */}
-        <div className="grid grid-cols-[0.98fr_1.02fr] gap-x-5 gap-y-10 lg:grid-cols-[1.25fr_1fr_1fr_1fr] lg:gap-0 lg:justify-items-center">
+        <div className="grid grid-cols-[0.98fr_1.02fr] gap-x-5 gap-y-8 lg:grid-cols-[1.25fr_1fr_1fr_1fr] lg:gap-0 lg:justify-items-center">
 
           {/* Column 1 — Brand */}
           <div className="border-r border-body-dark/10 pr-5 lg:pr-12 lg:justify-self-start">
@@ -128,7 +128,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-6 border-t border-body-dark/10 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="mt-9 flex flex-col items-center justify-between gap-3 border-t border-body-dark/10 pt-5 sm:flex-row">
           <p className="text-[0.7rem] text-body-dark/40">
             © 2026 YMG Legal. All rights reserved.
           </p>

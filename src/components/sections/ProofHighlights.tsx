@@ -29,13 +29,17 @@ export function ProofBar({ className = "" }: { className?: string }) {
 }
 
 export function MobileProofScroller({ className = "" }: { className?: string }) {
+  const marqueeItems = [...proofItems, ...proofItems];
+
   return (
     <div className={`relative z-30 w-full min-w-0 lg:hidden ${className}`}>
-      <div className="flex w-full snap-x snap-mandatory overflow-x-auto rounded-[6px] border border-[#e7d5ad] bg-white shadow-[0_10px_28px_rgba(73,59,33,0.16)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        {proofItems.map(({ icon: Icon, label, detail }) => (
+      <div className="overflow-hidden rounded-[6px] border border-[#e7d5ad] bg-white shadow-[0_10px_28px_rgba(73,59,33,0.16)]">
+        <div className="ymg-proof-marquee flex w-max">
+        {marqueeItems.map(({ icon: Icon, label, detail }, index) => (
           <div
-            key={label}
-            className="flex min-h-[54px] w-1/3 min-w-0 shrink-0 snap-start items-center justify-center gap-1 border-r border-[#e3d8be] px-1 py-2 last:border-r-0 min-[360px]:gap-2 min-[360px]:px-2 sm:w-1/4"
+            key={`${label}-${index}`}
+            aria-hidden={index >= proofItems.length}
+            className="flex min-h-[54px] w-[calc((100vw-20px)/3)] max-w-[110px] shrink-0 items-center justify-center gap-1 border-r border-[#e3d8be] px-1 py-2 min-[360px]:gap-2 min-[360px]:px-2 sm:w-[225px] sm:max-w-none"
           >
             <Icon size={17} strokeWidth={1.8} className="shrink-0 text-[#3f4245] min-[360px]:size-[19px]" />
             <div className="min-w-0 text-left text-[0.5rem] font-semibold leading-tight text-[#4f5356] min-[360px]:text-[0.58rem]">
@@ -44,6 +48,7 @@ export function MobileProofScroller({ className = "" }: { className?: string }) 
             </div>
           </div>
         ))}
+        </div>
       </div>
     </div>
   );

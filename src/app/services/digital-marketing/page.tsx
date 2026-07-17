@@ -295,13 +295,13 @@ export default function DigitalMarketingPage() {
             <div className="mt-11 flex flex-col gap-5 sm:flex-row">
               <Link
                 href="/contact"
-                className="inline-flex h-[55px] min-w-[221px] items-center justify-center rounded-[4px] bg-[#ddb563] px-7 text-[15px] font-medium tracking-[0.08em] text-[#152024] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#e7c278] hover:shadow-[0_8px_18px_rgba(105,77,28,0.18)]"
+                className="inline-flex h-[52px] min-w-[221px] items-center justify-center rounded-[4px] bg-[#d9ae5d] px-8 text-sm font-bold text-[#2e3032] shadow-[0_12px_28px_rgba(168,129,62,0.22)] transition-colors hover:bg-[#c89f4e]"
               >
                 Book Strategy Call
               </Link>
               <Link
                 href="/how-it-works"
-                className="inline-flex h-[55px] min-w-[210px] items-center justify-center rounded-[4px] border border-[#efbf68] bg-transparent px-7 text-[15px] font-normal tracking-[0.04em] text-[#dcae5b] transition-colors duration-200 hover:bg-[#f4dfb7]/45 hover:text-[#ae8139]"
+                className="inline-flex h-[52px] min-w-[210px] items-center justify-center rounded-[4px] border border-[#dfbd78] bg-[#fff6e5]/40 px-8 text-sm font-semibold text-[#d3a65a] transition-colors hover:bg-[#fff6e5]/70"
               >
                 View Our Process
               </Link>

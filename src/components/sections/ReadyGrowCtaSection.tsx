@@ -22,10 +22,10 @@ export default function ReadyGrowCtaSection({
         </div>
 
         <div className={`flex w-full max-w-[220px] flex-col gap-4 ${compactMobile ? "mx-auto lg:mx-0" : ""}`}>
-          <Link href="/services/case-acquisition" className="inline-flex h-12 items-center justify-center rounded-[3px] bg-[#d9b46d] px-7 text-[0.86rem] font-semibold text-[#262626]">
+          <Link href="/services/case-acquisition" className="inline-flex h-[52px] items-center justify-center rounded-[4px] bg-[#d9ae5d] px-8 text-sm font-bold text-[#2e3032] shadow-[0_12px_28px_rgba(168,129,62,0.22)] transition-colors hover:bg-[#c89f4e]">
             Get More Cases
           </Link>
-          <Link href="/contact" className="inline-flex h-12 items-center justify-center rounded-[3px] border border-[#d9b46d] px-7 text-[0.86rem] font-semibold text-[#d9b46d]">
+          <Link href="/contact" className="inline-flex h-[52px] items-center justify-center rounded-[4px] border border-[#dfbd78] bg-[#fff6e5]/40 px-8 text-sm font-semibold text-[#d3a65a] transition-colors hover:bg-[#fff6e5]/70">
             Book Strategy Call
           </Link>
         </div>

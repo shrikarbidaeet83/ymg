@@ -90,6 +90,24 @@
   }
 }
 
+@keyframes ymg-proof-marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.ymg-proof-marquee {
+  animation: ymg-proof-marquee 16s linear infinite;
+}
+
+.ymg-proof-marquee:hover {
+  animation-play-state: paused;
+}
+
 .ymg-law-logo-track {
   animation: ymg-law-logo-scroll 28s linear infinite;
 }
@@ -1117,6 +1135,300 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .ymg-practice-marquee {
     animation-play-state: paused;
+  }
+}
+
+@keyframes ymg-view-reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.96);
+    filter: blur(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.ymg-view-reveal-up {
+  animation: ymg-view-reveal-up 680ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ymg-campaign-feature-reveal:nth-child(1) { animation-delay: 40ms; }
+.ymg-campaign-feature-reveal:nth-child(2) { animation-delay: 100ms; }
+.ymg-campaign-feature-reveal:nth-child(3) { animation-delay: 160ms; }
+.ymg-campaign-feature-reveal:nth-child(4) { animation-delay: 220ms; }
+.ymg-campaign-feature-reveal:nth-child(5) { animation-delay: 280ms; }
+.ymg-campaign-feature-reveal:nth-child(6) { animation-delay: 340ms; }
+.ymg-campaign-feature-reveal:nth-child(7) { animation-delay: 400ms; }
+.ymg-campaign-feature-reveal:nth-child(8) { animation-delay: 460ms; }
+.ymg-campaign-feature-reveal:nth-child(9) { animation-delay: 520ms; }
+.ymg-campaign-feature-reveal:nth-child(10) { animation-delay: 580ms; }
+
+@keyframes ymg-about-float {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -12px, 0);
+  }
+}
+
+@keyframes ymg-about-pop-sink {
+  0% {
+    opacity: 0;
+    transform: translateY(72px) scale(0.74);
+    filter: blur(7px);
+  }
+
+  10%, 62% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+
+  76%, 100% {
+    opacity: 0;
+    transform: translateY(86px) scale(0.72);
+    filter: blur(8px);
+  }
+}
+
+@keyframes ymg-vortex-lt {
+  0%, 12% {
+    opacity: 0;
+    transform: translate(-46px, -26px) scale(0.8) rotate(-12deg);
+    filter: blur(5px);
+  }
+
+  24%, 62% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    filter: blur(0);
+  }
+
+  82%, 100% {
+    opacity: 0;
+    transform: translate(156px, 128px) scale(0.08) rotate(138deg);
+    filter: blur(8px);
+  }
+}
+
+@keyframes ymg-vortex-rt {
+  0%, 14% {
+    opacity: 0;
+    transform: translate(42px, -22px) scale(0.82) rotate(10deg);
+    filter: blur(5px);
+  }
+
+  26%, 62% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    filter: blur(0);
+  }
+
+  82%, 100% {
+    opacity: 0;
+    transform: translate(-146px, 110px) scale(0.08) rotate(-148deg);
+    filter: blur(8px);
+  }
+}
+
+@keyframes ymg-vortex-lb {
+  0%, 16% {
+    opacity: 0;
+    transform: translate(-42px, 26px) scale(0.82) rotate(9deg);
+    filter: blur(5px);
+  }
+
+  28%, 62% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    filter: blur(0);
+  }
+
+  82%, 100% {
+    opacity: 0;
+    transform: translate(142px, -118px) scale(0.08) rotate(-132deg);
+    filter: blur(8px);
+  }
+}
+
+@keyframes ymg-vortex-rb {
+  0%, 18% {
+    opacity: 0;
+    transform: translate(42px, 24px) scale(0.82) rotate(-8deg);
+    filter: blur(5px);
+  }
+
+  30%, 62% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    filter: blur(0);
+  }
+
+  82%, 100% {
+    opacity: 0;
+    transform: translate(-118px, -106px) scale(0.08) rotate(128deg);
+    filter: blur(8px);
+  }
+}
+
+@keyframes ymg-vortex-center {
+  0%, 10% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translateY(28px) scale(0.88);
+    filter: blur(5px);
+  }
+
+  22%, 62% {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateY(0) scale(1);
+    filter: blur(0);
+  }
+
+  82%, 100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.08) rotate(160deg);
+    filter: blur(10px);
+  }
+}
+
+@keyframes ymg-about-orbit {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes ymg-about-bar {
+  0%, 100% {
+    transform: scaleY(0.72);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@keyframes ymg-about-progress {
+  0%, 100% {
+    transform: scaleX(0.18);
+  }
+
+  50% {
+    transform: scaleX(0.92);
+  }
+}
+
+@keyframes ymg-about-pulse-soft {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+.ymg-about-hero-visual {
+  animation-delay: 120ms;
+}
+
+.ymg-about-vortex {
+  transform-origin: center;
+  will-change: transform, opacity, filter;
+}
+
+.ymg-about-vortex-lt {
+  animation: ymg-vortex-lt 6.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.ymg-about-vortex-rt {
+  animation: ymg-vortex-rt 6.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.ymg-about-vortex-lb {
+  animation: ymg-vortex-lb 6.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.ymg-about-vortex-rb {
+  animation: ymg-vortex-rb 6.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.ymg-about-vortex-center {
+  animation: ymg-vortex-center 6.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.ymg-about-float {
+  animation: ymg-about-float 5.8s ease-in-out infinite;
+}
+
+.ymg-about-float-delay {
+  animation-delay: -2.2s;
+}
+
+.ymg-about-ribbon,
+.ymg-about-flow {
+  animation: ymg-about-float 6.2s ease-in-out infinite;
+}
+
+.ymg-about-badge {
+  animation: ymg-about-pulse-soft 3.8s ease-in-out infinite;
+}
+
+.ymg-about-progress {
+  transform-origin: left;
+  animation: ymg-about-progress 4.8s ease-in-out infinite;
+}
+
+.ymg-about-orbit {
+  animation: ymg-about-orbit 28s linear infinite;
+}
+
+.ymg-about-orbit-reverse {
+  animation-direction: reverse;
+  animation-duration: 22s;
+}
+
+.ymg-about-bar {
+  transform-origin: bottom;
+  animation: ymg-about-bar 2.8s ease-in-out infinite;
+}
+
+@supports (animation-timeline: view()) {
+  .ymg-view-reveal-up {
+    animation-timeline: view();
+    animation-range: entry 8% cover 32%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ymg-view-reveal-up {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .ymg-about-dashboard,
+  .ymg-about-float,
+  .ymg-about-ribbon,
+  .ymg-about-flow,
+  .ymg-about-badge,
+  .ymg-about-progress,
+  .ymg-about-vortex,
+  .ymg-about-orbit,
+  .ymg-about-bar {
+    animation: none;
   }
 }
 

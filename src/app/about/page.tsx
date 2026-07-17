@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ArrowUpRight, CheckCircle2, FileCheck2, PhoneCall, Scale, Target, UsersRound } from "lucide-react";
 import CardInteractionHint from "@/components/sections/CardInteractionHint";
 import ContactConversationContent from "@/components/sections/ContactConversationContent";
 import ReadyGrowCtaSection from "@/components/sections/ReadyGrowCtaSection";
@@ -15,11 +16,114 @@ const lawFirmLogos = [
   { name: "Attorney & Law", src: "/images/law-firms/attorney-law.svg" },
 ];
 
+function AboutHeroIllustration() {
+  return (
+    <div className="ymg-about-hero-visual ymg-view-reveal-up relative mx-auto mt-12 h-[330px] w-full max-w-[520px] md:mt-0 md:h-[390px] lg:h-[420px]">
+      <Image
+        src="/images/big_flowers.png"
+        alt=""
+        width={190}
+        height={190}
+        className="pointer-events-none absolute right-[6%] top-[0] z-0 w-[112px] opacity-[0.055] mix-blend-multiply"
+      />
+
+      <div className="ymg-about-orbit absolute left-[48%] top-[50%] h-[292px] w-[292px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#d9ae5d]/20 sm:h-[340px] sm:w-[340px]" />
+      <div className="ymg-about-orbit ymg-about-orbit-reverse absolute left-[48%] top-[50%] h-[214px] w-[214px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#d9ae5d]/14 sm:h-[258px] sm:w-[258px]" />
+
+      <div className="ymg-about-vortex ymg-about-vortex-lt absolute left-[4%] top-[12%] z-30 hidden w-[146px] rounded-[8px] border border-[#dfbd78] bg-white px-4 py-3 shadow-[0_14px_28px_rgba(91,69,34,0.15)] sm:block">
+        <div className="flex items-center gap-2">
+          <span className="h-2.5 w-2.5 rounded-full bg-[#5f7f62]" />
+          <p className="text-[0.62rem] font-semibold uppercase tracking-[0.08em] text-[#a27625]">Qualified</p>
+        </div>
+        <div className="mt-3 h-1.5 w-full rounded-full bg-[#f0dec0]">
+          <span className="ymg-about-progress block h-full rounded-full bg-[#d9ae5d]" />
+        </div>
+      </div>
+
+      <div className="ymg-about-vortex ymg-about-vortex-rt absolute right-[4%] top-[18%] z-30 flex h-[88px] w-[88px] items-center justify-center rounded-full border border-[#dfbd78] bg-white shadow-[0_14px_28px_rgba(91,69,34,0.15)]">
+        <div className="text-center">
+          <ArrowUpRight className="mx-auto h-5 w-5 text-[#d9ae5d]" strokeWidth={2} />
+          <p className="mt-1 text-[0.78rem] font-bold text-[#3f3d3a]">+42%</p>
+          <p className="text-[0.52rem] text-[#8a7b64]">growth</p>
+        </div>
+      </div>
+
+      <div className="ymg-about-vortex ymg-about-vortex-lb absolute bottom-[10%] left-[4%] z-30 hidden items-center gap-2 sm:flex">
+        <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#dfbd78] bg-white text-[#42627f] shadow-[0_10px_22px_rgba(91,69,34,0.13)]">
+          <PhoneCall className="h-5 w-5" strokeWidth={1.8} />
+        </span>
+        <span className="h-px w-8 bg-[#d9ae5d]" />
+        <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#dfbd78] bg-white text-[#a27625] shadow-[0_10px_22px_rgba(91,69,34,0.13)]">
+          <UsersRound className="h-5 w-5" strokeWidth={1.8} />
+        </span>
+        <span className="h-px w-8 bg-[#d9ae5d]" />
+        <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#dfbd78] bg-white text-[#5f7f62] shadow-[0_10px_22px_rgba(91,69,34,0.13)]">
+          <FileCheck2 className="h-5 w-5" strokeWidth={1.8} />
+        </span>
+      </div>
+
+      <div className="ymg-about-vortex ymg-about-vortex-rb absolute bottom-[10%] right-[11%] z-30 hidden rounded-[999px] border border-[#dfbd78] bg-white px-4 py-2 shadow-[0_10px_22px_rgba(91,69,34,0.13)] sm:block">
+        <div className="flex items-center gap-2">
+          <Target className="h-4 w-4 text-[#d9ae5d]" strokeWidth={1.8} />
+          <span className="text-[0.66rem] font-bold text-[#4d4841]">Intake engine</span>
+        </div>
+      </div>
+
+      <div className="ymg-about-vortex ymg-about-vortex-center ymg-about-dashboard absolute left-1/2 top-1/2 z-20 w-[78%] max-w-[370px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[14px] border border-[#dfbd78] bg-white shadow-[0_24px_52px_rgba(91,69,34,0.2)]">
+        <div className="flex items-center justify-between bg-[#404040] px-5 py-4 text-[#d9ae5d]">
+          <span className="flex h-10 w-10 items-center justify-center rounded-[7px] bg-[#fff5e0] text-[#404040]">
+            <Scale className="h-5 w-5" strokeWidth={1.8} />
+          </span>
+          <div className="min-w-0 flex-1 px-3">
+            <p className="text-[0.9rem] font-bold leading-none">YMG Growth Hub</p>
+            <p className="mt-1 text-[0.62rem] text-[#e5c987]">Marketing + intake + retainers</p>
+          </div>
+          <CheckCircle2 className="h-6 w-6 shrink-0" strokeWidth={1.8} />
+        </div>
+
+        <div className="p-5">
+          <div className="relative h-[154px] overflow-hidden rounded-[10px] bg-[#fff5e0] p-4">
+            <div className="absolute bottom-4 left-4 right-4 flex items-end gap-2">
+              {[38, 54, 48, 72, 92].map((height, index) => (
+                <span key={height} className="ymg-about-bar block flex-1 rounded-t-[5px] bg-[#d9ae5d]" style={{ height: `${height}px`, animationDelay: `${index * 90}ms` }} />
+              ))}
+            </div>
+            <p className="relative z-10 text-[0.66rem] font-semibold text-[#7b6b54]">Case growth trajectory</p>
+          </div>
+
+          <div className="mt-4 grid grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-2">
+            {[
+              { label: "Plan", Icon: Target, bg: "bg-[#fff1c7]", color: "text-[#a27625]" },
+              { label: "Qualify", Icon: UsersRound, bg: "bg-[#e6efe7]", color: "text-[#5f7f62]" },
+              { label: "Sign", Icon: FileCheck2, bg: "bg-[#eee8f4]", color: "text-[#735d86]" },
+            ].map(({ label, Icon, bg, color }, index) => (
+              <div key={label} className="contents">
+                <div className="rounded-[8px] bg-[#fffdfa] px-2 py-2 text-center">
+                  <span className={`mx-auto flex h-9 w-9 items-center justify-center rounded-full ${bg} ${color}`}>
+                    <Icon className="h-4 w-4" strokeWidth={1.8} />
+                  </span>
+                  <p className="mt-2 text-[0.6rem] font-bold text-[#4d4841]">{label}</p>
+                </div>
+                {index < 2 && <span className="h-px w-5 bg-[#d9ae5d]/70" />}
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-4 flex items-center justify-between rounded-[9px] bg-[#fff5e0] px-4 py-3">
+            <span className="text-[0.72rem] font-bold text-[#3f3d3a]">Measurable growth</span>
+            <ArrowUpRight className="h-5 w-5 text-[#d9ae5d]" strokeWidth={2} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-[#FFF5E0]">
-      <section className="ymg-section-padding relative isolate flex min-h-[440px] overflow-hidden bg-[#FFF5E0] pt-[132px] text-[#3f3d3a] min-[900px]:pt-[142px]">
-        <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center md:grid-cols-2 md:gap-12">
+      <section className="relative isolate flex min-h-[560px] overflow-hidden bg-[#FFF5E0] px-5 pb-16 pt-[132px] text-[#3f3d3a] sm:px-10 sm:pb-20 min-[900px]:pt-[142px] lg:px-16 lg:pb-[80px]">
+        <div className="relative z-10 mx-auto grid w-full max-w-[1160px] items-center gap-10 md:grid-cols-[0.86fr_1.14fr] md:gap-12">
           <div className="relative z-10 max-w-[380px] text-left">
             <Image
               src="/flowers/half-circleBG.svg"
@@ -49,13 +153,7 @@ export default function AboutPage() {
               <span className="block">results.</span>
             </p>
           </div>
-          <Image
-            src="/flowers/3rd-flower.svg"
-            alt=""
-            width={382}
-            height={274}
-            className="pointer-events-none absolute right-[-70px] top-[62%] w-[260px] -translate-y-1/2 mix-blend-multiply sm:right-[-40px] sm:w-[310px] md:static md:ml-auto md:mt-12 md:w-[310px] md:translate-y-0 lg:mt-16 lg:w-[350px]"
-          />
+          <AboutHeroIllustration />
         </div>
       </section>
       <ReadyGrowCtaSection />

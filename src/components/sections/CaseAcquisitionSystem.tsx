@@ -25,6 +25,15 @@ const pct = (p: { x: number; y: number }) => ({
   top: `${((p.y - FRAME.y) / FRAME.h) * 100}%`,
 });
 
+const outwardVector = (angle: number) => {
+  const a = (angle * Math.PI) / 180;
+
+  return {
+    x: Number(Math.cos(a).toFixed(4)),
+    y: Number((-Math.sin(a)).toFixed(4)),
+  };
+};
+
 const top = pt(90);
 const guideLine = {
   x: top.x,
@@ -82,6 +91,7 @@ const nodes = steps.map(({ key, num, angle }) => {
     key,
     num,
     dotPos: pct(point),
+    badgeVector: outwardVector(angle),
   };
 });
 
@@ -297,7 +307,7 @@ export default function CaseAcquisitionSystem({
           className="relative left-1/2 mt-9 h-[346px] w-full max-w-[350px] -translate-x-1/2 sm:mt-20 sm:h-[500px] sm:max-w-[900px] lg:mt-24 lg:h-[520px] lg:max-w-[980px]"
         >
           {showStepFlower && (
-            <div className="pointer-events-none absolute inset-x-4 inset-y-8 z-0 translate-y-9 overflow-visible [clip-path:inset(-50%_0_36%_0)] sm:inset-0 sm:translate-y-0 sm:[clip-path:inset(-50%_0_13%_0)] lg:[clip-path:inset(-50%_0_11%_0)]">
+            <div className="pointer-events-none absolute inset-x-4 inset-y-8 z-0 translate-y-9 overflow-visible [clip-path:inset(-10%_-10%_46%)] sm:inset-0 sm:translate-y-0 sm:[clip-path:inset(-50%_0_13%_0)] lg:[clip-path:inset(-50%_0_11%_0)]">
               <div className="absolute left-1/2 top-1/2 aspect-[900/560] w-[552%] -translate-x-1/2 -translate-y-1/2 sm:h-full sm:w-auto">
                 <Image
                   src="/flowers/half-circleBG.svg"
@@ -338,19 +348,28 @@ export default function CaseAcquisitionSystem({
             </svg>
           </div>
 
-          <div className="absolute inset-x-4 inset-y-8 z-20 translate-y-9 overflow-visible [clip-path:inset(-50%_0_36%_0)] sm:inset-0 sm:translate-y-0 sm:[clip-path:inset(-50%_0_13%_0)] lg:[clip-path:inset(-50%_0_11%_0)]">
+          <div className="absolute inset-x-4 inset-y-8 z-20 translate-y-9 overflow-visible [clip-path:inset(-10%_-10%_46%)] sm:inset-0 sm:translate-y-0 sm:[clip-path:inset(-50%_0_13%_0)] lg:[clip-path:inset(-50%_0_11%_0)]">
           <div className="absolute left-1/2 top-1/2 aspect-[900/560] w-[122%] -translate-x-1/2 -translate-y-1/2 sm:h-full sm:w-auto">
           <div className="wheel-rotor absolute inset-0 [will-change:transform]">
-            {nodes.map(({ key, num, dotPos }) => (
+            {nodes.map(({ key, num, dotPos, badgeVector }) => (
               <div key={num}>
               <div
-                className={`wheel-node node-${key} absolute z-10 h-0 w-0 [--badge-gap:18px] sm:[--badge-gap:22px]`}
+                className={`wheel-node node-${key} absolute z-10 h-0 w-0`}
                 style={{ left: dotPos.left, top: dotPos.top }}
               >
                 <span className={`gold-dot gold-dot-${key} absolute left-0 top-0 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#d8ae63] shadow-[0_3px_8px_rgba(168,129,62,0.18)] sm:h-3.5 sm:w-3.5`} />
-                <div className="node-badge-anchor absolute left-0 top-0 h-0 w-0 [will-change:transform]">
-                  <div className={`node-badge node-badge-${key} absolute bottom-[var(--badge-gap)] left-0 z-10 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full border border-[#eadbb7] bg-white text-[0.58rem] font-semibold text-[#3a3d42] shadow-[0_8px_18px_rgba(21,16,10,0.10)] sm:h-12 sm:w-12 sm:text-[0.82rem]`}>
-                    {num}
+                <div
+                  className="absolute left-0 top-0 z-10 h-0 w-0 [--badge-distance:34px] sm:[--badge-distance:46px]"
+                  style={{
+                    transform: `translate(calc(${badgeVector.x} * var(--badge-distance)), calc(${badgeVector.y} * var(--badge-distance)))`,
+                  }}
+                >
+                  <div className="node-badge-anchor absolute left-0 top-0 h-0 w-0 [will-change:transform]">
+                    <div className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2">
+                      <div className={`node-badge node-badge-${key} flex h-8 w-8 items-center justify-center rounded-full border border-[#eadbb7] bg-white text-[0.58rem] font-semibold text-[#3a3d42] shadow-[0_8px_18px_rgba(21,16,10,0.10)] sm:h-12 sm:w-12 sm:text-[0.82rem]`}>
+                        {num}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { Fragment, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -12,12 +12,73 @@ type NavLink = {
   label: string;
   href: string;
   hasDropdown?: boolean;
+  dropdownItems?: {
+    label: string;
+    href: string;
+    description: string;
+  }[];
 };
 
 const navLinks: NavLink[] = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Services", href: "/services", hasDropdown: true },
+  {
+    label: "Services",
+    href: "/services",
+    hasDropdown: true,
+    dropdownItems: [
+      {
+        label: "Digital Marketing",
+        href: "/services/digital-marketing",
+        description: "Campaigns built for qualified case growth",
+      },
+      {
+        label: "Google Search Ads",
+        href: "/services/google-search-ads",
+        description: "High-intent PPC campaigns for legal cases",
+      },
+      {
+        label: "Meta Ads",
+        href: "/services/meta-ads",
+        description: "Facebook and Instagram campaigns for consultations",
+      },
+      {
+        label: "Local Services Ads",
+        href: "/services/local-services-ads",
+        description: "Pay-per-lead LSA campaigns for calls",
+      },
+      {
+        label: "SEO",
+        href: "/services/seo",
+        description: "Organic rankings for high-value legal searches",
+      },
+      {
+        label: "Website Design",
+        href: "/services/website-design",
+        description: "High-performance websites built to convert",
+      },
+      {
+        label: "AI Search (AIO)",
+        href: "/services/ai-search",
+        description: "Authority optimization for AI recommendations",
+      },
+      {
+        label: "Organic Social Media",
+        href: "/services/organic-social-media",
+        description: "On-brand content that builds trust",
+      },
+      {
+        label: "Case Acquisition",
+        href: "/services/case-acquisition",
+        description: "Systems for signed retainers",
+      },
+      {
+        label: "Legal Answering",
+        href: "/services/legal-answering",
+        description: "Responsive support for every inquiry",
+      },
+    ],
+  },
   { label: "Plans", href: "/plans" },
   { label: "Blog", href: "/blog" },
   { label: "Practice Areas", href: "/practice-areas", hasDropdown: true },
@@ -78,6 +139,8 @@ export default function Navbar() {
   const [overDarkBackground, setOverDarkBackground] = useState(false);
   const [activePill, setActivePill] = useState<{ left: number; width: number } | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [mobileOpenDropdown, setMobileOpenDropdown] = useState<string | null>(null);
+  const [desktopDropdownSuppressed, setDesktopDropdownSuppressed] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const [themeReady, setThemeReady] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
@@ -216,15 +279,18 @@ export default function Navbar() {
       window.cancelAnimationFrame(frameId);
       frameId = window.requestAnimationFrame(() => {
         const nav = desktopNavRef.current;
-        const activeLink = nav?.querySelector<HTMLElement>('[aria-current="page"]');
+        const activeLink = nav?.querySelector<HTMLElement>('[data-nav-active="true"]');
 
         if (!nav || !activeLink || activeLink.offsetWidth === 0) return;
 
         const activePillInset = 5;
 
+        const navRect = nav.getBoundingClientRect();
+        const activeRect = activeLink.getBoundingClientRect();
+
         setActivePill({
-          left: activeLink.offsetLeft + activePillInset,
-          width: Math.max(0, activeLink.offsetWidth - activePillInset * 2),
+          left: activeRect.left - navRect.left + activePillInset,
+          width: Math.max(0, activeRect.width - activePillInset * 2),
         });
       });
     };
@@ -297,17 +363,21 @@ export default function Navbar() {
               const isActive =
                 link.href === "/"
                   ? pathname === "/"
-                  : pathname.startsWith(link.href);
+                  : link.dropdownItems?.some((item) => pathname === item.href) || pathname === link.href;
+              const hasMenu = Boolean(link.dropdownItems?.length);
 
-              return (
+              const navLinkClassName = cn(
+                "ymg-nav-link relative z-10 flex h-full items-center gap-1 whitespace-nowrap rounded-full px-4 text-[1.02rem] font-medium text-[#4f5356] transition-all duration-200 hover:text-[#1f2529]",
+                isActive ? "ymg-nav-active" : ""
+              );
+
+              const navLink = (
                 <Link
                   key={link.href}
                   href={link.href}
                   aria-current={isActive ? "page" : undefined}
-                  className={cn(
-                    "ymg-nav-link relative z-10 flex h-full items-center gap-1 whitespace-nowrap rounded-full px-4 text-[1.02rem] font-medium text-[#4f5356] transition-all duration-200 hover:text-[#1f2529]",
-                    isActive ? "ymg-nav-active" : ""
-                  )}
+                  data-nav-active={isActive ? "true" : undefined}
+                  className={navLinkClassName}
                 >
                   <span className="relative z-10 flex items-center gap-1">
                     {link.label}
@@ -316,6 +386,62 @@ export default function Navbar() {
                     )}
                   </span>
                 </Link>
+              );
+
+              if (!hasMenu) return navLink;
+
+              return (
+                <div
+                  key={link.href}
+                  className="group relative z-20 flex h-full items-center"
+                  onMouseLeave={() => setDesktopDropdownSuppressed(false)}
+                >
+                  <Link
+                    href={link.href}
+                    data-nav-active={isActive ? "true" : undefined}
+                    onClick={(event) => {
+                      setDesktopDropdownSuppressed(true);
+                      event.currentTarget.blur();
+                    }}
+                    className={navLinkClassName}
+                  >
+                    <span className="relative z-10 flex items-center gap-1">
+                      {link.label}
+                      <ChevronDown size={13} className="mt-px shrink-0 opacity-60" />
+                    </span>
+                  </Link>
+                  <div
+                    className={cn(
+                      "pointer-events-none absolute left-1/2 top-[calc(100%+10px)] w-[246px] -translate-x-1/2 translate-y-2 rounded-[8px] border border-[#dfbd78]/70 bg-[#fff8e8]/95 p-2 opacity-0 shadow-[0_16px_34px_rgba(71,56,30,0.18)] backdrop-blur-xl transition-all duration-200 before:absolute before:-top-3 before:left-0 before:h-3 before:w-full before:content-['']",
+                      !desktopDropdownSuppressed &&
+                        "group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100"
+                    )}
+                  >
+                    {link.dropdownItems?.map((item) => {
+                      const isItemActive = pathname === item.href;
+
+                      return (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          aria-current={isItemActive ? "page" : undefined}
+                          onClick={(event) => {
+                            setDesktopDropdownSuppressed(true);
+                            event.currentTarget.blur();
+                          }}
+                          className="block rounded-[6px] px-3 py-2.5 text-left transition-colors duration-200 hover:bg-[#f4dfb7]/65"
+                        >
+                          <span className="block text-[0.76rem] font-semibold leading-tight text-[#272c2f]">
+                            {item.label}
+                          </span>
+                          <span className="mt-1 block text-[0.62rem] leading-[1.3] text-[#65615a]">
+                            {item.description}
+                          </span>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
               );
             })}
           </nav>
@@ -339,9 +465,12 @@ export default function Navbar() {
           <button
             className={cn(
               "-mr-1.5 p-1.5 transition-colors min-[900px]:hidden",
-              scrolled && sideItemsHidden && overDarkBackground ? "text-body-light" : "text-[#3d4145]"
+              overDarkBackground ? "text-body-light" : "text-[#3d4145]"
             )}
-            onClick={() => setDrawerOpen(true)}
+            onClick={() => {
+              setMobileOpenDropdown(null);
+              setDrawerOpen(true);
+            }}
             aria-label="Open menu"
           >
             <Menu size={22} />
@@ -360,7 +489,10 @@ export default function Navbar() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
               className="fixed inset-0 z-[60] bg-black"
-              onClick={() => setDrawerOpen(false)}
+              onClick={() => {
+                setMobileOpenDropdown(null);
+                setDrawerOpen(false);
+              }}
             />
 
             <motion.div
@@ -374,7 +506,10 @@ export default function Navbar() {
                 <YMGLogo asLink variant="gold" />
                 <button
                   className="text-body-light/70 hover:text-body-light p-1.5 -mr-1.5 transition-colors"
-                  onClick={() => setDrawerOpen(false)}
+                  onClick={() => {
+                    setMobileOpenDropdown(null);
+                    setDrawerOpen(false);
+                  }}
                   aria-label="Close menu"
                 >
                   <X size={22} />
@@ -386,32 +521,103 @@ export default function Navbar() {
                   const isActive =
                     link.href === "/"
                       ? pathname === "/"
-                      : pathname.startsWith(link.href);
+                      : link.dropdownItems?.some((item) => pathname === item.href) || pathname === link.href;
+                  const isDropdownOpen = mobileOpenDropdown === link.href;
 
                   return (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => setDrawerOpen(false)}
-                      className={cn(
-                        "flex items-center justify-between border-b border-gold/10 py-3.5 text-[0.95rem] font-semibold transition-colors duration-200",
-                        isActive
-                          ? "text-gold"
-                          : "text-body-light/75 hover:text-gold"
+                    <Fragment key={link.href}>
+                      {link.dropdownItems?.length ? (
+                        <div
+                          className={cn(
+                            "flex items-center border-b border-gold/10 text-[0.95rem] font-semibold transition-colors duration-200",
+                            isActive
+                              ? "text-gold"
+                              : "text-body-light/75 hover:text-gold"
+                          )}
+                        >
+                          <Link
+                            href={link.href}
+                            onClick={() => {
+                              setMobileOpenDropdown(null);
+                              setDrawerOpen(false);
+                            }}
+                            className="min-w-0 flex-1 py-3.5"
+                          >
+                            {link.label}
+                          </Link>
+                          <button
+                            type="button"
+                            aria-label={`${isDropdownOpen ? "Close" : "Open"} ${link.label} menu`}
+                            aria-expanded={isDropdownOpen}
+                            onClick={() =>
+                              setMobileOpenDropdown((current) =>
+                                current === link.href ? null : link.href
+                              )
+                            }
+                            className="flex h-12 w-12 shrink-0 items-center justify-end"
+                          >
+                            <ChevronDown
+                              size={15}
+                              className={cn(
+                                "opacity-50 transition-transform duration-200",
+                                isDropdownOpen && "rotate-180"
+                              )}
+                            />
+                          </button>
+                        </div>
+                      ) : (
+                        <Link
+                          href={link.href}
+                          onClick={() => {
+                            setMobileOpenDropdown(null);
+                            setDrawerOpen(false);
+                          }}
+                          className={cn(
+                            "flex items-center justify-between border-b border-gold/10 py-3.5 text-[0.95rem] font-semibold transition-colors duration-200",
+                            isActive
+                              ? "text-gold"
+                              : "text-body-light/75 hover:text-gold"
+                          )}
+                        >
+                          {link.label}
+                          {link.hasDropdown && (
+                            <ChevronDown size={15} className="opacity-50" />
+                          )}
+                        </Link>
                       )}
-                    >
-                      {link.label}
-                      {link.hasDropdown && (
-                        <ChevronDown size={15} className="opacity-50" />
-                      )}
-                    </Link>
+                      {isDropdownOpen && link.dropdownItems?.map((item) => {
+                        const isItemActive = pathname === item.href;
+
+                        return (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            onClick={() => {
+                              setMobileOpenDropdown(null);
+                              setDrawerOpen(false);
+                            }}
+                            className={cn(
+                              "ml-4 border-b border-gold/10 py-3 pl-3 text-[0.82rem] font-medium transition-colors duration-200",
+                              isItemActive
+                                ? "text-gold"
+                                : "text-body-light/60 hover:text-gold"
+                            )}
+                          >
+                            {item.label}
+                          </Link>
+                        );
+                      })}
+                    </Fragment>
                   );
                 })}
 
                 <div className="border-b border-gold/10 py-5">
                   <HeaderActions
                     darkMode={darkMode}
-                    onAction={() => setDrawerOpen(false)}
+                    onAction={() => {
+                      setMobileOpenDropdown(null);
+                      setDrawerOpen(false);
+                    }}
                     onToggleDarkMode={toggleDarkMode}
                   />
                 </div>

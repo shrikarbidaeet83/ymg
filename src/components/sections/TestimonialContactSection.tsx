@@ -156,7 +156,7 @@ export default function TestimonialContactSection({
 
   return (
     <section className={`${contactOnly ? "ymg-section-padding-x py-0" : "ymg-section-padding"} relative isolate overflow-hidden bg-[#404040] text-[#d9b46d] ${contactVariant === "home" ? "pb-0" : ""}`}>
-      <div className="relative z-10 mx-auto max-w-7xl">
+      <div className={`relative z-10 mx-auto ${contactOnly ? "max-w-[1160px]" : "max-w-7xl"}`}>
         {showTestimonials && (
           <>
             <div className="text-center">
@@ -257,7 +257,7 @@ export default function TestimonialContactSection({
                 <option>Case Acquisition</option>
               </select>
             </div>
-            <button type="button" className="mt-4 h-11 w-full rounded-[4px] bg-[#404040] text-[0.78rem] font-semibold text-white">
+            <button type="button" className="mt-4 h-[52px] w-full rounded-[4px] bg-[#d9ae5d] px-8 text-sm font-bold text-[#2e3032] shadow-[0_12px_28px_rgba(168,129,62,0.22)] transition-colors hover:bg-[#c89f4e]">
               Book My Free Call
             </button>
           </form>
