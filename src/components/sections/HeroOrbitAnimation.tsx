@@ -89,7 +89,7 @@ function CenterIcon() {
       <motion.div
         animate={{ scale: [1, 1.05, 1] }}
         transition={{ duration: 3, delay: 0.8, repeat: Infinity, ease: "easeInOut" }}
-        className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-gradient-to-b from-[#f3cb84] to-[#c4923f] shadow-[0_22px_45px_rgba(168,129,62,0.5),inset_0_2px_2px_rgba(255,255,255,0.5),inset_0_-4px_8px_rgba(150,100,30,0.4)] sm:h-24 sm:w-24 lg:h-28 lg:w-28"
+        className="ymg-orbit-center-surface relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-gradient-to-b from-[#f3cb84] to-[#c4923f] shadow-[0_22px_45px_rgba(168,129,62,0.5),inset_0_2px_2px_rgba(255,255,255,0.5),inset_0_-4px_8px_rgba(150,100,30,0.4)] sm:h-24 sm:w-24 lg:h-28 lg:w-28"
       >
         <span className="pointer-events-none absolute left-1.5 top-1.5 h-3 w-5 rounded-full bg-white/40 blur-[3px]" aria-hidden="true" />
         <TargetGlyph className="relative h-[31px] w-[31px] sm:h-[67px] sm:w-[67px] lg:h-[78px] lg:w-[78px]" />
@@ -100,7 +100,7 @@ function CenterIcon() {
 
 function TargetGlyph({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 64 64" className={className} aria-hidden="true">
+    <svg viewBox="0 0 64 64" className={`ymg-orbit-target-glyph ${className}`} aria-hidden="true">
       <defs>
         <filter id="targetGlyphShadow" x="-50%" y="-50%" width="200%" height="200%">
           <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" floodColor="#5c3d10" floodOpacity="0.45" />
@@ -204,8 +204,8 @@ function CaseGrowthCard() {
   const areaPath = `${linePath} L${w},${h} L0,${h} Z`;
 
   return (
-    <div className="w-20 rounded-lg border border-[#eadfca] bg-white p-1.5 text-left shadow-[0_16px_34px_rgba(73,59,33,0.16)] sm:w-52 sm:rounded-2xl sm:p-4 lg:w-60">
-      <p className="text-[0.5rem] font-semibold text-[#3a3d42] sm:text-sm">Case Growth</p>
+    <div className="ymg-orbit-card w-20 rounded-lg border border-[#eadfca] bg-white p-1.5 text-left shadow-[0_16px_34px_rgba(73,59,33,0.16)] sm:w-52 sm:rounded-2xl sm:p-4 lg:w-60">
+      <p className="ymg-orbit-card-title text-[0.5rem] font-semibold text-[#3a3d42] sm:text-sm">Case Growth</p>
       <svg viewBox={`0 0 ${w} ${h}`} className="mt-1 h-8 w-full sm:mt-2 sm:h-20" preserveAspectRatio="none" aria-hidden="true">
         <defs>
           <linearGradient id="caseGrowthFill" x1="0" y1="0" x2="0" y2="1">
@@ -219,7 +219,7 @@ function CaseGrowthCard() {
           <circle key={p.x} cx={p.x} cy={p.y} r="3" fill="#fff" stroke="#d9ae5d" strokeWidth="2" />
         ))}
       </svg>
-      <div className="mt-1 hidden justify-between text-[0.6rem] font-medium text-[#a3a5a7] sm:flex">
+      <div className="ymg-orbit-axis mt-1 hidden justify-between text-[0.6rem] font-medium text-[#a3a5a7] sm:flex">
         {MONTHS.map((m) => (
           <span key={m}>{m}</span>
         ))}
@@ -240,21 +240,21 @@ function CampaignPerformanceCard() {
   const areaPath = `${linePath} L${w},${h} L0,${h} Z`;
 
   return (
-    <div className="w-24 rounded-lg border border-[#eadfca] bg-white p-1.5 text-left shadow-[0_16px_34px_rgba(73,59,33,0.16)] sm:w-56 sm:rounded-2xl sm:p-4 lg:w-64">
+    <div className="ymg-orbit-card w-24 rounded-lg border border-[#eadfca] bg-white p-1.5 text-left shadow-[0_16px_34px_rgba(73,59,33,0.16)] sm:w-56 sm:rounded-2xl sm:p-4 lg:w-64">
       <div className="flex items-center justify-between">
-        <p className="text-[0.5rem] font-semibold text-[#3a3d42] sm:text-sm">Campaign Performance</p>
+        <p className="ymg-orbit-card-title text-[0.5rem] font-semibold text-[#3a3d42] sm:text-sm">Campaign Performance</p>
         <MoreHorizontal className="h-2.5 w-2.5 text-[#a3a5a7] sm:h-3.5 sm:w-3.5" aria-hidden="true" />
       </div>
 
       <div className="mt-1.5 grid grid-cols-2 gap-1.5 sm:mt-3 sm:gap-2">
-        <div className="rounded-md bg-[#fbf4e4] p-1.5 sm:rounded-lg sm:p-2">
+        <div className="ymg-orbit-stat rounded-md bg-[#fbf4e4] p-1.5 sm:rounded-lg sm:p-2">
           <Users className="h-2.5 w-2.5 text-[#d9ae5d] sm:h-4 sm:w-4" strokeWidth={1.8} aria-hidden="true" />
-          <p className="mt-1 text-[0.65rem] font-bold text-[#3a3d42] sm:mt-1.5 sm:text-base">128</p>
+          <p className="ymg-orbit-gold-text mt-1 text-[0.65rem] font-bold text-[#3a3d42] sm:mt-1.5 sm:text-base">128</p>
           <p className="text-[0.4rem] text-[#8a8c8e] sm:text-[0.6rem]">New Leads</p>
         </div>
-        <div className="rounded-md bg-[#f3f3f1] p-1.5 sm:rounded-lg sm:p-2">
+        <div className="ymg-orbit-stat rounded-md bg-[#f3f3f1] p-1.5 sm:rounded-lg sm:p-2">
           <BarChart3 className="h-2.5 w-2.5 text-[#3a3d42] sm:h-4 sm:w-4" strokeWidth={1.8} aria-hidden="true" />
-          <p className="mt-1 text-[0.65rem] font-bold text-[#3a3d42] sm:mt-1.5 sm:text-base">86</p>
+          <p className="ymg-orbit-gold-text mt-1 text-[0.65rem] font-bold text-[#3a3d42] sm:mt-1.5 sm:text-base">86</p>
           <p className="text-[0.4rem] text-[#8a8c8e] sm:text-[0.6rem]">Qualified Cases</p>
         </div>
       </div>
@@ -289,15 +289,15 @@ function LeadsOverviewCard() {
   }
 
   return (
-    <div className="w-20 rounded-lg border border-[#eadfca] bg-white p-1.5 text-left shadow-[0_16px_34px_rgba(73,59,33,0.16)] sm:w-52 sm:rounded-2xl sm:p-4 lg:w-60">
-      <p className="text-[0.5rem] font-semibold text-[#3a3d42] sm:text-sm">Leads Overview</p>
+    <div className="ymg-orbit-card w-20 rounded-lg border border-[#eadfca] bg-white p-1.5 text-left shadow-[0_16px_34px_rgba(73,59,33,0.16)] sm:w-52 sm:rounded-2xl sm:p-4 lg:w-60">
+      <p className="ymg-orbit-card-title text-[0.5rem] font-semibold text-[#3a3d42] sm:text-sm">Leads Overview</p>
       <div className="mt-1.5 flex items-center gap-2 sm:mt-3 sm:gap-4">
         <div
           className="relative h-8 w-8 shrink-0 rounded-full sm:h-20 sm:w-20"
           style={{ background: `conic-gradient(${stops.join(", ")})` }}
           aria-hidden="true"
         >
-          <div className="absolute inset-[22%] rounded-full bg-white" />
+          <div className="ymg-orbit-donut-hole absolute inset-[22%] rounded-full bg-white" />
         </div>
         <ul className="hidden flex-col gap-1.5 sm:flex">
           {LEADS_BREAKDOWN.map((slice) => (
@@ -321,19 +321,19 @@ function LeadsOverviewCard() {
 
 function MegaphoneCard() {
   return (
-    <div className="w-20 rounded-lg border border-[#eadfca] bg-white p-1.5 text-left shadow-[0_16px_34px_rgba(73,59,33,0.16)] sm:w-52 sm:rounded-2xl sm:p-4 lg:w-60">
+    <div className="ymg-orbit-card w-20 rounded-lg border border-[#eadfca] bg-white p-1.5 text-left shadow-[0_16px_34px_rgba(73,59,33,0.16)] sm:w-52 sm:rounded-2xl sm:p-4 lg:w-60">
       <div className="flex items-start gap-1.5 sm:gap-3">
-        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-lg bg-[#d9ae5d] sm:h-10 sm:w-10 sm:rounded-xl">
+        <span className="ymg-orbit-gold-badge flex h-5 w-5 shrink-0 items-center justify-center rounded-lg bg-[#d9ae5d] sm:h-10 sm:w-10 sm:rounded-xl">
           <Megaphone className="h-3 w-3 text-white sm:h-5 sm:w-5" strokeWidth={1.8} aria-hidden="true" />
         </span>
         <div className="flex flex-1 flex-col gap-1 pt-0.5 sm:gap-1.5 sm:pt-1">
-          <span className="h-1 w-full rounded-full bg-[#ece9e2] sm:h-1.5" />
-          <span className="h-1 w-4/5 rounded-full bg-[#ece9e2] sm:h-1.5" />
+          <span className="ymg-orbit-copy-line h-1 w-full rounded-full bg-[#ece9e2] sm:h-1.5" />
+          <span className="ymg-orbit-copy-line h-1 w-4/5 rounded-full bg-[#ece9e2] sm:h-1.5" />
         </div>
       </div>
-      <div className="mt-1.5 flex items-center justify-between rounded-md bg-[#fbf4e4] px-1.5 py-1 sm:mt-3 sm:rounded-lg sm:px-2.5 sm:py-2">
+      <div className="ymg-orbit-outreach mt-1.5 flex items-center justify-between rounded-md bg-[#fbf4e4] px-1.5 py-1 sm:mt-3 sm:rounded-lg sm:px-2.5 sm:py-2">
         <span className="text-[0.4rem] font-semibold text-[#3a3d42] sm:text-[0.68rem]">Outreach Sent</span>
-        <span className="flex h-3.5 w-3.5 items-center justify-center rounded sm:h-5 sm:w-5 sm:rounded-md bg-[#d9ae5d]">
+        <span className="ymg-orbit-gold-badge flex h-3.5 w-3.5 items-center justify-center rounded sm:h-5 sm:w-5 sm:rounded-md bg-[#d9ae5d]">
           <CheckCheck className="h-2 w-2 text-white sm:h-3 sm:w-3" strokeWidth={2.5} aria-hidden="true" />
         </span>
       </div>
@@ -379,7 +379,7 @@ function Badge3D({ glyph, tone, label }: { glyph: BadgeGlyph; tone: "dark" | "li
 
   return (
     <div
-      className={`relative flex items-center justify-center overflow-hidden rounded-[28%] ${BADGE_SIZE_CLASS[glyph]} ${
+      className={`ymg-orbit-badge relative flex items-center justify-center overflow-hidden rounded-[28%] ${BADGE_SIZE_CLASS[glyph]} ${
         isDark
           ? "bg-gradient-to-b from-[#4a4d52] to-[#1f2125] shadow-[0_12px_26px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.18),inset_0_-3px_6px_rgba(0,0,0,0.45)]"
           : "bg-gradient-to-b from-[#fdf2da] to-[#ead2a3] shadow-[0_12px_26px_rgba(168,129,62,0.3),inset_0_1px_1px_rgba(255,255,255,0.7),inset_0_-3px_6px_rgba(168,129,62,0.3)]"
@@ -527,7 +527,7 @@ function OrbitItemView({ item, index }: { item: OrbitItem; index: number }) {
 
 export default function HeroOrbitAnimation({ className = "" }: { className?: string }) {
   return (
-    <div className={`relative aspect-square w-full ${className}`}>
+    <div className={`ymg-hero-orbit relative aspect-square w-full ${className}`}>
       <OrbitRings />
       <CenterIcon />
       {orbitItems.map((item, index) => (

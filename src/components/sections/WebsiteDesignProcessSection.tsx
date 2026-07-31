@@ -52,8 +52,8 @@ export default function WebsiteDesignProcessSection() {
 
   return (
     <section className="relative isolate overflow-hidden bg-[#FFF5E0] px-5 pb-20 pt-16 text-[#424242] sm:px-10 sm:pb-24 sm:pt-20 lg:px-16 lg:pb-[112px] lg:pt-[104px]">
-      <div className="pointer-events-none absolute right-[6%] top-[-8px] h-[138px] w-[138px] rounded-full bg-[url('/images/big_flowers.png')] bg-contain bg-center bg-no-repeat opacity-[0.035]" />
-      <div className="pointer-events-none absolute right-[13%] top-[122px] h-[50px] w-[50px] rounded-full bg-[url('/images/small_flowers.png')] bg-contain bg-center bg-no-repeat opacity-[0.04]" />
+      <div className="pointer-events-none absolute right-[6%] top-[-8px] h-[138px] w-[138px] rounded-full bg-[url('/images/big_flowers.webp')] bg-contain bg-center bg-no-repeat opacity-[0.035]" />
+      <div className="pointer-events-none absolute right-[13%] top-[122px] h-[50px] w-[50px] rounded-full bg-[url('/images/small_flowers.webp')] bg-contain bg-center bg-no-repeat opacity-[0.04]" />
 
       <div className="relative z-10 mx-auto max-w-[1160px]">
         <motion.h2

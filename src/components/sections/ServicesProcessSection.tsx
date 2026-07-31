@@ -72,7 +72,7 @@ const steps = [
     },
     // Compass bearing pointing back toward the core, used to face the node's
     // coloured arc inward (toward the connector).
-    inwardBearing: (Math.atan2(CORE.x - nx, -(CORE.y - ny)) * 180) / Math.PI,
+    inwardBearing: Number((((Math.atan2(CORE.x - nx, -(CORE.y - ny)) * 180) / Math.PI).toFixed(4))),
   };
 });
 
@@ -241,10 +241,10 @@ export default function ServicesProcessSection() {
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto hidden w-full md:flex md:max-w-[700px] md:flex-col md:pt-28 md:pb-8 lg:hidden">
+      <div className="relative z-10 mx-auto hidden w-full md:flex md:max-w-[900px] md:flex-col md:pt-28 md:pb-8 lg:hidden">
         <h2 className="process-title w-full text-center font-heading text-[clamp(2.25rem,5.2vw,3.4rem)] font-normal leading-[1.1] tracking-[0] text-[#EBC982]">
-          From First Contact
-          <span className="block">to Signed Retainer</span>
+          From First Contact{" "}
+          <span className="md:inline">to Signed Retainer</span>
         </h2>
 
         <div className="relative mx-auto mt-12 aspect-[900/590] w-full shrink-0">
@@ -334,9 +334,9 @@ export default function ServicesProcessSection() {
         </div>
       </div>
       <div className="relative z-10 mx-auto hidden min-h-[680px] w-full max-w-[1180px] items-center py-16 lg:flex">
-        <h2 className="absolute left-1/2 top-[12%] w-full max-w-[520px] -translate-x-1/2 text-center font-heading text-[clamp(1.65rem,2.35vw,2.3rem)] font-normal leading-[1.08] tracking-[0] text-[#EBC982]">
-          From First Contact
-          <span className="block">to Signed Retainer</span>
+        <h2 className="absolute left-1/2 top-[12%] w-full max-w-[820px] -translate-x-1/2 text-center font-heading text-[clamp(1.65rem,2.35vw,2.3rem)] font-normal leading-[1.08] tracking-[0] text-[#EBC982]">
+          From First Contact{" "}
+          <span className="inline">to Signed Retainer</span>
         </h2>
 
         <div className="relative mx-auto aspect-[5/3] w-full max-w-[800px]">

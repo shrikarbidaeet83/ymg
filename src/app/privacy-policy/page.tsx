@@ -1,9 +1,9 @@
 export default function PrivacyPolicyPage() {
   return (
     <main className="min-h-screen bg-[#FFF5E0]">
-      <section className="ymg-section-padding flex min-h-[380px] items-center justify-center pt-[128px] text-center text-[#3d4145] lg:min-h-[430px] lg:pt-[150px]">
+      <section className="ymg-section-padding-x flex min-h-[100svh] items-center justify-center pb-[60px] pt-[128px] text-center text-[#3d4145] lg:pt-[150px]">
         <div className="mx-auto max-w-4xl">
-          <h1 className="font-heading text-[clamp(3.4rem,8vw,7rem)] font-normal leading-[0.98] tracking-[0] text-[#3d4145]">
+          <h1 className="ymg-standard-hero-title text-[#3d4145]">
             Privacy Policy
           </h1>
           <p className="mt-8 text-[clamp(1.4rem,2.5vw,2rem)] font-semibold leading-tight text-[#3d4145]">
@@ -18,16 +18,16 @@ export default function PrivacyPolicyPage() {
       </section>
 
       <section className="bg-[#FFF5E0] text-[#3d4145]">
-        <div className="ymg-section-padding-x bg-[#dfbd78] py-4">
+        <div className="ymg-section-padding-x bg-[#dfbd78] py-4 dark:border-y dark:border-[#D8B26B]/35 dark:bg-[#1F1F1F]">
           <div className="mx-auto max-w-[1120px]">
-            <p className="font-heading text-[clamp(1.55rem,3vw,2.55rem)] font-normal leading-tight tracking-[0] text-[#3d4145]">
+            <p className="font-heading text-[clamp(1.55rem,3vw,2.55rem)] font-normal leading-tight tracking-[0] text-[#3d4145] dark:text-[#D8B26B]">
               Last Updated: April 2026
             </p>
           </div>
         </div>
 
         <div className="ymg-section-padding mx-auto max-w-[1120px]">
-          <article className="space-y-10">
+          <div className="space-y-10">
             <section>
               <h2 className="font-heading text-[clamp(1.85rem,3.2vw,2.7rem)] font-normal leading-tight tracking-[0] text-[#3d4145]">
                 Overview
@@ -179,7 +179,7 @@ export default function PrivacyPolicyPage() {
                 and acknowledge reading it.
               </p>
             </section>
-          </article>
+          </div>
         </div>
       </section>
     </main>

@@ -12,21 +12,6 @@ export default function AiSearchIntroSection() {
 
   return (
     <section className="relative isolate overflow-hidden bg-[#404040] px-5 py-[64px] text-[#d9ae5d] sm:px-10 sm:py-[82px] lg:px-16 lg:py-[72px]">
-      <Image
-        src="/images/big_flowers.png"
-        alt=""
-        width={190}
-        height={190}
-        className="pointer-events-none absolute right-[7%] top-[10px] z-0 hidden w-[96px] opacity-[0.05] sm:block"
-      />
-      <Image
-        src="/images/small_flowers.png"
-        alt=""
-        width={125}
-        height={125}
-        className="pointer-events-none absolute right-[16%] top-[34px] z-0 hidden w-[30px] opacity-[0.045] lg:block"
-      />
-
       <div className="relative z-10 mx-auto grid w-full max-w-[1040px] items-center gap-12 lg:grid-cols-[minmax(0,1fr)_440px] lg:gap-[62px]">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -59,6 +44,13 @@ export default function AiSearchIntroSection() {
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="relative mx-auto h-[330px] w-full max-w-[440px] sm:h-[370px]"
         >
+          <Image
+            src="/flowers/vcardBG.svg"
+            alt=""
+            width={760}
+            height={760}
+            className="pointer-events-none absolute left-1/2 top-[-112px] z-0 w-[380px] -translate-x-1/2 translate-x-[10%] translate-y-[23%] sm:top-[-132px] sm:w-[460px]"
+          />
           <Image
             src="/laptop.svg"
             alt="Laptop displaying an AI legal search recommendation"

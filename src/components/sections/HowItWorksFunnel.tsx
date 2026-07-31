@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import Image from "next/image";
 import {
   BarChart3,
   Bell,
@@ -202,7 +203,8 @@ export default function HowItWorksFunnel() {
   }, [reduceMotion, started]);
 
   return (
-    <section ref={sectionRef} className="ymg-section-padding relative isolate overflow-hidden bg-[#404040] text-[#f2d086]">
+    <section ref={sectionRef} className="ymg-section-padding relative isolate overflow-hidden bg-[#404040] text-[#f2d086] dark:bg-[#191917]">
+      <div aria-hidden="true" className="ymg-radial-classic pointer-events-none absolute left-1/2 top-1/2 z-0 h-[936px] w-[1536px] max-w-none -translate-x-1/2 -translate-y-1/2" />
       <div className="relative z-10 mx-auto grid max-w-[1088px] gap-10 lg:grid-cols-[318px_170px_1px_minmax(390px,1fr)] lg:gap-x-[54px]">
         <div className="relative order-2 mx-auto min-h-[720px] w-full max-w-[318px] lg:order-none lg:min-h-[670px]">
           <AnimatePresence initial={false}>
@@ -276,7 +278,7 @@ export default function HowItWorksFunnel() {
               exit={{ rotateY: 90, rotateZ: 2, scale: 0.96 }}
               transition={{ ...flipTransition, duration: 0.42 }}
               style={{ transformPerspective: 1200, backfaceVisibility: "hidden" }}
-              className="absolute left-1/2 top-0 z-30 h-[225px] w-[290px] -translate-x-1/2 rounded-[13px] bg-[#5b5b5b] px-[27px] py-[18px] text-white shadow-[0_16px_34px_rgba(0,0,0,0.14)] lg:left-0 lg:translate-x-0"
+              className="absolute left-1/2 top-0 z-30 h-[225px] w-[290px] -translate-x-1/2 rounded-[13px] border border-transparent bg-[#5b5b5b] px-[27px] py-[18px] text-white shadow-[0_16px_34px_rgba(0,0,0,0.14)] dark:border-[#D8B26B] dark:bg-[#191917] lg:left-0 lg:translate-x-0"
             >
               <p className="font-sans text-[0.78rem] font-semibold text-[#f2d086]">New Qualified Lead</p>
               <div className="absolute right-[16px] top-[-16px] flex h-[50px] w-[50px] items-center justify-center rounded-full border-2 border-[#e1b866] bg-[#FFF5E0] text-[#3f3f3f] shadow-[0_8px_15px_rgba(0,0,0,0.2)]">
@@ -311,7 +313,7 @@ export default function HowItWorksFunnel() {
               exit={{ rotateY: -90, rotateZ: -2, scale: 0.97 }}
               transition={flipTransition}
               style={{ transformPerspective: 1200, backfaceVisibility: "hidden" }}
-              className="absolute left-1/2 top-[300px] z-10 h-[393px] w-[290px] -translate-x-1/2 overflow-hidden rounded-[13px] bg-[#5b5b5b] lg:left-0 lg:top-[310px] lg:translate-x-0"
+              className="absolute left-1/2 top-[300px] z-10 h-[393px] w-[290px] -translate-x-1/2 overflow-hidden rounded-[13px] border border-transparent bg-[#5b5b5b] dark:border-[#D8B26B] dark:bg-[#191917] lg:left-0 lg:top-[310px] lg:translate-x-0"
             >
               <div className="relative flex h-full flex-col items-center gap-1 pt-[62px]">
                 <motion.h3
@@ -330,7 +332,7 @@ export default function HowItWorksFunnel() {
                       initial={false}
                       animate={showStackCards ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: -10, scale: 0.96 }}
                       transition={{ duration: showStackCards ? 0.65 : 0.28, delay: showStackCards ? (stackActive.stack.length - 1 - index) * 0.32 : 0, ease: [0.22, 1, 0.36, 1] }}
-                      className="relative z-10 flex h-[58px] shrink-0 flex-col items-center justify-center text-[#34383d] drop-shadow-[0_5px_8px_rgba(0,0,0,0.12)]"
+                      className="relative z-10 flex h-[58px] shrink-0 flex-col items-center justify-center text-[#34383d] drop-shadow-[0_5px_8px_rgba(0,0,0,0.12)] dark:text-[#D8B26B]"
                       style={{ width: stackWidths[index] }}
                     >
                       <svg viewBox="0 0 250 60" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" aria-hidden="true">
@@ -341,7 +343,7 @@ export default function HowItWorksFunnel() {
                             <stop offset="1" stopColor="#D8A94F" />
                           </linearGradient>
                         </defs>
-                        <path d="M12 1H238C244 1 247 6 245 12L224 51C222 56 218 59 212 59H38C32 59 28 56 26 51L5 12C3 6 6 1 12 1Z" fill={`url(#stack-card-${stackIndex}-${index})`} stroke="rgba(255,255,255,0.82)" strokeWidth="1.2" />
+                        <path className="dark:fill-[#191917] dark:stroke-[#D8B26B]" d="M12 1H238C244 1 247 6 245 12L224 51C222 56 218 59 212 59H38C32 59 28 56 26 51L5 12C3 6 6 1 12 1Z" fill={`url(#stack-card-${stackIndex}-${index})`} stroke="rgba(255,255,255,0.82)" strokeWidth="1.2" />
                       </svg>
                       <StackIcon size={17} strokeWidth={1.8} className="relative z-10" />
                       <span className="relative z-10 mt-0.5 text-[0.68rem] font-medium leading-none">{label}</span>
@@ -419,7 +421,7 @@ export default function HowItWorksFunnel() {
           <div className="grid grid-cols-2 gap-0 overflow-visible lg:h-[620px] lg:grid-cols-1 lg:grid-rows-4 lg:overflow-hidden lg:pr-1">
             {active.features.map(({ Icon, title, body }, index) => (
               <div key={title} className={`relative min-h-[132px] px-3 py-4 lg:flex lg:min-h-0 lg:flex-col lg:justify-center lg:px-0 lg:py-3 ${index % 2 === 0 ? "border-r border-[#d8b26b]/25 lg:border-r-0" : ""} ${index < 2 ? "border-b border-[#d8b26b]/20" : ""} ${index === 2 ? "lg:border-b lg:border-[#d8b26b]/20" : ""}`}>
-                <div className="mb-3 flex h-[42px] w-[42px] items-center justify-center rounded-full border-2 border-[#e1b866] bg-[#FFF5E0] text-[#404040] shadow-[0_8px_16px_rgba(0,0,0,0.18)] lg:mb-2.5 lg:h-[42px] lg:w-[42px]">
+                <div className="mb-3 flex h-[42px] w-[42px] items-center justify-center rounded-full border-2 border-[#e1b866] bg-[#FFF5E0] text-[#404040] shadow-[0_8px_16px_rgba(0,0,0,0.18)] dark:bg-[#191917] dark:text-[#D8B26B] lg:mb-2.5 lg:h-[42px] lg:w-[42px]">
                   <Icon size={20} strokeWidth={1.55} />
                 </div>
                 <h3 className="font-sans text-[0.88rem] font-semibold leading-tight text-[#EBC982] lg:text-[0.9rem]">{title}</h3>
@@ -432,6 +434,13 @@ export default function HowItWorksFunnel() {
         <div className="hidden h-[620px] w-px bg-[#d8b26b]/65 lg:block" />
 
         <div className="relative order-1 flex items-center text-center lg:order-none lg:text-left" aria-live="polite">
+          <Image
+            src="/flowers/vcardBG.svg"
+            alt=""
+            width={273}
+            height={196}
+            className="pointer-events-none absolute right-[-96px] top-1/2 z-0 w-[460px] -translate-y-1/2"
+          />
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={`copy-${activeIndex}`}
@@ -439,7 +448,7 @@ export default function HowItWorksFunnel() {
               animate={{ opacity: [0, 0.35, 1] }}
               exit={{ opacity: [1, 0.25, 0] }}
               transition={swapTransition}
-              className="mx-auto max-w-[390px] lg:mx-0 lg:max-w-[420px] lg:pt-[35px]"
+              className="relative z-10 mx-auto max-w-[390px] lg:mx-0 lg:max-w-[420px] lg:pt-[35px]"
             >
               <p className="border-b border-[#d8b26b]/15 pb-[13px] font-sans text-[1.28rem] font-normal leading-tight text-[#f2d086] lg:text-[1.38rem]">{active.eyebrow}</p>
               <h2 className="border-b border-[#d8b26b]/15 py-[15px] font-heading text-[clamp(2.25rem,7vw,2.65rem)] font-normal leading-[1.06] tracking-[0] text-[#EBC982]">{active.title}</h2>

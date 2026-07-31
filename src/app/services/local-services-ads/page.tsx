@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import { MobileProofScroller, ProofBar } from "@/components/sections/ProofHighlights";
+import { ServiceHeroFlowers, ServiceHeroProof } from "@/components/sections/ProofHighlights";
 import LocalServicesAdsIntroSection from "@/components/sections/LocalServicesAdsIntroSection";
 import LocalServicesAdsMatterSection from "@/components/sections/LocalServicesAdsMatterSection";
 import LocalServicesAdsManageSection from "@/components/sections/LocalServicesAdsManageSection";
@@ -19,79 +18,41 @@ export const metadata: Metadata = {
 export default function LocalServicesAdsPage() {
   return (
     <main className="min-h-screen bg-[#FFF5E0] text-[#424242]">
-      <section className="relative isolate min-h-screen overflow-hidden px-5 pb-7 pt-[126px] sm:px-10 sm:pt-[136px] lg:min-h-[604px] lg:px-16 lg:pt-[139px]">
-        <Image
-          src="/flowers/half-circleBG.svg"
-          alt=""
-          width={1180}
-          height={848}
-          priority
-          className="pointer-events-none absolute bottom-[104px] left-[7%] z-0 w-[150px] opacity-[0.22] mix-blend-multiply sm:w-[180px] lg:left-[14%] lg:w-[188px]"
-        />
-        <Image
-          src="/images/big_flowers.png"
-          alt=""
-          width={190}
-          height={190}
-          priority
-          className="pointer-events-none absolute right-[7.5%] top-[258px] z-0 w-[88px] opacity-[0.07] sm:w-[104px] lg:right-[8%] lg:w-[96px]"
-        />
-        <Image
-          src="/images/small_flowers.png"
-          alt=""
-          width={125}
-          height={125}
-          priority
-          className="pointer-events-none absolute right-[3.2%] top-[312px] z-0 w-[34px] opacity-[0.08] lg:right-[2.2%] lg:w-[36px]"
-        />
-        <Image
-          src="/images/small_flowers.png"
-          alt=""
-          width={125}
-          height={125}
-          priority
-          className="pointer-events-none absolute right-[18.5%] top-[292px] z-0 hidden w-[34px] opacity-[0.065] lg:block"
-        />
+      <section className="ymg-standard-hero relative isolate overflow-hidden px-5 sm:px-10 lg:px-16">
+        <ServiceHeroFlowers />
 
         <div className="relative z-10 mx-auto flex w-full max-w-[1014px] flex-col items-center">
-          <div className="mx-auto w-full max-w-[670px] text-center">
-            <p className="text-[0.8rem] font-normal uppercase leading-none tracking-[0] text-[#444444] sm:text-[0.98rem]">
+          <div className="ymg-standard-hero-copy">
+            <p className="ymg-standard-hero-eyebrow text-[#444444]">
               Local Services Ads (LSA) For Law Firms
             </p>
-            <h1 className="mt-[22px] font-heading text-[2rem] font-bold leading-[1.3] tracking-[0] text-[#424242] sm:text-[2.4rem] lg:text-[2.08rem]">
+            <h1 className="ymg-standard-hero-title text-[#424242]">
               Be the First Law Firm
               <span className="mt-2 block">Clients Call.</span>
             </h1>
-            <p className="mx-auto mt-[18px] max-w-[540px] text-[0.78rem] leading-[1.35] text-[#4c4c4c] sm:text-[0.9rem] lg:text-[0.82rem]">
+            <p className="ymg-standard-hero-body text-[#4c4c4c]">
               Dominate Google&apos;s pay-per-lead Local Services Ads so your firm
               appears first when prospects are actively searching for legal
               representation and ready to hire.
             </p>
 
-            <div className="mt-[30px] flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-[18px]">
+            <div className="ymg-standard-hero-actions flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-[18px]">
               <Link
-                href="/contact"
+                href="/contact#booking"
                 className="inline-flex h-[52px] w-full max-w-[260px] items-center justify-center rounded-[4px] bg-[#d9ae5d] px-8 text-center text-sm font-bold leading-tight text-[#2e3032] shadow-[0_12px_28px_rgba(168,129,62,0.22)] transition-colors hover:bg-[#c89f4e] sm:w-[189px]"
               >
                 Book a Strategy Call
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex h-[52px] w-full max-w-[260px] items-center justify-center rounded-[4px] border border-[#dfbd78] bg-[#fff6e5]/40 px-8 text-center text-sm font-semibold leading-tight text-[#d3a65a] transition-colors hover:bg-[#fff6e5]/70 sm:w-[245px]"
+                className="inline-flex h-[52px] w-full max-w-[260px] items-center justify-center rounded-[4px] border border-[#dfbd78] bg-transparent px-8 text-center text-sm font-semibold leading-tight text-[#d3a65a] transition-colors hover:bg-[#d9ae5d]/10 sm:w-[245px]"
               >
                 Get a Free LSA Audit
               </Link>
             </div>
           </div>
 
-          <div className="w-full pt-[40px] lg:pt-[74px]">
-            <div className="mx-auto w-full max-w-[900px] lg:hidden">
-              <MobileProofScroller />
-            </div>
-            <div className="mx-auto hidden w-full max-w-[900px] lg:block">
-              <ProofBar className="ymg-proof-bar" />
-            </div>
-          </div>
+          <ServiceHeroProof />
         </div>
       </section>
       <LocalServicesAdsIntroSection />

@@ -90,21 +90,21 @@ export default function SeoProcessSection() {
   return (
     <section className="relative isolate overflow-hidden bg-[#404040] px-5 py-[62px] text-[#d9ae5d] sm:px-10 sm:py-[76px] lg:px-16 lg:py-[58px]">
       <Image
-        src="/images/big_flowers.png"
+        src="/images/big_flowers.webp"
         alt=""
         width={190}
         height={190}
         className="pointer-events-none absolute right-[7%] top-[8px] z-0 hidden w-[82px] opacity-[0.05] sm:block lg:w-[96px]"
       />
       <Image
-        src="/images/small_flowers.png"
+        src="/images/small_flowers.webp"
         alt=""
         width={125}
         height={125}
         className="pointer-events-none absolute right-[3%] top-[62px] z-0 hidden w-[30px] opacity-[0.05] lg:block"
       />
       <Image
-        src="/images/small_flowers.png"
+        src="/images/small_flowers.webp"
         alt=""
         width={125}
         height={125}
@@ -128,7 +128,7 @@ export default function SeoProcessSection() {
             onScroll={(event) => setActiveIndex(getClosestCardIndex(event.currentTarget))}
             className="flex w-full max-w-full touch-pan-x snap-x snap-mandatory scroll-smooth gap-4 overflow-x-auto overscroll-x-contain px-5 pb-3 pt-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:px-8"
           >
-            {processSteps.map(({ title, Icon, iconBg, iconColor }, index) => (
+            {processSteps.map(({ title, Icon, iconColor }, index) => (
               <motion.article
                 key={title}
                 variants={processCard}
@@ -140,7 +140,7 @@ export default function SeoProcessSection() {
                 <span className="absolute -top-[17px] flex h-[34px] w-[34px] items-center justify-center rounded-full bg-[#dfb761] text-[0.68rem] font-semibold text-[#4b463b] shadow-[0_4px_10px_rgba(0,0,0,0.15)]">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <span className={`flex h-[48px] w-[48px] items-center justify-center rounded-[7px] border border-[#dfbd78]/70 shadow-[0_5px_10px_rgba(91,69,34,0.13)] ${iconBg}`}>
+                <span className="flex h-[48px] w-[48px] items-center justify-center rounded-[7px] border border-[#dfbd78]/70 bg-transparent shadow-none">
                   <Icon className={`h-[24px] w-[24px] ${iconColor}`} strokeWidth={1.65} />
                 </span>
                 <h3 className="mt-5 max-w-[155px] text-[0.86rem] font-medium leading-[1.3] text-[#4b4b4b]">
@@ -165,7 +165,7 @@ export default function SeoProcessSection() {
           viewport={{ once: true, amount: 0.35 }}
           className="mx-auto mt-[52px] hidden max-w-[840px] grid-cols-7 gap-[20px] lg:grid"
         >
-          {processSteps.map(({ title, Icon, iconBg, iconColor }, index) => (
+          {processSteps.map(({ title, Icon, iconColor }, index) => (
             <motion.article
               key={title}
               variants={processCard}
@@ -174,7 +174,7 @@ export default function SeoProcessSection() {
               <span className="absolute -top-[17px] flex h-[34px] w-[34px] items-center justify-center rounded-full bg-[#dfb761] text-[0.62rem] font-semibold text-[#4b463b] shadow-[0_4px_10px_rgba(0,0,0,0.15)]">
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <span className={`flex h-[34px] w-[34px] items-center justify-center rounded-[5px] border border-[#dfbd78]/70 shadow-[0_4px_8px_rgba(91,69,34,0.13)] ${iconBg}`}>
+              <span className="flex h-[34px] w-[34px] items-center justify-center rounded-[5px] border border-[#dfbd78]/70 bg-transparent shadow-none">
                 <Icon className={`h-[18px] w-[18px] ${iconColor}`} strokeWidth={1.65} />
               </span>
               <h3 className="mt-4 text-[0.66rem] font-medium leading-[1.25] text-[#4b4b4b]">

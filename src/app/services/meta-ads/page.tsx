@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { MobileProofScroller, ProofBar } from "@/components/sections/ProofHighlights";
+import { ServiceHeroFlowers, ServiceHeroProof } from "@/components/sections/ProofHighlights";
 import ServiceFaqSection from "@/components/sections/ServiceFaqSection";
 import TestimonialContactSection from "@/components/sections/TestimonialContactSection";
+import MotionReveal from "@/components/ui/MotionReveal";
 import {
   Bot,
   Bike,
@@ -191,7 +192,7 @@ function MetaMatterCard({
   const { title, body, Icon } = item;
 
   return (
-    <article className="relative flex min-h-[176px] flex-col items-center text-center">
+    <div className="relative flex min-h-[176px] flex-col items-center text-center">
       <div className="flex h-[58px] w-[58px] items-center justify-center rounded-[5px] border border-[#d9ae5d] text-[#d9ae5d] shadow-[0_6px_14px_rgba(0,0,0,0.16)]">
         <Icon className="h-[24px] w-[24px]" strokeWidth={1.6} />
       </div>
@@ -204,7 +205,7 @@ function MetaMatterCard({
       {index < metaMatterItems.length - 1 && (
         <span className="absolute right-[-14%] top-[66px] hidden h-[66px] w-px bg-white/18 lg:block" />
       )}
-    </article>
+    </div>
   );
 }
 
@@ -217,8 +218,8 @@ function DeliverCard({
 
   return (
     <article className="flex min-h-[220px] flex-col items-center rounded-[5px] border border-[#dfbd78]/75 bg-white px-6 pb-7 pt-7 text-center shadow-[0_10px_22px_rgba(72,55,28,0.16)] transition-transform duration-200 hover:-translate-y-1">
-      <div className={`flex h-[52px] w-[52px] items-center justify-center rounded-[5px] border border-[#dfbd78]/55 ${bg} shadow-[0_5px_10px_rgba(0,0,0,0.12)]`}>
-        <Icon className={`h-[26px] w-[26px] ${color}`} strokeWidth={1.45} />
+      <div className={`flex h-[52px] w-[52px] items-center justify-center rounded-[5px] border border-[#dfbd78]/55 ${bg} shadow-[0_5px_10px_rgba(0,0,0,0.12)] dark:bg-transparent dark:shadow-none`}>
+        <Icon className={`h-[26px] w-[26px] ${color} dark:text-[#D8B26B]`} strokeWidth={1.45} />
       </div>
       <h3 className="mt-6 whitespace-pre-line text-[0.82rem] font-semibold leading-[1.18] text-[#343434]">
         {title}
@@ -240,17 +241,17 @@ function CampaignFeature({
   const Icon = feature.Icon as LucideIcon;
 
   return (
-    <article className="ymg-view-reveal-up ymg-campaign-feature-reveal relative flex min-h-[132px] w-[185px] shrink-0 snap-center flex-col items-center justify-center px-4 text-center sm:w-auto">
-      <div className={`flex h-[48px] w-[48px] items-center justify-center rounded-[6px] border border-[#dfbd78]/45 ${feature.bg} shadow-[0_6px_14px_rgba(0,0,0,0.24)]`}>
-        <Icon className={`h-[23px] w-[23px] ${feature.color}`} strokeWidth={1.7} />
+    <div className="ymg-view-reveal-up ymg-campaign-feature-reveal relative flex min-h-[132px] w-[185px] shrink-0 snap-center flex-col items-center justify-center px-4 text-center sm:w-auto">
+      <div className={`flex h-[48px] w-[48px] items-center justify-center rounded-[6px] border border-[#dfbd78]/45 ${feature.bg} shadow-[0_6px_14px_rgba(0,0,0,0.24)] dark:bg-transparent dark:shadow-none`}>
+        <Icon className={`h-[23px] w-[23px] ${feature.color} dark:text-[#D8B26B]`} strokeWidth={1.7} />
       </div>
-      <p className="mt-5 whitespace-pre-line text-[0.9rem] font-bold leading-[1.18] text-[#d9ae5d]">
+      <div className="mt-5 whitespace-pre-line text-[0.9rem] font-bold leading-[1.18] text-[#D8B26B]">
         {feature.label}
-      </p>
+      </div>
       {index % 5 !== 4 && (
         <span className="absolute right-0 top-1/2 hidden h-[76px] w-px -translate-y-1/2 bg-white/18 lg:block" />
       )}
-    </article>
+    </div>
   );
 }
 
@@ -264,7 +265,7 @@ function MetaProcessStep({
   const { title, body, Icon } = step;
 
   return (
-    <article
+    <div
       className="ymg-view-reveal-up relative flex min-h-[178px] flex-col items-center text-center [animation-delay:var(--reveal-delay)]"
       style={{ "--reveal-delay": `${index * 90}ms` } as React.CSSProperties}
     >
@@ -282,7 +283,7 @@ function MetaProcessStep({
       <p className="mt-5 max-w-[130px] text-[0.74rem] leading-[1.26] text-[#929292]">
         {body}
       </p>
-    </article>
+    </div>
   );
 }
 
@@ -296,20 +297,20 @@ function PracticeAreaFeature({
   const Icon = area.Icon as LucideIcon;
 
   return (
-    <article
+    <div
       className="ymg-view-reveal-up relative flex min-h-[132px] w-[185px] shrink-0 snap-center flex-col items-center justify-center px-4 text-center sm:w-auto [animation-delay:var(--reveal-delay)]"
       style={{ "--reveal-delay": `${index * 65}ms` } as React.CSSProperties}
     >
       <div className={`flex h-[48px] w-[48px] items-center justify-center rounded-[6px] border border-[#dfbd78]/45 ${area.bg} shadow-[0_6px_14px_rgba(0,0,0,0.24)]`}>
         <Icon className={`h-[23px] w-[23px] ${area.color}`} strokeWidth={1.7} />
       </div>
-      <p className="mt-5 whitespace-pre-line text-[0.94rem] font-bold leading-[1.18] text-[#d9ae5d]">
+      <div className="mt-5 whitespace-pre-line text-[0.94rem] font-bold leading-[1.18] text-[#D8B26B]">
         {area.label}
-      </p>
+      </div>
       {index % 5 !== 4 && (
         <span className="absolute right-0 top-1/2 hidden h-[76px] w-px -translate-y-1/2 bg-white/18 lg:block" />
       )}
-    </article>
+    </div>
   );
 }
 
@@ -343,116 +344,58 @@ function ExpectedResultCard({
 export default function MetaAdsPage() {
   return (
     <main className="min-h-screen bg-[#FFF5E0] text-[#424242]">
-      <section className="relative isolate min-h-screen overflow-hidden px-5 pb-7 pt-[126px] sm:px-10 sm:pt-[136px] lg:min-h-[604px] lg:px-16 lg:pt-[139px]">
-        <Image
-          src="/flowers/half-circleBG.svg"
-          alt=""
-          width={1180}
-          height={848}
-          priority
-          className="pointer-events-none absolute bottom-[100px] left-[7%] z-0 w-[150px] opacity-[0.19] mix-blend-multiply sm:w-[180px] lg:bottom-[100px] lg:left-[14%] lg:w-[188px]"
-        />
-        <Image
-          src="/images/big_flowers.png"
-          alt=""
-          width={190}
-          height={190}
-          priority
-          className="pointer-events-none absolute right-[7.5%] top-[242px] z-0 w-[88px] opacity-[0.07] sm:w-[104px] lg:right-[8%] lg:top-[244px] lg:w-[96px]"
-        />
-        <Image
-          src="/images/small_flowers.png"
-          alt=""
-          width={125}
-          height={125}
-          priority
-          className="pointer-events-none absolute right-[3.2%] top-[302px] z-0 w-[34px] opacity-[0.08] lg:right-[2.2%] lg:top-[304px] lg:w-[36px]"
-        />
-        <Image
-          src="/images/small_flowers.png"
-          alt=""
-          width={125}
-          height={125}
-          priority
-          className="pointer-events-none absolute right-[18.5%] top-[284px] z-0 hidden w-[34px] opacity-[0.065] lg:block"
-        />
-        <Image
-          src="/images/small_flowers.png"
-          alt=""
-          width={125}
-          height={125}
-          priority
-          className="pointer-events-none absolute left-[30%] top-[340px] z-0 hidden w-[30px] opacity-[0.04] lg:block"
-        />
+      <section className="ymg-standard-hero relative isolate overflow-hidden px-5 sm:px-10 lg:px-16">
+        <MotionReveal direction="zoom" duration={1.25} amount={0.05} className="pointer-events-none absolute inset-0 z-0">
+          <div className="relative h-full w-full"><ServiceHeroFlowers /></div>
+        </MotionReveal>
 
         <div className="relative z-10 mx-auto flex w-full max-w-[1110px] flex-col items-center">
-          <div className="mx-auto w-full max-w-[650px] text-center">
-            <p className="text-[0.88rem] font-normal leading-none tracking-[0] text-[#444444] sm:text-[1.05rem]">
+          <MotionReveal direction="soft" duration={0.95} className="ymg-standard-hero-copy">
+            <p className="ymg-standard-hero-eyebrow text-[#444444]">
               Meta (Facebook &amp; Instagram) Ads
             </p>
-            <h1 className="mt-[26px] font-heading text-[2.18rem] font-bold leading-[1.38] tracking-[0] text-[#424242] sm:text-[2.8rem] lg:text-[2.52rem]">
+            <h1 className="ymg-standard-hero-title text-[#424242]">
               Reach the Right People.
               <span className="mt-1 block">Generate More Qualified</span>
               <span className="mt-1 block">Legal Consultations</span>
             </h1>
-            <p className="mx-auto mt-[18px] max-w-[548px] text-[0.92rem] leading-[1.38] text-[#4c4c4c] sm:text-[1.03rem] lg:text-[0.98rem]">
+            <p className="ymg-standard-hero-body text-[#4c4c4c]">
               Use targeted Meta advertising campaigns to connect with
               potential clients, build trust, and generate more consultations
               for motor vehicle accidents, serious injury claims, mass torts,
               and other high-value legal matters.
             </p>
 
-            <div className="mt-[34px] flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-[18px]">
+            <div className="ymg-standard-hero-actions flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-[18px]">
               <Link
-                href="/contact"
+                href="/contact#booking"
                 className="inline-flex h-[52px] w-full max-w-[260px] items-center justify-center rounded-[4px] bg-[#d9ae5d] px-8 text-center text-sm font-bold leading-tight text-[#2e3032] shadow-[0_12px_28px_rgba(168,129,62,0.22)] transition-colors hover:bg-[#c89f4e] sm:w-[222px]"
               >
                 Book a Strategy Call
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex h-[52px] w-full max-w-[292px] items-center justify-center rounded-[4px] border border-[#dfbd78] bg-[#fff6e5]/40 px-8 text-center text-sm font-semibold leading-tight text-[#d3a65a] transition-colors hover:bg-[#fff6e5]/70 sm:w-[260px]"
+                className="inline-flex h-[52px] w-full max-w-[292px] items-center justify-center rounded-[4px] border border-[#dfbd78] bg-transparent px-8 text-center text-sm font-semibold leading-tight text-[#d3a65a] transition-colors hover:bg-[#d9ae5d]/10 sm:w-[260px]"
               >
                 Get a Free Meta Ads Audit
               </Link>
             </div>
-          </div>
+          </MotionReveal>
 
-          <div className="w-full pt-[40px] lg:pt-[70px]">
-            <div className="mx-auto w-full max-w-[900px] lg:hidden">
-              <MobileProofScroller />
-            </div>
-            <div className="mx-auto hidden w-full max-w-[900px] lg:block">
-              <ProofBar className="ymg-proof-bar" />
-            </div>
-          </div>
+          <MotionReveal direction="up" delay={0.24} duration={0.9} className="w-full"><ServiceHeroProof /></MotionReveal>
         </div>
       </section>
 
       <section className="relative isolate overflow-hidden bg-[#404040] px-5 py-16 text-[#d9ae5d] sm:px-10 sm:py-20 lg:px-16 lg:py-[80px]">
         <Image
-          src="/images/big_flowers.png"
+          src="/flowers/vcardBG.svg"
           alt=""
-          width={190}
-          height={190}
-          className="pointer-events-none absolute right-[6%] top-[12px] z-0 h-auto w-[116px] opacity-[0.055]"
-        />
-        <Image
-          src="/images/small_flowers.png"
-          alt=""
-          width={125}
-          height={125}
-          className="pointer-events-none absolute right-[4%] top-[50px] z-0 h-auto w-[36px] opacity-[0.055]"
-        />
-        <Image
-          src="/images/small_flowers.png"
-          alt=""
-          width={125}
-          height={125}
-          className="pointer-events-none absolute right-[15%] top-[116px] z-0 h-auto w-[48px] opacity-[0.055]"
+          width={273}
+          height={196}
+          className="pointer-events-none absolute right-[-110px] top-1/2 z-0 w-[546px] -translate-y-1/2"
         />
 
-        <div className="relative z-10 mx-auto max-w-[980px]">
+        <MotionReveal direction="up" duration={0.92} className="relative z-10 mx-auto max-w-[980px]">
           <div className="mx-auto max-w-[640px] text-center">
             <h2 className="font-heading text-[2.15rem] font-bold leading-tight text-[#d9ae5d] sm:text-[2.65rem] lg:text-[2.5rem]">
               Why Meta Advertising Matters
@@ -469,33 +412,20 @@ export default function MetaAdsPage() {
               <MetaMatterCard key={item.title} item={item} index={index} />
             ))}
           </div>
-        </div>
+        </MotionReveal>
       </section>
 
       <section className="relative isolate overflow-hidden bg-[#FFF5E0] px-5 py-16 text-[#424242] sm:px-10 sm:py-20 lg:px-16 lg:py-[80px]">
+        <div aria-hidden="true" className="ymg-radial-deep pointer-events-none absolute left-1/2 top-1/2 z-0 h-[130%] w-[130%] -translate-x-1/2 -translate-y-1/2" />
         <Image
-          src="/images/big_flowers.png"
+          src="/flowers/vcardBG.svg"
           alt=""
-          width={190}
-          height={190}
-          className="pointer-events-none absolute right-[7%] top-[-10px] z-0 h-auto w-[112px] opacity-[0.04]"
-        />
-        <Image
-          src="/images/small_flowers.png"
-          alt=""
-          width={125}
-          height={125}
-          className="pointer-events-none absolute right-[12%] top-[112px] z-0 h-auto w-[42px] opacity-[0.045]"
-        />
-        <Image
-          src="/images/big_flowers.png"
-          alt=""
-          width={190}
-          height={190}
-          className="pointer-events-none absolute bottom-[-38px] left-[5%] z-0 h-auto w-[88px] opacity-[0.04]"
+          width={273}
+          height={196}
+          className="pointer-events-none absolute right-[-110px] top-1/2 z-0 w-[546px] -translate-y-1/2"
         />
 
-        <div className="relative z-10 mx-auto max-w-[900px]">
+        <MotionReveal direction="right" duration={0.92} className="relative z-10 mx-auto max-w-[900px]">
           <h2 className="text-center font-heading text-[2.1rem] font-bold leading-tight text-[#424242] sm:text-[2.55rem] lg:text-[2.2rem]">
             What We Deliver
           </h2>
@@ -505,64 +435,64 @@ export default function MetaAdsPage() {
               <DeliverCard key={item.title} item={item} />
             ))}
           </div>
-        </div>
+        </MotionReveal>
       </section>
 
       <section className="relative isolate overflow-hidden bg-[#404040] px-5 py-16 text-[#d9ae5d] sm:px-10 sm:py-20 lg:px-16 lg:py-[80px]">
         <Image
-          src="/images/big_flowers.png"
+          src="/images/big_flowers.webp"
           alt=""
           width={190}
           height={190}
           className="pointer-events-none absolute right-[7%] top-[-14px] z-0 h-auto w-[116px] opacity-[0.055]"
         />
         <Image
-          src="/images/small_flowers.png"
+          src="/images/small_flowers.webp"
           alt=""
           width={125}
           height={125}
           className="pointer-events-none absolute right-[3%] top-[26px] z-0 h-auto w-[36px] opacity-[0.055]"
         />
         <Image
-          src="/images/small_flowers.png"
+          src="/images/small_flowers.webp"
           alt=""
           width={125}
           height={125}
           className="pointer-events-none absolute right-[14%] top-[90px] z-0 h-auto w-[48px] opacity-[0.055]"
         />
 
-        <div className="relative z-10 mx-auto max-w-[1120px]">
+        <MotionReveal direction="left" duration={0.92} className="relative z-10 mx-auto max-w-[1120px]">
           <h2 className="ymg-view-reveal-up text-center font-heading text-[2.25rem] font-bold leading-tight text-[#d9ae5d] sm:text-[2.75rem] lg:text-[2.65rem]">
             Campaign Features
           </h2>
 
-          <div className="mt-16 -mx-5 flex snap-x gap-6 overflow-x-auto px-5 pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:-mx-10 sm:px-10 lg:mx-0 lg:mt-[96px] lg:grid lg:grid-cols-5 lg:gap-x-0 lg:gap-y-[72px] lg:overflow-visible lg:px-0 lg:pb-0">
+          <div className="mt-16 -mx-5 flex snap-x gap-6 overflow-x-auto px-5 pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:-mx-10 sm:px-10 lg:relative lg:mx-0 lg:mt-[96px] lg:grid lg:grid-cols-5 lg:gap-x-0 lg:gap-y-[72px] lg:overflow-visible lg:px-0 lg:pb-0 lg:after:absolute lg:after:inset-x-[4%] lg:after:top-1/2 lg:after:h-px lg:after:bg-white/18">
             {campaignFeatures.map((feature, index) => (
               <CampaignFeature key={feature.label} feature={feature} index={index} />
             ))}
           </div>
 
-          <div className="ymg-view-reveal-up mx-auto mt-[34px] hidden h-px w-[96%] bg-white/18 lg:block" />
-        </div>
+        </MotionReveal>
       </section>
 
       <section className="relative isolate overflow-hidden bg-[#FFF5E0] px-5 py-16 text-[#424242] sm:px-10 sm:py-20 lg:px-16 lg:py-[80px]">
+        <div aria-hidden="true" className="ymg-radial-deep pointer-events-none absolute left-1/2 top-1/2 z-0 h-[140%] w-[140%] -translate-x-1/2 -translate-y-1/2" />
         <Image
-          src="/images/big_flowers.png"
+          src="/images/big_flowers.webp"
           alt=""
           width={190}
           height={190}
           className="pointer-events-none absolute right-[7%] top-[-12px] z-0 h-auto w-[116px] opacity-[0.04]"
         />
         <Image
-          src="/images/small_flowers.png"
+          src="/images/small_flowers.webp"
           alt=""
           width={125}
           height={125}
           className="pointer-events-none absolute right-[12%] top-[102px] z-0 h-auto w-[42px] opacity-[0.045]"
         />
 
-        <div className="relative z-10 mx-auto max-w-[1110px]">
+        <MotionReveal direction="up" duration={0.94} className="relative z-10 mx-auto max-w-[1110px]">
           <h2 className="ymg-view-reveal-up text-center font-heading text-[2.05rem] font-bold leading-tight text-[#424242] sm:text-[2.65rem] lg:text-[2.35rem]">
             Our Meta Advertising Process
           </h2>
@@ -572,78 +502,78 @@ export default function MetaAdsPage() {
               <MetaProcessStep key={step.title} step={step} index={index} />
             ))}
           </div>
-        </div>
+        </MotionReveal>
       </section>
 
       <section className="relative isolate overflow-hidden bg-[#404040] px-5 py-16 text-[#d9ae5d] sm:px-10 sm:py-20 lg:px-16 lg:py-[80px]">
         <Image
-          src="/images/big_flowers.png"
+          src="/images/big_flowers.webp"
           alt=""
           width={190}
           height={190}
           className="pointer-events-none absolute right-[7%] top-[-14px] z-0 h-auto w-[126px] opacity-[0.055]"
         />
         <Image
-          src="/images/small_flowers.png"
+          src="/images/small_flowers.webp"
           alt=""
           width={125}
           height={125}
           className="pointer-events-none absolute right-[3%] top-[28px] z-0 h-auto w-[38px] opacity-[0.055]"
         />
         <Image
-          src="/images/small_flowers.png"
+          src="/images/small_flowers.webp"
           alt=""
           width={125}
           height={125}
           className="pointer-events-none absolute right-[13%] top-[116px] z-0 h-auto w-[50px] opacity-[0.055]"
         />
 
-        <div className="relative z-10 mx-auto max-w-[1160px]">
+        <MotionReveal direction="right" duration={0.94} className="relative z-10 mx-auto max-w-[1160px]">
           <h2 className="ymg-view-reveal-up text-center font-heading text-[2.18rem] font-bold leading-tight text-[#d9ae5d] sm:text-[2.85rem] lg:text-[2.7rem]">
             Practice Areas We Help Promote
           </h2>
 
-          <div className="mt-16 -mx-5 flex snap-x gap-6 overflow-x-auto px-5 pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:-mx-10 sm:px-10 lg:mx-0 lg:mt-[96px] lg:grid lg:grid-cols-5 lg:gap-x-0 lg:gap-y-[72px] lg:overflow-visible lg:px-0 lg:pb-0">
+          <div className="mt-16 -mx-5 flex snap-x gap-6 overflow-x-auto px-5 pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:-mx-10 sm:px-10 lg:relative lg:mx-0 lg:mt-[96px] lg:grid lg:grid-cols-5 lg:gap-x-0 lg:gap-y-[72px] lg:overflow-visible lg:px-0 lg:pb-0 lg:after:absolute lg:after:inset-x-[4%] lg:after:top-1/2 lg:after:h-px lg:after:bg-white/18">
             {practiceAreas.map((area, index) => (
               <PracticeAreaFeature key={area.label} area={area} index={index} />
             ))}
           </div>
 
-          <div className="ymg-view-reveal-up mx-auto mt-[34px] hidden h-px w-[96%] bg-white/18 lg:block" />
-        </div>
+        </MotionReveal>
       </section>
 
       <section className="relative isolate overflow-hidden bg-[#FFF5E0] px-5 py-16 text-[#424242] sm:px-10 sm:py-20 lg:px-16 lg:py-[80px]">
+        <div aria-hidden="true" className="ymg-radial-deep pointer-events-none absolute left-1/2 top-1/2 z-0 h-[140%] w-[140%] -translate-x-1/2 -translate-y-1/2" />
         <Image
-          src="/images/big_flowers.png"
+          src="/images/big_flowers.webp"
           alt=""
           width={190}
           height={190}
           className="pointer-events-none absolute right-[5%] top-[-18px] z-0 h-auto w-[118px] opacity-[0.04]"
         />
         <Image
-          src="/images/small_flowers.png"
+          src="/images/small_flowers.webp"
           alt=""
           width={125}
           height={125}
           className="pointer-events-none absolute right-[12%] top-[124px] z-0 h-auto w-[42px] opacity-[0.045]"
         />
         <Image
-          src="/images/big_flowers.png"
+          src="/images/big_flowers.webp"
           alt=""
           width={190}
           height={190}
           className="pointer-events-none absolute bottom-[-34px] left-[-1%] z-0 h-auto w-[132px] opacity-[0.04]"
         />
         <Image
-          src="/images/small_flowers.png"
+          src="/images/small_flowers.webp"
           alt=""
           width={125}
           height={125}
           className="pointer-events-none absolute bottom-[34px] left-[13%] z-0 h-auto w-[42px] opacity-[0.04]"
         />
 
-        <div className="relative z-10 mx-auto max-w-[830px]">
+        <MotionReveal direction="zoom" duration={0.96} className="relative z-10 mx-auto max-w-[830px]">
           <h2 className="ymg-view-reveal-up text-center font-heading text-[2.18rem] font-bold leading-tight text-[#424242] sm:text-[2.75rem] lg:text-[2.62rem]">
             Results You Can Expect
           </h2>
@@ -653,11 +583,11 @@ export default function MetaAdsPage() {
               <ExpectedResultCard key={item.title} item={item} index={index} />
             ))}
           </div>
-        </div>
+        </MotionReveal>
       </section>
 
-      <TestimonialContactSection showTestimonials={false} contactVariant="home" />
-      <ServiceFaqSection />
+      <MotionReveal direction="soft" duration={0.95} amount={0.08}><TestimonialContactSection showTestimonials={false} contactVariant="home" /></MotionReveal>
+      <MotionReveal direction="up" duration={0.9} amount={0.08}><ServiceFaqSection /></MotionReveal>
     </main>
   );
 }

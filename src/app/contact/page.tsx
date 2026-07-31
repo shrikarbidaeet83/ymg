@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { MobileProofScroller, ProofBar } from "@/components/sections/ProofHighlights";
+import LeadConnectorBookingCalendar from "@/components/sections/LeadConnectorBookingCalendar";
 
 const contactItems = [
   { icon: "/contact_icons/phone.png", label: "(424) 447-1147", href: "tel:4244471147" },
@@ -10,7 +12,7 @@ const contactItems = [
 export default function ContactPage() {
   return (
     <main className="min-h-screen bg-[#FFF5E0] pt-20 text-[#3d4145]">
-      <section className="ymg-section-padding relative isolate min-h-[calc(100svh-80px)] overflow-hidden pt-16 sm:pt-20 lg:pt-24 xl:pt-28">
+      <section className="ymg-section-padding-x relative isolate min-h-[calc(100svh-80px)] overflow-hidden pb-[60px] pt-16 sm:pt-20 lg:pt-24 xl:pt-28">
         <Image
           src="/flowers/vcardBG.svg"
           alt=""
@@ -28,18 +30,15 @@ export default function ContactPage() {
           className="pointer-events-none absolute right-[-30px] top-[110px] z-0 w-[150px] sm:w-[220px]"
         />
 
-        <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(360px,470px)] lg:gap-20">
+        <div className="relative z-10 mx-auto grid max-w-[1600px] items-center gap-12 2xl:grid-cols-[minmax(320px,1fr)_minmax(920px,1000px)] 2xl:gap-16">
           <div className="text-center lg:text-left">
-            <p className="text-[1rem] font-medium text-[#3d4145] sm:text-[1.15rem]">
-              Contact Us
-            </p>
+            <p className="text-[1rem] font-medium text-[#3d4145] sm:text-[1.15rem]">Contact Us</p>
             <h1 className="mt-5 max-w-[560px] font-heading text-[clamp(2.5rem,5vw,4.4rem)] font-normal leading-[1.06] tracking-[0] text-[#3d4145] lg:mx-0">
               Let&apos;s Grow
               <span className="block">Your Case Volume</span>
             </h1>
             <p className="mx-auto mt-8 max-w-[420px] text-[1.1rem] leading-[1.35] text-[#3d4145] sm:text-[1.25rem] lg:mx-0">
-              Connect with our experts to generate high-intent leads and convert
-              them into signed cases that drive consistent, scalable growth.
+              Connect with our experts to generate high-intent leads and convert them into signed cases that drive consistent, scalable growth.
             </p>
 
             <div className="relative mt-16 grid grid-cols-2 gap-x-6 gap-y-8 text-center sm:grid-cols-4 lg:max-w-[680px] lg:text-left">
@@ -56,47 +55,23 @@ export default function ContactPage() {
                     <span className="mx-auto flex h-10 w-10 items-center justify-center rounded-[4px] border border-[#b8a57a] text-[#3d4145] lg:mx-0">
                       <Image src={icon} alt="" width={26} height={26} className="h-[22px] w-[22px] object-contain brightness-0" />
                     </span>
-                    <span className="mt-4 block text-[0.8rem] text-[#3d4145]">
-                      {label}
-                    </span>
+                    <span className="mt-4 block text-[0.8rem] text-[#3d4145] dark:text-[#D8B26B]">{label}</span>
                   </>
                 );
 
-                return href ? (
-                  <a key={label} href={href} className="block">
-                    {content}
-                  </a>
-                ) : (
-                  <div key={label}>{content}</div>
-                );
+                return href ? <a key={label} href={href} className="block">{content}</a> : <div key={label}>{content}</div>;
               })}
             </div>
           </div>
 
-          <form className="mx-auto w-full max-w-[470px] rounded-[6px] bg-[#F4EAD7] p-6 text-[#2f3337] sm:p-8">
-            <h2 className="font-heading text-[1.5rem] font-normal leading-tight text-[#3d4145]">
-              Book Your Free Strategy Call
-            </h2>
-            <p className="mt-3 max-w-[300px] text-[0.9rem] leading-[1.35] text-[#3d4145]">
-              Tell us about your firm and we&apos;ll show you how we can help.
-            </p>
-            <div className="mt-6 grid gap-3">
-              <input className="h-12 rounded-[4px] border border-[#b8a57a] bg-transparent px-4 text-[0.88rem] outline-none" placeholder="Full Name" />
-              <input className="h-12 rounded-[4px] border border-[#b8a57a] bg-transparent px-4 text-[0.88rem] outline-none" placeholder="Email" />
-              <input className="h-12 rounded-[4px] border border-[#b8a57a] bg-transparent px-4 text-[0.88rem] outline-none" placeholder="Phone Number" />
-              <select className="h-12 rounded-[4px] border border-[#b8a57a] bg-transparent px-4 text-[0.88rem] text-[#55585a] outline-none" defaultValue="">
-                <option value="" disabled>Practice Area</option>
-                <option>Mass Torts</option>
-                <option>Personal Injury</option>
-                <option>Case Acquisition</option>
-              </select>
-            </div>
-            <button type="button" className="mt-4 h-[52px] w-full rounded-[4px] bg-[#d9ae5d] px-8 text-sm font-bold text-[#2e3032] shadow-[0_12px_28px_rgba(168,129,62,0.22)] transition-colors hover:bg-[#c89f4e]">
-              Book My Free Call
-            </button>
-          </form>
+          <LeadConnectorBookingCalendar />
         </div>
-
+        <div className="relative z-10 mx-auto mt-12 w-full max-w-7xl">
+          <MobileProofScroller />
+          <div className="hidden lg:block">
+            <ProofBar darkGold className="w-full max-w-none" />
+          </div>
+        </div>
       </section>
     </main>
   );

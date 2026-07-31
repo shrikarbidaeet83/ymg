@@ -40,9 +40,9 @@ const sections = [
 export default function TermsPage() {
   return (
     <main className="min-h-screen bg-[#FFF5E0] text-[#3d4145]">
-      <section className="ymg-section-padding flex min-h-[360px] items-center justify-center pt-[126px] text-center lg:min-h-[400px] lg:pt-[145px]">
+      <section className="ymg-section-padding-x flex min-h-[100svh] items-center justify-center pb-[60px] pt-[126px] text-center lg:pt-[145px]">
         <div className="mx-auto max-w-4xl">
-          <h1 className="font-heading text-[clamp(3.1rem,7.2vw,6.4rem)] font-normal leading-none tracking-[0] text-[#3d4145]">
+          <h1 className="ymg-standard-hero-title text-[#3d4145]">
             Terms &amp; Conditions
           </h1>
           <p className="mx-auto mt-8 max-w-[560px] text-[0.95rem] leading-[1.35] text-[#8a8c8e] sm:text-[1.08rem]">
@@ -54,9 +54,9 @@ export default function TermsPage() {
       </section>
 
       <section className="bg-[#FFF5E0]">
-        <div className="ymg-section-padding-x bg-[#dfbd78] py-3">
+        <div className="ymg-section-padding-x bg-[#dfbd78] py-3 dark:border-y dark:border-[#D8B26B]/35 dark:bg-[#1F1F1F]">
           <div className="mx-auto max-w-[1120px]">
-            <h2 className="font-heading text-[clamp(1.35rem,2.4vw,2rem)] font-normal leading-tight tracking-[0]">
+            <h2 className="font-heading text-[clamp(1.35rem,2.4vw,2rem)] font-normal leading-tight tracking-[0] dark:text-[#D8B26B]">
               Effective Date
             </h2>
           </div>
@@ -69,7 +69,7 @@ export default function TermsPage() {
         </div>
 
         <div className="ymg-section-padding mx-auto max-w-[1120px] pt-4">
-          <article className="space-y-8">
+          <div className="space-y-8">
             {sections.map(({ title, body }) => (
               <section key={title}>
                 <h2 className="font-heading text-[clamp(1.45rem,2.6vw,2.1rem)] font-normal leading-tight tracking-[0] text-[#3d4145]">
@@ -97,7 +97,7 @@ export default function TermsPage() {
                 Las Vegas, Nevada
               </p>
             </section>
-          </article>
+          </div>
         </div>
       </section>
     </main>

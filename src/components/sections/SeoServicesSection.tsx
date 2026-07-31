@@ -103,13 +103,13 @@ export default function SeoServicesSection() {
           viewport={{ once: true, amount: 0.25 }}
           className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:mt-[42px] lg:grid-cols-4 lg:gap-x-[24px] lg:gap-y-[22px]"
         >
-          {seoServices.map(({ title, body, Icon, iconBg, iconColor }) => (
+          {seoServices.map(({ title, body, Icon, iconColor }) => (
             <motion.article
               key={title}
               variants={item}
               className="grid min-h-[116px] grid-cols-[42px_minmax(0,1fr)] content-center gap-x-3 rounded-[6px] border border-[#dfbd78] bg-[#fffdfa] px-3 py-4 text-left shadow-[5px_7px_10px_rgba(91,69,34,0.16)] lg:min-h-[94px]"
             >
-              <span className={`row-span-2 flex h-[42px] w-[42px] items-center justify-center rounded-[6px] border border-[#dfbd78]/70 shadow-[0_4px_8px_rgba(91,69,34,0.13)] ${iconBg}`}>
+              <span className="row-span-2 flex h-[42px] w-[42px] items-center justify-center rounded-[6px] border border-[#dfbd78]/70 bg-transparent shadow-none">
                 <Icon className={`h-[21px] w-[21px] ${iconColor}`} strokeWidth={1.65} />
               </span>
               <h3 className="text-[0.74rem] font-semibold leading-tight text-[#3d4145]">

@@ -17,14 +17,14 @@ export default function LocalServicesAdsMatterSection() {
   return (
     <section className="relative isolate overflow-hidden bg-[#FFF5E0] px-5 py-[62px] text-[#3d4145] sm:px-10 sm:py-[78px] lg:px-16 lg:py-[68px]">
       <Image
-        src="/images/big_flowers.png"
+        src="/images/big_flowers.webp"
         alt=""
         width={190}
         height={190}
         className="pointer-events-none absolute bottom-[-42px] left-[5%] z-0 hidden w-[120px] opacity-[0.045] sm:block"
       />
       <Image
-        src="/images/small_flowers.png"
+        src="/images/small_flowers.webp"
         alt=""
         width={125}
         height={125}

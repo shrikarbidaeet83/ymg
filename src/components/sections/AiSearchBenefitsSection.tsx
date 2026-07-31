@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   BarChart3,
   BriefcaseBusiness,
@@ -56,27 +56,12 @@ export default function AiSearchBenefitsSection() {
   return (
     <section className="relative isolate overflow-hidden bg-[#404040] px-5 py-[64px] text-[#d9ae5d] sm:px-10 sm:py-[78px] lg:px-16 lg:py-[68px]">
       <Image
-        src="/images/big_flowers.png"
+        src="/flowers/vcardBG.svg"
         alt=""
-        width={190}
-        height={190}
-        className="pointer-events-none absolute right-[7%] top-[16px] z-0 hidden w-[92px] opacity-[0.05] sm:block"
+        width={520}
+        height={520}
+        className="pointer-events-none absolute right-[-78px] top-[35%] z-0 hidden w-[260px] -translate-y-1/2 lg:right-[10%] lg:block"
       />
-      <Image
-        src="/images/small_flowers.png"
-        alt=""
-        width={125}
-        height={125}
-        className="pointer-events-none absolute right-[16%] top-[32px] z-0 hidden w-[28px] opacity-[0.05] lg:block"
-      />
-      <Image
-        src="/images/small_flowers.png"
-        alt=""
-        width={125}
-        height={125}
-        className="pointer-events-none absolute right-[10%] top-[118px] z-0 hidden w-[34px] opacity-[0.05] lg:block"
-      />
-
       <motion.div
         initial="hidden"
         whileInView="visible"

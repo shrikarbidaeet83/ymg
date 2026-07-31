@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import IncludedServicesCarousel from "@/components/sections/IncludedServicesCarousel";
 import OrganicBenefitStack from "@/components/sections/OrganicBenefitStack";
 import ServiceFaqSection from "@/components/sections/ServiceFaqSection";
-import { MobileProofScroller, ProofBar } from "@/components/sections/ProofHighlights";
+import { ServiceHeroFlowers, ServiceHeroProof } from "@/components/sections/ProofHighlights";
+import MotionReveal from "@/components/ui/MotionReveal";
 import {
   BarChart3,
   BrainCircuit,
@@ -202,115 +202,49 @@ const brandPresenceStats = [
 export default function OrganicSocialMediaPage() {
   return (
     <div className="min-h-screen bg-[#FFF5E0] text-[#424242]">
-      <section className="relative isolate overflow-hidden px-5 pb-7 pt-[126px] sm:px-10 sm:pt-[136px] lg:min-h-[604px] lg:px-16 lg:pt-[139px]">
-        <Image
-          src="/flowers/half-circleBG.svg"
-          alt=""
-          width={1180}
-          height={848}
-          priority
-          className="pointer-events-none absolute bottom-[132px] left-[9%] z-0 w-[148px] opacity-[0.22] mix-blend-multiply sm:w-[180px] lg:bottom-[136px] lg:left-[14%] lg:w-[188px]"
-        />
-        <Image
-          src="/images/big_flowers.png"
-          alt=""
-          width={190}
-          height={190}
-          priority
-          className="pointer-events-none absolute right-[7.5%] top-[252px] z-0 w-[88px] opacity-[0.07] sm:w-[104px] lg:right-[8%] lg:top-[254px] lg:w-[96px]"
-        />
-        <Image
-          src="/images/small_flowers.png"
-          alt=""
-          width={125}
-          height={125}
-          priority
-          className="pointer-events-none absolute right-[3.2%] top-[306px] z-0 w-[34px] opacity-[0.08] lg:right-[2.2%] lg:top-[312px] lg:w-[36px]"
-        />
-        <Image
-          src="/images/small_flowers.png"
-          alt=""
-          width={125}
-          height={125}
-          priority
-          className="pointer-events-none absolute right-[18.5%] top-[290px] z-0 hidden w-[34px] opacity-[0.065] lg:block"
-        />
-        <Image
-          src="/images/small_flowers.png"
-          alt=""
-          width={125}
-          height={125}
-          priority
-          className="pointer-events-none absolute left-[27%] top-[310px] z-0 hidden w-[34px] opacity-[0.045] lg:block"
-        />
+      <section className="ymg-standard-hero relative isolate overflow-hidden px-5 sm:px-10 lg:px-16">
+        <MotionReveal direction="zoom" duration={1.25} amount={0.05} className="pointer-events-none absolute inset-0 z-0">
+          <div className="relative h-full w-full"><ServiceHeroFlowers /></div>
+        </MotionReveal>
 
         <div className="relative z-10 mx-auto flex w-full max-w-[1014px] flex-col items-center">
-          <div className="mx-auto w-full max-w-[620px] text-center">
-            <p className="text-[0.8rem] font-normal uppercase leading-none tracking-[0] text-[#444444] sm:text-[0.98rem]">
+          <MotionReveal direction="soft" duration={0.95} className="ymg-standard-hero-copy">
+            <p className="ymg-standard-hero-eyebrow text-[#444444]">
               Organic Social Media For Law Firms
             </p>
-            <h1 className="mt-[22px] font-heading text-[2rem] font-bold leading-[1.52] tracking-[0] text-[#424242] sm:text-[2.4rem] lg:text-[2.04rem]">
+            <h1 className="ymg-standard-hero-title text-[#424242]">
               Build Trust. Stay Visible. Win
               <span className="block">More Qualified Cases.</span>
             </h1>
-            <p className="mx-auto mt-[14px] max-w-[520px] text-[0.78rem] leading-[1.24] text-[#4c4c4c] sm:text-[0.9rem] lg:text-[0.85rem]">
+            <p className="ymg-standard-hero-body text-[#4c4c4c]">
               Stay top-of-mind with prospective clients and referral partners through
               strategic organic social media marketing. We create consistent, on-brand
               content that strengthens your firm&apos;s credibility, builds lasting
               relationships, and supports long-term case acquisition.
             </p>
 
-            <div className="mt-[30px] flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-[18px]">
+            <div className="ymg-standard-hero-actions flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-[18px]">
               <Link
-                href="/contact"
+                href="/contact#booking"
                 className="inline-flex h-[52px] w-full max-w-[260px] items-center justify-center rounded-[4px] bg-[#d9ae5d] px-8 text-center text-sm font-bold leading-tight text-[#2e3032] shadow-[0_12px_28px_rgba(168,129,62,0.22)] transition-colors hover:bg-[#c89f4e] sm:w-[189px]"
               >
                 Book a Strategy Call
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex h-[52px] w-full max-w-[260px] items-center justify-center rounded-[4px] border border-[#dfbd78] bg-[#fff6e5]/40 px-8 text-center text-sm font-semibold leading-tight text-[#d3a65a] transition-colors hover:bg-[#fff6e5]/70 sm:w-[245px]"
+                className="inline-flex h-[52px] w-full max-w-[260px] items-center justify-center rounded-[4px] border border-[#dfbd78] bg-transparent px-8 text-center text-sm font-semibold leading-tight text-[#d3a65a] transition-colors hover:bg-[#d9ae5d]/10 sm:w-[245px]"
               >
                 Get a Free Social Media Audit
               </Link>
             </div>
-          </div>
+          </MotionReveal>
 
-          <div className="w-full pt-[40px] lg:pt-[82px]">
-            <div className="mx-auto w-full max-w-[900px] lg:hidden">
-              <MobileProofScroller />
-            </div>
-            <div className="mx-auto hidden w-full max-w-[900px] lg:block">
-              <ProofBar className="ymg-proof-bar" />
-            </div>
-          </div>
+          <MotionReveal direction="up" delay={0.24} duration={0.9} className="w-full"><ServiceHeroProof /></MotionReveal>
         </div>
       </section>
 
       <section className="relative isolate overflow-visible bg-[#404040] px-5 py-[62px] text-[#d9ae5d] sm:px-10 sm:py-[78px] lg:overflow-hidden lg:px-16 lg:py-[88px]">
-        <Image
-          src="/images/big_flowers.png"
-          alt=""
-          width={190}
-          height={190}
-          className="pointer-events-none absolute right-[3%] top-[8px] z-0 hidden w-[96px] opacity-[0.05] lg:block"
-        />
-        <Image
-          src="/images/small_flowers.png"
-          alt=""
-          width={125}
-          height={125}
-          className="pointer-events-none absolute right-[8%] top-[110px] z-0 hidden w-[42px] opacity-[0.05] lg:block"
-        />
-        <Image
-          src="/images/small_flowers.png"
-          alt=""
-          width={125}
-          height={125}
-          className="pointer-events-none absolute right-[14%] top-[32px] z-0 hidden w-[30px] opacity-[0.04] lg:block"
-        />
-
-        <div className="relative z-10 mx-auto max-w-[1040px]">
+        <MotionReveal direction="up" duration={0.94} className="relative z-10 mx-auto max-w-[1040px]">
           <div className="mx-auto max-w-[570px] text-center">
             <p className="text-[0.88rem] font-normal uppercase leading-none text-[#d9ae5d] sm:text-[1rem]">
               Why Organic Social Media?
@@ -337,8 +271,8 @@ export default function OrganicSocialMediaPage() {
                 key={title}
                 className="min-h-[190px] rounded-[5px] border border-[#e2b75f] bg-white px-[10px] py-[13px] text-[#4a4a4a] shadow-[7px_8px_9px_rgba(17,17,17,0.22)]"
               >
-                <div className={`mb-[22px] flex h-[34px] w-[34px] items-center justify-center rounded-[4px] border border-[#e2b75f] shadow-[0_4px_7px_rgba(91,69,34,0.16)] ${iconBg}`}>
-                  <TrendingUp className={`h-[19px] w-[19px] ${iconColor}`} strokeWidth={1.65} />
+                <div className={`mb-[22px] flex h-[34px] w-[34px] items-center justify-center rounded-[4px] border border-[#e2b75f] shadow-[0_4px_7px_rgba(91,69,34,0.16)] dark:!bg-transparent dark:shadow-none ${iconBg}`}>
+                  <TrendingUp className={`h-[19px] w-[19px] dark:text-[#D8B26B] ${iconColor}`} strokeWidth={1.65} />
                 </div>
                 <h3 className="text-[0.75rem] font-semibold leading-tight text-[#3d3d3d]">
                   {title}
@@ -349,33 +283,32 @@ export default function OrganicSocialMediaPage() {
               </article>
             ))}
           </div>
-        </div>
+        </MotionReveal>
       </section>
 
       <section id="included-services" className="bg-[#FFF5E0] px-5 py-[58px] text-[#3d4145] sm:px-10 sm:py-[72px] lg:px-16 lg:py-[74px]">
-        <div className="mx-auto grid w-full min-w-0 max-w-[866px] gap-6 lg:grid-cols-[199px_minmax(0,1fr)] lg:items-start lg:gap-[22px]">
-          <div className="lg:pt-0">
-            <h2 className="h-[40px] font-heading text-[1.22rem] font-normal leading-[1.18] text-[#3d4145] lg:text-[1.02rem]">
-              Our Organic Social
-              <span className="block">Media Strategy</span>
+        <div className="mx-auto grid w-full min-w-0 max-w-[866px] gap-6 lg:grid-cols-[260px_minmax(0,1fr)] lg:items-start lg:gap-[22px]">
+          <MotionReveal direction="left" duration={0.9} className="lg:pt-0">
+            <h2 className="h-[40px] font-heading text-[1.22rem] font-normal leading-[1.18] text-[#3d4145] lg:whitespace-nowrap lg:text-[1.02rem]">
+              Our Organic Social Media Strategy
             </h2>
             <div className="mt-[24px] rounded-[6px] border border-[#dfbd78] bg-white px-[18px] py-[16px] shadow-[5px_7px_9px_rgba(91,69,34,0.18)] lg:h-[408px]">
-              <div className="grid h-full content-between">
+              <div className="grid h-full content-between gap-2.5 lg:gap-0">
                 {strategySteps.map((step, index) => (
                   <div key={step} className="flex items-center gap-[10px]">
                     <span className="flex h-[17px] w-[17px] shrink-0 items-center justify-center rounded-[4px] border border-[#dfbd78] bg-white text-[0.52rem] font-medium leading-none text-[#d9ae5d] shadow-[0_4px_7px_rgba(91,69,34,0.16)]">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <p className="text-[0.72rem] font-medium leading-tight text-[#3d4145]">
+                    <p className="text-[0.72rem] font-medium leading-tight text-[#3d4145] dark:!text-[#D8B26B]">
                       {step}
                     </p>
                   </div>
                 ))}
               </div>
             </div>
-          </div>
+          </MotionReveal>
 
-          <div className="min-w-0">
+          <MotionReveal direction="right" delay={0.08} duration={0.9} className="min-w-0">
             <h2 className="h-[40px] font-heading text-[1.22rem] font-normal leading-[1.18] text-[#3d4145] lg:text-[1.02rem]">
               What&apos;s Included
             </h2>
@@ -388,8 +321,8 @@ export default function OrganicSocialMediaPage() {
                   key={title}
                   className="flex min-h-[195px] flex-col items-center rounded-[6px] border border-[#dfbd78] bg-white px-[14px] pb-[15px] pt-[12px] text-center shadow-[5px_7px_9px_rgba(91,69,34,0.18)] lg:h-[195px]"
                 >
-                  <span className={`mb-[14px] flex h-[34px] w-[34px] items-center justify-center rounded-[5px] border border-[#dfbd78] shadow-[0_5px_8px_rgba(91,69,34,0.18)] ${iconBg}`}>
-                    <Icon className={`h-[19px] w-[19px] ${iconColor}`} strokeWidth={1.75} />
+                  <span className={`mb-[14px] flex h-[34px] w-[34px] items-center justify-center rounded-[5px] border border-[#dfbd78] shadow-[0_5px_8px_rgba(91,69,34,0.18)] dark:!bg-transparent dark:shadow-none ${iconBg}`}>
+                    <Icon className={`h-[16px] w-[16px] dark:text-[#D8B26B] ${iconColor}`} strokeWidth={1.75} />
                   </span>
                   <h3 className="text-[0.74rem] font-semibold leading-tight text-[#333]">
                     {title}
@@ -400,21 +333,21 @@ export default function OrganicSocialMediaPage() {
                 </article>
               ))}
             </div>
-          </div>
+          </MotionReveal>
         </div>
       </section>
 
       <section className="bg-[#FFF5E0] px-5 pb-[74px] pt-[30px] text-[#3d4145] sm:px-10 lg:px-16">
         <div className="mx-auto grid max-w-[870px] items-center gap-[38px] lg:grid-cols-[370px_minmax(0,1fr)] lg:gap-[38px]">
-          <div>
+          <MotionReveal direction="left" duration={0.92}>
             <h2 className="font-heading text-[1rem] font-normal uppercase leading-none text-[#3d4145]">
               Why Our Social Media Performs Better
             </h2>
             <div className="mt-[26px] grid gap-x-[22px] gap-y-[33px] rounded-[6px] border border-[#dfbd78] bg-white px-[15px] py-[15px] shadow-[5px_7px_9px_rgba(91,69,34,0.18)] sm:grid-cols-2 lg:min-h-[364px]">
               {performanceReasons.map(({ title, body, Icon }) => (
-                <article key={title} className="grid grid-cols-[34px_minmax(0,1fr)] gap-[8px]">
+                <div key={title} className="grid grid-cols-[34px_minmax(0,1fr)] gap-[8px]">
                   <span className="flex h-[34px] w-[34px] items-center justify-center rounded-[5px] border border-[#dfbd78] bg-white shadow-[0_5px_8px_rgba(91,69,34,0.18)]">
-                    <Icon className="h-[18px] w-[18px] text-[#444]" strokeWidth={1.75} />
+                    <Icon className="h-[18px] w-[18px] text-[#444] dark:text-[#D8B26B]" strokeWidth={1.75} />
                   </span>
                   <div>
                     <h3 className="text-[0.72rem] font-semibold leading-[1.18] text-[#333]">
@@ -424,22 +357,22 @@ export default function OrganicSocialMediaPage() {
                       {body}
                     </p>
                   </div>
-                </article>
+                </div>
               ))}
             </div>
-          </div>
+          </MotionReveal>
 
-          <div className="pt-[16px]">
+          <MotionReveal direction="right" delay={0.08} duration={0.92} className="pt-[16px]">
             <h2 className="text-center font-heading text-[1rem] font-normal leading-none text-[#3d4145]">
               Designed to Strengthen Your Brand Presence
             </h2>
             <div className="mt-[50px] grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
               {brandPresenceStats.map(({ title, body, Icon }, index) => (
-                <article
+                <div
                   key={title}
                   className="relative px-4 text-center lg:px-[13px]"
                 >
-                  <span className="mx-auto flex h-[34px] w-[34px] items-center justify-center rounded-[5px] border border-[#dfbd78] bg-white shadow-[0_5px_8px_rgba(91,69,34,0.18)]">
+                  <span className="mx-auto flex h-[34px] w-[34px] items-center justify-center rounded-[5px] border border-[#dfbd78] bg-white shadow-[0_5px_8px_rgba(91,69,34,0.18)] dark:!bg-[#FDFDFD]">
                     <Icon className="h-[18px] w-[18px] text-[#444]" strokeWidth={1.75} />
                   </span>
                   <h3 className="mt-[15px] text-[0.72rem] font-bold leading-[1.18] text-[#333]">
@@ -454,14 +387,14 @@ export default function OrganicSocialMediaPage() {
                       className="absolute right-0 top-[14px] hidden h-[76px] w-px bg-[#d8cbb2] lg:block"
                     />
                   )}
-                </article>
+                </div>
               ))}
             </div>
-          </div>
+          </MotionReveal>
         </div>
       </section>
 
-      <ServiceFaqSection />
+      <MotionReveal direction="up" duration={0.9} amount={0.08}><ServiceFaqSection /></MotionReveal>
     </div>
   );
 }

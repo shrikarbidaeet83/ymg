@@ -126,11 +126,15 @@ function fmt(v: number, decimals: number) {
 type CaseAcquisitionSystemProps = {
   bottomVariant?: "results" | "proof";
   showStepFlower?: boolean;
+  showRadial?: boolean;
+  homeTypography?: boolean;
 };
 
 export default function CaseAcquisitionSystem({
   bottomVariant = "results",
   showStepFlower = false,
+  showRadial = true,
+  homeTypography = false,
 }: CaseAcquisitionSystemProps) {
   const root = useRef<HTMLDivElement>(null);
   const showResults = bottomVariant === "results";
@@ -292,13 +296,14 @@ export default function CaseAcquisitionSystem({
       ref={root}
       className="case-acquisition-section relative isolate bg-[#FFF5E0]"
     >
-      <div className="case-pin flex min-h-[620px] items-center overflow-hidden py-0 sm:min-h-[100svh]">
-        <div className="mx-auto w-full max-w-6xl px-2.5 sm:px-8">
+      <div className={`case-pin relative z-[1] flex min-h-[620px] items-center overflow-hidden pb-0 ${bottomVariant === "proof" ? "pt-28 sm:min-h-[700px] sm:pt-32 lg:pt-40" : "pt-0 sm:min-h-[100svh]"}`}>
+        {showRadial && <div className="case-acquisition-radial ymg-radial-focus" aria-hidden="true" />}
+        <div className="relative z-[1] mx-auto w-full max-w-6xl px-2.5 sm:px-8">
           <div className="relative z-30 text-center">
-            <p className="mb-1 text-[0.52rem] font-medium text-[#7a7c7e] sm:mb-2.5 sm:text-[0.78rem]">
+            <p className={`mb-1 font-medium text-[#7a7c7e] sm:mb-2.5 ${homeTypography ? "text-[14px] lg:text-[15px] 2xl:text-[16px]" : "text-[0.52rem] sm:text-[0.78rem]"}`}>
               Our Proven 5-Step
             </p>
-            <h2 className="text-[1.38rem] font-semibold leading-tight text-[#202b36] sm:text-[clamp(1.3rem,6vw,3rem)]">
+            <h2 className={`font-semibold leading-tight text-[#202b36] ${homeTypography ? "text-[30px] sm:text-[36px] lg:text-[40px] xl:text-[44px] 2xl:text-[52px]" : "text-[1.38rem] sm:text-[clamp(1.3rem,6vw,3rem)]"}`}>
               Case Acquisition System
             </h2>
           </div>
@@ -307,18 +312,29 @@ export default function CaseAcquisitionSystem({
           className="relative left-1/2 mt-9 h-[346px] w-full max-w-[350px] -translate-x-1/2 sm:mt-20 sm:h-[500px] sm:max-w-[900px] lg:mt-24 lg:h-[520px] lg:max-w-[980px]"
         >
           {showStepFlower && (
-            <div className="pointer-events-none absolute inset-x-4 inset-y-8 z-0 translate-y-9 overflow-visible [clip-path:inset(-10%_-10%_46%)] sm:inset-0 sm:translate-y-0 sm:[clip-path:inset(-50%_0_13%_0)] lg:[clip-path:inset(-50%_0_11%_0)]">
-              <div className="absolute left-1/2 top-1/2 aspect-[900/560] w-[552%] -translate-x-1/2 -translate-y-1/2 sm:h-full sm:w-auto">
+            <>
+              <div className="pointer-events-none absolute inset-0 z-0 sm:hidden">
                 <Image
                   src="/flowers/half-circleBG.svg"
                   alt=""
                   width={1180}
                   height={848}
-                  className="absolute ml-6 mt-[90px] w-[600px] max-w-none -translate-x-1/2 -translate-y-1/2 mix-blend-multiply sm:ml-10 sm:mt-[140px] sm:w-[920px] lg:ml-[55px] lg:mt-[160px] lg:w-[1080px]"
-                  style={{ left: nodes[0].dotPos.left, top: nodes[0].dotPos.top }}
+                  className="absolute left-[54%] top-[62%] w-[510px] max-w-none -translate-x-1/2 -translate-y-1/2 mix-blend-multiply"
                 />
               </div>
-            </div>
+              <div className="pointer-events-none absolute inset-0 z-0 hidden overflow-visible sm:block">
+                <div className="absolute left-1/2 top-1/2 aspect-[900/560] h-full w-auto -translate-x-1/2 -translate-y-1/2">
+                  <Image
+                    src="/flowers/half-circleBG.svg"
+                    alt=""
+                    width={1180}
+                    height={848}
+                    className="absolute ml-10 mt-[140px] w-[920px] max-w-none -translate-x-1/2 -translate-y-1/2 mix-blend-multiply lg:ml-[55px] lg:mt-[160px] lg:w-[1080px]"
+                    style={{ left: nodes[0].dotPos.left, top: nodes[0].dotPos.top }}
+                  />
+                </div>
+              </div>
+            </>
           )}
 
           <div className="absolute inset-x-4 inset-y-8 z-10 translate-y-9 overflow-visible [clip-path:inset(-25%_-13%_36%_-13%)] sm:inset-0 sm:translate-y-1 sm:[clip-path:inset(-24%_-4%_13%_-4%)] lg:translate-y-0 lg:[clip-path:inset(-22%_-3%_11%_-3%)]">
@@ -328,10 +344,11 @@ export default function CaseAcquisitionSystem({
               fill="none"
             >
               <circle
+                className="case-acquisition-arc"
                 cx={VB.cx}
                 cy={VB.cy}
                 r={VB.r}
-                stroke="#34383d"
+                stroke="#D8B26B"
                 strokeWidth={1.35}
                 opacity={0.72}
               />
@@ -379,7 +396,7 @@ export default function CaseAcquisitionSystem({
           </div>
           </div>
 
-          <div className={`pointer-events-none absolute inset-x-0 bottom-0 z-20 bg-[#FFF5E0] ${showResults ? "h-[66px] sm:h-[104px] lg:h-[112px]" : "h-[114px] sm:h-[274px] lg:h-[282px]"}`} />
+          <div className={`case-results-mask pointer-events-none absolute inset-x-0 bottom-0 z-20 bg-[#FFF5E0] ${showResults ? "h-[66px] sm:h-[104px] lg:h-[112px]" : "h-[114px] sm:h-[274px] lg:h-[282px]"}`} />
 
           <div
             className={`absolute left-1/2 z-20 min-h-[76px] -translate-x-1/2 text-center sm:top-[16%] sm:min-h-[118px] sm:w-[82%] sm:max-w-[360px] lg:top-[21%] ${
@@ -446,7 +463,7 @@ export default function CaseAcquisitionSystem({
                 <MobileProofScroller />
               </div>
               <div className="absolute bottom-[214px] left-1/2 z-30 hidden w-[calc(100vw-46px)] max-w-[900px] -translate-x-1/2 lg:block">
-                <ProofBar />
+                <ProofBar darkGold />
               </div>
             </>
           )}

@@ -53,27 +53,13 @@ const item = {
 export default function SeoResultsSection() {
   return (
     <section className="bg-[#FFF5E0] px-4 py-4 text-[#d9ae5d] sm:px-8 sm:py-6 lg:px-16 lg:py-5">
-      <div className="relative isolate mx-auto w-full max-w-[1040px] overflow-hidden rounded-[14px] bg-[#404040] px-5 py-[68px] sm:px-10 sm:py-[84px] lg:px-16 lg:py-[72px]">
+      <div className="relative isolate mx-auto w-full max-w-[1040px] overflow-hidden rounded-[14px] bg-[#1F1F1F] px-5 py-[68px] sm:px-10 sm:py-[84px] lg:px-16 lg:py-[72px]">
         <Image
-        src="/images/big_flowers.png"
+        src="/images/big_flowers.webp"
         alt=""
         width={190}
         height={190}
-        className="pointer-events-none absolute right-[6%] top-[24px] z-0 hidden w-[96px] opacity-[0.05] sm:block"
-        />
-        <Image
-        src="/images/small_flowers.png"
-        alt=""
-        width={125}
-        height={125}
-        className="pointer-events-none absolute right-[14%] top-[58px] z-0 hidden w-[30px] opacity-[0.045] lg:block"
-        />
-        <Image
-        src="/images/small_flowers.png"
-        alt=""
-        width={125}
-        height={125}
-        className="pointer-events-none absolute right-[9%] top-[126px] z-0 hidden w-[38px] opacity-[0.045] lg:block"
+        className="pointer-events-none absolute right-[4%] top-[24px] z-0 hidden w-[192px] opacity-[0.05] sm:block"
         />
 
         <motion.div
@@ -101,12 +87,11 @@ export default function SeoResultsSection() {
           className="mx-auto mt-12 grid max-w-[780px] grid-cols-1 gap-y-8 min-[420px]:grid-cols-2 lg:mt-[58px] lg:grid-cols-4 lg:gap-0"
         >
           {results.map(({ title, body, Icon, iconBg, iconColor }, index) => (
-            <motion.article
+            <div
               key={title}
-              variants={item}
-              className={`relative flex min-h-[150px] flex-col items-center px-5 text-center lg:min-h-[132px] ${
+              className={`relative flex min-h-[150px] flex-col items-center border-0 bg-[#1F1F1F] px-5 text-center lg:min-h-[132px] ${
                 index < results.length - 1
-                  ? "lg:after:absolute lg:after:right-0 lg:after:top-4 lg:after:h-[92px] lg:after:w-px lg:after:bg-[#8d8b86]/45"
+                  ? "lg:border-r lg:border-[#8d8b86]/45"
                   : ""
               }`}
             >
@@ -119,7 +104,7 @@ export default function SeoResultsSection() {
               <p className="mt-4 max-w-[135px] text-[0.68rem] leading-[1.32] text-white/70">
                 {body}
               </p>
-            </motion.article>
+            </div>
           ))}
         </motion.div>
         </motion.div>

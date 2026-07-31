@@ -69,9 +69,9 @@ export default function MetaCampaignFeaturesSection() {
 
   return (
     <section className="relative isolate overflow-hidden bg-[#404040] px-5 py-16 text-[#d9ae5d] sm:px-10 sm:py-20 lg:px-16 lg:pb-[88px] lg:pt-[72px]">
-      <Image src="/images/big_flowers.png" alt="" width={190} height={190} className="pointer-events-none absolute right-[7%] top-[-14px] z-0 h-auto w-[116px] opacity-[0.055]" />
-      <Image src="/images/small_flowers.png" alt="" width={125} height={125} className="pointer-events-none absolute right-[3%] top-[26px] z-0 h-auto w-[36px] opacity-[0.055]" />
-      <Image src="/images/small_flowers.png" alt="" width={125} height={125} className="pointer-events-none absolute right-[14%] top-[90px] z-0 h-auto w-[48px] opacity-[0.055]" />
+      <Image src="/images/big_flowers.webp" alt="" width={190} height={190} className="pointer-events-none absolute right-[7%] top-[-14px] z-0 h-auto w-[116px] opacity-[0.055]" />
+      <Image src="/images/small_flowers.webp" alt="" width={125} height={125} className="pointer-events-none absolute right-[3%] top-[26px] z-0 h-auto w-[36px] opacity-[0.055]" />
+      <Image src="/images/small_flowers.webp" alt="" width={125} height={125} className="pointer-events-none absolute right-[14%] top-[90px] z-0 h-auto w-[48px] opacity-[0.055]" />
 
       <div className="relative z-10 mx-auto max-w-[1120px]">
         <motion.h2

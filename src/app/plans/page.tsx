@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import FullFunnelSolutionsSection from "@/components/sections/FullFunnelSolutionsSection";
 import {
   BarChart3,
@@ -54,7 +55,7 @@ const planCards = [
 export default function PlansPage() {
   return (
     <>
-      <section className="ymg-section-padding relative isolate min-h-screen overflow-hidden bg-[#FFF5E0] pt-[118px] text-[#3d4145] lg:pt-[132px]">
+      <section className="ymg-standard-hero ymg-section-padding-x relative isolate overflow-hidden bg-[#FFF5E0] pb-[60px] pt-[118px] text-[#3d4145] lg:pt-[132px]">
         <Image
           src="/flowers/3rd-flower.svg"
           alt=""
@@ -64,7 +65,7 @@ export default function PlansPage() {
           className="pointer-events-none absolute left-[5px] top-[500px] z-0 w-[143px] mix-blend-multiply sm:left-[10px] sm:top-[510px] sm:w-[215px] lg:left-[225px] lg:top-[600px] lg:w-[287px]"
         />
         <Image
-          src="/images/big_flowers.png"
+          src="/images/big_flowers.webp"
           alt=""
           width={220}
           height={220}
@@ -72,7 +73,7 @@ export default function PlansPage() {
           className="pointer-events-none absolute bottom-[-32px] left-[-34px] z-0 w-[120px] opacity-[0.08] brightness-90 sepia sm:w-[170px] lg:w-[210px]"
         />
         <Image
-          src="/images/small_flowers.png"
+          src="/images/small_flowers.webp"
           alt=""
           width={76}
           height={76}
@@ -81,7 +82,7 @@ export default function PlansPage() {
         />
 
         <div className="relative z-10 mx-auto max-w-7xl">
-          <h1 className="mx-auto max-w-[1180px] text-center font-heading text-[clamp(1.45rem,2.45vw,2.3rem)] font-normal leading-[1.24] tracking-[0] text-[#3d4145]">
+          <h1 className="ymg-standard-hero-title mx-auto max-w-[1180px] text-center text-[#3d4145]">
             <span className="block lg:whitespace-nowrap">
               Our outbound call services are designed to increase your firm&apos;s revenue and
             </span>
@@ -119,12 +120,12 @@ export default function PlansPage() {
                   </ul>
 
                   <div className="mt-auto pt-10">
-                    <button
-                      type="button"
-                      className="h-[52px] w-full rounded-[4px] bg-[#d9ae5d] px-8 text-sm font-bold text-[#2e3032] shadow-[0_12px_28px_rgba(168,129,62,0.22)] transition-colors hover:bg-[#c89f4e]"
+                    <Link
+                      href="/contact#booking"
+                      className="flex h-[52px] w-full items-center justify-center rounded-[4px] bg-[#d9ae5d] px-8 text-sm font-bold text-[#2e3032] shadow-[0_12px_28px_rgba(168,129,62,0.22)] transition-colors hover:bg-[#c89f4e]"
                     >
                       Get Started
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </article>

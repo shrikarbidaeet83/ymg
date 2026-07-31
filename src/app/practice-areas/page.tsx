@@ -82,8 +82,8 @@ const valueCards: CardItem[] = [
     title: "Scalable Campaigns",
     body: "Built to scale with predictable lead flow and results.",
     icon: TrendingUp,
-    iconBg: "bg-[#ededed]",
-    iconColor: "text-[#555555]",
+    iconBg: "bg-[#fbefd9]",
+    iconColor: "text-[#b98736]",
   },
 ];
 
@@ -194,7 +194,7 @@ function VerticalGrowthCards() {
         {verticalCards.map(({ title, body, icon: Icon, iconBg, iconColor }) => (
           <article
             key={title}
-            className="flex min-h-[255px] w-[82vw] max-w-[310px] shrink-0 snap-center flex-col rounded-[20px] border border-[#e1bd74] bg-[#fffdfa] p-5 text-left shadow-[0_8px_22px_rgba(0,0,0,0.08)] sm:w-[285px] lg:w-auto lg:max-w-none"
+            className="flex min-h-[255px] w-[82vw] max-w-[310px] shrink-0 snap-center flex-col rounded-[20px] border border-[#e1bd74] bg-white p-5 text-left shadow-[0_8px_22px_rgba(0,0,0,0.08)] sm:w-[285px] lg:w-auto lg:max-w-none"
           >
             <div className={`flex h-[61px] w-[61px] items-center justify-center rounded-[7px] ${iconBg}`}>
               <Icon size={30} strokeWidth={1.35} className={iconColor} />
@@ -203,7 +203,7 @@ function VerticalGrowthCards() {
               {title}
             </h3>
             <p className="mt-3 text-[0.76rem] leading-[1.35] text-[#5e5b58]">{body}</p>
-            <Link href="/contact" className="mt-auto inline-flex items-center gap-1 pt-4 text-[0.76rem] text-[#5e5b58] transition-colors hover:text-[#d5aa58]">
+            <Link href="/contact" className="mt-auto inline-flex items-center gap-1 pt-4 text-[0.76rem] text-[#5e5b58] transition-colors hover:text-[#d5aa58] dark:text-[#D8B26B]">
               Explore <ArrowUpRight size={13} strokeWidth={1.4} />
             </Link>
           </article>
@@ -220,16 +220,16 @@ function ValueCarouselCards() {
       {valueCards.map(({ title, body, icon: Icon, iconBg, iconColor }) => (
         <article
           key={title}
-          className="grid min-h-[100px] w-full grid-cols-[58px_1fr] items-center gap-x-5 rounded-[20px] border border-[#c89f53] bg-[#404040]/75 px-4 py-3 text-left lg:grid-cols-[58px_minmax(0,1fr)_auto]"
+          className="grid min-h-[100px] w-full grid-cols-[58px_1fr] items-center gap-x-5 rounded-[20px] border border-[#c89f53] bg-white px-4 py-3 text-left shadow-[0_8px_22px_rgba(0,0,0,0.08)] lg:grid-cols-[58px_minmax(0,1fr)_auto]"
         >
           <div className={`row-span-2 flex h-[58px] w-[58px] items-center justify-center rounded-[6px] ${iconBg}`}>
             <Icon size={29} strokeWidth={1.4} className={iconColor} />
           </div>
           <div>
-            <h3 className="text-[0.88rem] font-medium leading-tight text-[#EBC982]">{title}</h3>
+            <h3 className="text-[0.88rem] font-medium leading-tight text-[#494745]">{title}</h3>
             <p className="mt-2 max-w-[250px] text-[0.68rem] leading-[1.35] text-[#92908d]">{body}</p>
           </div>
-          <Link href="/contact" className="col-start-2 mt-3 inline-flex items-center gap-1 text-[0.72rem] text-[#d9ae5d] lg:col-start-3 lg:row-start-1 lg:mt-0 lg:pl-3">
+          <Link href="/contact" className="col-start-2 mt-3 inline-flex items-center gap-1 text-[0.72rem] text-[#5e5b58] transition-colors hover:text-[#d5aa58] dark:text-[#D8B26B] lg:col-start-3 lg:row-start-1 lg:mt-0 lg:pl-3">
             Explore <ArrowUpRight size={13} strokeWidth={1.4} />
           </Link>
         </article>
@@ -241,45 +241,45 @@ function ValueCarouselCards() {
 export default function PracticeAreasPage() {
   return (
     <main className="min-h-screen bg-[#404040] text-[#d9b46d]">
-      <section className="ymg-section-padding relative isolate flex min-h-[480px] overflow-hidden bg-[#FFF5E0] pt-[126px] text-center sm:pt-[134px] lg:pt-[138px]">
-        <div className="pointer-events-none absolute inset-0 z-0 mx-auto w-full max-w-[1120px]">
+      <section className="ymg-standard-hero ymg-section-padding-x relative isolate overflow-hidden bg-[#FFF5E0] text-center">
+        <div className="pointer-events-none absolute inset-0 z-0 mx-auto w-full max-w-[1240px]">
           <Image
             src="/flowers/half-circleBG.svg"
             alt=""
             width={1180}
             height={848}
             priority
-            className="absolute right-[-60px] top-1/2 w-[300px] -translate-y-1/2 mix-blend-multiply sm:right-0 sm:w-[393px] lg:w-[467px]"
+            className="absolute right-[-60px] top-1/2 w-[300px] -translate-y-1/2 mix-blend-multiply sm:right-0 sm:w-[420px] lg:w-[540px]"
           />
         </div>
 
-        <div className="relative z-10 mx-auto flex w-full max-w-[520px] flex-col items-center">
-          <p className="max-w-[410px] text-[0.8rem] font-normal leading-[1.38] text-[#4d4a45] sm:text-[0.86rem]">
+        <div className="ymg-standard-hero-copy relative z-10 flex flex-col items-center">
+          <p className="ymg-standard-hero-eyebrow max-w-[560px] text-[#4d4a45]">
             We generate qualified leads and signed cases across
             <span className="block">high-demand legal categories.</span>
           </p>
 
-          <h1 className="ymg-practice-hero-title mt-4 text-[clamp(2rem,3.5vw,2.2rem)] font-normal leading-[1.13] tracking-[-0.025em] text-[#45413d]">
+          <h1 className="ymg-standard-hero-title text-[#45413d]">
             High-Value Case Verticals
             <span className="block">We Specialize In</span>
           </h1>
 
-          <p className="mt-4 max-w-[410px] text-[0.76rem] font-normal leading-[1.38] text-[#595650] sm:text-[0.8rem]">
+          <p className="ymg-standard-hero-body text-[#595650]">
             From personal injury to mass tort campaigns, we help law firms
             <span className="block">scale client acquisition with targeted, performance-driven</span>
             <span className="block">strategies.</span>
           </p>
 
-          <div className="mt-8 grid w-full max-w-[351px] grid-cols-1 justify-center gap-3 sm:grid-cols-[154px_181px] sm:gap-4">
+          <div className="ymg-standard-hero-actions flex w-full max-w-[430px] flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
             <Link
-              href="/services/case-acquisition"
-              className="inline-flex h-[43px] items-center justify-center rounded-[3px] bg-[#ddb25d] px-4 text-[0.76rem] font-semibold tracking-[0.025em] text-[#202322] transition-colors hover:bg-[#e6bf73]"
+              href="/services"
+              className="inline-flex h-[52px] items-center justify-center rounded-[4px] bg-[#d9ae5d] px-6 text-sm font-semibold tracking-[0.025em] text-[#2e3032] transition-colors hover:bg-[#c89f4e]"
             >
               Get More Cases
             </Link>
             <Link
               href="/contact"
-              className="inline-flex h-[43px] items-center justify-center rounded-[3px] border border-[#e0b45d] px-4 text-[0.76rem] font-medium tracking-[0.025em] text-[#d4a64f] transition-colors hover:bg-[#e0b45d]/10"
+              className="inline-flex h-[52px] items-center justify-center rounded-[4px] border border-[#dfbd78] bg-transparent px-6 text-sm font-medium tracking-[0.025em] text-[#d3a65a] transition-colors hover:bg-[#d9ae5d]/10"
             >
               Explore Opportunity
             </Link>
@@ -287,7 +287,7 @@ export default function PracticeAreasPage() {
         </div>
       </section>
 
-      <section className="ymg-section-padding relative isolate overflow-hidden bg-[#404040]">
+      <section className="ymg-section-padding relative isolate overflow-hidden bg-[#404040] max-sm:!py-8">
         <Image
           src="/flowers/psmBG.svg"
           alt=""
@@ -325,14 +325,14 @@ export default function PracticeAreasPage() {
         </div>
 
         <Image
-          src="/images/big_flowers.png"
+          src="/images/big_flowers.webp"
           alt=""
           width={320}
           height={320}
           className="pointer-events-none absolute bottom-[10px] right-[2%] hidden w-[220px] opacity-[0.12] brightness-50 saturate-50 lg:block"
         />
         <Image
-          src="/images/small_flowers.png"
+          src="/images/small_flowers.webp"
           alt=""
           width={80}
           height={80}
@@ -348,24 +348,17 @@ export default function PracticeAreasPage() {
           alt=""
           width={273}
           height={196}
-          className="pointer-events-none absolute bottom-0 left-0 z-0 w-[140px] sm:w-[210px] lg:w-[273px]"
-        />
-        <Image
-          src="/flowers/vcardBG.svg"
-          alt=""
-          width={273}
-          height={196}
-          className="pointer-events-none absolute right-[36%] top-1/2 z-0 w-[130px] -translate-y-1/2 sm:w-[190px] lg:w-[240px]"
+          className="pointer-events-none absolute right-[36%] top-1/2 z-0 hidden w-[130px] -translate-y-1/2 sm:block sm:w-[190px] lg:w-[240px]"
         />
 
-        <div className="relative z-10 mx-auto grid max-w-7xl items-end gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(420px,540px)] lg:gap-12">
+        <div className="relative z-10 mx-auto grid max-w-7xl items-end gap-10 lg:grid-cols-[minmax(0,1.12fr)_minmax(340px,0.88fr)] lg:gap-8 xl:grid-cols-[minmax(0,1fr)_minmax(420px,540px)] xl:gap-12">
           <div className="max-w-[640px] text-center lg:text-left">
             <p className="text-[1rem] font-medium text-[#e1c277] sm:text-[1.12rem]">
               Ready to Grow?
             </p>
-            <h2 className="mt-5 font-heading text-[clamp(2.4rem,5.8vw,4.6rem)] font-normal leading-[1.06] tracking-[0] text-[#EBC982]">
-              Let&apos;s Build Your Next
-              <span className="block">Winning Campaign</span>
+            <h2 className="mt-5 font-heading text-[clamp(2.4rem,5.8vw,4.6rem)] font-normal leading-[1.06] tracking-[0] text-[#EBC982] lg:text-[2.75rem] xl:text-[4rem]">
+              <span className="block lg:whitespace-nowrap">Let&apos;s Build Your Next</span>
+              <span className="block lg:whitespace-nowrap">Winning Campaign</span>
             </h2>
             <p className="mx-auto mt-7 max-w-[560px] text-[1.05rem] leading-[1.45] text-[#a9abad] sm:text-[1.12rem] lg:mx-0">
               Partner with YMG Legal and start getting more qualified leads,
@@ -374,21 +367,21 @@ export default function PracticeAreasPage() {
 
             <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
               <Link
-                href="/services/case-acquisition"
+                href="/services"
                 className="inline-flex h-[52px] min-w-[182px] items-center justify-center rounded-[4px] bg-[#d9ae5d] px-8 text-sm font-bold text-[#2e3032] shadow-[0_12px_28px_rgba(168,129,62,0.22)] transition-colors hover:bg-[#c89f4e]"
               >
                 Get More Cases
               </Link>
               <Link
-                href="/contact"
-                className="inline-flex h-[52px] min-w-[246px] items-center justify-center rounded-[4px] border border-[#dfbd78] bg-[#fff6e5]/40 px-8 text-sm font-semibold text-[#d3a65a] transition-colors hover:bg-[#fff6e5]/70"
+                href="/contact#booking"
+                className="inline-flex h-[52px] min-w-[246px] items-center justify-center rounded-[4px] border border-[#dfbd78] bg-transparent px-8 text-sm font-semibold text-[#d3a65a] transition-colors hover:bg-[#d9ae5d]/10"
               >
                 Schedule a Strategy Call
               </Link>
             </div>
           </div>
 
-          <div className="relative mx-auto w-full max-w-[560px] lg:mx-0 lg:max-w-none">
+          <div className="relative mx-auto w-full max-w-[560px] lg:mx-0 lg:max-w-[400px] lg:justify-self-end xl:max-w-[520px]">
             <Image
               src="/images/Union.png"
               alt="YMG Legal campaign performance collage"

@@ -73,9 +73,9 @@ export default function FAQsPage() {
 
   return (
     <main className="min-h-screen bg-[#FFF5E0] text-[#3d4145]">
-      <section className="ymg-section-padding relative isolate overflow-hidden pt-[118px] lg:pt-[130px]">
+      <section className="ymg-standard-hero ymg-section-padding-x relative isolate overflow-hidden pb-[60px] pt-[118px] lg:pt-[130px]">
         <Image
-          src="/images/big_flowers.png"
+          src="/images/big_flowers.webp"
           alt=""
           width={220}
           height={220}
@@ -83,7 +83,7 @@ export default function FAQsPage() {
           className="pointer-events-none absolute bottom-[112px] left-[12%] z-0 hidden w-[150px] opacity-[0.06] brightness-90 sepia lg:block"
         />
         <Image
-          src="/images/small_flowers.png"
+          src="/images/small_flowers.webp"
           alt=""
           width={74}
           height={74}
@@ -91,7 +91,7 @@ export default function FAQsPage() {
           className="pointer-events-none absolute bottom-[174px] left-[8%] z-0 hidden w-[56px] opacity-[0.06] brightness-90 sepia lg:block"
         />
         <Image
-          src="/images/small_flowers.png"
+          src="/images/small_flowers.webp"
           alt=""
           width={74}
           height={74}
@@ -104,7 +104,7 @@ export default function FAQsPage() {
             <p className="text-[1rem] font-medium text-[#3d4145] sm:text-[1.08rem]">
               Frequently Asked Questions
             </p>
-            <h1 className="mt-5 max-w-[520px] font-heading text-[clamp(2.15rem,3.8vw,3.55rem)] font-normal leading-[1.04] tracking-[0] text-[#3d4145]">
+            <h1 className="ymg-standard-hero-title mt-5 max-w-[520px] text-[#3d4145]">
               Frequently Asked
               <span className="block lg:whitespace-nowrap">Questions</span>
             </h1>
@@ -182,7 +182,7 @@ export default function FAQsPage() {
                     }}
                     className={`inline-flex h-10 w-10 items-center justify-center rounded-full text-[1.02rem] transition-colors ${
                       active
-                        ? "border border-[#dfbd78] bg-white text-[#3d4145]"
+                        ? "border border-[#dfbd78] bg-white text-[#3d4145] dark:!border-[#D8B26B] dark:!bg-[#D8B26B] dark:!text-[#191917]"
                         : "text-[#d1a754]"
                     }`}
                   >

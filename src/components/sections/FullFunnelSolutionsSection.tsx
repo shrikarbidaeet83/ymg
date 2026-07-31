@@ -43,7 +43,7 @@ export function FullFunnelSolutionCards({
 }) {
   return (
     <div
-      className={`flex snap-x snap-mandatory overflow-x-auto px-4 pb-12 pt-5 [scrollbar-width:none] lg:justify-center lg:overflow-visible lg:px-6 lg:pb-16 [&::-webkit-scrollbar]:hidden ${className}`}
+      className={`flex snap-x snap-mandatory overflow-x-auto px-4 pb-8 pt-5 [scrollbar-width:none] lg:justify-center lg:overflow-visible lg:px-6 lg:pb-3 [&::-webkit-scrollbar]:hidden ${className}`}
     >
       {solutions.map(({ icon: Icon, iconBg, iconColor, title, body, tilt }, index) => (
         <TouchPopCard
@@ -73,7 +73,7 @@ export function FullFunnelSolutionCards({
 
 export default function FullFunnelSolutionsSection() {
   return (
-    <section className="ymg-section-padding relative isolate overflow-hidden bg-[#404040] text-[#d9b46d]">
+    <section className="ymg-section-padding ymg-radial-wide relative isolate overflow-hidden bg-[#404040] pb-6 text-[#d9b46d] sm:pb-8">
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="text-center">
           <p className="mb-3 text-[0.8rem] font-medium text-[#EBC982]">

@@ -11,7 +11,7 @@ const testimonials = [
     text: "YMG Legal completely transformed our intake and lead quality. We went from chasing leads to consistently signing qualified cases every week.",
     color: "bg-white",
     stars: "text-[#d9ae5d]",
-    pos: "left-[8px] top-[88px] w-[112px] min-h-[150px] -rotate-[18deg] sm:left-8 sm:top-[120px] sm:w-[300px] sm:min-h-[330px]",
+    pos: "left-[8px] top-[88px] w-[112px] min-h-[132px] -rotate-[18deg] sm:left-8 sm:top-[120px] sm:w-[300px] sm:min-h-[275px]",
   },
   {
     name: "Founder",
@@ -20,7 +20,7 @@ const testimonials = [
     text: "Their system works. From lead generation to intake, everything is streamlined. Our team now focuses on closing cases instead of filtering bad leads.",
     color: "bg-white",
     stars: "text-[#d9ae5d]",
-    pos: "left-1/2 top-0 w-[118px] min-h-[158px] -translate-x-1/2 -rotate-[4deg] sm:w-[300px] sm:min-h-[350px]",
+    pos: "left-1/2 top-0 w-[118px] min-h-[138px] -translate-x-1/2 -rotate-[4deg] sm:w-[300px] sm:min-h-[285px]",
   },
   {
     name: "Partner",
@@ -29,7 +29,7 @@ const testimonials = [
     text: "We worked with multiple marketing agencies before, but none delivered results like this. The reporting, quality, and consistency are excellent.",
     color: "bg-white",
     stars: "text-[#d9ae5d]",
-    pos: "right-[8px] top-[88px] w-[112px] min-h-[150px] rotate-[11deg] sm:right-8 sm:top-[122px] sm:w-[300px] sm:min-h-[330px]",
+    pos: "right-[8px] top-[88px] w-[112px] min-h-[132px] rotate-[11deg] sm:right-8 sm:top-[122px] sm:w-[300px] sm:min-h-[275px]",
   },
   {
     name: "Partner",
@@ -38,7 +38,7 @@ const testimonials = [
     text: "The biggest difference is their intake team. Every lead is handled professionally, and we only speak with serious, qualified clients.",
     color: "bg-[#c091e8] text-white [&_p]:!text-white [&_.testimonial-divider]:!bg-white/60",
     stars: "text-[#ffd35e]",
-    pos: "left-[28%] top-[140px] z-20 w-[118px] min-h-[158px] -rotate-[4deg] sm:left-[26%] sm:top-[245px] sm:w-[300px] sm:min-h-[330px]",
+    pos: "left-[28%] top-[140px] z-20 w-[118px] min-h-[138px] -rotate-[4deg] sm:left-[26%] sm:top-[245px] sm:w-[300px] sm:min-h-[275px]",
   },
   {
     name: "Attorney",
@@ -47,7 +47,7 @@ const testimonials = [
     text: "In the first 60 days, we saw a significant increase in signed retainers. YMG understands legal marketing because they are a true partner.",
     color: "bg-[#f8d8a7]",
     stars: "text-[#d9ae5d]",
-    pos: "right-[18%] top-[132px] z-10 w-[118px] min-h-[158px] rotate-[20deg] sm:right-[16%] sm:top-[265px] sm:w-[300px] sm:min-h-[330px]",
+    pos: "right-[18%] top-[132px] z-10 w-[118px] min-h-[138px] rotate-[20deg] sm:right-[16%] sm:top-[265px] sm:w-[300px] sm:min-h-[275px]",
   },
 ];
 
@@ -60,7 +60,7 @@ export function TestimonialCardsShowcase({
     <section className={`ymg-section-padding relative isolate overflow-hidden bg-[#404040] text-[#d9b46d] ${className}`}>
       <div className="pointer-events-none absolute bottom-[120px] left-5 hidden h-[170px] w-[250px] opacity-20 brightness-75 contrast-125 saturate-150 sm:block lg:left-12">
         <Image
-          src="/images/big_flowers.png"
+          src="/images/big_flowers.webp"
           alt=""
           fill
           sizes="250px"
@@ -82,28 +82,28 @@ export function TestimonialCardsShowcase({
         <div className="group/testimonials relative mx-auto mt-7 h-[360px] max-w-[820px] overflow-visible sm:mt-12 sm:h-[560px]">
           <div className="pointer-events-none absolute bottom-12 right-0 z-[5] h-[150px] w-[230px] opacity-25 sm:bottom-10 sm:right-0 sm:h-[180px] sm:w-[280px]">
             <Image
-              src="/images/big_flowers.png"
+              src="/images/big_flowers.webp"
               alt=""
               width={200}
               height={200}
               className="absolute right-[72px] top-0 w-[115px] sm:right-[88px] sm:w-[145px]"
             />
             <Image
-              src="/images/small_flowers.png"
+              src="/images/small_flowers.webp"
               alt=""
               width={68}
               height={68}
               className="absolute left-0 top-9 w-[42px] sm:w-[50px]"
             />
             <Image
-              src="/images/small_flowers.png"
+              src="/images/small_flowers.webp"
               alt=""
               width={68}
               height={68}
               className="absolute right-0 top-16 w-[42px] sm:w-[50px]"
             />
             <Image
-              src="/images/small_flowers.png"
+              src="/images/small_flowers.webp"
               alt=""
               width={68}
               height={68}
@@ -155,7 +155,10 @@ export default function TestimonialContactSection({
   const contactOnly = contactVariant === "home" && !showTestimonials;
 
   return (
-    <section className={`${contactOnly ? "ymg-section-padding-x py-0" : "ymg-section-padding"} relative isolate overflow-hidden bg-[#404040] text-[#d9b46d] ${contactVariant === "home" ? "pb-0" : ""}`}>
+    <section
+      className={`${contactOnly ? "ymg-section-padding-x py-0" : "ymg-section-padding"} relative isolate overflow-hidden bg-[#404040] text-[#d9b46d] ${contactVariant === "home" ? "pb-0" : ""}`}
+      style={contactVariant === "home" ? { paddingBottom: 0 } : undefined}
+    >
       <div className={`relative z-10 mx-auto ${contactOnly ? "max-w-[1160px]" : "max-w-7xl"}`}>
         {showTestimonials && (
           <>
@@ -175,7 +178,7 @@ export default function TestimonialContactSection({
                 alt=""
                 width={273}
                 height={196}
-                className="pointer-events-none absolute bottom-[-28px] left-[-52px] z-0 w-[120px] sm:bottom-[-48px] sm:left-[-90px] sm:w-[190px]"
+                className="pointer-events-none absolute bottom-[-28px] right-[-52px] z-0 w-[180px] sm:bottom-[-48px] sm:right-[-90px] sm:w-[285px]"
               />
 
               {testimonials.map(({ name, firm, avatar, text, color, stars, pos }) => (
@@ -210,59 +213,7 @@ export default function TestimonialContactSection({
           </>
         )}
 
-        {contactVariant === "home" ? (
-          <ContactConversationContent variant="gold" fullBleed className={showTestimonials ? "mt-16 sm:mt-20 lg:mt-28" : ""} />
-        ) : (
-        <div className={`${showTestimonials ? "mt-16 sm:mt-20 lg:mt-28" : ""} grid items-center gap-8 lg:grid-cols-12 lg:gap-12`}>
-          <div className="text-center lg:col-span-6 lg:text-left">
-            <p className="text-[0.9rem] text-[#EBC982]">Contact Us</p>
-            <h3 className="mt-4 text-[clamp(2rem,7vw,3.2rem)] font-semibold leading-tight text-[#EBC982]">
-              Let&apos;s Start a Conversation
-            </h3>
-            <div className="mt-8 grid grid-cols-2 gap-5 text-[0.72rem] text-[#d9b46d] sm:grid-cols-4 sm:text-[0.82rem]">
-              <a href="tel:4244471147" className="flex flex-col items-center gap-3 lg:items-start">
-                <Image src="/contact_icons/phone.png" alt="" width={20} height={20} className="h-5 w-5 object-contain" />
-                <span>(424) 447-1147</span>
-              </a>
-              <a href="mailto:info@ymg-legal.com" className="flex flex-col items-center gap-3 lg:items-start">
-                <Image src="/contact_icons/message.png" alt="" width={20} height={20} className="h-5 w-5 object-contain" />
-                <span>info@ymg-legal.com</span>
-              </a>
-              <div className="flex flex-col items-center gap-3 lg:items-start">
-                <Image src="/contact_icons/location.png" alt="" width={20} height={20} className="h-5 w-5 object-contain" />
-                <span>Las Vegas Nevada</span>
-              </div>
-              <a href="#" className="flex flex-col items-center gap-3 lg:items-start">
-                <Image src="/contact_icons/Vector (4).png" alt="" width={20} height={20} className="h-5 w-5 object-contain" />
-                <span>LinkedIn</span>
-              </a>
-            </div>
-          </div>
-
-          <form className="mx-auto w-full max-w-[520px] rounded-[6px] bg-[#FFF5E0] p-5 text-[#2f3337] shadow-[0_18px_44px_rgba(0,0,0,0.18)] sm:p-7 lg:col-span-5 lg:col-start-8">
-            <h3 className="text-[1.15rem] font-semibold sm:text-[1.35rem]">
-              Book Your Free Strategy Call
-            </h3>
-            <p className="mt-3 max-w-[300px] text-[0.76rem] leading-[1.45]">
-              Tell us about your firm and we&apos;ll show you how we can help.
-            </p>
-            <div className="mt-5 grid gap-3">
-              <input className="h-10 rounded-[4px] border border-[#b8a57a] bg-transparent px-4 text-[0.8rem] outline-none" placeholder="Full Name" />
-              <input className="h-10 rounded-[4px] border border-[#b8a57a] bg-transparent px-4 text-[0.8rem] outline-none" placeholder="Email" />
-              <input className="h-10 rounded-[4px] border border-[#b8a57a] bg-transparent px-4 text-[0.8rem] outline-none" placeholder="Phone Number" />
-              <select className="h-10 rounded-[4px] border border-[#b8a57a] bg-transparent px-4 text-[0.8rem] outline-none" defaultValue="Practice Area">
-                <option>Practice Area</option>
-                <option>Mass Torts</option>
-                <option>Personal Injury</option>
-                <option>Case Acquisition</option>
-              </select>
-            </div>
-            <button type="button" className="mt-4 h-[52px] w-full rounded-[4px] bg-[#d9ae5d] px-8 text-sm font-bold text-[#2e3032] shadow-[0_12px_28px_rgba(168,129,62,0.22)] transition-colors hover:bg-[#c89f4e]">
-              Book My Free Call
-            </button>
-          </form>
-        </div>
-        )}
+        <ContactConversationContent variant="gold" fullBleed className={showTestimonials ? "mt-16 sm:mt-20 lg:mt-28" : ""} />
       </div>
     </section>
   );

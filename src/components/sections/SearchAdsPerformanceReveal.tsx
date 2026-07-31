@@ -80,7 +80,7 @@ const revealItem = {
 
 export default function SearchAdsPerformanceReveal() {
   return (
-    <section className="overflow-hidden bg-[#FFF5E0] px-5 py-[58px] text-[#3d4145] sm:px-10 sm:py-[72px] lg:px-16 lg:py-[54px]">
+    <section className="ymg-radial-wide overflow-hidden bg-[#FFF5E0] px-5 py-[58px] text-[#3d4145] sm:px-10 sm:py-[72px] lg:px-16 lg:py-[54px]">
       <motion.div
         className="mx-auto grid w-full max-w-[900px] gap-10 lg:grid-cols-[370px_1px_minmax(0,1fr)] lg:items-stretch lg:gap-[42px]"
         variants={revealContainer}
@@ -94,7 +94,7 @@ export default function SearchAdsPerformanceReveal() {
             className="font-heading text-[1.45rem] font-normal leading-[1.25] text-[#3d4145] lg:text-[1.05rem]"
           >
             Why Our Campaigns
-            <span className="block">Perform Better</span>
+            <span> Perform Better</span>
           </motion.h2>
 
           <motion.div
@@ -102,18 +102,17 @@ export default function SearchAdsPerformanceReveal() {
             className="mt-8 grid grid-cols-1 gap-x-5 gap-y-4 min-[420px]:grid-cols-2 sm:grid-cols-3 lg:mt-9"
           >
             {performanceReasons.map(({ title, Icon, iconBg, iconColor }) => (
-              <motion.article
+              <div
                 key={title}
-                variants={revealItem}
                 className="grid min-w-0 grid-cols-[34px_minmax(0,1fr)] items-center gap-2"
               >
-                <span className={`flex h-[34px] w-[34px] items-center justify-center rounded-[5px] border border-[#dfbd78] shadow-[0_4px_8px_rgba(91,69,34,0.15)] ${iconBg}`}>
-                  <Icon className={`h-[18px] w-[18px] ${iconColor}`} strokeWidth={1.7} />
+                <span className={`flex h-[34px] w-[34px] items-center justify-center rounded-[5px] border border-[#dfbd78] shadow-[0_4px_8px_rgba(91,69,34,0.15)] ${iconBg} dark:border-[#D8B26B] dark:bg-transparent dark:shadow-none`}>
+                  <Icon className={`h-[18px] w-[18px] ${iconColor} dark:text-[#D8B26B]`} strokeWidth={1.7} />
                 </span>
                 <h3 className="text-[0.72rem] font-medium leading-[1.2] text-[#3d4145]">
                   {title}
                 </h3>
-              </motion.article>
+              </div>
             ))}
           </motion.div>
         </div>
@@ -133,7 +132,7 @@ export default function SearchAdsPerformanceReveal() {
             className="font-heading text-[1.45rem] font-normal leading-[1.25] text-[#3d4145] lg:text-[1.05rem]"
           >
             Designed To Deliver
-            <span className="block">More Qualified Cases</span>
+            <span> More Qualified Cases</span>
           </motion.h2>
 
           <motion.div
@@ -142,23 +141,22 @@ export default function SearchAdsPerformanceReveal() {
           >
             {deliverySteps.map(({ title, Icon }, index) => (
               <div key={title} className="contents">
-                <motion.article variants={revealItem} className="flex min-w-0 flex-col items-center text-center">
-                  <span className="flex h-[42px] w-[42px] items-center justify-center rounded-full bg-[#dfb761] text-[#4c4a43] shadow-[0_6px_14px_rgba(151,111,45,0.16)]">
+                <div className="flex min-w-0 flex-col items-center text-center">
+                  <span className="flex h-[42px] w-[42px] items-center justify-center rounded-full bg-[#dfb761] text-[#4c4a43] shadow-[0_6px_14px_rgba(151,111,45,0.16)] dark:bg-transparent dark:text-[#D8B26B] dark:shadow-none">
                     <Icon className="h-[20px] w-[20px]" strokeWidth={1.65} />
                   </span>
                   <h3 className="mt-3 max-w-[92px] text-[0.68rem] font-medium leading-[1.25] text-[#3d4145]">
                     {title}
                   </h3>
-                </motion.article>
+                </div>
 
                 {index < deliverySteps.length - 1 && (
-                  <motion.span
-                    variants={revealItem}
+                  <span
                     aria-hidden="true"
                     className="hidden pt-[8px] text-[1.6rem] font-light leading-none text-[#d9ae5d] lg:block"
                   >
                     &rarr;
-                  </motion.span>
+                  </span>
                 )}
               </div>
             ))}

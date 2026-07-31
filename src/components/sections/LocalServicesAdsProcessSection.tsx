@@ -55,7 +55,7 @@ export default function LocalServicesAdsProcessSection() {
               transition={{ duration: 0.65, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
               className="contents"
             >
-              <article className="flex min-h-[190px] flex-col items-center text-center">
+              <div className="flex min-h-[190px] flex-col items-center text-center">
                 <span className="flex h-[46px] w-[46px] items-center justify-center rounded-full bg-[#d9ae5d] text-[#3d4145] shadow-[0_8px_18px_rgba(91,69,34,0.13)]">
                   <Icon className="h-[22px] w-[22px]" strokeWidth={1.55} />
                 </span>
@@ -65,7 +65,7 @@ export default function LocalServicesAdsProcessSection() {
                 <p className="mt-5 max-w-[170px] text-[0.82rem] leading-[1.35] text-[#8c8a85]">
                   {body}
                 </p>
-              </article>
+              </div>
               {index < steps.length - 1 && (
                 <motion.div
                   initial={{ opacity: 0, x: -12 }}

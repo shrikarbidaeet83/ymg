@@ -10,7 +10,7 @@ export default function ReadyGrowCtaSection({
   const isCream = variant === "cream";
 
   return (
-    <section className={`ymg-section-padding ${isCream ? "bg-[#FFF5E0] text-[#3d4145]" : "bg-[#404040] text-[#d9b46d]"}`}>
+    <section className={`ymg-section-padding-x py-6 ${isCream ? "bg-[#FFF5E0] text-[#3d4145]" : "bg-[#404040] text-[#d9b46d]"}`}>
       <div className="mx-auto grid max-w-7xl items-center gap-8 text-left lg:grid-cols-[1fr_220px] lg:gap-12">
         <div>
           <h2 className={`font-heading font-normal leading-tight tracking-[0] ${compactMobile ? "text-center text-[1.65rem] sm:text-[2rem] lg:text-left lg:text-[clamp(2rem,4.5vw,4rem)]" : "text-[clamp(2rem,4.5vw,4rem)]"} ${isCream ? "text-[#3d4145]" : "text-[#EBC982]"}`}>
@@ -22,10 +22,10 @@ export default function ReadyGrowCtaSection({
         </div>
 
         <div className={`flex w-full max-w-[220px] flex-col gap-4 ${compactMobile ? "mx-auto lg:mx-0" : ""}`}>
-          <Link href="/services/case-acquisition" className="inline-flex h-[52px] items-center justify-center rounded-[4px] bg-[#d9ae5d] px-8 text-sm font-bold text-[#2e3032] shadow-[0_12px_28px_rgba(168,129,62,0.22)] transition-colors hover:bg-[#c89f4e]">
+          <Link href="/services" className="inline-flex h-[52px] items-center justify-center rounded-[4px] bg-[#d9ae5d] px-8 text-sm font-bold text-[#2e3032] shadow-[0_12px_28px_rgba(168,129,62,0.22)] transition-colors hover:bg-[#c89f4e]">
             Get More Cases
           </Link>
-          <Link href="/contact" className="inline-flex h-[52px] items-center justify-center rounded-[4px] border border-[#dfbd78] bg-[#fff6e5]/40 px-8 text-sm font-semibold text-[#d3a65a] transition-colors hover:bg-[#fff6e5]/70">
+          <Link href="/contact#booking" className="inline-flex h-[52px] items-center justify-center rounded-[4px] border border-[#dfbd78] bg-transparent px-8 text-sm font-semibold text-[#d3a65a] transition-colors hover:bg-[#d9ae5d]/10">
             Book Strategy Call
           </Link>
         </div>

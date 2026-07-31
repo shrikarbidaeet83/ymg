@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import HowItWorksFunnel from "@/components/sections/HowItWorksFunnel";
+import HowItWorksFloatingIcon from "@/components/sections/HowItWorksFloatingIcon";
 import TestimonialContactSection from "@/components/sections/TestimonialContactSection";
 
 export const metadata: Metadata = {
@@ -34,13 +35,13 @@ const floatingIcons = [
 export default function HowItWorksPage() {
   return (
     <>
-      <section className="ymg-section-padding-x relative isolate min-h-[690px] overflow-hidden bg-[#FFF5E0] pt-[58px] text-[#3d4145] sm:min-h-[720px] lg:min-h-[720px]">
+      <section className="ymg-section-padding-x relative isolate min-h-[100svh] overflow-hidden bg-[#FFF5E0] pt-[58px] text-[#3d4145]">
         <div className="relative z-10 mx-auto grid h-full min-h-[632px] w-full max-w-[1220px] grid-cols-1 pb-0 pt-[86px] sm:pt-[108px] lg:grid-cols-[minmax(0,620px)_minmax(390px,1fr)] lg:pb-0 lg:pt-[116px]">
           <div className="max-w-[690px] text-center lg:text-left">
             <p className="font-sans text-[1.35rem] font-normal leading-none text-[#3d4145] sm:text-[1.5rem] lg:text-[1.46rem]">
               How It Works
             </p>
-            <h1 className="mt-5 font-heading text-[clamp(2.55rem,8.7vw,3.28rem)] font-normal leading-[1.08] tracking-[0] text-[#424242] sm:mt-6 lg:whitespace-nowrap">
+            <h1 className="ymg-standard-hero-title mt-5 text-[#424242] sm:mt-6 lg:whitespace-nowrap">
               From Lead to Signed Cases
             </h1>
             <p className="mx-auto mt-5 max-w-[620px] font-sans text-[1rem] font-normal leading-[1.34] text-[#4e4e4e] sm:text-[1.28rem] lg:mx-0 lg:max-w-[660px] lg:text-[1.27rem]">
@@ -58,16 +59,17 @@ export default function HowItWorksPage() {
               priority
               className="h-full w-full object-contain"
             />
+            <div aria-hidden="true" className="absolute bottom-0 left-0 hidden h-[17.5%] w-[37%] bg-[#191917] dark:block" />
           </div>
         </div>
 
         {floatingIcons.map(({ src, className }, index) => (
-          <div
+          <HowItWorksFloatingIcon
             key={index}
-            className={`pointer-events-none absolute z-0 flex h-[42px] w-[42px] items-center justify-center opacity-95 ${className}`}
-          >
-            <Image src={src} alt="" width={42} height={42} className="h-full w-full object-contain" />
-          </div>
+            src={src}
+            className={className}
+            delay={index * -0.85}
+          />
         ))}
       </section>
 

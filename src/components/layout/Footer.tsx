@@ -20,14 +20,14 @@ const resourceLinks = [
 ];
 
 const serviceLinks = [
-  { label: "Legal Answering", href: "/services/legal-answering" },
-  { label: "Legal Intake", href: "/services" },
-  { label: "Contract & Retainer", href: "/services" },
-  { label: "Live Chat & Text", href: "/services" },
-  { label: "Mass Tort", href: "/services/case-acquisition" },
-  { label: "Virtual Assistants", href: "/services" },
-  { label: "AI-Powered Booking", href: "/services" },
-  { label: "Outbound Acquisition", href: "/services/case-acquisition" },
+  { label: "Digital Marketing", href: "/services/digital-marketing" },
+  { label: "Google Search Ads", href: "/services/google-search-ads" },
+  { label: "Meta Ads", href: "/services/meta-ads" },
+  { label: "Local Services Ads", href: "/services/local-services-ads" },
+  { label: "SEO", href: "/services/seo" },
+  { label: "Website Design", href: "/services/website-design" },
+  { label: "AI Search (AIO)", href: "/services/ai-search" },
+  { label: "Organic Social Media", href: "/services/organic-social-media" },
 ];
 
 function FooterHeading({ children }: { children: React.ReactNode }) {
@@ -51,7 +51,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
 
 export default function Footer() {
   return (
-    <footer className="relative isolate overflow-hidden border-t border-cream-dark bg-cream px-5 py-10 sm:px-10 sm:py-12 lg:px-16 lg:py-14 xl:px-20">
+    <footer className="relative isolate overflow-hidden bg-cream px-5 py-10 sm:px-10 sm:py-12 lg:px-16 lg:py-14 xl:px-20">
       <Image
         src="/flowers/vcardBG.svg"
         alt=""

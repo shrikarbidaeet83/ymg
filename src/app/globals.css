@@ -1038,6 +1038,11 @@ body {
     justify-content: center !important;
   }
 
+  html.dark .ymg-home-page .ymg-hero-stage {
+    min-height: 390px !important;
+    padding-bottom: 92px !important;
+  }
+
   .ymg-hero-stage > div {
     transform: translateY(18px);
   }
@@ -1446,7 +1451,7 @@ body {
 
 @layer utilities {
   .ymg-section-padding {
-    padding: 64px 24px;
+    padding: 60px 24px;
   }
 
   .ymg-section-padding-x {
@@ -1454,12 +1459,12 @@ body {
   }
 
   .ymg-section-padding-y {
-    padding-block: 64px;
+    padding-block: 60px;
   }
 
   @media (min-width: 640px) {
     .ymg-section-padding {
-      padding: 80px 40px;
+      padding: 60px 40px;
     }
 
     .ymg-section-padding-x {
@@ -1467,13 +1472,13 @@ body {
     }
 
     .ymg-section-padding-y {
-      padding-block: 80px;
+      padding-block: 60px;
     }
   }
 
   @media (min-width: 1024px) {
     .ymg-section-padding {
-      padding: 96px 64px;
+      padding: 60px 64px;
     }
 
     .ymg-section-padding-x {
@@ -1481,13 +1486,13 @@ body {
     }
 
     .ymg-section-padding-y {
-      padding-block: 96px;
+      padding-block: 60px;
     }
   }
 
   @media (min-width: 1280px) {
     .ymg-section-padding {
-      padding: 112px 80px;
+      padding: 60px 80px;
     }
 
     .ymg-section-padding-x {
@@ -1495,7 +1500,7 @@ body {
     }
 
     .ymg-section-padding-y {
-      padding-block: 112px;
+      padding-block: 60px;
     }
   }
 }
@@ -1541,3 +1546,595 @@ body {
     display: inline-flex !important;
   }
 }
+
+/* Shared sizing for primary service and practice-area heroes */
+.ymg-standard-hero {
+  display: flex !important;
+  min-height: 620px !important;
+  align-items: center !important;
+  padding-top: 120px !important;
+  padding-bottom: 60px !important;
+}
+
+.ymg-about-hero {
+  min-height: 100svh !important;
+  box-sizing: border-box;
+}
+
+.ymg-standard-hero-copy {
+  width: 100%;
+  max-width: 720px !important;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.ymg-standard-hero-eyebrow {
+  font-size: 0.95rem !important;
+  font-weight: 400 !important;
+  line-height: 1.45 !important;
+  text-transform: none !important;
+}
+
+.ymg-standard-hero-title {
+  margin-top: 20px !important;
+  font-family: var(--font-display), sans-serif !important;
+  font-size: clamp(2.25rem, 5vw, 3rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.16 !important;
+  letter-spacing: -0.025em !important;
+}
+
+.ymg-standard-hero-body {
+  max-width: 600px !important;
+  margin-top: 20px !important;
+  margin-inline: auto;
+  font-size: 0.95rem !important;
+  line-height: 1.5 !important;
+}
+
+.ymg-standard-hero-actions {
+  margin-top: 32px !important;
+}
+
+.ymg-standard-hero-actions a {
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  height: 52px !important;
+  padding-inline: 32px !important;
+  border-radius: 4px !important;
+  font-size: 0.875rem !important;
+  line-height: 1.2 !important;
+  white-space: nowrap;
+}
+
+@media (max-width: 639px) {
+  .ymg-standard-hero {
+    padding-top: 104px !important;
+    padding-bottom: 48px !important;
+  }
+
+  .ymg-standard-hero-eyebrow {
+    font-size: 0.82rem !important;
+  }
+
+  .ymg-standard-hero-body {
+    font-size: 0.84rem !important;
+  }
+
+  .ymg-standard-hero-actions,
+  .ymg-standard-hero-actions a {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .ymg-standard-hero {
+    padding-top: 112px !important;
+  }
+}
+
+/* Global YMG dark theme */
+html.dark {
+  color-scheme: dark;
+  --background: #191917;
+  --foreground: #8E8E8E;
+  --card: #191917;
+  --card-foreground: #8E8E8E;
+  --popover: #191917;
+  --popover-foreground: #8E8E8E;
+  --muted: #22221f;
+  --muted-foreground: #8E8E8E;
+  --border: rgba(216, 178, 107, 0.42);
+  --input: rgba(216, 178, 107, 0.42);
+  --ring: #D8B26B;
+}
+
+html.dark body,
+html.dark main,
+html.dark main section,
+html.dark footer {
+  background-color: #191917 !important;
+  background-image: none !important;
+  color: #8E8E8E !important;
+}
+
+html.dark main article,
+html.dark main [class~="bg-white"],
+html.dark main [class~="bg-[#fffdfa]"],
+html.dark main [class~="bg-[#fff4dd]"],
+html.dark main [class~="bg-[#fff8e8]"],
+html.dark main [class~="bg-[#fcf2de]"],
+html.dark main [class~="bg-[#fff6e5]"] {
+  background-color: #191917 !important;
+}
+
+html.dark main article,
+html.dark main [class~="bg-white"],
+html.dark main [class~="bg-[#fffdfa]"],
+html.dark main [class~="bg-[#fff4dd]"],
+html.dark main [class~="bg-[#fff8e8]"],
+html.dark main [class~="bg-[#fcf2de]"],
+html.dark main [class~="bg-[#fff6e5]"],
+html.dark main [class*="rounded"][class*="border"] {
+  border-color: rgba(216, 178, 107, 0.68) !important;
+}
+
+html.dark main article,
+html.dark main [class~="bg-white"],
+html.dark main [class~="bg-[#fffdfa]"],
+html.dark main [class~="bg-[#fff4dd]"],
+html.dark main [class~="bg-[#fff8e8]"],
+html.dark main [class~="bg-[#fcf2de]"],
+html.dark main [class~="bg-[#fff6e5]"] {
+  border-style: solid !important;
+  border-width: 1px !important;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.26) !important;
+}
+
+html.dark .ymg-practice-bar {
+  position: relative;
+  border: 1px solid rgba(216, 178, 107, 0.74) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(216, 178, 107, 0.22),
+    0 8px 20px rgba(0, 0, 0, 0.28) !important;
+}
+
+html.dark .ymg-practice-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  border: 1px solid #D8B26B;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+html.dark .ymg-practice-marquee > div::after {
+  background-color: rgba(216, 178, 107, 0.55) !important;
+}
+
+html.dark .ymg-practice-marquee img {
+  filter: brightness(0) saturate(100%) invert(77%) sepia(38%) saturate(681%) hue-rotate(359deg) brightness(91%) contrast(87%);
+}
+
+html.dark .ymg-practice-marquee p {
+  color: #D8B26B !important;
+}
+
+/* Gold only for standalone icons; icons inside colored tiles keep their own palette. */
+html.dark main :not([class*="bg-"]):not([style*="background"]) > svg:not([class*="bg-"]),
+html.dark footer :not([class*="bg-"]):not([style*="background"]) > svg:not([class*="bg-"]) {
+  color: #D8B26B !important;
+  stroke: #D8B26B !important;
+}
+
+html.dark main img[src*="contact_icons"] {
+  filter: brightness(0) saturate(100%) invert(77%) sepia(38%) saturate(681%) hue-rotate(359deg) brightness(91%) contrast(87%) !important;
+}
+
+html.dark .ymg-hero-orbit .ymg-orbit-card {
+  border-color: rgba(216, 178, 107, 0.24) !important;
+  background: #414140 !important;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.34) !important;
+}
+
+html.dark .ymg-hero-orbit .ymg-orbit-card-title,
+html.dark .ymg-hero-orbit .ymg-orbit-gold-text {
+  color: #D8B26B !important;
+}
+
+html.dark .ymg-hero-orbit .ymg-orbit-axis {
+  color: rgba(216, 178, 107, 0.78) !important;
+}
+
+html.dark .ymg-hero-orbit .ymg-orbit-stat,
+html.dark .ymg-hero-orbit .ymg-orbit-outreach {
+  background: #383837 !important;
+}
+
+html.dark .ymg-hero-orbit .ymg-orbit-stat svg {
+  color: #D8B26B !important;
+  stroke: #D8B26B !important;
+}
+
+html.dark .ymg-hero-orbit .ymg-orbit-donut-hole {
+  background: #414140 !important;
+}
+
+html.dark .ymg-hero-orbit .ymg-orbit-copy-line {
+  background: #666663 !important;
+}
+
+html.dark .ymg-hero-orbit .ymg-orbit-badge {
+  background: linear-gradient(180deg, #E1BC73 0%, #D8B26B 100%) !important;
+  box-shadow:
+    0 12px 26px rgba(0, 0, 0, 0.42),
+    inset 0 1px 1px rgba(255, 255, 255, 0.34),
+    inset 0 -3px 6px rgba(99, 69, 25, 0.28) !important;
+}
+
+html.dark .ymg-hero-orbit .ymg-orbit-badge > svg {
+  filter: brightness(0) saturate(100%) invert(10%) sepia(5%) saturate(358%) hue-rotate(22deg) brightness(96%) contrast(91%);
+}
+
+html.dark .ymg-hero-orbit .ymg-orbit-center-surface {
+  overflow: visible;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html.dark .ymg-hero-orbit .ymg-orbit-center-surface > span {
+  display: none;
+}
+
+html.dark .ymg-hero-orbit .ymg-orbit-target-glyph g {
+  stroke: #D8B26B !important;
+}
+
+html.dark .ymg-hero-orbit .ymg-orbit-target-glyph circle[fill="#fff"] {
+  fill: #D8B26B !important;
+}
+
+html.dark .ymg-hero-orbit .ymg-orbit-target-glyph path {
+  stroke: #232321 !important;
+}
+
+html.dark .ymg-hero-orbit .ymg-orbit-target-glyph path[fill="#fff"] {
+  fill: #232321 !important;
+}
+
+html.dark .ymg-hero-orbit .ymg-orbit-gold-badge > svg {
+  color: #232321 !important;
+  stroke: #232321 !important;
+}
+
+html.dark main h1,
+html.dark main h2,
+html.dark main h3,
+html.dark main h4,
+html.dark main h5,
+html.dark main h6,
+html.dark footer h1,
+html.dark footer h2,
+html.dark footer h3,
+html.dark footer h4,
+html.dark footer h5,
+html.dark footer h6,
+html.dark main .font-heading,
+html.dark footer .font-heading {
+  color: #D8B26B !important;
+}
+
+html.dark main :is(h1, h2, h3, h4, h5, h6) *,
+html.dark footer :is(h1, h2, h3, h4, h5, h6) *,
+html.dark main .ymg-standard-hero-eyebrow,
+html.dark main p:has(+ h1),
+html.dark main p:has(+ h2),
+html.dark main p:has(+ h3) {
+  color: #D8B26B !important;
+}
+
+html.dark main p,
+html.dark main li,
+html.dark main blockquote,
+html.dark footer p,
+html.dark footer li,
+html.dark footer a {
+  color: #8E8E8E !important;
+}
+
+html.dark footer a:hover {
+  color: #D8B26B !important;
+}
+
+html.dark main input,
+html.dark main textarea,
+html.dark main select {
+  border-color: rgba(216, 178, 107, 0.55) !important;
+  background-color: #191917 !important;
+  color: #8E8E8E !important;
+}
+
+html.dark main input::placeholder,
+html.dark main textarea::placeholder {
+  color: #666663 !important;
+}
+
+html.dark .ymg-nav-morph-surface,
+html.dark .ymg-navbar-scrolled .ymg-nav-morph-surface,
+html.dark .ymg-navbar-over-dark .ymg-nav-morph-surface {
+  width: 100%;
+  height: 44px;
+  border: 1px solid rgba(216, 178, 107, 0.13) !important;
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, rgba(57, 57, 53, 0.82), rgba(30, 30, 28, 0.94)) !important;
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3) !important;
+  backdrop-filter: blur(22px) saturate(0.9);
+  -webkit-backdrop-filter: blur(22px) saturate(0.9);
+}
+
+html.dark .ymg-nav-indicator {
+  background: linear-gradient(135deg, #E0BC78, #D8B26B) !important;
+  box-shadow: 0 7px 18px rgba(216, 178, 107, 0.28), inset 0 -1px 0 rgba(95, 69, 24, 0.28) !important;
+}
+
+html.dark .ymg-nav-particle-trail {
+  opacity: 0.5;
+  filter: drop-shadow(0 0 7px rgba(216, 178, 107, 0.34));
+}
+
+html.dark .ymg-nav-link:not(.ymg-nav-active) {
+  color: #B5B2AA !important;
+}
+
+html.dark .ymg-nav-link:not(.ymg-nav-active):hover {
+  background: rgba(216, 178, 107, 0.1) !important;
+  color: #D8B26B !important;
+}
+
+html.dark .ymg-nav-active {
+  color: #191917 !important;
+}
+
+html.dark .ymg-nav-action-button {
+  border: 1px solid rgba(216, 178, 107, 0.18) !important;
+  background: linear-gradient(135deg, rgba(57, 57, 53, 0.86), rgba(30, 30, 28, 0.96)) !important;
+  color: #D8B26B !important;
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+  backdrop-filter: blur(16px) saturate(0.9);
+  -webkit-backdrop-filter: blur(16px) saturate(0.9);
+}
+
+html.dark .ymg-nav-action-button:hover {
+  border-color: rgba(216, 178, 107, 0.5) !important;
+  background: linear-gradient(135deg, rgba(216, 178, 107, 0.22), rgba(53, 47, 35, 0.94)) !important;
+  color: #E7C784 !important;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.4), 0 0 16px rgba(216, 178, 107, 0.16) !important;
+}
+
+html.dark .ymg-navbar button[aria-label="Open menu"] {
+  color: #D8B26B !important;
+}
+
+html.dark .ymg-nav-dropdown {
+  border-color: rgba(216, 178, 107, 0.55) !important;
+  background: rgba(25, 25, 23, 0.98) !important;
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.42) !important;
+}
+
+html.dark .ymg-nav-dropdown a:hover {
+  background: rgba(216, 178, 107, 0.1) !important;
+}
+
+html.dark .ymg-nav-dropdown a > span:first-child {
+  color: #D8B26B !important;
+}
+
+html.dark .ymg-nav-dropdown a > span:last-child {
+  color: #8E8E8E !important;
+}
+
+html.dark .ymg-mobile-drawer {
+  border-left: 1px solid rgba(216, 178, 107, 0.24);
+  background-color: #191917 !important;
+  box-shadow: -18px 0 40px rgba(0, 0, 0, 0.46);
+}
+
+html.dark .node-badge {
+  border-color: #D8B26B !important;
+  color: #D8B26B !important;
+}
+
+html.dark .case-results-mask {
+  background: #191917 !important;
+}
+
+html.dark .result-panel {
+  background: #3F351F !important;
+  box-shadow: none !important;
+}
+
+html.dark .result-panel p,
+html.dark .result-panel .result-heading,
+html.dark .counter {
+  color: #D8B26B !important;
+}
+
+html.dark .bottom-bar {
+  background: #3A311F !important;
+}
+
+html.dark .case-acquisition-arc {
+  stroke: #D8B26B !important;
+  opacity: 0.82 !important;
+}
+
+html.dark main .case-acquisition-section {
+  background-color: #191917 !important;
+  background-image: none !important;
+}
+
+html.dark .case-acquisition-radial {
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  z-index: 0;
+  width: min(88vw, 820px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: radial-gradient(circle, #46330F 0%, #191917 68%);
+  pointer-events: none;
+  animation: none !important;
+  transition: none !important;
+}
+
+html.dark main .active-campaigns-section {
+  background-color: #191917 !important;
+  background-image: radial-gradient(circle at 50% 50%, #46330F 0%, #191917 46%) !important;
+}
+
+html.dark .active-campaign-card {
+  border-color: #D8B26B !important;
+  background: #191917 !important;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28) !important;
+}
+
+.active-campaign-dark-flower {
+  display: none;
+}
+
+html.dark .active-campaign-dark-flower {
+  display: block !important;
+}
+
+html.dark .ymg-law-logo-window img {
+  filter: brightness(0) invert(1) !important;
+  opacity: 1 !important;
+}
+
+html.dark main .ymg-home-page {
+  position: relative;
+  isolation: isolate;
+  background: #191917 !important;
+}
+
+html.dark main .ymg-home-page > section {
+  position: relative;
+  z-index: 1;
+  background-color: #191917 !important;
+  background-image: radial-gradient(circle at 50% 50%, #46330F 0%, #191917 46%) !important;
+  background-attachment: scroll !important;
+  background-repeat: no-repeat !important;
+}
+
+html.dark main .ymg-home-page > .ymg-hero {
+  background-color: #191917 !important;
+  background-image: none !important;
+}
+
+html.dark main .ymg-home-page > .ymg-full-funnel-section {
+  background-color: #191917 !important;
+  background-image: none !important;
+}
+
+html.dark main .ymg-home-page > .ymg-law-firms-section {
+  background-color: #191917 !important;
+  background-image: none !important;
+}
+
+html.dark main .ymg-home-page > .active-campaigns-section {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+html.dark main .ymg-home-page > .active-campaigns-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 46% 28% at 50% 52%, rgba(70, 51, 15, 0.92) 0%, rgba(70, 51, 15, 0.48) 52%, transparent 100%);
+}
+
+html.dark main .ymg-home-page > .ymg-growth-partner-section {
+  background-color: #191917 !important;
+  background-image: radial-gradient(ellipse at 50% 50%, #46330F 0%, #191917 22%) !important;
+  background-position: center !important;
+  background-size: 150% 190% !important;
+}
+
+html.dark main .ymg-home-page > .ymg-testimonials-section {
+  background-color: #191917 !important;
+  background-image: radial-gradient(circle at 50% 50%, #46330F 0%, #191917 40%) !important;
+}
+
+html.dark main .ymg-home-page > .ymg-practice-areas-strip-section {
+  background-color: #191917 !important;
+  background-image: none !important;
+}
+
+html.dark main .ymg-home-page > .ymg-contact-section {
+  background: #191917 !important;
+}
+
+html.dark main .ymg-contact-section,
+html.dark .ymg-contact-conversation::before {
+  background-color: #191917 !important;
+}
+
+html.dark main .ymg-home-page > .case-acquisition-section {
+  background-color: #191917 !important;
+  background-image: none !important;
+}
+
+/*
+ * Dark-mode radial glow library
+ *
+ * Add one of these classes to a section when a page needs a known YMG glow:
+ *   ymg-radial-classic | ymg-radial-wide | ymg-radial-deep | ymg-radial-none
+ *
+ * `ymg-radial-focus` is for a positioned element behind a diagram, rather than
+ * an entire section. The element controls the glow's size and position.
+ */
+html.dark .ymg-radial-none {
+  background-color: #191917 !important;
+  background-image: none !important;
+}
+
+html.dark .ymg-radial-classic {
+  background-color: #191917 !important;
+  background-image: radial-gradient(circle at 50% 50%, #46330F 0%, #191917 46%) !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+html.dark .ymg-radial-wide {
+  background-image: radial-gradient(ellipse 46% 28% at 50% 52%, rgba(70, 51, 15, 0.92) 0%, rgba(70, 51, 15, 0.48) 52%, transparent 100%) !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+html.dark .ymg-radial-deep {
+  background-color: #191917 !important;
+  background-image: radial-gradient(ellipse at 50% 50%, #46330F 0%, #191917 22%) !important;
+  background-position: center !important;
+  background-size: 150% 190% !important;
+  background-repeat: no-repeat !important;
+}
+
+html.dark .ymg-radial-focus {
+  background-color: #191917 !important;
+  background-image: radial-gradient(circle, #46330F 0%, #191917 68%) !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Seamless dark illustration palette and final homepage section overrides refreshed. */

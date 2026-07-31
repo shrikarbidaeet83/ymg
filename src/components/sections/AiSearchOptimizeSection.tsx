@@ -85,21 +85,21 @@ export default function AiSearchOptimizeSection() {
   return (
     <section className="relative isolate overflow-hidden bg-[#404040] px-5 py-[64px] text-[#d9ae5d] sm:px-10 sm:py-[82px] lg:px-16 lg:py-[72px]">
       <Image
-        src="/images/big_flowers.png"
+        src="/images/big_flowers.webp"
         alt=""
         width={190}
         height={190}
         className="pointer-events-none absolute right-[6%] top-[12px] z-0 hidden w-[96px] opacity-[0.05] sm:block"
       />
       <Image
-        src="/images/small_flowers.png"
+        src="/images/small_flowers.webp"
         alt=""
         width={125}
         height={125}
         className="pointer-events-none absolute right-[14%] top-[42px] z-0 hidden w-[30px] opacity-[0.045] lg:block"
       />
       <Image
-        src="/images/small_flowers.png"
+        src="/images/small_flowers.webp"
         alt=""
         width={125}
         height={125}

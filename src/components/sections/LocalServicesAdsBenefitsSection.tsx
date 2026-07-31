@@ -42,21 +42,21 @@ export default function LocalServicesAdsBenefitsSection() {
   return (
     <section className="relative isolate overflow-hidden bg-[#404040] px-5 py-[62px] text-[#d9ae5d] sm:px-10 sm:py-[78px] lg:px-16 lg:py-[76px]">
       <Image
-        src="/images/big_flowers.png"
+        src="/images/big_flowers.webp"
         alt=""
         width={190}
         height={190}
         className="pointer-events-none absolute right-[4%] top-[0px] z-0 hidden w-[128px] opacity-[0.05] sm:block"
       />
       <Image
-        src="/images/small_flowers.png"
+        src="/images/small_flowers.webp"
         alt=""
         width={125}
         height={125}
         className="pointer-events-none absolute right-[9%] top-[124px] z-0 hidden w-[54px] opacity-[0.05] lg:block"
       />
       <Image
-        src="/images/small_flowers.png"
+        src="/images/small_flowers.webp"
         alt=""
         width={125}
         height={125}
@@ -103,7 +103,7 @@ export default function LocalServicesAdsBenefitsSection() {
           </h2>
           <div className="mt-9 space-y-7">
             {reasons.map(({ title, body, Icon }, index) => (
-              <motion.article
+              <motion.div
                 key={title}
                 initial={{ opacity: 0, y: 22, filter: "blur(5px)" }}
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -122,7 +122,7 @@ export default function LocalServicesAdsBenefitsSection() {
                     {body}
                   </p>
                 </span>
-              </motion.article>
+              </motion.div>
             ))}
           </div>
         </motion.div>

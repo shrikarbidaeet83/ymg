@@ -67,21 +67,11 @@ const navLinks: NavLink[] = [
         href: "/services/organic-social-media",
         description: "On-brand content that builds trust",
       },
-      {
-        label: "Case Acquisition",
-        href: "/services/case-acquisition",
-        description: "Systems for signed retainers",
-      },
-      {
-        label: "Legal Answering",
-        href: "/services/legal-answering",
-        description: "Responsive support for every inquiry",
-      },
     ],
   },
   { label: "Plans", href: "/plans" },
   { label: "Blog", href: "/blog" },
-  { label: "Practice Areas", href: "/practice-areas", hasDropdown: true },
+  { label: "Practice Areas", href: "/practice-areas" },
   { label: "Contact Us", href: "/contact" },
 ];  
 
@@ -106,9 +96,9 @@ function HeaderActions({
   return (
     <div className="flex items-center gap-3">
       <a
-        href="https://www.linkedin.com/"
+        href="https://www.linkedin.com/company/ymglegal-attorney-marketing/"
         target="_blank"
-        rel="noreferrer"
+        rel="noopener noreferrer"
         aria-label="Open LinkedIn"
         onClick={onAction}
         className="ymg-nav-action-button inline-flex h-10 w-10 items-center justify-center rounded-full text-[#172022] transition-all duration-200 hover:-translate-y-0.5"
@@ -247,7 +237,7 @@ export default function Navbar() {
       window.removeEventListener("scroll", scheduleThemeUpdate);
       window.removeEventListener("resize", scheduleThemeUpdate);
     };
-  }, [pathname]);
+  }, [pathname, darkMode, themeReady]);
 
   useEffect(() => {
     document.body.style.overflow = drawerOpen ? "hidden" : "";
@@ -281,7 +271,10 @@ export default function Navbar() {
         const nav = desktopNavRef.current;
         const activeLink = nav?.querySelector<HTMLElement>('[data-nav-active="true"]');
 
-        if (!nav || !activeLink || activeLink.offsetWidth === 0) return;
+        if (!nav || !activeLink || activeLink.offsetWidth === 0) {
+          setActivePill(null);
+          return;
+        }
 
         const activePillInset = 5;
 
@@ -340,7 +333,11 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           <nav ref={desktopNavRef} className="ymg-nav-pill relative hidden h-[54px] items-center gap-4 overflow-visible rounded-full bg-[radial-gradient(circle_at_50%_0%,#EFCD86_0%,#EFCD86_48%,#D88268_100%)] px-4 shadow-[0_7px_12px_rgba(71,56,30,0.22)] min-[900px]:flex">
-            <span className="ymg-nav-morph-surface" aria-hidden="true" />
+            <span
+              className="ymg-nav-morph-surface"
+              aria-hidden="true"
+              style={darkMode ? { background: "#191917", boxShadow: "0 8px 24px rgba(0, 0, 0, 0.28)" } : undefined}
+            />
             {activePill && (
               <>
                 <motion.span
@@ -412,7 +409,7 @@ export default function Navbar() {
                   </Link>
                   <div
                     className={cn(
-                      "pointer-events-none absolute left-1/2 top-[calc(100%+10px)] w-[246px] -translate-x-1/2 translate-y-2 rounded-[8px] border border-[#dfbd78]/70 bg-[#fff8e8]/95 p-2 opacity-0 shadow-[0_16px_34px_rgba(71,56,30,0.18)] backdrop-blur-xl transition-all duration-200 before:absolute before:-top-3 before:left-0 before:h-3 before:w-full before:content-['']",
+                      "ymg-nav-dropdown pointer-events-none absolute left-1/2 top-[calc(100%+10px)] w-[246px] -translate-x-1/2 translate-y-2 rounded-[8px] border border-[#dfbd78]/70 bg-[#fff8e8]/95 p-2 opacity-0 shadow-[0_16px_34px_rgba(71,56,30,0.18)] backdrop-blur-xl transition-all duration-200 before:absolute before:-top-3 before:left-0 before:h-3 before:w-full before:content-['']",
                       !desktopDropdownSuppressed &&
                         "group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100"
                     )}
@@ -500,7 +497,7 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.35, ease: "easeOut" }}
-              className="fixed top-0 right-0 bottom-0 z-[70] w-[80vw] max-w-[320px] bg-dark flex flex-col"
+              className="ymg-mobile-drawer fixed top-0 right-0 bottom-0 z-[70] flex w-[80vw] max-w-[320px] flex-col bg-dark"
             >
               <div className="flex items-center justify-between px-6 h-[76px] border-b border-gold/10">
                 <YMGLogo asLink variant="gold" />

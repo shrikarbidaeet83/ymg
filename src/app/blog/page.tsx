@@ -57,10 +57,10 @@ export default function BlogPage() {
 
   return (
     <main className="min-h-screen bg-[#FFF5E0] pt-20">
-      <section className="ymg-section-padding pt-16 sm:pt-20 lg:pt-24 xl:pt-28">
+      <section className="ymg-section-padding-x pb-[60px] pt-16 sm:pt-20 lg:pt-24 xl:pt-28">
         <div
           className="relative mx-auto flex min-h-[430px] max-w-[1210px] items-center overflow-hidden rounded-[12px] bg-center bg-no-repeat sm:min-h-[453px]"
-          style={{ backgroundImage: "url('/bolg-bg.svg')", backgroundSize: "102% 104%" }}
+          style={{ backgroundImage: "url('/bolg-bg.webp')", backgroundSize: "102% 104%" }}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/28 to-black/5" />
           <div className="relative z-10 w-full px-7 py-12 text-white sm:px-14 lg:px-20">
@@ -87,8 +87,9 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <section className="ymg-section-padding bg-[#FFF5E0]">
-        <div className="mx-auto max-w-[1120px]">
+      <section className="ymg-section-padding relative isolate overflow-hidden bg-[#FFF5E0]">
+        <div aria-hidden="true" className="ymg-radial-classic pointer-events-none absolute inset-x-0 bottom-0 h-[360px]" />
+        <div className="relative z-10 mx-auto max-w-[1120px]">
           <div className="mb-8 grid gap-3 sm:grid-cols-2 sm:gap-5">
             <label className="relative block">
               <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#55585a]" />
@@ -120,12 +121,12 @@ export default function BlogPage() {
             </select>
           </div>
 
-          <div id="blog-grid" className="scroll-mt-24 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div id="blog-grid" className="scroll-mt-24 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:max-xl:gap-8">
             {visibleCards.map((post) => (
               <Link
                 key={post.cardId}
                 href={`/blog/${post.slug}`}
-                className="group relative aspect-[4/5] min-h-[390px] overflow-hidden rounded-[12px] border border-[#dfbd78] bg-transparent transition-transform duration-500 hover:-translate-y-1.5"
+                className="group relative aspect-[4/5] min-h-[390px] overflow-hidden rounded-[12px] border border-[#dfbd78] bg-transparent transition-transform duration-500 hover:-translate-y-1.5 max-sm:mx-auto max-sm:w-[calc(100%-20px)] lg:max-xl:scale-[0.9]"
               >
                 <Image
                   src={post.image}
@@ -189,7 +190,7 @@ export default function BlogPage() {
                 onClick={() => changePage(page)}
                 className={`flex h-10 w-10 items-center justify-center rounded-full border transition-colors ${
                   activePage === page
-                    ? "border-[#dfbd78] bg-white text-[#3d4145]"
+                    ? "border-[#dfbd78] bg-white text-[#3d4145] dark:!border-[#D8B26B] dark:!bg-[#D8B26B] dark:!text-[#191917]"
                     : "border-transparent hover:border-[#dfbd78]/60"
                 }`}
               >

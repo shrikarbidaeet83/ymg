@@ -18,7 +18,7 @@ export default async function BlogPostPage({
 
   return (
     <main className="min-h-screen bg-[#FFF5E0]">
-      <section className="ymg-section-padding flex min-h-[320px] items-end justify-center pt-[128px] text-[#3d4145] lg:min-h-[360px] lg:pt-[150px]">
+      <section className="ymg-section-padding-x flex min-h-[320px] items-end justify-center pb-[60px] pt-[128px] text-[#3d4145] lg:min-h-[360px] lg:pt-[150px]">
         <div className="mx-auto w-full max-w-[780px]">
           <div className="mb-5 flex items-center gap-3">
             <span className="rounded-full bg-[#fbefd9] px-3 py-1 text-[0.78rem] font-medium text-[#d8ae63]">

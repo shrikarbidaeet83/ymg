@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { X } from "lucide-react";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
@@ -39,29 +38,7 @@ export default function SeoProblemSection() {
   };
 
   return (
-    <section className="relative isolate overflow-hidden bg-[#404040] px-5 py-[62px] text-[#d9ae5d] sm:px-10 sm:py-[76px] lg:px-16 lg:py-[58px]">
-      <Image
-        src="/images/big_flowers.png"
-        alt=""
-        width={190}
-        height={190}
-        className="pointer-events-none absolute right-[7%] top-[8px] z-0 hidden w-[82px] opacity-[0.05] sm:block lg:w-[96px]"
-      />
-      <Image
-        src="/images/small_flowers.png"
-        alt=""
-        width={125}
-        height={125}
-        className="pointer-events-none absolute right-[3%] top-[50px] z-0 hidden w-[30px] opacity-[0.05] lg:block"
-      />
-      <Image
-        src="/images/small_flowers.png"
-        alt=""
-        width={125}
-        height={125}
-        className="pointer-events-none absolute right-[13%] top-[92px] z-0 hidden w-[36px] opacity-[0.045] lg:block"
-      />
-
+    <section className="ymg-radial-wide relative isolate overflow-hidden bg-[#404040] px-5 py-[62px] text-[#d9ae5d] sm:px-10 sm:py-[76px] lg:px-16 lg:py-[58px]">
       <div className="relative z-10 mx-auto w-full min-w-0 max-w-[900px]">
         <div className="text-center">
           <p className="text-[0.88rem] font-normal text-[#d9ae5d] sm:text-[1rem]">
@@ -88,7 +65,7 @@ export default function SeoProblemSection() {
                 viewport={{ once: true, amount: 0.45 }}
                 className="flex min-h-[180px] w-[72vw] max-w-[240px] shrink-0 snap-center flex-col items-center justify-center rounded-[12px] border border-[#dfbd78] bg-[#fffdfa] px-5 py-6 text-center shadow-[0_8px_22px_rgba(0,0,0,0.16)] sm:w-[240px]"
               >
-                <span className="flex h-[46px] w-[46px] items-center justify-center rounded-[7px] border border-[#efc9bc] bg-[#fff0eb] shadow-[0_5px_10px_rgba(91,69,34,0.12)]">
+                <span className="flex h-[46px] w-[46px] items-center justify-center rounded-[7px] border border-[#D9B46D] bg-transparent">
                   <X className="h-[25px] w-[25px] text-[#d83927]" strokeWidth={1.8} />
                 </span>
                 <h3 className="mt-5 max-w-[150px] text-[0.86rem] font-medium leading-[1.3] text-[#4b4b4b]">
@@ -122,7 +99,7 @@ export default function SeoProblemSection() {
               variants={cardReveal}
               className="flex min-h-[120px] flex-col items-center rounded-[6px] border border-[#dfbd78] bg-[#fffdfa] px-3 py-4 text-center shadow-[5px_7px_10px_rgba(17,17,17,0.22)]"
             >
-              <span className="flex h-[34px] w-[34px] items-center justify-center rounded-[5px] border border-[#efc9bc] bg-[#fff0eb] shadow-[0_4px_8px_rgba(91,69,34,0.13)]">
+              <span className="flex h-[34px] w-[34px] items-center justify-center rounded-[5px] border border-[#D9B46D] bg-transparent">
                 <X className="h-[20px] w-[20px] text-[#d83927]" strokeWidth={1.8} />
               </span>
               <h3 className="mt-4 text-[0.68rem] font-medium leading-[1.25] text-[#4b4b4b]">

@@ -68,14 +68,14 @@ export default function LocalServicesAdsManageSection() {
   return (
     <section className="relative isolate overflow-hidden bg-[#404040] px-5 py-[62px] text-[#d9ae5d] sm:px-10 sm:py-[78px] lg:px-16 lg:py-[68px]">
       <Image
-        src="/images/big_flowers.png"
+        src="/images/big_flowers.webp"
         alt=""
         width={190}
         height={190}
         className="pointer-events-none absolute right-[7%] top-[-18px] z-0 hidden w-[102px] opacity-[0.05] sm:block"
       />
       <Image
-        src="/images/small_flowers.png"
+        src="/images/small_flowers.webp"
         alt=""
         width={125}
         height={125}

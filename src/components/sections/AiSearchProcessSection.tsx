@@ -60,8 +60,9 @@ const stepReveal = {
 
 export default function AiSearchProcessSection() {
   return (
-    <section className="overflow-hidden bg-[#fff5e0] px-5 py-[66px] sm:px-10 sm:py-[82px] lg:px-16 lg:py-[72px]">
-      <div className="mx-auto max-w-[980px]">
+    <section className="relative overflow-hidden bg-[#fff5e0] px-5 py-[66px] sm:px-10 sm:py-[82px] lg:px-16 lg:py-[72px]">
+      <div aria-hidden="true" className="ymg-radial-deep pointer-events-none absolute left-1/2 top-1/2 h-[130%] w-[130%] -translate-x-1/2 -translate-y-1/2" />
+      <div className="relative z-10 mx-auto max-w-[980px]">
         <motion.h2
           initial={{ opacity: 0, y: 24, filter: "blur(4px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -81,8 +82,7 @@ export default function AiSearchProcessSection() {
         >
           {processSteps.map(({ title, description, Icon }, index) => (
             <div key={title} className="contents">
-              <motion.article
-                variants={stepReveal}
+        <div
                 className="flex w-full max-w-[220px] flex-col items-center text-center lg:w-[148px] lg:max-w-none"
               >
                 <span className="flex h-[44px] w-[44px] items-center justify-center rounded-full bg-[#d9b462] text-[#5a513e] shadow-[0_7px_16px_rgba(156,117,45,0.18)] lg:h-[38px] lg:w-[38px]">
@@ -94,7 +94,7 @@ export default function AiSearchProcessSection() {
                 <p className="mt-3 text-[0.72rem] leading-[1.45] text-[#8d8a83] lg:text-[0.61rem] lg:leading-[1.42]">
                   {description}
                 </p>
-              </motion.article>
+        </div>
 
               {index < processSteps.length - 1 && (
                 <motion.span
