@@ -1,0 +1,10 @@
+stages:
+  - test
+
+lint_and_build:
+  stage: test
+  image: node:20
+  script:
+    - npm install
+    - npm run lint
+    - npm run build
