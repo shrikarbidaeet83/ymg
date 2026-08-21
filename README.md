@@ -78,7 +78,7 @@ sections. That is the pattern; follow it.
 | [Deployment](docs/deployment.md) | Amplify, CI, domains |
 | [Release process](docs/release-process.md) | Pushing dev → main. Read before you push. |
 
-Also worth reading once: [the platform overview](../docs/ONBOARDING.md).
+Also worth reading once: [the platform overview](https://gitlab.com/ymg-legal/core-api/-/blob/dev/docs/onboarding.md).
 
 ---
 
