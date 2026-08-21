@@ -4,11 +4,12 @@
 > Last synced: 2026-06-30
 > **2026-06-30: All pending commits pushed to main in one batch at Shrikar's explicit request, bypassing the one-at-a-time rule for this round.**
 > **2026-06-30 (later): `dev` was force-pushed by Shrikar YMG with 9 new commits (TouchPopCard, HeroOrbitAnimation, Digital Marketing page, mobile marquee, CTA/testimonial/navbar polish), discarding the prior merge/docs commits on dev (those stayed safe on main). Merged dev into main again, pushed. main and dev now have identical content.**
+> **2026-08-22: Batched 3 commits to main at Pavan's explicit request, bypassing the one-at-a-time rule — all documentation-only, no functional change. `8d3bf63` (remove MCP instruction file), `8fd5861` (developer documentation set), `ab3f19c` (platform overview link). Merge hit one README.md conflict against `134dfde`, a whitespace tweak to the old create-next-app boilerplate; resolved in favour of the rewritten README.**
 
 ## Main Branch Status
-- `origin/main` last commit: `ffcc21d` — Merge dev into main (2026-06-30)
-- `origin/dev` last commit: `b8f7863` — Navbar: minor whitespace tweak (2026-06-30)
-- main and dev content is identical; main has 6 extra docs/merge commits dev doesn't carry
+- `origin/main` last commit: `6a98874` — Merge dev into main, developer documentation set (2026-08-22)
+- `origin/dev` last commit: `ab3f19c` — docs: point platform overview link at core-api on GitLab (2026-08-22)
+- main and dev content is identical
 
 ---
 
