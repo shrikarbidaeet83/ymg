@@ -47,3 +47,11 @@ next-dev-*.log
 next-env.d.ts
 # Added by code-review-graph
 .code-review-graph/
+
+# Local-only: internal memory / work-tracking + agent instruction notes
+PUSH_TRACKER.md
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+QODER.md
+.kiro/
