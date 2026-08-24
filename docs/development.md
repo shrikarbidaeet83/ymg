@@ -161,10 +161,9 @@ other two sites.
 
 `dev` is where work happens. **Pushing to `main` here follows a specific
 process that is not the same as the other repos** — one commit at a time,
-oldest first, with `PUSH_TRACKER.md` updated each time.
+oldest first.
 
-Read [release-process.md](release-process.md) before you push anything to
-`main`.
+Ask Pavan for the release checklist before you push anything to `main`.
 
 ---
 

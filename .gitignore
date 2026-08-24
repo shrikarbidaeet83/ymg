@@ -55,3 +55,7 @@ CLAUDE.md
 GEMINI.md
 QODER.md
 .kiro/
+docs/deployment.md
+docs/release-process.md
+.claude/
+.gemini/

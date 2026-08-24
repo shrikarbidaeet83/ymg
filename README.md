@@ -27,9 +27,8 @@ CMS, no API.
 two sites use CSS transitions and an IntersectionObserver. This one is a
 different class of frontend.
 
-**Shrikar owns it.** Day-to-day development is his. The recurring process here
-is the dev→main push tracker, not feature work — see
-[release-process.md](docs/release-process.md).
+**Shrikar owns it.** Day-to-day development is his, and the recurring work here
+is release management rather than feature work.
 
 ---
 
@@ -75,19 +74,14 @@ sections. That is the pattern; follow it.
 | [Architecture](docs/architecture.md) | You are new. Start here. |
 | [Development](docs/development.md) | Setup, commands, conventions |
 | [Styling](docs/styling.md) | Tailwind 4 theme, brand tokens, animation |
-| [Deployment](docs/deployment.md) | Amplify, CI, domains |
-| [Release process](docs/release-process.md) | Pushing dev → main. Read before you push. |
-
-Also worth reading once: [the platform overview](https://gitlab.com/ymg-legal/core-api/-/blob/dev/docs/onboarding.md).
 
 ---
 
 ## House rules
 
-- **`dev` is the working branch.** Pushes to `main` go one commit at a time —
-  read [release-process.md](docs/release-process.md) first, it is not the same
-  process as the other repos.
-- **Update `PUSH_TRACKER.md` on every push to main.**
+- **`dev` is the working branch.** Pushes to `main` go one commit at a time,
+  oldest first — this is not the same process as the other repos. Ask Pavan for
+  the release checklist before your first push.
 - **Run `npm run lint` after every change.**
 - The root domain still serves an older static site in places. Do not assume
   what you see live is what is in this repo.
