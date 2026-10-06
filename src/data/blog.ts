@@ -1,3 +1,5 @@
+import { cms, formatCmsDate } from "@/lib/cms";
+
 export type Post = {
   slug: string;
   title: string;
@@ -6,9 +8,11 @@ export type Post = {
   category: string;
   readTime: string;
   body: string;
+  /** Set for posts published from the YMG CMS: the full designed page, rendered by CmsContent. */
+  cmsHtml?: string;
 };
 
-export const posts: Post[] = [
+const builtInPosts: Post[] = [
   {
     slug: "what-is-a-mass-tort",
     title: "What Is a Mass Tort and How Does It Work?",
@@ -40,6 +44,21 @@ export const posts: Post[] = [
     body: `Talcum powder litigation against Johnson & Johnson has produced multi-billion dollar verdicts and reshaped how courts approach corporate liability in consumer product cases.\n\nThe core allegation: J&J knew for decades that its baby powder contained asbestos-contaminated talc linked to ovarian cancer and mesothelioma, yet failed to warn consumers.\n\nDespite J&J's attempts to resolve liability through a series of bankruptcy maneuvers, claims continue to be filed and litigated. Firms acquiring talc cases in 2026 should focus on claimants with documented ovarian cancer diagnoses and confirmed long-term product use.`,
   },
 ];
+
+// Posts published from the YMG CMS come first (newest first); a built-in
+// post with the same slug is replaced by its CMS version.
+const cmsPosts: Post[] = cms.blog.map((p) => ({
+  slug: p.slug,
+  title: p.title,
+  excerpt: p.excerpt,
+  date: formatCmsDate(p.publishedAt),
+  category: p.category || "Blog",
+  readTime: `${p.readingMinutes || 1} min read`,
+  body: "",
+  cmsHtml: p.html,
+}));
+
+export const posts: Post[] = [...cmsPosts, ...builtInPosts.filter((b) => !cmsPosts.some((c) => c.slug === b.slug))];
 
 export function getPostBySlug(slug: string): Post | undefined {
   return posts.find((p) => p.slug === slug);

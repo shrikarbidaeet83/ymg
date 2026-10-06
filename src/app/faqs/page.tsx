@@ -5,8 +5,11 @@ import { TestimonialCardsShowcase } from "@/components/sections/TestimonialConta
 import Image from "next/image";
 import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { useMemo, useState } from "react";
+import { cms } from "@/lib/cms";
 
-const faqs = [
+type Faq = { question: string; answer: string; answerHtml?: string };
+
+const builtInFaqs: Faq[] = [
   {
     question: "What services does YMG Legal provide?",
     answer:
@@ -53,6 +56,11 @@ const faqs = [
       "Yes. Our workflows are designed with privacy, secure information handling, and professional intake standards in mind, including processes that support sensitive client communications.",
   },
 ];
+
+// FAQs published in the YMG CMS replace the built-in list once any exist.
+const faqs: Faq[] = cms.faqs.length
+  ? cms.faqs.map((f) => ({ question: f.title, answer: "", answerHtml: f.answer }))
+  : builtInFaqs;
 
 const PAGE_SIZE = 5;
 
@@ -117,7 +125,7 @@ export default function FAQsPage() {
 
           <div className="mx-auto w-full max-w-[720px] lg:mx-0 lg:max-w-none">
             <div className="space-y-3">
-              {pagedFaqs.map(({ question, answer }) => {
+              {pagedFaqs.map(({ question, answer, answerHtml }) => {
                 const isOpen = openQuestion === question;
 
                 return (
@@ -143,9 +151,16 @@ export default function FAQsPage() {
                     {isOpen && (
                       <div className="px-6 pb-7 sm:px-7">
                         <div className="h-px w-full bg-[#dfbd78]" />
-                        <p className="pt-4 text-[0.95rem] leading-[1.45] text-[#8a8c8e] sm:text-[1.02rem]">
-                          {answer}
-                        </p>
+                        {answerHtml ? (
+                          <div
+                            className="pt-4 text-[0.95rem] leading-[1.45] text-[#8a8c8e] sm:text-[1.02rem] [&_a]:underline [&_p]:mb-3 [&_ul]:list-disc [&_ul]:pl-5"
+                            dangerouslySetInnerHTML={{ __html: answerHtml }}
+                          />
+                        ) : (
+                          <p className="pt-4 text-[0.95rem] leading-[1.45] text-[#8a8c8e] sm:text-[1.02rem]">
+                            {answer}
+                          </p>
+                        )}
                       </div>
                     )}
                   </article>

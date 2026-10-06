@@ -2,8 +2,9 @@ import Image from "next/image";
 import CardInteractionHint from "@/components/sections/CardInteractionHint";
 import ContactConversationContent from "@/components/sections/ContactConversationContent";
 import TouchPopCard from "@/components/sections/TouchPopCard";
+import { cms } from "@/lib/cms";
 
-const testimonials = [
+const builtInTestimonials = [
   {
     name: "Managing Partner",
     firm: "Bergson Legal",
@@ -50,6 +51,14 @@ const testimonials = [
     pos: "right-[18%] top-[132px] z-10 w-[118px] min-h-[138px] rotate-[20deg] sm:right-[16%] sm:top-[265px] sm:w-[300px] sm:min-h-[275px]",
   },
 ];
+
+// Testimonials published in the YMG CMS (featured first) take the card
+// slots in order, keeping each slot's design (position, colour, avatar);
+// built-in quotes fill any remaining slots.
+const testimonials = builtInTestimonials.map((slot, i) => {
+  const t = cms.testimonials[i];
+  return t ? { ...slot, name: t.title, firm: t.caseType || t.location || slot.firm, text: t.quote } : slot;
+});
 
 export function TestimonialCardsShowcase({
   className = "",
