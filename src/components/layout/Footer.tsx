@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { YMGLogo } from "@/components/ui/logo";
+import { cms } from "@/lib/cms";
 
 const quickLinks = [
   { label: "Home", href: "/" },
@@ -15,6 +16,8 @@ const resourceLinks = [
   { label: "Case Results", href: "/blog" },
   { label: "Blog", href: "/blog" },
   { label: "FAQ's", href: "/faqs" },
+  // Only when a job opening is live in the YMG CMS.
+  ...(cms.careers.some((j) => j.isOpen !== false) ? [{ label: "Careers", href: "/careers" }] : []),
   { label: "Terms & Conditions", href: "/terms" },
   { label: "Privacy Policy", href: "/privacy-policy" },
 ];
