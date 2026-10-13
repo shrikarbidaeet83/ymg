@@ -57,8 +57,10 @@ const builtInFaqs: Faq[] = [
   },
 ];
 
-// FAQs published in the YMG CMS replace the built-in list once any exist.
-const faqs: Faq[] = cms.faqs.length
+// When the site is connected to the YMG CMS, the FAQs published there are the
+// whole list (deleting one there removes it here); the built-in list is only
+// the fallback for builds without the CMS.
+const faqs: Faq[] = cms.enabled
   ? cms.faqs.map((f) => ({ question: f.title, answer: "", answerHtml: f.answer }))
   : builtInFaqs;
 

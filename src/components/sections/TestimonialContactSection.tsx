@@ -52,13 +52,18 @@ const builtInTestimonials = [
   },
 ];
 
-// Testimonials published in the YMG CMS (featured first) take the card
-// slots in order, keeping each slot's design (position, colour, avatar);
-// built-in quotes fill any remaining slots.
-const testimonials = builtInTestimonials.map((slot, i) => {
-  const t = cms.testimonials[i];
-  return t ? { ...slot, name: t.title, firm: t.caseType || t.location || slot.firm, text: t.quote } : slot;
-});
+// When the site is connected to the YMG CMS, its testimonials (featured
+// first) fill the card slots in order, keeping each slot's design (position,
+// colour, avatar). The design has 5 slots, so only the first 5 show; deleting
+// one in the CMS removes its card. Firm name comes from the CMS "Location".
+const testimonials = cms.enabled
+  ? cms.testimonials.slice(0, builtInTestimonials.length).map((t, i) => ({
+      ...builtInTestimonials[i],
+      name: t.title,
+      firm: t.location || t.caseType,
+      text: t.quote,
+    }))
+  : builtInTestimonials;
 
 export function TestimonialCardsShowcase({
   className = "",
