@@ -45,8 +45,9 @@ const builtInPosts: Post[] = [
   },
 ];
 
-// Posts published from the YMG CMS come first (newest first); a built-in
-// post with the same slug is replaced by its CMS version.
+// When the site is connected to the YMG CMS, the CMS alone decides which
+// posts exist (so deleting a post there removes it here); the built-in posts
+// are only the fallback for builds without the CMS (local dev).
 const cmsPosts: Post[] = cms.blog.map((p) => ({
   slug: p.slug,
   title: p.title,
@@ -58,7 +59,7 @@ const cmsPosts: Post[] = cms.blog.map((p) => ({
   cmsHtml: p.html,
 }));
 
-export const posts: Post[] = [...cmsPosts, ...builtInPosts.filter((b) => !cmsPosts.some((c) => c.slug === b.slug))];
+export const posts: Post[] = cms.enabled ? cmsPosts : builtInPosts;
 
 export function getPostBySlug(slug: string): Post | undefined {
   return posts.find((p) => p.slug === slug);
