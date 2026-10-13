@@ -1,6 +1,6 @@
 # ymg-legal.com
 
-Our own agency site. B2B — it sells YMG's services to law firms, unlike the
+Our own agency site. B2B — it sells YMG's services to law firms, unlike the  
 other two sites in this org which are consumer-facing lead generation.
 
 Next.js 16 (App Router) + TypeScript, Tailwind 4, React 19. Deploys to AWS
