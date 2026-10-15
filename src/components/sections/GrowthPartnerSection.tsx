@@ -10,16 +10,16 @@ import {
 } from "lucide-react";
 
 const missionBullets = [
-  { icon: CircleDollarSign, label: "Performance-based pricing" },
-  { icon: UserRound, label: "Expert intake & qualification" },
-  { icon: CalendarDays, label: "AI-powered call & booking" },
-  { icon: ShieldCheck, label: "Compliant & ethical marketing" },
+  { icon: CircleDollarSign, label: "Firm-defined case criteria" },
+  { icon: UserRound, label: "Structured intake and qualification" },
+  { icon: CalendarDays, label: "Connected workflows and reporting" },
+  { icon: ShieldCheck, label: "Consent-aware marketing practices" },
 ];
 
 const stats = [
-  { icon: Target, value: "+42%", label: "Conversion Rate", sub: "Industry Average" },
-  { icon: Crosshair, value: "+42%", label: "Qualified Leads", sub: "vs last quarter" },
-  { icon: BarChart3, value: "$2.3M+", label: "Case Value Generated", sub: "vs last quarter" },
+  { icon: Target, value: "Custom", label: "Firm-Defined", sub: "Case Criteria" },
+  { icon: Crosshair, value: "Clear", label: "Qualification", sub: "Workflows" },
+  { icon: BarChart3, value: "Better", label: "Reporting", sub: "Visibility" },
 ];
 
 export default function GrowthPartnerSection({
@@ -56,9 +56,8 @@ export default function GrowthPartnerSection({
           </h2>
 
           <p className={`mt-4 max-w-[560px] text-[16px] leading-[1.5] lg:text-[17px] 2xl:text-[18px] ${useGoldText ? "text-[#d9ae5d]" : "text-[#55585a]"}`}>
-            We are full-service legal marketing and intake company specializing
-            in mass torts and personal injury. Our performance driven approach
-            ensures you pay for results, not promises.
+            We combine legal marketing, case acquisition, intake, and law firm support
+            into connected workflows built around your firm&apos;s growth objectives.
           </p>
 
           <ul className="mt-6 space-y-3.5 max-[1023px]:mx-auto max-[1023px]:w-fit max-[1023px]:text-left">
@@ -85,7 +84,7 @@ export default function GrowthPartnerSection({
             </h3>
             <div className={`mt-5 h-px w-[166px] ${isLight ? "bg-[#D8B26B]" : "bg-[#d9ae5d]"}`} />
             <p className={`mt-7 max-w-[320px] text-[19px] leading-[1.48] sm:text-[21px] lg:text-[22px] xl:text-[24px] 2xl:text-[26px] ${whiteCards ? "text-[#404040]" : isLight ? "text-[#8a8c8e]" : "text-[#d9ae5d]"}`}>
-              To help law firms grow with a predictable pipeline of qualified cases.
+              To help law firms connect acquisition, intake, and support into a stronger growth process.
             </p>
           </div>
 

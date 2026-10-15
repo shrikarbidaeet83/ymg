@@ -6,12 +6,7 @@ import CaseAcquisitionSystem from "@/components/sections/CaseAcquisitionSystem";
 import GrowthPartnerSection from "@/components/sections/GrowthPartnerSection";
 import ActiveCampaignsSection from "@/components/sections/ActiveCampaignsSection";
 import HeroOrbitAnimation from "@/components/sections/HeroOrbitAnimation";
-import {
-  Bot,
-  ClipboardList,
-  FileCheck2,
-  Magnet,
-} from "lucide-react";
+import { ClipboardList, FileCheck2, Magnet, UsersRound } from "lucide-react";
 import TouchPopCard from "@/components/sections/TouchPopCard";
 
 /* ─── data ─────────────────────────────────────────────────── */
@@ -21,32 +16,32 @@ const solutions = [
     icon: Magnet,
     iconBg: "bg-[#e7eefb]",
     iconColor: "text-[#5b8def]",
-    title: "Lead Generation",
-    body: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.",
+    title: "Personal Injury Leads",
+    body: "Generate qualified personal injury opportunities aligned with your firm's case criteria.",
     tilt: "-rotate-[5deg] translate-y-2 sm:-rotate-[4deg] lg:-rotate-[6deg]",
   },
   {
     icon: ClipboardList,
     iconBg: "bg-[#f3e9fb]",
     iconColor: "text-[#a06ad4]",
-    title: "Intake Services",
-    body: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.",
+    title: "Legal Intake",
+    body: "Extend intake capacity with screening, follow-up, documentation, and communication support.",
     tilt: "rotate-[4deg] -translate-y-2 sm:rotate-[3deg] lg:rotate-[4deg] lg:-translate-y-3",
   },
   {
     icon: FileCheck2,
     iconBg: "bg-[#e4f6ea]",
     iconColor: "text-[#46b06a]",
-    title: "Case Acquisition",
-    body: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.",
+    title: "Law Firm Marketing",
+    body: "Build stronger acquisition channels through search, paid media, landing pages, and performance tracking.",
     tilt: "-rotate-[4deg] translate-y-2 sm:-rotate-[4deg] sm:translate-y-3 lg:-rotate-[4deg]",
   },
   {
-    icon: Bot,
+    icon: UsersRound,
     iconBg: "bg-[#fbeedd]",
     iconColor: "text-[#d8ae63]",
-    title: "AI Booking",
-    body: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.",
+    title: "Law Firm Support",
+    body: "Add flexible operational capacity for defined legal and administrative workflows.",
     tilt: "rotate-[5deg] -translate-y-1 sm:rotate-[4deg] lg:rotate-[6deg]",
   },
 ];
@@ -98,17 +93,17 @@ export default function HomePage() {
               className="w-full max-w-[720px] text-[38px] font-semibold sm:text-[48px] lg:text-[52px] xl:text-[60px] 2xl:text-[68px]
                          leading-[1.0] tracking-tight text-[#3d4145]"
             >
-              From Intake to
-              <span className="mt-[0.12em] block text-[#d8ae63]">Retainer</span>
+              Qualified Cases.
+              <span className="mt-[0.12em] block text-[#d8ae63]">Stronger Intake.</span>
+              <span className="mt-[0.12em] block">Scalable Support.</span>
             </h1>
 
             <p className="mt-5 max-w-[560px] text-[16px] leading-[1.6] text-[#7e8082]
                           sm:mt-6 sm:text-[16px]
                           lg:mt-7 lg:max-w-[400px] lg:text-[17px] xl:max-w-[430px] 2xl:max-w-[480px] 2xl:text-[18px]">
-              YMG legal is a premier legal marketing firm with over 15+ years of
-              experience in acquiring cases using the power of online marketing.
-              With our offices in Las Vegas, we have a specialized team to assist
-              you with your law firm or legal marketing needs.
+              YMG Legal helps plaintiff law firms generate qualified personal injury
+              and mass tort opportunities, strengthen intake, and add flexible support
+              where their teams need it most.
             </p>
 
             {/* CTAs */}
@@ -122,16 +117,16 @@ export default function HomePage() {
                            shadow-[0_12px_28px_rgba(168,129,62,0.22)]
                            transition-colors hover:bg-[#c89f4e]"
               >
-                Contact us today
+                Talk to YMG Legal
               </Link>
               <Link
-                href="/about"
+                href="/services"
                 className="inline-flex h-[52px] items-center justify-center rounded-[4px]
                            border border-[#dfbd78] bg-transparent px-8
                            text-[14px] font-semibold text-[#d3a65a] lg:text-[15px] 2xl:text-[16px]
                            transition-colors hover:bg-[#d9ae5d]/10"
               >
-                Learn more
+                Explore Services
               </Link>
             </div>
 
@@ -199,7 +194,7 @@ export default function HomePage() {
 
           {/* Cards — single overlapping tilted row, horizontal scroll when overflowing */}
           <div
-            className="mt-12 flex snap-x snap-mandatory overflow-x-auto px-4 pb-8 pt-4
+            className="mt-8 flex snap-x snap-mandatory scroll-px-6 overflow-x-auto px-6 pb-14 pt-10 sm:mt-12 sm:px-4 sm:pb-8 sm:pt-4
                        [scrollbar-width:none] [&::-webkit-scrollbar]:hidden
                        lg:mt-16 lg:justify-center lg:overflow-visible lg:px-6 lg:pb-12 lg:pt-6"
           >
@@ -208,11 +203,11 @@ export default function HomePage() {
                 as="div"
                 key={title}
                 activeClassName="max-[1100px]:z-10 max-[1100px]:rotate-0 max-[1100px]:translate-y-0"
-                className={`group w-[250px] shrink-0 snap-start touch-manipulation
+                className={`group w-[190px] shrink-0 snap-start touch-manipulation
                            transition-transform duration-300 ease-out
                            hover:z-10 hover:rotate-0 hover:translate-y-0
                            sm:w-[270px] lg:w-[290px] xl:w-[300px]
-                           ${i !== 0 ? "-ml-4 sm:-ml-6 lg:-ml-7" : ""} ${tilt}`}
+                           ${i !== 0 ? "-ml-3 sm:-ml-6 lg:-ml-7" : ""} ${tilt}`}
               >
                 <div
                   className="flex h-full flex-col rounded-xl bg-white px-4 py-5
@@ -228,10 +223,10 @@ export default function HomePage() {
                   >
                     <Icon size={18} strokeWidth={1.8} className={`${iconColor} sm:size-[22px]`} />
                   </div>
-                  <h3 className="mb-2 text-[23px] font-semibold leading-tight text-[#2f3236] sm:mb-2.5 sm:text-[26px] lg:text-[28px] xl:text-[30px] 2xl:text-[34px]">
+                  <h3 className="mb-2 text-[18px] font-semibold leading-tight text-[#2f3236] sm:mb-2.5 sm:text-[26px] lg:text-[28px] xl:text-[30px] 2xl:text-[34px]">
                     {title}
                   </h3>
-                  <p className="text-[16px] leading-[1.5] text-[#8a8c8e] sm:text-[16px] sm:leading-[1.6] lg:text-[17px] 2xl:text-[18px]">
+                  <p className="text-[13px] leading-[1.5] text-[#8a8c8e] sm:text-[16px] sm:leading-[1.6] lg:text-[17px] 2xl:text-[18px]">
                     {body}
                   </p>
                 </div>
@@ -267,7 +262,7 @@ export default function HomePage() {
               width={273}
               height={196}
               className="absolute inset-0 h-full w-full object-contain object-left-bottom"
-            />
+            /> 
             </div>
           </div>
 
@@ -410,7 +405,7 @@ export default function HomePage() {
                 <div
                   key={`${label}-${detail}-${index}`}
                   aria-hidden={index >= practiceAreas.length}
-                  className={`relative flex min-h-[66px] w-[calc((100vw-40px)/3)] shrink-0 items-center justify-center gap-2 px-2 py-3 text-left after:absolute after:right-0 after:top-1/2 after:h-8 after:w-px after:-translate-y-1/2 after:bg-[#e1d5bf] sm:min-h-[74px] sm:w-[calc((100vw-64px)/3)] sm:gap-4 sm:px-5 sm:py-4 lg:w-auto lg:shrink ${index === practiceAreas.length - 1 ? "lg:after:hidden" : ""} ${index >= practiceAreas.length ? "lg:hidden" : ""}`}
+                  className={`relative flex min-h-[66px] w-[calc((100vw-40px)/3)] shrink-0 items-center justify-center gap-2 px-2 py-3 text-left after:absolute after: -0 after:top-1/2 after:h-8 after:w-px after:-translate-y-1/2 after:bg-[#e1d5bf] sm:min-h-[74px] sm:w-[calc((100vw-64px)/3)] sm:gap-4 sm:px-5 sm:py-4 lg:w-auto lg:shrink ${index === practiceAreas.length - 1 ? "lg:after:hidden" : ""} ${index >= practiceAreas.length ? "lg:hidden" : ""}`}
                 >
                   <Image
                     src={icon}

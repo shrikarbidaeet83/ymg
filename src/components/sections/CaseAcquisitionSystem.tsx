@@ -365,7 +365,7 @@ export default function CaseAcquisitionSystem({
             </svg>
           </div>
 
-          <div className="absolute inset-x-4 inset-y-8 z-20 translate-y-9 overflow-visible [clip-path:inset(-10%_-10%_46%)] sm:inset-0 sm:translate-y-0 sm:[clip-path:inset(-50%_0_13%_0)] lg:[clip-path:inset(-50%_0_11%_0)]">
+          <div className="absolute inset-x-4 inset-y-8 z-20 translate-y-9 overflow-visible [clip-path:inset(-15%_-10%_46%)] sm:inset-0 sm:translate-y-0 sm:[clip-path:inset(-50%_0_13%_0)] lg:[clip-path:inset(-50%_0_11%_0)]">
           <div className="absolute left-1/2 top-1/2 aspect-[900/560] w-[122%] -translate-x-1/2 -translate-y-1/2 sm:h-full sm:w-auto">
           <div className="wheel-rotor absolute inset-0 [will-change:transform]">
             {nodes.map(({ key, num, dotPos, badgeVector }) => (

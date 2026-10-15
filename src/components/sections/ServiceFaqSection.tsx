@@ -159,10 +159,19 @@ const serviceFaqs = [
 
 const PAGE_SIZE = 5;
 
-export default function ServiceFaqSection() {
+const defaultIntro =
+  "Find answers to common questions about our legal marketing services, intake solutions, lead generation process, and how we help law firms grow with qualified cases and measurable results.";
+
+export default function ServiceFaqSection({
+  faqs = serviceFaqs,
+  intro = defaultIntro,
+}: {
+  faqs?: { question: string; answer: string }[];
+  intro?: string;
+}) {
   const [page, setPage] = useState(1);
-  const totalPages = Math.ceil(serviceFaqs.length / PAGE_SIZE);
-  const pageFaqs = serviceFaqs.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+  const totalPages = Math.ceil(faqs.length / PAGE_SIZE);
+  const pageFaqs = faqs.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   return (
     <section className="relative isolate overflow-hidden bg-[#404040] px-5 py-16 text-[#d9ae5d] sm:px-10 sm:py-20 lg:px-16 lg:py-[80px]">
@@ -204,9 +213,7 @@ export default function ServiceFaqSection() {
             Frequently Asked Questions
           </h2>
           <p className="mx-auto mt-[18px] max-w-[430px] text-[0.9rem] leading-[1.38] text-[#d9ae5d] lg:mx-0 lg:max-w-[430px] lg:leading-[1.34]">
-            Find answers to common questions about our legal marketing services,
-            intake solutions, lead generation process, and how we help law firms
-            grow with qualified cases and measurable results.
+            {intro}
           </p>
         </div>
 
@@ -231,6 +238,7 @@ export default function ServiceFaqSection() {
             ))}
           </div>
 
+          {totalPages > 1 && (
           <div className="mt-[30px] flex min-w-0 items-center justify-center gap-2 text-[#d9ae5d] sm:gap-[15px]">
             <button
               type="button"
@@ -266,6 +274,7 @@ export default function ServiceFaqSection() {
               <ChevronRight className="h-4 w-4" strokeWidth={1.8} />
             </button>
           </div>
+          )}
         </div>
       </div>
     </section>

@@ -25,11 +25,11 @@ const lawFirmLogos = [
 ];
 
 const aboutHeroStats = [
-  { icon: ShieldCheck, label: "15+ Years", detail: "Experience" },
-  { icon: Scale, label: "500+ Law", detail: "Firms Served" },
-  { icon: Network, label: "1M+ Qualified", detail: "Leads Generated" },
-  { icon: Headset, label: "24/7 Legal", detail: "Intake Operations" },
-  { icon: Smile, label: "95% Client", detail: "Satisfaction Rate" },
+  { icon: ShieldCheck, label: "Firm-Defined", detail: "Case Criteria" },
+  { icon: Scale, label: "Qualified", detail: "Opportunities" },
+  { icon: Network, label: "Connected", detail: "Workflows" },
+  { icon: Headset, label: "Intake", detail: "Support" },
+  { icon: Smile, label: "Flexible", detail: "Firm Support" },
 ];
 
 function AboutHeroStats() {
@@ -62,8 +62,8 @@ function AboutHeroStats() {
       <div className="ymg-about-vortex ymg-about-vortex-rt absolute right-[4%] top-[18%] z-30 flex h-[88px] w-[88px] items-center justify-center rounded-full border border-[#dfbd78] bg-white shadow-[0_14px_28px_rgba(91,69,34,0.15)]">
         <div className="text-center">
           <ArrowUpRight className="mx-auto h-5 w-5 text-[#d9ae5d]" strokeWidth={2} />
-          <p className="mt-1 text-[0.78rem] font-bold text-[#3f3d3a]">+42%</p>
-          <p className="text-[0.52rem] text-[#8a7b64]">growth</p>
+          <p className="mt-1 text-[0.66rem] font-bold text-[#3f3d3a]">Aligned</p>
+          <p className="text-[0.52rem] text-[#8a7b64]">workflows</p>
         </div>
       </div>
 
@@ -172,12 +172,12 @@ export default function AboutPage() {
               About YMG Legal
             </p>
             <h1 className="ymg-standard-hero-title text-[#46413d]">
-              Driving Case Growth for
-              <span className="block">Modern Law Firms</span>
+              Built to Help Law Firms Grow
+              <span className="block">and Operate More Efficiently</span>
             </h1>
             <p className="ymg-standard-hero-body text-[#55514d]">
-              We combine performance marketing, expert intake, and conversion
-              <span className="block">systems to deliver real, measurable results.</span>
+              We combine marketing, case acquisition, legal intake, and law firm support
+              <span className="block">to help firms build a more connected growth process.</span>
             </p>
           </div>
 
@@ -198,10 +198,10 @@ export default function AboutPage() {
             <p className="text-[0.85rem] font-medium text-[#a27625] sm:text-[1rem]">Who We Are</p>
             <h2 className="mt-5 text-[clamp(2rem,4vw,3rem)] font-semibold leading-[1.12] text-[#3d4145]">About YMG Legal</h2>
             <p className="mt-6 text-[0.9rem] leading-[1.52] text-[#77736d] sm:text-[1rem]">
-              YMG Legal is a full-service legal growth partner helping law firms scale through strategic client acquisition, advanced intake operations, and performance marketing.
+              YMG Legal was built around a simple idea: law firms need more than marketing. They need qualified opportunities, responsive intake, reliable follow-up, and the operational capacity to handle growth.
             </p>
             <p className="mt-1 text-[0.9rem] leading-[1.52] text-[#77736d] sm:text-[1rem]">
-              Unlike traditional agencies that simply generate leads, we build complete client acquisition systems—from the first click to the signed retainer. Our team combines legal industry expertise, marketing technology, and operational excellence to deliver measurable growth for personal injury, mass tort, and class action firms across the United States.
+              We combine marketing, case acquisition, legal intake, and law firm support into one platform designed to help firms build a more connected growth process around their practice areas, markets, and goals.
             </p>
           </div>
           <AboutMotionIllustration />

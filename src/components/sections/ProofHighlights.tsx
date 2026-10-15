@@ -2,10 +2,10 @@ import Image from "next/image";
 import { BadgeDollarSign, MapPin, Network, ShieldCheck } from "lucide-react";
 
 const proofItems = [
-  { icon: ShieldCheck, label: "15+ Years", detail: "Experience" },
-  { icon: BadgeDollarSign, label: "Millions in Case", detail: "Value Generated" },
-  { icon: Network, label: "Trusted by", detail: "100+ Law Firms" },
-  { icon: MapPin, label: "Las Vegas", detail: "Based" },
+  { icon: ShieldCheck, label: "Firm-Defined", detail: "Case Criteria" },
+  { icon: BadgeDollarSign, label: "Flexible", detail: "Delivery Models" },
+  { icon: Network, label: "Connected", detail: "Workflows" },
+  { icon: MapPin, label: "Las Vegas", detail: "Nevada" },
 ];
 
 export function ServiceHeroFlowers() {

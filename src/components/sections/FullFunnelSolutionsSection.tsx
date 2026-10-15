@@ -1,4 +1,4 @@
-import { Bot, ClipboardList, FileCheck2, Magnet } from "lucide-react";
+import { ClipboardList, FileCheck2, Magnet, UsersRound } from "lucide-react";
 import TouchPopCard from "@/components/sections/TouchPopCard";
 
 const solutions = [
@@ -6,32 +6,32 @@ const solutions = [
     icon: Magnet,
     iconBg: "bg-[#e7eefb]",
     iconColor: "text-[#5b8def]",
-    title: "Lead Generation",
-    body: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.",
+    title: "Personal Injury Leads",
+    body: "Generate qualified personal injury opportunities aligned with your firm's case criteria.",
     tilt: "-rotate-[5deg] translate-y-2 sm:-rotate-[4deg] lg:-rotate-[6deg]",
   },
   {
     icon: ClipboardList,
     iconBg: "bg-[#f3e9fb]",
     iconColor: "text-[#a06ad4]",
-    title: "Intake Services",
-    body: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.",
+    title: "Legal Intake",
+    body: "Extend intake capacity with screening, follow-up, documentation, and communication support.",
     tilt: "rotate-[4deg] -translate-y-2 sm:rotate-[3deg] lg:rotate-[4deg] lg:-translate-y-3",
   },
   {
     icon: FileCheck2,
     iconBg: "bg-[#e4f6ea]",
     iconColor: "text-[#46b06a]",
-    title: "Case Acquisition",
-    body: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.",
+    title: "Law Firm Marketing",
+    body: "Build stronger acquisition channels through search, paid media, landing pages, and performance tracking.",
     tilt: "-rotate-[4deg] translate-y-2 sm:-rotate-[4deg] sm:translate-y-3 lg:-rotate-[4deg]",
   },
   {
-    icon: Bot,
+    icon: UsersRound,
     iconBg: "bg-[#fbeedd]",
     iconColor: "text-[#d8ae63]",
-    title: "AI Booking",
-    body: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.",
+    title: "Law Firm Support",
+    body: "Add flexible operational capacity for defined legal and administrative workflows.",
     tilt: "rotate-[5deg] -translate-y-1 sm:rotate-[4deg] lg:rotate-[6deg]",
   },
 ];
@@ -43,7 +43,7 @@ export function FullFunnelSolutionCards({
 }) {
   return (
     <div
-      className={`flex snap-x snap-mandatory overflow-x-auto px-4 pb-8 pt-5 [scrollbar-width:none] lg:justify-center lg:overflow-visible lg:px-6 lg:pb-3 [&::-webkit-scrollbar]:hidden ${className}`}
+      className={`flex snap-x snap-mandatory overflow-x-auto px-12 pb-20 pt-24 [scrollbar-width:none] sm:px-4 sm:pb-8 sm:pt-5 lg:justify-center lg:overflow-visible lg:px-6 lg:pb-3 [&::-webkit-scrollbar]:hidden ${className}`}
     >
       {solutions.map(({ icon: Icon, iconBg, iconColor, title, body, tilt }, index) => (
         <TouchPopCard

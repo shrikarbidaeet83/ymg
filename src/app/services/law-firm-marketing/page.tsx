@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import TestimonialContactSection from "@/components/sections/TestimonialContactSection";
@@ -20,6 +21,11 @@ import {
   UsersRound,
   type LucideIcon,
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Law Firm Marketing Services | Legal Marketing Agency | YMG Legal",
+  description: "YMG Legal provides law firm marketing through Google, Meta, SEO, landing pages, conversion optimization, and performance tracking.",
+};
 
 type MarketingService = {
   title: string;
@@ -249,7 +255,7 @@ function MarketingMap() {
   return (
     <div
       className="relative mx-auto h-[426px] w-[406px] max-w-full"
-      aria-label="Digital marketing services diagram"
+      aria-label="Law firm marketing services diagram"
     >
       <svg
         aria-hidden="true"
@@ -284,7 +290,7 @@ function MarketingMap() {
       <div className="absolute left-1/2 top-[183px] z-10 -translate-x-1/2">
         <MotionReveal direction="zoom" delay={0.08} duration={0.72}>
           <div className="text-center font-heading text-[18px] leading-[1.28] text-[#4b4641]">
-            Digital
+            Law Firm
             <br />
             Marketing
           </div>
@@ -298,7 +304,7 @@ function MarketingMap() {
   );
 }
 
-export default function DigitalMarketingPage() {
+export default function LawFirmMarketingPage() {
   return (
     <div className="min-h-screen bg-[#FFF5E0] text-[#44413e]">
       <section className="relative isolate flex min-h-[100svh] items-center overflow-hidden px-5 pb-[60px] pt-[110px] sm:px-10 lg:px-16">
@@ -325,18 +331,18 @@ export default function DigitalMarketingPage() {
               Core Services
             </p>
             <h1 className="font-heading text-[1.125rem] font-normal leading-[1.25] tracking-[-0.04em] text-[#403f3e] sm:hidden">
-              <span className="block whitespace-nowrap text-[#ddb66c]">Digital Marketing That</span>
+              <span className="block whitespace-nowrap text-[#ddb66c]">Law Firm Marketing That</span>
               <span className="block whitespace-nowrap">Drives Qualified Leads &amp; Real Cases.</span>
             </h1>
             <h1 className="hidden font-heading text-[38px] font-normal leading-[1.3] tracking-[-0.01em] text-[#403f3e] sm:block sm:text-[42px] lg:text-[40px]">
-              <span className="text-[#ddb66c]">Digital Marketing</span> That
+              <span className="text-[#ddb66c]">Law Firm Marketing</span> That
               <br />
               Drives Qualified Leads
               <br />
               &amp; Real Cases.
             </h1>
             <p className="mt-4 max-w-[450px] text-[16px] leading-[1.34] text-[#55514e]">
-              Data-driven digital marketing strategies built exclusively
+              Data-driven marketing strategies built exclusively
               <br className="hidden sm:block" /> for law firms to attract high-intent prospects, increase
               <br className="hidden sm:block" /> visibility, and generate predictable case growth.
             </p>
@@ -391,7 +397,7 @@ export default function DigitalMarketingPage() {
           <MotionReveal direction="down" className="text-center">
             <p className="text-[18px] font-normal text-[#edc269]">Real Impact</p>
             <h2 className="mx-auto mt-5 max-w-[630px] font-heading text-[38px] font-normal leading-[1.32] text-[#EBC982] sm:text-[46px] lg:text-[48px]">
-              Digital Marketing That
+              Law Firm Marketing That
               <br />
               Delivers What Matters
             </h2>

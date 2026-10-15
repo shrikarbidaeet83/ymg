@@ -1,5 +1,6 @@
 "use client";
 
+import { Fragment } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { YMGLogo } from "@/components/ui/logo";
@@ -18,19 +19,28 @@ const resourceLinks = [
   { label: "FAQ's", href: "/faqs" },
   // Only when a job opening is live in the YMG CMS.
   ...(cms.careers.some((j) => j.isOpen !== false) ? [{ label: "Careers", href: "/careers" }] : []),
-  { label: "Terms & Conditions", href: "/terms" },
+  { label: "Terms of Use", href: "/terms" },
   { label: "Privacy Policy", href: "/privacy-policy" },
 ];
 
+// Order is fixed by the policies spec.
+const policyLinks = [
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms of Use", href: "/terms" },
+  { label: "SMS Terms", href: "/sms-terms" },
+  { label: "Cookie Policy", href: "/cookie-policy" },
+  { label: "Disclaimer", href: "/disclaimer" },
+  { label: "Accessibility", href: "/accessibility" },
+  { label: "Your Privacy Choices", href: "/privacy-policy#your-choices" },
+];
+
 const serviceLinks = [
-  { label: "Digital Marketing", href: "/services/digital-marketing" },
-  { label: "Google Search Ads", href: "/services/google-search-ads" },
-  { label: "Meta Ads", href: "/services/meta-ads" },
-  { label: "Local Services Ads", href: "/services/local-services-ads" },
-  { label: "SEO", href: "/services/seo" },
-  { label: "Website Design", href: "/services/website-design" },
-  { label: "AI Search (AIO)", href: "/services/ai-search" },
-  { label: "Organic Social Media", href: "/services/organic-social-media" },
+  { label: "Personal Injury Leads", href: "/services/personal-injury-leads" },
+  { label: "MVA Lead Generation", href: "/services/mva-leads" },
+  { label: "Mass Tort Leads", href: "/services/mass-tort-leads" },
+  { label: "Legal Intake Services", href: "/services/legal-intake" },
+  { label: "Law Firm Marketing", href: "/services/law-firm-marketing" },
+  { label: "Paralegal & Firm Support", href: "/services/law-firm-support" },
 ];
 
 function FooterHeading({ children }: { children: React.ReactNode }) {
@@ -72,7 +82,7 @@ export default function Footer() {
             <YMGLogo variant="dark" />
 
             <p className="mt-5 max-w-none text-[0.56rem] leading-[1.35] text-body-dark/55 lg:max-w-[230px] lg:text-sm lg:leading-[1.75]">
-              We help law firm grow with a steady pipeline
+              We help law firms grow with a steady pipeline
               <span className="block">of qualified cases</span>
             </p>
 
@@ -131,22 +141,32 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-9 flex flex-col items-center justify-between gap-3 border-t border-body-dark/10 pt-5 sm:flex-row">
-          <p className="text-[0.7rem] text-body-dark/40">
-            © 2026 YMG Legal. All rights reserved.
-          </p>
+        <div className="mt-9 border-t border-body-dark/10 pt-5">
+          <div className="flex flex-col items-center justify-between gap-3 lg:flex-row">
+            <p className="text-[0.7rem] text-body-dark/40">
+              © 2026 YMG Legal. All rights reserved.
+            </p>
 
-          <div className="flex items-center gap-4 text-[0.7rem] text-body-dark/40">
-            <Link href="/privacy-policy" className="hover:text-dark transition-colors duration-200">
-              Privacy Policy
-            </Link>
-            <span aria-hidden="true" className="text-body-dark/20">·</span>
-            <Link href="/terms" className="hover:text-dark transition-colors duration-200">
-              Terms &amp; Conditions
-            </Link>
+            <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-[0.7rem] text-body-dark/40 lg:justify-end">
+              {policyLinks.map((link, index) => (
+                <Fragment key={link.href}>
+                  {index > 0 && <span aria-hidden="true" className="text-body-dark/20">·</span>}
+                  <Link href={link.href} className="hover:text-dark transition-colors duration-200">
+                    {link.label}
+                  </Link>
+                </Fragment>
+              ))}
+            </nav>
           </div>
-        </div>
 
+          <p className="mt-4 text-center text-[0.68rem] leading-relaxed text-body-dark/40 lg:text-left">
+            YMG Legal is a legal marketing and support company, not a law firm, and does not provide legal advice. See our{" "}
+            <Link href="/disclaimer" className="underline underline-offset-2 hover:text-dark">
+              Disclaimer
+            </Link>
+            .
+          </p>
+        </div>
       </div>
     </footer>
   );

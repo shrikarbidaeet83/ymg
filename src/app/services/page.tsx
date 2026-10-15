@@ -7,11 +7,9 @@ import ServicesProcessSection from "@/components/sections/ServicesProcessSection
 import TestimonialContactSection from "@/components/sections/TestimonialContactSection";
 import {
   ArrowRight,
-  Bot,
   ChartNoAxesCombined,
+  FileCheck2,
   MapPin,
-  Megaphone,
-  MessagesSquare,
   MonitorSmartphone,
   Search,
   UsersRound,
@@ -19,68 +17,52 @@ import {
 
 const services = [
   {
-    icon: Megaphone,
+    icon: FileCheck2,
     iconBg: "bg-[#dce9ff]",
     iconColor: "text-[#3f587c]",
-    title: "Digital Marketing",
-    body: "Campaigns built for qualified case growth.",
-    href: "/services/digital-marketing",
+    title: "Personal Injury Lead Generation",
+    body: "Qualified opportunities built around your firm's PI case criteria.",
+    href: "/services/personal-injury-leads",
   },
   {
     icon: Search,
     iconBg: "bg-[#f2ddff]",
     iconColor: "text-[#4d415c]",
-    title: "Google Search Ads",
-    body: "High-intent PPC campaigns for legal cases.",
-    href: "/services/google-search-ads",
+    title: "MVA Lead Generation",
+    body: "Motor vehicle accident opportunities aligned to your target markets.",
+    href: "/services/mva-leads",
   },
   {
     icon: UsersRound,
     iconBg: "bg-[#d6f8ea]",
     iconColor: "text-[#315d4d]",
-    title: "Meta Ads",
-    body: "Facebook and Instagram campaigns for consultations.",
-    href: "/services/meta-ads",
+    title: "Mass Tort Lead Generation",
+    body: "Claimant pipelines for the campaigns your firm is actively pursuing.",
+    href: "/services/mass-tort-leads",
   },
   {
     icon: MapPin,
     iconBg: "bg-[#eceeef]",
     iconColor: "text-[#596068]",
-    title: "Local Services Ads",
-    body: "Pay-per-lead LSA campaigns for calls.",
-    href: "/services/local-services-ads",
+    title: "Legal Intake Services",
+    body: "Structured screening, follow-up, and intake capacity for your firm.",
+    href: "/services/legal-intake",
   },
   {
     icon: ChartNoAxesCombined,
     iconBg: "bg-[#e9edf1]",
     iconColor: "text-[#596068]",
-    title: "SEO",
-    body: "Organic rankings for high-value legal searches.",
-    href: "/services/seo",
+    title: "Law Firm Marketing",
+    body: "Marketing channels connected to lead quality, intake, and growth goals.",
+    href: "/services/law-firm-marketing",
   },
   {
     icon: MonitorSmartphone,
     iconBg: "bg-[#d9f8e2]",
     iconColor: "text-[#345a41]",
-    title: "Website Design",
-    body: "High-performance websites built to convert.",
-    href: "/services/website-design",
-  },
-  {
-    icon: Bot,
-    iconBg: "bg-[#f4f3bd]",
-    iconColor: "text-[#676632]",
-    title: "AI Search (AIO)",
-    body: "Authority optimization for AI recommendations.",
-    href: "/services/ai-search",
-  },
-  {
-    icon: MessagesSquare,
-    iconBg: "bg-[#d8f8ce]",
-    iconColor: "text-[#3f6338]",
-    title: "Organic Social Media",
-    body: "On-brand content that builds trust.",
-    href: "/services/organic-social-media",
+    title: "Outsourced Paralegal & Law Firm Support",
+    body: "Flexible operational capacity structured around your firm's workflow.",
+    href: "/services/law-firm-support",
   },
 ];
 
@@ -144,14 +126,14 @@ export default function ServicesPage() {
               What We Offer
             </p>
             <h1 className="ymg-standard-hero-title mt-4 text-[#3d4145]">
-              End to End Solutions
+              Services Built Around Law Firm Growth
             </h1>
             <p className="mx-auto mt-3 max-w-[590px] text-[0.7rem] leading-[1.45] text-[#606368] sm:text-[0.8rem] lg:text-[0.86rem]">
-              From the first phone ring to the signed retainer we cover every touchpoint your law firm needs to capture, qualify, and convert clients.
+              Our services are designed around the business problems law firms face, connecting acquisition, intake, marketing, and operational support.
             </p>
           </motion.div>
 
-          <motion.div variants={reduceMotion ? undefined : heroReveal} className="mx-auto mt-10 grid w-full max-w-[980px] gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+          <motion.div variants={reduceMotion ? undefined : heroReveal} className="mx-auto mt-10 grid w-full max-w-[980px] gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {services.map(({ icon: Icon, iconBg, iconColor, title, body, href }) => (
               <motion.div
                 key={title}

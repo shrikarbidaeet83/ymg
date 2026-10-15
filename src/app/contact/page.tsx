@@ -3,7 +3,7 @@ import { MobileProofScroller, ProofBar } from "@/components/sections/ProofHighli
 import LeadConnectorBookingCalendar from "@/components/sections/LeadConnectorBookingCalendar";
 
 const contactItems = [
-  { icon: "/contact_icons/phone.png", label: "(424) 447-1147", href: "tel:4244471147" },
+  { icon: "/contact_icons/phone.png", label: "(313) 306-5055", href: "tel:+13133065055" },
   { icon: "/contact_icons/message.png", label: "info@ymg-legal.com", href: "mailto:info@ymg-legal.com" },
   { icon: "/contact_icons/location.png", label: "Las Vegas Nevada" },
   { icon: "/contact_icons/Vector (4).png", label: "LinkedIn", href: "https://www.linkedin.com/" },
@@ -34,11 +34,11 @@ export default function ContactPage() {
           <div className="text-center lg:text-left">
             <p className="text-[1rem] font-medium text-[#3d4145] sm:text-[1.15rem]">Contact Us</p>
             <h1 className="mt-5 max-w-[560px] font-heading text-[clamp(2.5rem,5vw,4.4rem)] font-normal leading-[1.06] tracking-[0] text-[#3d4145] lg:mx-0">
-              Let&apos;s Grow
-              <span className="block">Your Case Volume</span>
+              Let&apos;s Talk About
+              <span className="block">Your Firm&apos;s Growth</span>
             </h1>
             <p className="mx-auto mt-8 max-w-[420px] text-[1.1rem] leading-[1.35] text-[#3d4145] sm:text-[1.25rem] lg:mx-0">
-              Connect with our experts to generate high-intent leads and convert them into signed cases that drive consistent, scalable growth.
+              Tell us what your firm is looking to improve—case acquisition, intake, marketing, or operational support—and we&apos;ll discuss the right structure for your needs.
             </p>
 
             <div className="relative mt-16 grid grid-cols-2 gap-x-6 gap-y-8 text-center sm:grid-cols-4 lg:max-w-[680px] lg:text-left">

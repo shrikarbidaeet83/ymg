@@ -2138,3 +2138,30 @@ html.dark .ymg-radial-focus {
 }
 
 /* Seamless dark illustration palette and final homepage section overrides refreshed. */
+
+html.dark .ymg-nav-dropdown a[data-active="true"] {
+  background: rgba(216, 178, 107, 0.1) !important;
+}
+
+html.dark .ymg-nav-dropdown > div:first-child {
+  border-color: rgba(216, 178, 107, 0.24) !important;
+}
+
+/* Policy pages print as plain documents: no site chrome or table of contents. */
+@media print {
+  body:has(.ymg-policy-body) header,
+  body:has(.ymg-policy-body) footer,
+  .ymg-policy-toc {
+    display: none !important;
+  }
+
+  .ymg-policy-body {
+    max-width: none;
+    color: #000;
+    font-size: 11pt;
+  }
+
+  .ymg-policy-body a {
+    color: #000;
+  }
+}

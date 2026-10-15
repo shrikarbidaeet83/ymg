@@ -4,19 +4,29 @@ import { Fragment, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, Moon, Sun, X, ChevronDown } from "lucide-react";
+import { Menu, Moon, Sun, X, ChevronDown, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { YMGLogo } from "@/components/ui/logo";
+
+type NavSubItem = {
+  label: string;
+  href: string;
+  description: string;
+  group?: string;
+};
+
+type NavDropdownItem = {
+  label: string;
+  href: string;
+  description: string;
+  children?: NavSubItem[];
+};
 
 type NavLink = {
   label: string;
   href: string;
   hasDropdown?: boolean;
-  dropdownItems?: {
-    label: string;
-    href: string;
-    description: string;
-  }[];
+  dropdownItems?: NavDropdownItem[];
 };
 
 const navLinks: NavLink[] = [
@@ -28,44 +38,83 @@ const navLinks: NavLink[] = [
     hasDropdown: true,
     dropdownItems: [
       {
-        label: "Digital Marketing",
-        href: "/services/digital-marketing",
-        description: "Campaigns built for qualified case growth",
+        label: "Personal Injury Lead Generation",
+        href: "/services/personal-injury-leads",
+        description: "Qualified opportunities built around firm criteria",
       },
       {
-        label: "Google Search Ads",
-        href: "/services/google-search-ads",
-        description: "High-intent PPC campaigns for legal cases",
+        label: "MVA Lead Generation",
+        href: "/services/mva-leads",
+        description: "Motor vehicle accident opportunities",
       },
       {
-        label: "Meta Ads",
-        href: "/services/meta-ads",
-        description: "Facebook and Instagram campaigns for consultations",
+        label: "Mass Tort Lead Generation",
+        href: "/services/mass-tort-leads",
+        description: "Claimant pipelines for active campaigns",
       },
       {
-        label: "Local Services Ads",
-        href: "/services/local-services-ads",
-        description: "Pay-per-lead LSA campaigns for calls",
+        label: "Legal Intake Services",
+        href: "/services/legal-intake",
+        description: "Screening, follow-up, and intake capacity",
       },
       {
-        label: "SEO",
-        href: "/services/seo",
-        description: "Organic rankings for high-value legal searches",
+        label: "Law Firm Marketing",
+        href: "/services/law-firm-marketing",
+        description: "Campaigns connected to growth outcomes",
+        children: [
+          {
+            label: "Marketing Overview",
+            href: "/services/law-firm-marketing",
+            description: "Full-funnel marketing for law firms",
+          },
+          {
+            label: "Google Search Ads",
+            href: "/services/google-search-ads",
+            description: "High-intent search campaigns",
+            group: "Paid advertising",
+          },
+          {
+            label: "Meta Ads",
+            href: "/services/meta-ads",
+            description: "Facebook and Instagram campaigns",
+            group: "Paid advertising",
+          },
+          {
+            label: "Local Services Ads",
+            href: "/services/local-services-ads",
+            description: "Pay-per-lead campaigns for calls",
+            group: "Paid advertising",
+          },
+          {
+            label: "SEO",
+            href: "/services/seo",
+            description: "Organic visibility for legal searches",
+            group: "Organic & web",
+          },
+          {
+            label: "AI Search (AIO)",
+            href: "/services/ai-search",
+            description: "Visibility in AI search experiences",
+            group: "Organic & web",
+          },
+          {
+            label: "Organic Social Media",
+            href: "/services/organic-social-media",
+            description: "On-brand content that builds trust",
+            group: "Organic & web",
+          },
+          {
+            label: "Website Design",
+            href: "/services/website-design",
+            description: "Conversion-focused legal websites",
+            group: "Organic & web",
+          },
+        ],
       },
       {
-        label: "Website Design",
-        href: "/services/website-design",
-        description: "High-performance websites built to convert",
-      },
-      {
-        label: "AI Search (AIO)",
-        href: "/services/ai-search",
-        description: "Authority optimization for AI recommendations",
-      },
-      {
-        label: "Organic Social Media",
-        href: "/services/organic-social-media",
-        description: "On-brand content that builds trust",
+        label: "Outsourced Paralegal & Law Firm Support",
+        href: "/services/law-firm-support",
+        description: "Flexible capacity for legal operations",
       },
     ],
   },
@@ -73,7 +122,30 @@ const navLinks: NavLink[] = [
   { label: "Blog", href: "/blog" },
   { label: "Practice Areas", href: "/practice-areas" },
   { label: "Contact Us", href: "/contact" },
-];  
+];
+
+function isDropdownItemActive(item: NavDropdownItem, pathname: string) {
+  return pathname === item.href || Boolean(item.children?.some((child) => pathname === child.href));
+}
+
+function isNavLinkActive(link: NavLink, pathname: string) {
+  if (link.href === "/") return pathname === "/";
+  return pathname === link.href || Boolean(link.dropdownItems?.some((item) => isDropdownItemActive(item, pathname)));
+}
+
+function groupChildren(children: NavSubItem[]) {
+  const featured = children.filter((child) => !child.group);
+  const groups: { title: string; items: NavSubItem[] }[] = [];
+
+  for (const child of children) {
+    if (!child.group) continue;
+    const group = groups.find((entry) => entry.title === child.group);
+    if (group) group.items.push(child);
+    else groups.push({ title: child.group, items: [child] });
+  }
+
+  return { featured, groups };
+}
 
 function getInitialDarkMode() {
   if (typeof window === "undefined") return false;
@@ -130,12 +202,50 @@ export default function Navbar() {
   const [activePill, setActivePill] = useState<{ left: number; width: number } | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [mobileOpenDropdown, setMobileOpenDropdown] = useState<string | null>(null);
-  const [desktopDropdownSuppressed, setDesktopDropdownSuppressed] = useState(false);
+  const [mobileOpenSubDropdown, setMobileOpenSubDropdown] = useState<string | null>(null);
+  const [desktopDropdownOpen, setDesktopDropdownOpen] = useState(false);
+  const [activeDropdownIndex, setActiveDropdownIndex] = useState(0);
   const [darkMode, setDarkMode] = useState(false);
   const [themeReady, setThemeReady] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const desktopNavRef = useRef<HTMLElement>(null);
+  const dropdownCloseTimerRef = useRef<number | undefined>(undefined);
+  const dropdownHoverTimerRef = useRef<number | undefined>(undefined);
   const pathname = usePathname();
+
+  useEffect(() => {
+    return () => {
+      window.clearTimeout(dropdownCloseTimerRef.current);
+      window.clearTimeout(dropdownHoverTimerRef.current);
+    };
+  }, []);
+
+  const openDesktopDropdown = (items: NavDropdownItem[]) => {
+    window.clearTimeout(dropdownCloseTimerRef.current);
+    if (desktopDropdownOpen) return;
+    const currentIndex = items.findIndex((item) => isDropdownItemActive(item, pathname));
+    setActiveDropdownIndex(currentIndex === -1 ? 0 : currentIndex);
+    setDesktopDropdownOpen(true);
+  };
+
+  // Short delay so the cursor can travel from the trigger into the panel without it closing.
+  const scheduleDesktopDropdownClose = () => {
+    window.clearTimeout(dropdownCloseTimerRef.current);
+    window.clearTimeout(dropdownHoverTimerRef.current);
+    dropdownCloseTimerRef.current = window.setTimeout(() => setDesktopDropdownOpen(false), 180);
+  };
+
+  const closeDesktopDropdown = () => {
+    window.clearTimeout(dropdownCloseTimerRef.current);
+    window.clearTimeout(dropdownHoverTimerRef.current);
+    setDesktopDropdownOpen(false);
+  };
+
+  // Small hover intent so moving diagonally toward the sub-menu doesn't flip to another parent.
+  const previewDropdownItem = (index: number) => {
+    window.clearTimeout(dropdownHoverTimerRef.current);
+    dropdownHoverTimerRef.current = window.setTimeout(() => setActiveDropdownIndex(index), 90);
+  };
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -357,10 +467,7 @@ export default function Navbar() {
               </>
             )}
             {navLinks.map((link) => {
-              const isActive =
-                link.href === "/"
-                  ? pathname === "/"
-                  : link.dropdownItems?.some((item) => pathname === item.href) || pathname === link.href;
+              const isActive = isNavLinkActive(link, pathname);
               const hasMenu = Boolean(link.dropdownItems?.length);
 
               const navLinkClassName = cn(
@@ -387,56 +494,136 @@ export default function Navbar() {
 
               if (!hasMenu) return navLink;
 
+              const dropdownItems = link.dropdownItems ?? [];
+              const activeItem = dropdownItems[activeDropdownIndex] ?? dropdownItems[0];
+              const { featured, groups } = groupChildren(activeItem.children ?? []);
+
+              const renderPanelLink = (item: NavSubItem | NavDropdownItem) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={pathname === item.href ? "page" : undefined}
+                  onClick={(event) => {
+                    closeDesktopDropdown();
+                    event.currentTarget.blur();
+                  }}
+                  className="block rounded-[6px] px-3 py-2.5 text-left transition-colors duration-200 hover:bg-[#f4dfb7]/65"
+                >
+                  <span className="block text-[0.76rem] font-semibold leading-tight text-[#272c2f]">
+                    {item.label}
+                  </span>
+                  <span className="mt-1 block text-[0.62rem] leading-[1.3] text-[#65615a]">
+                    {item.description}
+                  </span>
+                </Link>
+              );
+
               return (
                 <div
                   key={link.href}
-                  className="group relative z-20 flex h-full items-center"
-                  onMouseLeave={() => setDesktopDropdownSuppressed(false)}
+                  className="z-20 flex h-full items-center"
+                  onMouseEnter={() => openDesktopDropdown(dropdownItems)}
+                  onMouseLeave={scheduleDesktopDropdownClose}
+                  onFocus={() => openDesktopDropdown(dropdownItems)}
+                  onBlur={(event) => {
+                    if (!event.currentTarget.contains(event.relatedTarget as Node | null)) closeDesktopDropdown();
+                  }}
+                  onKeyDown={(event) => {
+                    if (event.key === "Escape") closeDesktopDropdown();
+                  }}
                 >
                   <Link
                     href={link.href}
                     data-nav-active={isActive ? "true" : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={desktopDropdownOpen}
                     onClick={(event) => {
-                      setDesktopDropdownSuppressed(true);
+                      closeDesktopDropdown();
                       event.currentTarget.blur();
                     }}
                     className={navLinkClassName}
                   >
                     <span className="relative z-10 flex items-center gap-1">
                       {link.label}
-                      <ChevronDown size={13} className="mt-px shrink-0 opacity-60" />
+                      <ChevronDown
+                        size={13}
+                        className={cn("mt-px shrink-0 opacity-60 transition-transform duration-200", desktopDropdownOpen && "rotate-180")}
+                      />
                     </span>
                   </Link>
+                  {/* Positioned against the nav pill; the top padding bridges the gap so hover isn't lost. */}
                   <div
                     className={cn(
-                      "ymg-nav-dropdown pointer-events-none absolute left-1/2 top-[calc(100%+10px)] w-[246px] -translate-x-1/2 translate-y-2 rounded-[8px] border border-[#dfbd78]/70 bg-[#fff8e8]/95 p-2 opacity-0 shadow-[0_16px_34px_rgba(71,56,30,0.18)] backdrop-blur-xl transition-all duration-200 before:absolute before:-top-3 before:left-0 before:h-3 before:w-full before:content-['']",
-                      !desktopDropdownSuppressed &&
-                        "group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100"
+                      "absolute left-1/2 top-full -translate-x-1/2 pt-[10px] transition-all duration-200",
+                      groups.length ? "w-[min(860px,calc(100vw-48px))]" : "w-[min(720px,calc(100vw-48px))]",
+                      desktopDropdownOpen
+                        ? "pointer-events-auto visible translate-y-0 opacity-100"
+                        : "pointer-events-none invisible translate-y-2 opacity-0"
                     )}
                   >
-                    {link.dropdownItems?.map((item) => {
-                      const isItemActive = pathname === item.href;
+                    <div className="ymg-nav-dropdown flex rounded-[8px] border border-[#dfbd78]/70 bg-[#fff8e8]/95 shadow-[0_16px_34px_rgba(71,56,30,0.18)] backdrop-blur-xl">
+                      <div className="w-[260px] shrink-0 border-r border-[#dfbd78]/45 p-2">
+                        {dropdownItems.map((item, index) => {
+                          const isPreviewed = index === activeDropdownIndex;
 
-                      return (
-                        <Link
-                          key={item.href}
-                          href={item.href}
-                          aria-current={isItemActive ? "page" : undefined}
-                          onClick={(event) => {
-                            setDesktopDropdownSuppressed(true);
-                            event.currentTarget.blur();
-                          }}
-                          className="block rounded-[6px] px-3 py-2.5 text-left transition-colors duration-200 hover:bg-[#f4dfb7]/65"
-                        >
-                          <span className="block text-[0.76rem] font-semibold leading-tight text-[#272c2f]">
-                            {item.label}
-                          </span>
-                          <span className="mt-1 block text-[0.62rem] leading-[1.3] text-[#65615a]">
-                            {item.description}
-                          </span>
-                        </Link>
-                      );
-                    })}
+                          return (
+                            <Link
+                              key={item.href}
+                              href={item.href}
+                              data-active={isPreviewed ? "true" : undefined}
+                              aria-current={pathname === item.href ? "page" : undefined}
+                              onMouseEnter={() => previewDropdownItem(index)}
+                              onMouseLeave={() => window.clearTimeout(dropdownHoverTimerRef.current)}
+                              onFocus={() => setActiveDropdownIndex(index)}
+                              onClick={(event) => {
+                                closeDesktopDropdown();
+                                event.currentTarget.blur();
+                              }}
+                              className={cn(
+                                "block rounded-[6px] px-3 py-2.5 text-left transition-colors duration-200 hover:bg-[#f4dfb7]/65",
+                                isPreviewed && "bg-[#f4dfb7]/65"
+                              )}
+                            >
+                              <span className="flex items-center justify-between gap-2 text-[0.76rem] font-semibold leading-tight text-[#272c2f]">
+                                {item.label}
+                                <ChevronRight
+                                  size={13}
+                                  className={cn("shrink-0 opacity-0 transition-opacity duration-200", isPreviewed && "opacity-60")}
+                                />
+                              </span>
+                              <span className="mt-1 block text-[0.62rem] leading-[1.3] text-[#65615a]">
+                                {item.description}
+                              </span>
+                            </Link>
+                          );
+                        })}
+                      </div>
+
+                      <div className="min-w-0 flex-1 p-2">
+                        {groups.length ? (
+                          // Featured links and each group sit side by side so every section starts on the same row.
+                          <div className="grid grid-cols-3 gap-x-2">
+                            {[{ title: activeItem.label, items: featured }, ...groups].map((group) => (
+                              <div key={group.title} className="min-w-0">
+                                <p className="px-3 pb-1 pt-3 text-[0.61rem] font-bold uppercase tracking-[0.14em] text-[#9b7531]">
+                                  {group.title}
+                                </p>
+                                {group.items.map(renderPanelLink)}
+                              </div>
+                            ))}
+                          </div>
+                        ) : (
+                          <>
+                            <p className="px-3 pb-1 pt-3 text-[0.61rem] font-bold uppercase tracking-[0.14em] text-[#9b7531]">
+                              {activeItem.label}
+                            </p>
+                            {activeItem.children?.length
+                              ? featured.map(renderPanelLink)
+                              : renderPanelLink({ ...activeItem, label: `View ${activeItem.label}` })}
+                          </>
+                        )}
+                      </div>
+                    </div>
                   </div>
                 </div>
               );
@@ -466,6 +653,7 @@ export default function Navbar() {
             )}
             onClick={() => {
               setMobileOpenDropdown(null);
+              setMobileOpenSubDropdown(null);
               setDrawerOpen(true);
             }}
             aria-label="Open menu"
@@ -513,12 +701,12 @@ export default function Navbar() {
                 </button>
               </div>
 
-              <nav className="flex flex-col px-6 pt-4 flex-1 overflow-y-auto">
+              <nav
+                data-lenis-prevent
+                className="flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain px-6 pb-8 pt-4"
+              >
                 {navLinks.map((link) => {
-                  const isActive =
-                    link.href === "/"
-                      ? pathname === "/"
-                      : link.dropdownItems?.some((item) => pathname === item.href) || pathname === link.href;
+                  const isActive = isNavLinkActive(link, pathname);
                   const isDropdownOpen = mobileOpenDropdown === link.href;
 
                   return (
@@ -583,25 +771,80 @@ export default function Navbar() {
                         </Link>
                       )}
                       {isDropdownOpen && link.dropdownItems?.map((item) => {
-                        const isItemActive = pathname === item.href;
+                        const isItemActive = isDropdownItemActive(item, pathname);
+                        const isSubDropdownOpen = mobileOpenSubDropdown === item.href;
+                        const itemClassName = cn(
+                          "text-[0.82rem] font-medium transition-colors duration-200",
+                          isItemActive
+                            ? "text-gold"
+                            : "text-body-light/60 hover:text-gold"
+                        );
 
                         return (
-                          <Link
-                            key={item.href}
-                            href={item.href}
-                            onClick={() => {
-                              setMobileOpenDropdown(null);
-                              setDrawerOpen(false);
-                            }}
-                            className={cn(
-                              "ml-4 border-b border-gold/10 py-3 pl-3 text-[0.82rem] font-medium transition-colors duration-200",
-                              isItemActive
-                                ? "text-gold"
-                                : "text-body-light/60 hover:text-gold"
+                          <Fragment key={item.href}>
+                            {item.children?.length ? (
+                              <div className={cn("ml-4 flex items-center border-b border-gold/10", itemClassName)}>
+                                <Link
+                                  href={item.href}
+                                  onClick={() => {
+                                    setMobileOpenDropdown(null);
+                                    setDrawerOpen(false);
+                                  }}
+                                  className="min-w-0 flex-1 py-3 pl-3"
+                                >
+                                  {item.label}
+                                </Link>
+                                <button
+                                  type="button"
+                                  aria-label={`${isSubDropdownOpen ? "Close" : "Open"} ${item.label} menu`}
+                                  aria-expanded={isSubDropdownOpen}
+                                  onClick={() =>
+                                    setMobileOpenSubDropdown((current) =>
+                                      current === item.href ? null : item.href
+                                    )
+                                  }
+                                  className="flex h-11 w-12 shrink-0 items-center justify-end"
+                                >
+                                  <ChevronDown
+                                    size={14}
+                                    className={cn(
+                                      "opacity-50 transition-transform duration-200",
+                                      isSubDropdownOpen && "rotate-180"
+                                    )}
+                                  />
+                                </button>
+                              </div>
+                            ) : (
+                              <Link
+                                href={item.href}
+                                onClick={() => {
+                                  setMobileOpenDropdown(null);
+                                  setDrawerOpen(false);
+                                }}
+                                className={cn("ml-4 border-b border-gold/10 py-3 pl-3", itemClassName)}
+                              >
+                                {item.label}
+                              </Link>
                             )}
-                          >
-                            {item.label}
-                          </Link>
+                            {isSubDropdownOpen && item.children?.map((child) => (
+                              <Link
+                                key={child.href}
+                                href={child.href}
+                                onClick={() => {
+                                  setMobileOpenDropdown(null);
+                                  setDrawerOpen(false);
+                                }}
+                                className={cn(
+                                  "ml-8 border-b border-gold/10 py-2.5 pl-3 text-[0.78rem] font-medium transition-colors duration-200",
+                                  pathname === child.href
+                                    ? "text-gold"
+                                    : "text-body-light/50 hover:text-gold"
+                                )}
+                              >
+                                {child.label}
+                              </Link>
+                            ))}
+                          </Fragment>
                         );
                       })}
                     </Fragment>
