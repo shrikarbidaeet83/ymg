@@ -11,6 +11,11 @@ const nextConfig: NextConfig = {
         destination: "/services/law-firm-marketing",
         permanent: true,
       },
+      // Old site's privacy URL: SMS carrier (10DLC) registrations may still point here.
+      { source: "/privacy-policy.html", destination: "/privacy-policy", permanent: true },
+      // Unlisted pages whose content now lives in the main service pages (code kept).
+      { source: "/services/case-acquisition", destination: "/services", permanent: true },
+      { source: "/services/legal-answering", destination: "/services/legal-intake", permanent: true },
     ];
   },
 };

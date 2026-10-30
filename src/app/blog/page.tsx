@@ -31,6 +31,8 @@ const PAGE_SIZE = 9;
 export default function BlogPage() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("");
+  // Filter by topic (Personal Injury, Mass Torts, …); campaigns stay inside their topic.
+  const categories = useMemo(() => [...new Set(posts.map((p) => p.category))].sort(), []);
   const [currentPage, setCurrentPage] = useState(1);
 
   const filteredCards = useMemo(() => {
@@ -115,9 +117,9 @@ export default function BlogPage() {
               className="h-11 w-full rounded-[5px] border border-[#dfbd78] bg-[#FFF5E0] px-4 text-[0.82rem] text-[#55585a] outline-none focus:shadow-[0_0_0_3px_rgba(235,201,130,0.24)]"
             >
               <option value="">Categories</option>
-              <option>Mass Torts</option>
-              <option>Hair Relaxer</option>
-              <option>Talcum Powder</option>
+              {categories.map((c) => (
+                <option key={c}>{c}</option>
+              ))}
             </select>
           </div>
 

@@ -1,12 +1,18 @@
 import Image from "next/image";
 import { MobileProofScroller, ProofBar } from "@/components/sections/ProofHighlights";
 import LeadConnectorBookingCalendar from "@/components/sections/LeadConnectorBookingCalendar";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact YMG Legal | Talk to Our Team",
+  description: "Book a free 30-minute strategy call with YMG Legal or call (313) 306-5055. We review your case flow and outline what we'd build for your firm.",
+};
 
 const contactItems = [
   { icon: "/contact_icons/phone.png", label: "(313) 306-5055", href: "tel:+13133065055" },
   { icon: "/contact_icons/message.png", label: "info@ymg-legal.com", href: "mailto:info@ymg-legal.com" },
-  { icon: "/contact_icons/location.png", label: "Las Vegas Nevada" },
-  { icon: "/contact_icons/Vector (4).png", label: "LinkedIn", href: "https://www.linkedin.com/" },
+  { icon: "/contact_icons/location.png", label: "Las Vegas, Nevada" },
+  { icon: "/contact_icons/Vector (4).png", label: "LinkedIn", href: "https://www.linkedin.com/company/ymglegal-attorney-marketing/" },
 ];
 
 export default function ContactPage() {

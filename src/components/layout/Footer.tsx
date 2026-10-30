@@ -3,24 +3,24 @@
 import { Fragment } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { YMGLogo } from "@/components/ui/logo";
 import { cms } from "@/lib/cms";
 
-const quickLinks = [
-  { label: "Home", href: "/" },
-  { label: "About Us", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "How it Works", href: "/how-it-works" },
+const companyLinks = [
+  { label: "About", href: "/about" },
+  { label: "How It Works", href: "/how-it-works" },
+  { label: "Practice Areas", href: "/practice-areas" },
+  { label: "Engagement Plans", href: "/plans" },
+  { label: "Compliance", href: "/compliance" },
+  { label: "Contact", href: "/contact" },
+  // Only when a job opening is live in the YMG CMS.
+  ...(cms.careers.some((j) => j.isOpen !== false) ? [{ label: "Careers", href: "/careers" }] : []),
 ];
 
 const resourceLinks = [
-  { label: "Case Results", href: "/blog" },
+  { label: "FAQ", href: "/faqs" },
   { label: "Blog", href: "/blog" },
-  { label: "FAQ's", href: "/faqs" },
-  // Only when a job opening is live in the YMG CMS.
-  ...(cms.careers.some((j) => j.isOpen !== false) ? [{ label: "Careers", href: "/careers" }] : []),
-  { label: "Terms of Use", href: "/terms" },
-  { label: "Privacy Policy", href: "/privacy-policy" },
 ];
 
 // Order is fixed by the policies spec.
@@ -34,18 +34,47 @@ const policyLinks = [
   { label: "Your Privacy Choices", href: "/privacy-policy#your-choices" },
 ];
 
-const serviceLinks = [
+// Grouped as in the header's Services menu.
+const acquisitionLinks = [
   { label: "Personal Injury Leads", href: "/services/personal-injury-leads" },
   { label: "MVA Lead Generation", href: "/services/mva-leads" },
-  { label: "Mass Tort Leads", href: "/services/mass-tort-leads" },
+  { label: "Mass Tort & Class Action", href: "/services/mass-tort-leads" },
+  { label: "Class Action Leads", href: "/services/class-action-leads" },
+  { label: "Pay-Per-Call", href: "/services/pay-per-call" },
+  { label: "Outbound Acquisition", href: "/services/outbound-client-acquisition" },
+];
+
+const intakeSupportLinks = [
   { label: "Legal Intake Services", href: "/services/legal-intake" },
-  { label: "Law Firm Marketing", href: "/services/law-firm-marketing" },
+  { label: "Contract & Retainer", href: "/services/retainer-signing" },
+  { label: "Live Chat & Text", href: "/services/live-chat-text" },
+  { label: "AI-Powered Booking", href: "/services/ai-booking" },
   { label: "Paralegal & Firm Support", href: "/services/law-firm-support" },
+  { label: "Legal Virtual Assistants", href: "/services/legal-virtual-assistants" },
+];
+
+const marketingLinks = [
+  { label: "Marketing Overview", href: "/services/law-firm-marketing" },
+  { label: "Google Ads", href: "/services/google-search-ads" },
+  { label: "Meta Ads", href: "/services/meta-ads" },
+  { label: "Local Services Ads", href: "/services/local-services-ads" },
+  { label: "SEO", href: "/services/seo" },
+  { label: "AI Search", href: "/services/ai-search" },
+  { label: "Organic Social", href: "/services/organic-social-media" },
+  { label: "Website Design", href: "/services/website-design" },
+];
+
+const footerColumns = [
+  { title: "Case Acquisition", links: acquisitionLinks },
+  { title: "Intake & Support", links: intakeSupportLinks },
+  { title: "Law Firm Marketing", links: marketingLinks },
+  { title: "Company", links: companyLinks },
+  { title: "Resources", links: resourceLinks },
 ];
 
 function FooterHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="mb-5 text-[1rem] font-semibold text-body-dark lg:text-[0.9rem]">
+    <h3 className="mb-4 text-[1rem] font-semibold text-body-dark">
       {children}
     </h3>
   );
@@ -55,7 +84,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
   return (
     <Link
       href={href}
-      className="mb-2.5 block whitespace-nowrap text-[0.68rem] text-body-dark/55 transition-colors duration-200 hover:text-dark lg:text-sm"
+      className="mb-2.5 block text-[0.9rem] text-body-dark/65 transition-colors duration-200 hover:text-dark"
     >
       {children}
     </Link>
@@ -74,70 +103,45 @@ export default function Footer() {
       />
       <div className="relative z-10 mx-auto max-w-7xl">
 
-        {/* Main grid */}
-        <div className="grid grid-cols-[0.98fr_1.02fr] gap-x-5 gap-y-8 lg:grid-cols-[1.25fr_1fr_1fr_1fr] lg:gap-0 lg:justify-items-center">
-
-          {/* Column 1 — Brand */}
-          <div className="border-r border-body-dark/10 pr-5 lg:pr-12 lg:justify-self-start">
+        {/* Main grid: brand + contact, then the link columns */}
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-[1.3fr_1fr_1fr_1fr_0.9fr_0.7fr] lg:gap-x-10">
+          <div className="col-span-2 sm:col-span-3 lg:col-span-1">
             <YMGLogo variant="dark" />
-
-            <p className="mt-5 max-w-none text-[0.56rem] leading-[1.35] text-body-dark/55 lg:max-w-[230px] lg:text-sm lg:leading-[1.75]">
-              We help law firms grow with a steady pipeline
-              <span className="block">of qualified cases</span>
+            <p className="mt-5 max-w-[280px] text-[0.95rem] leading-[1.6] text-body-dark/65">
+              Qualified cases, stronger intake and scalable support for plaintiff law firms.
             </p>
+            <ul className="mt-6 grid gap-2.5 text-[0.95rem] text-body-dark/75">
+              <li className="flex items-center gap-2.5">
+                <Phone size={16} strokeWidth={1.8} aria-hidden="true" className="text-[#a87b25]" />
+                <a href="tel:+13133065055" className="hover:text-dark">(313) 306-5055</a>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <Mail size={16} strokeWidth={1.8} aria-hidden="true" className="text-[#a87b25]" />
+                <a href="mailto:info@ymg-legal.com" className="hover:text-dark">info@ymg-legal.com</a>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <MapPin size={16} strokeWidth={1.8} aria-hidden="true" className="text-[#a87b25]" />
+                Las Vegas, Nevada
+              </li>
+              <li className="flex items-center gap-2.5">
+                <span aria-hidden="true" className="w-4 text-center text-[0.95rem] font-semibold leading-none text-[#a87b25]">in</span>
+                <a href="https://www.linkedin.com/company/ymglegal-attorney-marketing/" target="_blank" rel="noopener noreferrer" className="hover:text-dark">
+                  LinkedIn
+                </a>
+              </li>
+            </ul>
+          </div>
 
-            <div className="mt-7 h-px w-full max-w-[180px] bg-gold lg:hidden" />
-
-            <div className="mt-7 lg:hidden">
-              <FooterHeading>Services</FooterHeading>
-              {serviceLinks.map((link) => (
-                <FooterLink key={link.label} href={link.href}>
+          {footerColumns.map((column) => (
+            <nav key={column.title} aria-label={column.title}>
+              <FooterHeading>{column.title}</FooterHeading>
+              {column.links.map((link) => (
+                <FooterLink key={link.href + link.label} href={link.href}>
                   {link.label}
                 </FooterLink>
               ))}
-            </div>
-          </div>
-
-          {/* Column 2 — Quick Links */}
-          <div className="lg:pl-0">
-            <FooterHeading>Quick Links</FooterHeading>
-            {quickLinks.map((link) => (
-              <FooterLink key={link.label} href={link.href}>
-                {link.label}
-              </FooterLink>
-            ))}
-
-            <div className="mt-7 h-px w-full max-w-[180px] bg-gold lg:hidden" />
-
-            <div className="mt-7 lg:hidden">
-              <FooterHeading>Resources</FooterHeading>
-              {resourceLinks.map((link) => (
-                <FooterLink key={link.label} href={link.href}>
-                  {link.label}
-                </FooterLink>
-              ))}
-            </div>
-          </div>
-
-          {/* Column 3 — Resources */}
-          <div className="hidden lg:block lg:pl-0">
-            <FooterHeading>Resources</FooterHeading>
-            {resourceLinks.map((link) => (
-              <FooterLink key={link.label} href={link.href}>
-                {link.label}
-              </FooterLink>
-            ))}
-          </div>
-
-          {/* Column 4 — Services */}
-          <div className="hidden lg:block lg:pl-0">
-            <FooterHeading>Services</FooterHeading>
-            {serviceLinks.map((link) => (
-              <FooterLink key={link.label} href={link.href}>
-                {link.label}
-              </FooterLink>
-            ))}
-          </div>
+            </nav>
+          ))}
         </div>
 
         {/* Bottom bar */}

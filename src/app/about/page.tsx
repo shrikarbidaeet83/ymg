@@ -1,378 +1,189 @@
+import type { Metadata } from "next";
 import Image from "next/image";
-import { ArrowUpRight, CheckCircle2, FileCheck2, Headset, Network, PhoneCall, Scale, ShieldCheck, Smile, Target, UsersRound } from "lucide-react";
+import Link from "next/link";
+import {
+  ArrowRight,
+  BriefcaseMedical,
+  ClipboardList,
+  Clock3,
+  Headphones,
+  ListChecks,
+  MapPin,
+  Megaphone,
+  RefreshCw,
+  Scale,
+  type LucideIcon,
+} from "lucide-react";
 import AboutCoreValuesSection from "@/components/sections/AboutCoreValuesSection";
-import AboutJourneySection from "@/components/sections/AboutJourneySection";
-import AboutMissionVisionSection from "@/components/sections/AboutMissionVisionSection";
-import AboutMotionIllustration from "@/components/sections/AboutMotionIllustration";
-import AboutProcessSection from "@/components/sections/AboutProcessSection";
-import AboutWhatWeDoSection from "@/components/sections/AboutWhatWeDoSection";
-import CardInteractionHint from "@/components/sections/CardInteractionHint";
 import ContactConversationContent from "@/components/sections/ContactConversationContent";
-import ReadyGrowCtaSection from "@/components/sections/ReadyGrowCtaSection";
-import TouchPopCard from "@/components/sections/TouchPopCard";
-import { ServiceHeroFlowers } from "@/components/sections/ProofHighlights";
-import MotionReveal from "@/components/ui/MotionReveal";
+import { TestimonialCardsShowcase } from "@/components/sections/TestimonialContactSection";
+import PipelineBoard from "@/components/illustrations/PipelineBoard";
+import { SHOW_CLIENT_LOGOS } from "@/data/site-flags";
+import { clientLogos } from "@/data/social-proof";
 
-const lawFirmLogos = [
-  { name: "Law Logo", src: "/images/law-firms/law-logo.svg" },
-  { name: "III Trial Lawyers", src: "/images/law-firms/iii-trial-lawyers.svg" },
-  { name: "Alliance Legal Partners", src: "/images/law-firms/alliance-legal-partners.svg" },
-  { name: "Halavanau Law Office", src: "/images/law-firms/halavanau-law-office.svg" },
-  { name: "Morgan Maxwell Attorney & Law", src: "/images/law-firms/morgan-maxwell.svg" },
-  { name: "Erol Gulistan Law Firm", src: "/images/law-firms/erol-gulistan-law-firm.svg" },
-  { name: "Good Law", src: "/images/law-firms/good-law.svg" },
-  { name: "Attorney & Law", src: "/images/law-firms/attorney-law.svg" },
+export const metadata: Metadata = {
+  title: "About YMG Legal | Legal Marketing & Law Firm Support",
+  description:
+    "YMG Legal works exclusively with law firms: 15+ years of legal marketing, case acquisition, 24/7 US-based intake and case support from Las Vegas, Nevada.",
+};
+
+
+// Deck, "About YMG Legal" (confirmed by YMG).
+const facts: { value: string; title: string; body: string; Icon: LucideIcon }[] = [
+  { value: "15+ Years", title: "In legal marketing", body: "High-intent lead generation and scalable case acquisition for law firms.", Icon: Clock3 },
+  { value: "6 Practice Areas", title: "PI, mass tort and more", body: "Personal injury, mass torts, class action, medical malpractice, workers' compensation and SSD.", Icon: Scale },
+  { value: "Las Vegas, NV", title: "US-based operations", body: "Highly trained, empathetic, native English-speaking intake managers, available 24/7.", Icon: MapPin },
 ];
 
-const aboutHeroStats = [
-  { icon: ShieldCheck, label: "Firm-Defined", detail: "Case Criteria" },
-  { icon: Scale, label: "Qualified", detail: "Opportunities" },
-  { icon: Network, label: "Connected", detail: "Workflows" },
-  { icon: Headset, label: "Intake", detail: "Support" },
-  { icon: Smile, label: "Flexible", detail: "Firm Support" },
+// Deck, "What we cover": the six service pillars.
+const pillars: { title: string; body: string; href: string; Icon: LucideIcon }[] = [
+  { title: "Case Generation & Lead Acquisition", body: "Paid search, Meta, YouTube, pay-per-call and SEO campaigns built for your case types.", href: "/services/law-firm-marketing", Icon: Megaphone },
+  { title: "Lead Qualification & Screening", body: "Every inquiry screened against your criteria before it reaches your team.", href: "/services/personal-injury-leads", Icon: ListChecks },
+  { title: "24/7 Intake & Retainer Support", body: "Live intake on your scripts, after hours and on weekends, through to a signed retainer.", href: "/services/legal-intake", Icon: Headphones },
+  { title: "Automated Follow-Up Systems", body: "Text, email and live re-engagement until prospects are ready to talk.", href: "/services/legal-intake", Icon: RefreshCw },
+  { title: "Case Onboarding & Documentation", body: "Digital intake packets and organized client files ready on day one.", href: "/services/law-firm-support", Icon: ClipboardList },
+  { title: "Medical Records & Case Support", body: "Record retrieval, review, chronologies and case file organization.", href: "/services/law-firm-support", Icon: BriefcaseMedical },
 ];
 
-function AboutHeroStats() {
-  return (
-    <div className="absolute bottom-0 left-1/2 isolate w-full max-w-[310px] -translate-x-1/2 sm:max-w-[650px] lg:max-w-[1010px]">
-      <div aria-hidden="true" className="ymg-radial-wide pointer-events-none absolute -inset-x-[28%] -inset-y-[150%] z-0" />
-      <div className="relative z-10 w-full overflow-hidden rounded-[6px] border border-[#dfbd78]/75 bg-white shadow-[0_8px_18px_rgba(72,55,28,0.12)]">
-      {false && (<>
-      <Image
-        src="/images/big_flowers.webp"
-        alt=""
-        width={190}
-        height={190}
-        className="pointer-events-none absolute right-[6%] top-[0] z-0 w-[112px] opacity-[0.055] mix-blend-multiply"
-      />
-
-      <div className="ymg-about-orbit absolute left-[48%] top-[50%] h-[292px] w-[292px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#d9ae5d]/20 sm:h-[340px] sm:w-[340px]" />
-      <div className="ymg-about-orbit ymg-about-orbit-reverse absolute left-[48%] top-[50%] h-[214px] w-[214px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#d9ae5d]/14 sm:h-[258px] sm:w-[258px]" />
-
-      <div className="ymg-about-vortex ymg-about-vortex-lt absolute left-[4%] top-[12%] z-30 hidden w-[146px] rounded-[8px] border border-[#dfbd78] bg-white px-4 py-3 shadow-[0_14px_28px_rgba(91,69,34,0.15)] sm:block">
-        <div className="flex items-center gap-2">
-          <span className="h-2.5 w-2.5 rounded-full bg-[#5f7f62]" />
-          <p className="text-[0.62rem] font-semibold uppercase tracking-[0.08em] text-[#a27625]">Qualified</p>
-        </div>
-        <div className="mt-3 h-1.5 w-full rounded-full bg-[#f0dec0]">
-          <span className="ymg-about-progress block h-full rounded-full bg-[#d9ae5d]" />
-        </div>
-      </div>
-
-      <div className="ymg-about-vortex ymg-about-vortex-rt absolute right-[4%] top-[18%] z-30 flex h-[88px] w-[88px] items-center justify-center rounded-full border border-[#dfbd78] bg-white shadow-[0_14px_28px_rgba(91,69,34,0.15)]">
-        <div className="text-center">
-          <ArrowUpRight className="mx-auto h-5 w-5 text-[#d9ae5d]" strokeWidth={2} />
-          <p className="mt-1 text-[0.66rem] font-bold text-[#3f3d3a]">Aligned</p>
-          <p className="text-[0.52rem] text-[#8a7b64]">workflows</p>
-        </div>
-      </div>
-
-      <div className="ymg-about-vortex ymg-about-vortex-lb absolute bottom-[10%] left-[4%] z-30 hidden items-center gap-2 sm:flex">
-        <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#dfbd78] bg-white text-[#42627f] shadow-[0_10px_22px_rgba(91,69,34,0.13)]">
-          <PhoneCall className="h-5 w-5" strokeWidth={1.8} />
-        </span>
-        <span className="h-px w-8 bg-[#d9ae5d]" />
-        <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#dfbd78] bg-white text-[#a27625] shadow-[0_10px_22px_rgba(91,69,34,0.13)]">
-          <UsersRound className="h-5 w-5" strokeWidth={1.8} />
-        </span>
-        <span className="h-px w-8 bg-[#d9ae5d]" />
-        <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#dfbd78] bg-white text-[#5f7f62] shadow-[0_10px_22px_rgba(91,69,34,0.13)]">
-          <FileCheck2 className="h-5 w-5" strokeWidth={1.8} />
-        </span>
-      </div>
-
-      <div className="ymg-about-vortex ymg-about-vortex-rb absolute bottom-[10%] right-[11%] z-30 hidden rounded-[999px] border border-[#dfbd78] bg-white px-4 py-2 shadow-[0_10px_22px_rgba(91,69,34,0.13)] sm:block">
-        <div className="flex items-center gap-2">
-          <Target className="h-4 w-4 text-[#d9ae5d]" strokeWidth={1.8} />
-          <span className="text-[0.66rem] font-bold text-[#4d4841]">Intake engine</span>
-        </div>
-      </div>
-
-      <div className="ymg-about-vortex ymg-about-vortex-center ymg-about-dashboard absolute left-1/2 top-1/2 z-20 w-[78%] max-w-[370px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[14px] border border-[#dfbd78] bg-white shadow-[0_24px_52px_rgba(91,69,34,0.2)]">
-        <div className="flex items-center justify-between bg-[#404040] px-5 py-4 text-[#d9ae5d]">
-          <span className="flex h-10 w-10 items-center justify-center rounded-[7px] bg-[#fff5e0] text-[#404040]">
-            <Scale className="h-5 w-5" strokeWidth={1.8} />
-          </span>
-          <div className="min-w-0 flex-1 px-3">
-            <p className="text-[0.9rem] font-bold leading-none">YMG Growth Hub</p>
-            <p className="mt-1 text-[0.62rem] text-[#e5c987]">Marketing + intake + retainers</p>
-          </div>
-          <CheckCircle2 className="h-6 w-6 shrink-0" strokeWidth={1.8} />
-        </div>
-
-        <div className="p-5">
-          <div className="relative h-[154px] overflow-hidden rounded-[10px] bg-[#fff5e0] p-4">
-            <div className="absolute bottom-4 left-4 right-4 flex items-end gap-2">
-              {[38, 54, 48, 72, 92].map((height, index) => (
-                <span key={height} className="ymg-about-bar block flex-1 rounded-t-[5px] bg-[#d9ae5d]" style={{ height: `${height}px`, animationDelay: `${index * 90}ms` }} />
-              ))}
-            </div>
-            <p className="relative z-10 text-[0.66rem] font-semibold text-[#7b6b54]">Case growth trajectory</p>
-          </div>
-
-          <div className="mt-4 grid grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-2">
-            {[
-              { label: "Plan", Icon: Target, bg: "bg-[#fff1c7]", color: "text-[#a27625]" },
-              { label: "Qualify", Icon: UsersRound, bg: "bg-[#e6efe7]", color: "text-[#5f7f62]" },
-              { label: "Sign", Icon: FileCheck2, bg: "bg-[#eee8f4]", color: "text-[#735d86]" },
-            ].map(({ label, Icon, bg, color }, index) => (
-              <div key={label} className="contents">
-                <div className="rounded-[8px] bg-[#fffdfa] px-2 py-2 text-center">
-                  <span className={`mx-auto flex h-9 w-9 items-center justify-center rounded-full ${bg} ${color}`}>
-                    <Icon className="h-4 w-4" strokeWidth={1.8} />
-                  </span>
-                  <p className="mt-2 text-[0.6rem] font-bold text-[#4d4841]">{label}</p>
-                </div>
-                {index < 2 && <span className="h-px w-5 bg-[#d9ae5d]/70" />}
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-4 flex items-center justify-between rounded-[9px] bg-[#fff5e0] px-4 py-3">
-            <span className="text-[0.72rem] font-bold text-[#3f3d3a]">Measurable growth</span>
-            <ArrowUpRight className="h-5 w-5 text-[#d9ae5d]" strokeWidth={2} />
-          </div>
-        </div>
-      </div>
-      </>)}
-
-      <div className="ymg-practice-marquee flex w-max lg:grid lg:w-full lg:grid-cols-5">
-        {[...aboutHeroStats, ...aboutHeroStats].map(({ icon: Icon, label, detail }, index) => (
-          <div
-            key={`${label}-${index}`}
-            aria-hidden={index >= aboutHeroStats.length}
-            className={`relative flex min-h-[66px] w-[205px] shrink-0 items-center justify-center gap-3 px-4 py-3 text-left after:absolute after:right-0 after:top-1/2 after:h-8 after:w-px after:-translate-y-1/2 after:bg-[#dfd3be] sm:min-h-[70px] sm:w-[215px] lg:w-auto lg:shrink ${index === aboutHeroStats.length - 1 ? "lg:after:hidden" : ""} ${index >= aboutHeroStats.length ? "lg:hidden" : ""}`}
-          >
-            <Icon className="h-7 w-7 shrink-0 text-[#D8B26B] sm:h-8 sm:w-8" strokeWidth={1.65} />
-            <p className="text-[0.72rem] font-medium leading-[1.3] text-[#3f3f3f] sm:text-[0.78rem]">
-              {label}
-              <span className="block">{detail}</span>
-            </p>
-          </div>
-        ))}
-      </div>
-      </div>
-    </div>
-  );
-}
+// Deck, "Our approach": the four things YMG runs for the firm, in order.
+const approach = [
+  { title: "We run your marketing", body: "Targeted campaigns across Google, Meta and pay-per-call, managed end to end for your case type and geography." },
+  { title: "We qualify every lead", body: "Every inbound inquiry is screened before it reaches your intake team, so no time is spent on cases that don't fit." },
+  { title: "We handle intake 24/7", body: "Trained specialists answer day and night, follow your scripts, and guide qualified prospects toward a signed retainer." },
+  { title: "We follow up until they sign", body: "Automated and live follow-up keeps leads warm and re-engages anyone who didn't convert on first contact." },
+];
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-[#FFF5E0]">
-      <section className="ymg-standard-hero ymg-about-hero relative isolate overflow-hidden bg-[#FFF5E0] px-5 text-[#3f3d3a] sm:px-10 lg:px-16">
-        <MotionReveal direction="zoom" duration={1.25} amount={0.05} className="pointer-events-none absolute inset-0 z-0">
-          <div className="relative h-full w-full -translate-y-[20%]">
-            <ServiceHeroFlowers />
-          </div>
-        </MotionReveal>
-
-        <div className="relative z-10 mx-auto flex min-h-[620px] w-full max-w-[1120px] flex-col items-center justify-center text-center">
-          <div className="absolute left-0 top-[calc(50%-112px)] flex w-full -translate-y-1/2 flex-col items-center justify-center">
-            <p className="ymg-standard-hero-eyebrow text-[#4c4945]">
-              About YMG Legal
-            </p>
-            <h1 className="ymg-standard-hero-title text-[#46413d]">
-              Built to Help Law Firms Grow
-              <span className="block">and Operate More Efficiently</span>
-            </h1>
-            <p className="ymg-standard-hero-body text-[#55514d]">
-              We combine marketing, case acquisition, legal intake, and law firm support
-              <span className="block">to help firms build a more connected growth process.</span>
-            </p>
-          </div>
-
-          <AboutHeroStats />
-        </div>
-      </section>
-      <ReadyGrowCtaSection compactMobile />
-      <section className="ymg-radial-wide ymg-section-padding relative isolate overflow-hidden bg-[#FFF5E0] text-[#3a3d42]">
+    <div className="bg-[#FFF5E0]">
+      {/* Hero */}
+      <section className="ymg-section-padding relative isolate overflow-hidden !pt-[150px] lg:!pt-[170px]">
         <Image
-          src="/flowers/3rd-flower.svg"
+          src="/flowers/half-circleBG.svg"
           alt=""
-          width={382}
-          height={274}
-          className="pointer-events-none absolute bottom-[-28px] left-1/2 z-0 w-[230px] -translate-x-1/2 opacity-[0.18] sm:w-[300px]"
+          width={1180}
+          height={848}
+          priority
+          className="pointer-events-none absolute right-[-80px] top-[40%] -z-10 w-[320px] -translate-y-1/2 opacity-70 mix-blend-multiply sm:w-[460px] lg:w-[580px]"
         />
-        <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(420px,1fr)] lg:gap-20">
-          <div className="max-w-[540px]">
-            <p className="text-[0.85rem] font-medium text-[#a27625] sm:text-[1rem]">Who We Are</p>
-            <h2 className="mt-5 text-[clamp(2rem,4vw,3rem)] font-semibold leading-[1.12] text-[#3d4145]">About YMG Legal</h2>
-            <p className="mt-6 text-[0.9rem] leading-[1.52] text-[#77736d] sm:text-[1rem]">
-              YMG Legal was built around a simple idea: law firms need more than marketing. They need qualified opportunities, responsive intake, reliable follow-up, and the operational capacity to handle growth.
-            </p>
-            <p className="mt-1 text-[0.9rem] leading-[1.52] text-[#77736d] sm:text-[1rem]">
-              We combine marketing, case acquisition, legal intake, and law firm support into one platform designed to help firms build a more connected growth process around their practice areas, markets, and goals.
-            </p>
-          </div>
-          <AboutMotionIllustration />
-        </div>
-      </section>
-      <section className="ymg-section-padding relative isolate overflow-hidden bg-[#FFF5E0] pb-0 text-[#3a3d42]">
-        <div className="relative z-10 mx-auto grid max-w-7xl gap-8 lg:grid-cols-[minmax(320px,0.76fr)_minmax(520px,1fr)] lg:gap-16">
-          <div className="pt-0 text-center lg:text-left">
-            <p className="text-[0.72rem] font-medium text-[#54575a] sm:text-[0.9rem] xl:text-[1.05rem]">
-              Trusted by Leading Law Firms
-            </p>
-            <h2 className="mt-4 text-[clamp(1.45rem,8vw,2rem)] font-semibold leading-[1.12] text-[#3d4145] sm:mt-5 sm:text-[clamp(2rem,4vw,2.45rem)] sm:leading-[1.18] xl:text-[clamp(2rem,4.6vw,3rem)]">
-              Proven Results.
-              <span className="block">Lasting Partnerships.</span>
-            </h2>
-            <p className="mx-auto mt-5 max-w-[300px] text-[0.72rem] leading-[1.42] text-[#8a8c8e] sm:mt-6 sm:max-w-[420px] sm:text-[0.9rem] sm:leading-[1.5] lg:mx-0 xl:text-[1.05rem] xl:leading-[1.55]">
-              We partner with ambitious law firms nationwide, delivering qualified
-              cases, consistent growth, and measurable success.
-            </p>
-            <div className="pointer-events-none relative mx-auto mt-24 hidden h-[250px] w-[420px] opacity-100 lg:mx-0 lg:ml-[40px] lg:block">
-              <Image
-                src="/flowers/3rd-flower.svg"
-                alt=""
-                width={382}
-                height={274}
-                className="absolute inset-0 h-full w-full object-contain object-left-bottom mix-blend-multiply"
-              />
-            </div>
-          </div>
-
-          <div className="ymg-law-logo-window relative mx-auto w-full max-w-[620px] overflow-hidden px-3 py-0 sm:px-10">
-            <div className="ymg-law-logo-track grid grid-cols-2 gap-x-2 gap-y-4 sm:gap-x-8 sm:gap-y-8">
-              {[...lawFirmLogos, ...lawFirmLogos].map(({ name, src }, index) => {
-                const rowOffset = Math.floor(index / 2) % 2 === 0 ? "-translate-x-3 sm:-translate-x-8" : "translate-x-3 sm:translate-x-8";
-
-                return (
-                  <div
-                    key={`${name}-${index}`}
-                    className={`${rowOffset} flex aspect-[1.72/1] min-h-[62px] items-center justify-center rounded-[6px] border-[0.79px] border-[#D9B46D] bg-[#fcf2de] px-2.5 shadow-[0_10px_22px_rgba(91,69,34,0.15)] sm:min-h-[108px] sm:px-5 lg:min-h-[112px]`}
-                  >
-                    <Image
-                      src={src}
-                      alt={name}
-                      width={220}
-                      height={120}
-                      className="h-[34px] w-auto max-w-[82%] object-contain sm:h-[70px] lg:h-[76px]"
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-      <AboutJourneySection />
-      <AboutWhatWeDoSection />
-      <AboutMissionVisionSection />
-      <AboutCoreValuesSection />
-      <AboutProcessSection />
-      <section className="ymg-section-padding bg-[#efcd86] text-[#404040]">
-        <div className="mx-auto max-w-5xl text-center">
-          <p className="text-[0.72rem] leading-[1.45] sm:text-[0.92rem] lg:text-[1rem]">
-            We are a performance-driven legal marketing partner helping law firms scale through
-            qualified lead generation, intake excellence, and conversion-focused systems.
+        <div className="mx-auto max-w-[1240px]">
+          <p className="text-[1rem] font-medium text-[#8a6420]">About YMG Legal</p>
+          <h1 className="mt-4 max-w-[15ch] text-[2.6rem] leading-[1.04] text-[#2f3236] sm:text-[3.4rem] lg:text-[4rem]">
+            We work <span className="text-[#c9a14f]">exclusively</span> with law firms.
+          </h1>
+          <p className="mt-6 max-w-[40rem] text-[1.08rem] leading-[1.6] text-[#55585c] sm:text-[1.15rem]">
+            A legal marketing firm helping law firms acquire, qualify and retain clients through targeted digital marketing,
+            professional intake services and back-office case support, from the first ad impression to a signed retainer, so
+            your team can stay focused on practicing law.
           </p>
-        </div>
-      </section>
-      <section
-        className="ymg-section-padding relative isolate overflow-hidden bg-[#404040] pb-0 text-[#d9b46d]"
-        style={{ paddingBottom: 0 }}
-      >
-        <div className="relative z-10 mx-auto max-w-7xl">
-          <div className="text-center">
-            <p className="text-[0.82rem] font-medium text-[#EBC982] sm:text-[0.95rem]">
-              Client Testimonials
-            </p>
-            <h2 className="mt-3 text-[clamp(1.8rem,7vw,3rem)] font-semibold leading-tight text-[#EBC982]">
-              What Our Clients Say
-            </h2>
-            <CardInteractionHint />
-          </div>
 
-          <div className="group/testimonials relative mx-auto mt-7 h-[360px] max-w-[820px] overflow-visible sm:mt-14 sm:h-[560px]">
-            <Image
-              src="/flowers/psmBG.svg"
-              alt=""
-              width={273}
-              height={196}
-              className="pointer-events-none absolute bottom-[-28px] right-[-105px] z-0 w-[180px] sm:bottom-[-48px] sm:right-[-180px] sm:w-[285px]"
-            />
-            {[
-              {
-                name: "Managing Partner",
-                firm: "Bergson Legal",
-                avatar: "bg-[radial-gradient(circle_at_35%_28%,#f4d0b8_0_18%,transparent_19%),linear-gradient(135deg,#d9ae5d,#f6e8bd)]",
-                text: "YMG Legal completely transformed our intake and lead quality. We went from chasing leads to consistently signing qualified cases every week.",
-                color: "bg-white",
-                stars: "text-[#d9ae5d]",
-                pos: "left-[8px] top-[88px] w-[112px] min-h-[132px] -rotate-[18deg] sm:left-8 sm:top-[120px] sm:w-[300px] sm:min-h-[275px]",
-              },
-              {
-                name: "Founder",
-                firm: "Orion Law",
-                avatar: "bg-[radial-gradient(circle_at_48%_26%,#e8b99d_0_18%,transparent_19%),linear-gradient(135deg,#b8c4d8,#f8efd9)]",
-                text: "Their system works. From lead generation to intake, everything is streamlined. Our team now focuses on closing cases instead of filtering bad leads.",
-                color: "bg-white",
-                stars: "text-[#d9ae5d]",
-                pos: "left-1/2 top-0 w-[118px] min-h-[138px] -translate-x-1/2 -rotate-[4deg] sm:w-[300px] sm:min-h-[285px]",
-              },
-              {
-                name: "Partner",
-                firm: "Westline Injury",
-                avatar: "bg-[radial-gradient(circle_at_50%_30%,#f1c2a5_0_17%,transparent_18%),linear-gradient(135deg,#3d4145,#d9ae5d)]",
-                text: "We worked with multiple marketing agencies before, but none delivered results like this. The reporting, quality, and consistency are excellent.",
-                color: "bg-white",
-                stars: "text-[#d9ae5d]",
-                pos: "right-[8px] top-[88px] w-[112px] min-h-[132px] rotate-[11deg] sm:right-8 sm:top-[122px] sm:w-[300px] sm:min-h-[275px]",
-              },
-              {
-                name: "Partner",
-                firm: "Injury Law Group",
-                avatar: "bg-[radial-gradient(circle_at_45%_28%,#efc5ab_0_18%,transparent_19%),linear-gradient(135deg,#7e5ab7,#f3dbff)]",
-                text: "The biggest difference is their intake team. Every lead is handled professionally, and we only speak with serious, qualified clients.",
-                color: "bg-[#c091e8] text-white [&_p]:!text-white [&_.testimonial-divider]:!bg-white/60",
-                stars: "text-[#ffd35e]",
-                pos: "left-[28%] top-[140px] z-20 w-[118px] min-h-[138px] -rotate-[4deg] sm:left-[26%] sm:top-[245px] sm:w-[300px] sm:min-h-[275px]",
-              },
-              {
-                name: "Attorney",
-                firm: "Casebridge Law",
-                avatar: "bg-[radial-gradient(circle_at_52%_27%,#d8a98d_0_17%,transparent_18%),linear-gradient(135deg,#f0c878,#fff4d7)]",
-                text: "In the first 60 days, we saw a significant increase in signed retainers. YMG understands legal marketing because they are a true partner.",
-                color: "bg-[#f8d8a7]",
-                stars: "text-[#d9ae5d]",
-                pos: "right-[18%] top-[132px] z-10 w-[118px] min-h-[138px] rotate-[20deg] sm:right-[16%] sm:top-[265px] sm:w-[300px] sm:min-h-[275px]",
-              },
-            ].map(({ name, firm, avatar, text, color, stars, pos }) => (
-              <TouchPopCard
-                key={`${name}-${firm}`}
-                centerOnMobile
-                className={`absolute ${pos} rounded-bl-none rounded-br-[12px] rounded-tl-[12px] rounded-tr-none border border-[#ead3a0] ${color} p-2 shadow-[0_16px_34px_rgba(87,66,34,0.14)] touch-manipulation transition-all duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] hover:z-40 hover:-translate-y-3 hover:scale-105 hover:rotate-0 hover:shadow-[0_24px_48px_rgba(87,66,34,0.24)] sm:rounded-br-[18px] sm:rounded-tl-[18px] sm:p-6`}
-              >
-                <div className={`mb-2 flex gap-0.5 sm:mb-4 ${stars}`}>
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <span key={i} className="text-[0.52rem] leading-none sm:text-base">★</span>
-                  ))}
-                </div>
-                <p className="text-[0.39rem] leading-[1.28] text-[#7c7d80] sm:text-[0.9rem] sm:leading-[1.48]">
-                  &quot;{text}&quot;
-                </p>
-                <div className="testimonial-divider mt-2 h-px w-12 bg-[#3a3d42]/40 sm:mt-5 sm:w-24" />
-                <div className="mt-2 flex items-center gap-1.5 sm:mt-4 sm:gap-3">
-                  <div className={`relative h-5 w-5 overflow-hidden rounded-[3px] shadow-inner sm:h-9 sm:w-9 ${avatar}`}>
-                    <div className="absolute bottom-0 left-1/2 h-2.5 w-4 -translate-x-1/2 rounded-t-full bg-[#2f3236]/70 sm:h-4 sm:w-6" />
-                  </div>
-                  <div>
-                    <p className="text-[0.42rem] font-bold text-[#3d4145] sm:text-[0.68rem]">{name}</p>
-                    <p className="text-[0.36rem] text-[#8a8c8e] sm:text-[0.58rem]">{firm}</p>
-                  </div>
-                </div>
-              </TouchPopCard>
+          <ul className="mt-12 grid gap-4 md:grid-cols-3">
+            {facts.map(({ value, title, body, Icon }) => (
+              <li key={value} className="rounded-[18px] border border-[#ead3a0] bg-white p-6 shadow-[0_12px_26px_rgba(82,64,34,0.07)]">
+                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#fbf0d9] text-[#8a6420]">
+                  <Icon size={21} strokeWidth={1.8} aria-hidden="true" />
+                </span>
+                <p className="mt-5 font-heading text-[1.9rem] leading-none text-[#a87b25]">{value}</p>
+                <p className="mt-2 font-heading text-[1.15rem] text-[#2f3236]">{title}</p>
+                <p className="mt-2 text-[0.98rem] leading-[1.55] text-[#5e6064]">{body}</p>
+              </li>
             ))}
-          </div>
-
-          <ContactConversationContent
-            variant="gold"
-            fullBleed
-            className="mt-16 sm:mt-20 lg:mt-28"
-          />
+          </ul>
         </div>
       </section>
-    </main>
+
+      {/* Who we are */}
+      <section className="ymg-section-padding">
+        <div className="mx-auto grid max-w-[1240px] gap-10 lg:grid-cols-[minmax(0,0.62fr)_minmax(0,1.38fr)] lg:items-center lg:gap-12">
+          <div>
+            <h2 className="text-[2rem] leading-[1.1] text-[#2f3236] sm:text-[2.5rem]">Built to help law firms grow and operate more efficiently</h2>
+            <p className="mt-5 text-[1.06rem] leading-[1.6] text-[#5e6064]">
+              YMG Legal was built around a simple idea: law firms need more than marketing. They need qualified
+              opportunities, responsive intake, reliable follow-up, and the operational capacity to handle growth.
+            </p>
+            <p className="mt-4 text-[1.06rem] leading-[1.6] text-[#5e6064]">
+              We combine marketing, case acquisition, legal intake and law firm support into one process, built around each
+              firm&apos;s practice areas, markets and goals, with one team accountable from first click to signed retainer.
+            </p>
+          </div>
+          <PipelineBoard />
+        </div>
+      </section>
+
+      {/* What we cover */}
+      <section className="ymg-section-padding bg-[#3d4145] text-[#f5ecd8]">
+        <div className="mx-auto max-w-[1240px]">
+          <h2 className="text-[2rem] leading-[1.1] text-[#EBC982] sm:text-[2.5rem]">What we cover</h2>
+          <p className="mt-4 max-w-[40rem] text-[1.06rem] leading-[1.6] text-[#e8dfcc]">
+            Six service pillars that can run together as a full partnership or on their own.
+          </p>
+          <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {pillars.map(({ title, body, href, Icon }) => (
+              <li key={title}>
+                <Link
+                  href={href}
+                  className="group flex h-full flex-col rounded-[18px] border border-white/12 bg-white/[0.04] p-6 transition-colors hover:border-[#D8B26B]/60 hover:bg-white/[0.07]"
+                >
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#D8B26B]/20 text-[#EBC982]">
+                    <Icon size={21} strokeWidth={1.8} aria-hidden="true" />
+                  </span>
+                  <span className="mt-5 font-heading text-[1.3rem] leading-tight text-[#f5ecd8]">{title}</span>
+                  <span className="mt-2 text-[0.98rem] leading-[1.55] text-[#d9d1c0]">{body}</span>
+                  <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-[0.95rem] font-semibold text-[#EBC982]">
+                    Learn more <ArrowRight size={15} strokeWidth={1.8} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Our approach */}
+      <section className="ymg-section-padding">
+        <div className="mx-auto max-w-[1240px]">
+          <h2 className="max-w-[20ch] text-[2rem] leading-[1.1] text-[#2f3236] sm:text-[2.5rem]">
+            We don&apos;t hand you leads <span className="text-[#c9a14f]">and walk away.</span>
+          </h2>
+          <p className="mt-4 text-[1.06rem] text-[#5e6064]">We build and manage the system around your firm.</p>
+          <ol className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {approach.map((step, i) => (
+              <li key={step.title} className="border-t-2 border-[#D8B26B] pt-5">
+                <span className="font-heading text-[1rem] text-[#a87b25]">Step {i + 1}</span>
+                <h3 className="mt-2 text-[1.35rem] leading-tight text-[#2f3236]">{step.title}</h3>
+                <p className="mt-2 text-[0.98rem] leading-[1.55] text-[#5e6064]">{step.body}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <AboutCoreValuesSection />
+
+      {SHOW_CLIENT_LOGOS && (
+        <section id="clients" className="ymg-section-padding scroll-mt-28">
+          <div className="mx-auto max-w-[1240px] text-center">
+            <h2 className="text-[2rem] leading-[1.1] text-[#2f3236] sm:text-[2.5rem]">Trusted by law firms</h2>
+            <ul className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
+              {clientLogos.map(({ name, src }) => (
+                <li key={name} className="flex aspect-[1.72/1] items-center justify-center rounded-[10px] border border-[#ead3a0] bg-white px-5">
+                  <Image src={src} alt={name} width={220} height={120} className="h-[60px] w-auto max-w-[82%] object-contain" />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      <div id="testimonials" className="scroll-mt-24">
+        <TestimonialCardsShowcase showAllLink={false} />
+      </div>
+
+      <section className="ymg-contact-section ymg-section-padding relative isolate overflow-hidden bg-[#D8B26B] text-[#404040]">
+        <div className="relative z-10 mx-auto max-w-7xl">
+          <ContactConversationContent variant="gold" homeTypography />
+        </div>
+      </section>
+    </div>
   );
 }

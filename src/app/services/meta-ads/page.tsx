@@ -121,6 +121,18 @@ const practiceAreas = [
   { label: "Wrongful\nDeath", Icon: Skull, bg: "bg-[#f1eacb]", color: "text-[#8b772e]" },
 ];
 
+// Shown in two groups so personal injury case types don't sit level with whole practice areas.
+const practiceGroups = [
+  {
+    title: "Personal injury",
+    labels: ["Motor Vehicle\nAccidents", "Truck\nAccidents", "Motorcycle\nAccidents", "Slip & Fall\nCases", "Premises\nLiability", "Wrongful\nDeath"],
+  },
+  {
+    title: "Other practice areas",
+    labels: ["Mass Tort\nLitigation", "Class\nActions", "Medical\nMalpractice", "Workers'\nCompensation"],
+  },
+].map((group) => ({ ...group, areas: group.labels.map((label) => practiceAreas.find((a) => a.label === label)!) }));
+
 const expectedResults = [
   {
     title: "More Qualified\nConsultations",
@@ -290,9 +302,11 @@ function MetaProcessStep({
 function PracticeAreaFeature({
   area,
   index,
+  last,
 }: {
   area: (typeof practiceAreas)[number];
   index: number;
+  last: boolean;
 }) {
   const Icon = area.Icon as LucideIcon;
 
@@ -307,7 +321,7 @@ function PracticeAreaFeature({
       <div className="mt-5 whitespace-pre-line text-[0.94rem] font-bold leading-[1.18] text-[#D8B26B]">
         {area.label}
       </div>
-      {index % 5 !== 4 && (
+      {!last && (
         <span className="absolute right-0 top-1/2 hidden h-[76px] w-px -translate-y-1/2 bg-white/18 lg:block" />
       )}
     </div>
@@ -533,11 +547,20 @@ export default function MetaAdsPage() {
             Practice Areas We Help Promote
           </h2>
 
-          <div className="mt-16 -mx-5 flex snap-x gap-6 overflow-x-auto px-5 pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:-mx-10 sm:px-10 lg:relative lg:mx-0 lg:mt-[96px] lg:grid lg:grid-cols-5 lg:gap-x-0 lg:gap-y-[72px] lg:overflow-visible lg:px-0 lg:pb-0 lg:after:absolute lg:after:inset-x-[4%] lg:after:top-1/2 lg:after:h-px lg:after:bg-white/18">
-            {practiceAreas.map((area, index) => (
-              <PracticeAreaFeature key={area.label} area={area} index={index} />
-            ))}
-          </div>
+          {practiceGroups.map((group, gi) => (
+            <div key={group.title} className={gi === 0 ? "mt-14 lg:mt-20" : "mt-12 lg:mt-14"}>
+              <h3 className="text-center text-[1.1rem] font-semibold text-[#EBC982]/80">{group.title}</h3>
+              <div
+                className={`mt-6 -mx-5 flex snap-x gap-6 overflow-x-auto px-5 pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:-mx-10 sm:px-10 lg:mx-0 lg:grid lg:gap-x-0 lg:overflow-visible lg:px-0 lg:pb-0 ${
+                  group.areas.length === 6 ? "lg:grid-cols-6" : "lg:mx-auto lg:max-w-[820px] lg:grid-cols-4"
+                }`}
+              >
+                {group.areas.map((area, index) => (
+                  <PracticeAreaFeature key={area.label} area={area} index={index} last={index === group.areas.length - 1} />
+                ))}
+              </div>
+            </div>
+          ))}
 
         </MotionReveal>
       </section>

@@ -11,7 +11,8 @@ export type PolicySlug =
   | "sms-terms"
   | "cookie-policy"
   | "disclaimer"
-  | "accessibility";
+  | "accessibility"
+  | "compliance";
 
 export type PolicyBlock =
   | { type: "heading"; id: string; text: string }

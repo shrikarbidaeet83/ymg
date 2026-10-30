@@ -34,7 +34,9 @@ export default function ServiceCardCarousel({
       <div
         ref={carouselRef}
         onScroll={(event) => setActiveIndex(getClosestCardIndex(event.currentTarget))}
-        className="flex w-full max-w-full touch-pan-x snap-x snap-mandatory scroll-smooth gap-4 overflow-x-auto overscroll-x-contain px-5 pb-3 pt-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:px-8"
+        // Cards share the desktop grid's `h-full`, which blocks flex stretching here;
+        // resetting it lets every card match the tallest one, whatever its text length.
+        className="flex w-full max-w-full touch-pan-x snap-x snap-mandatory scroll-smooth gap-4 overflow-x-auto overscroll-x-contain px-5 pb-3 pt-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:px-8 [&>*]:h-auto!"
       >
         {children}
       </div>

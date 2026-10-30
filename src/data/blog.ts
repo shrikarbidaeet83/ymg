@@ -29,7 +29,7 @@ const builtInPosts: Post[] = [
     excerpt:
       "Studies link chemical hair relaxers to uterine and ovarian cancer. Law firms acquiring these cases need a strong intake and marketing strategy.",
     date: "April 28, 2026",
-    category: "Hair Relaxer",
+    category: "Mass Torts",
     readTime: "5 min read",
     body: `Research published in peer-reviewed journals has established a statistical link between long-term use of chemical hair relaxers and elevated rates of uterine cancer and ovarian cancer, particularly in Black women who used these products frequently over many years.\n\nMultidistrict litigation (MDL) has been established, and thousands of cases are actively being filed. For plaintiff firms, the intake window is open — but competition for qualified claimants is intensifying.\n\nYMG Legal specializes in connecting firms with pre-screened, case-ready claimants in this vertical. Our qualification criteria are built around the current MDL requirements so your team spends time on cases, not dead leads.`,
   },
@@ -39,7 +39,7 @@ const builtInPosts: Post[] = [
     excerpt:
       "Johnson & Johnson's talc litigation has produced some of the largest verdicts in product liability history. Here's where things stand.",
     date: "April 10, 2026",
-    category: "Talcum Powder",
+    category: "Mass Torts",
     readTime: "6 min read",
     body: `Talcum powder litigation against Johnson & Johnson has produced multi-billion dollar verdicts and reshaped how courts approach corporate liability in consumer product cases.\n\nThe core allegation: J&J knew for decades that its baby powder contained asbestos-contaminated talc linked to ovarian cancer and mesothelioma, yet failed to warn consumers.\n\nDespite J&J's attempts to resolve liability through a series of bankruptcy maneuvers, claims continue to be filed and litigated. Firms acquiring talc cases in 2026 should focus on claimants with documented ovarian cancer diagnoses and confirmed long-term product use.`,
   },

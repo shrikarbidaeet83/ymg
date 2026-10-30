@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import TestimonialContactSection from "@/components/sections/TestimonialContactSection";
+import MarketingChannels from "@/components/sections/MarketingChannels";
 import MotionReveal from "@/components/ui/MotionReveal";
 import {
   ChartNoAxesCombined,
@@ -445,6 +446,7 @@ export default function LawFirmMarketingPage() {
         </div>
       </section>
 
+      <MarketingChannels />
       <TestimonialContactSection showTestimonials={false} contactVariant="home" />
     </div>
   );

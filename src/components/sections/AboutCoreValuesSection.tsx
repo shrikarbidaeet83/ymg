@@ -19,7 +19,7 @@ const coreValues: Array<{
   {
     title: "Integrity",
     description:
-      "Continuously improving our technology, marketing strategies, and client acquisition systems.",
+      "Honest reporting, compliant practices, and clear expectations with every firm we work with.",
     Icon: ShieldCheck,
     iconBackground: "bg-[#F7E9C9]",
     iconColor: "text-[#8A672B]",
@@ -74,7 +74,7 @@ export default function AboutCoreValuesSection() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="text-center font-heading text-[clamp(2rem,5vw,2.4rem)] font-semibold leading-[1.1] text-[#3d4145]"
         >
-          Our Core Value
+          Our Values
         </motion.h2>
 
         <motion.div

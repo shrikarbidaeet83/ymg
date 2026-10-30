@@ -18,7 +18,7 @@ const serviceFaqs = [
   {
     question: "What types of law firms do you work with?",
     answer:
-      "We work with plaintiff-focused firms across personal injury, mass torts, employment, and other practice areas that depend on efficient lead handling and consistent case acquisition.",
+      "We work exclusively with plaintiff law firms across personal injury, mass torts, class action, medical malpractice, workers' compensation, and Social Security disability. Every campaign is built around the case criteria your firm sets.",
   },
   {
     question: "How can I get started with YMG Legal?",
@@ -118,7 +118,7 @@ const serviceFaqs = [
   {
     question: "Do you work with personal injury firms?",
     answer:
-      "Yes. Personal injury is a core focus, including motor vehicle, premises, medical malpractice, and related case types.",
+      "Yes. Personal injury is a core focus, including motor vehicle, truck and rideshare accidents, slip and fall, premises liability, and workplace injuries.",
   },
   {
     question: "Can the program scale with our firm?",

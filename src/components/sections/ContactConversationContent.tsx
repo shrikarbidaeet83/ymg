@@ -4,7 +4,7 @@ import Link from "next/link";
 const contactItems = [
   { icon: "/contact_icons/phone.png", value: "(313) 306-5055" },
   { icon: "/contact_icons/message.png", value: "info@ymg-legal.com" },
-  { icon: "/contact_icons/location.png", value: "Las Vegas Nevada" },
+  { icon: "/contact_icons/location.png", value: "Las Vegas, Nevada" },
   { icon: "/contact_icons/Vector (4).png", value: "LinkedIn" },
 ];
 
@@ -51,39 +51,50 @@ export default function ContactConversationContent({
           {isGold ? "Ready to Grow Your Firm?" : "Let's Start a Conversation"}
         </h3>
         {isGold && (
-          <p className={`mt-2 leading-[1.45] text-[#55585a] lg:mt-3 ${homeTypography ? "text-[16px] lg:text-[17px] 2xl:text-[18px]" : "text-[0.52rem] lg:text-[0.75rem]"}`}>
+          <p className={`mt-2 leading-[1.45] text-[#55585a] lg:mt-3 ${homeTypography ? "text-[16px] lg:text-[17px] 2xl:text-[18px]" : "text-[0.95rem] lg:text-[0.75rem]"}`}>
             Let&apos;s build your pipeline of qualified cases.
           </p>
         )}
-        <p className={`mt-2 max-w-[420px] leading-[1.45] text-[#55585a] lg:mt-3 ${homeTypography ? "text-[16px] lg:text-[17px] 2xl:text-[18px]" : "text-[0.52rem] lg:text-[0.75rem]"}`}>
+        <p className={`mt-2 max-w-[420px] leading-[1.45] text-[#55585a] lg:mt-3 ${homeTypography ? "text-[16px] lg:text-[17px] 2xl:text-[18px]" : "text-[0.95rem] lg:text-[0.75rem]"}`}>
           Tell us about your firm and we&apos;ll show you how we can help.
         </p>
 
         <form className="mt-4 grid gap-2 lg:mt-5 lg:gap-3">
           <div className={`grid gap-3 ${isGold ? "sm:grid-cols-2" : ""}`}>
-            <input name="name" autoComplete="name" required aria-label="Name" placeholder="Name *" className="h-7 rounded-[4px] border border-[#cdbb97] bg-white px-3 text-[0.55rem] outline-none lg:h-10 lg:px-4 lg:text-[0.75rem]" />
-            <input name="law-firm" autoComplete="organization" required aria-label="Law Firm" placeholder="Law Firm *" className="h-7 rounded-[4px] border border-[#cdbb97] bg-white px-3 text-[0.55rem] outline-none lg:h-10 lg:px-4 lg:text-[0.75rem]" />
-            <input name="title" autoComplete="organization-title" aria-label="Title" placeholder="Title" className="h-7 rounded-[4px] border border-[#cdbb97] bg-white px-3 text-[0.55rem] outline-none lg:h-10 lg:px-4 lg:text-[0.75rem]" />
-            <input name="email" type="email" autoComplete="email" required aria-label="Email" placeholder="Email *" className="h-7 rounded-[4px] border border-[#cdbb97] bg-white px-3 text-[0.55rem] outline-none lg:h-10 lg:px-4 lg:text-[0.75rem]" />
-            <input name="phone" type="tel" autoComplete="tel" required aria-label="Phone Number" placeholder="Phone Number *" className="h-7 rounded-[4px] border border-[#cdbb97] bg-white px-3 text-[0.55rem] outline-none lg:h-10 lg:px-4 lg:text-[0.75rem]" />
-            <select name="practice-area" required aria-label="Practice Area" className="h-7 rounded-[4px] border border-[#cdbb97] bg-white px-3 text-[0.55rem] text-[#55585a] outline-none lg:h-10 lg:px-4 lg:text-[0.75rem]" defaultValue="">
+            <input name="name" autoComplete="name" required aria-label="Name" placeholder="Name *" className="h-11 rounded-[4px] border border-[#cdbb97] bg-white px-3 text-[0.95rem] outline-none lg:h-10 lg:px-4 lg:text-[0.75rem]" />
+            <input name="law-firm" autoComplete="organization" required aria-label="Law Firm" placeholder="Law Firm *" className="h-11 rounded-[4px] border border-[#cdbb97] bg-white px-3 text-[0.95rem] outline-none lg:h-10 lg:px-4 lg:text-[0.75rem]" />
+            <input name="title" autoComplete="organization-title" aria-label="Title" placeholder="Title" className="h-11 rounded-[4px] border border-[#cdbb97] bg-white px-3 text-[0.95rem] outline-none lg:h-10 lg:px-4 lg:text-[0.75rem]" />
+            <input name="email" type="email" autoComplete="email" required aria-label="Email" placeholder="Email *" className="h-11 rounded-[4px] border border-[#cdbb97] bg-white px-3 text-[0.95rem] outline-none lg:h-10 lg:px-4 lg:text-[0.75rem]" />
+            <input name="phone" type="tel" autoComplete="tel" required aria-label="Phone Number" placeholder="Phone Number *" className="h-11 rounded-[4px] border border-[#cdbb97] bg-white px-3 text-[0.95rem] outline-none lg:h-10 lg:px-4 lg:text-[0.75rem]" />
+            <select name="practice-area" required aria-label="Practice Area" className="h-11 rounded-[4px] border border-[#cdbb97] bg-white px-3 text-[0.95rem] text-[#55585a] outline-none lg:h-10 lg:px-4 lg:text-[0.75rem]" defaultValue="">
               <option value="" disabled>Practice Area</option>
               <option>Personal Injury</option>
               <option>MVA</option>
               <option>Mass Torts</option>
+              <option>Class Action</option>
+              <option>Medical Malpractice</option>
+              <option>Workers&apos; Compensation</option>
+              <option>Social Security Disability</option>
               <option>Other</option>
             </select>
-            <select name="service-interest" required aria-label="Service of Interest" className="h-7 rounded-[4px] border border-[#cdbb97] bg-white px-3 text-[0.55rem] text-[#55585a] outline-none lg:h-10 lg:px-4 lg:text-[0.75rem]" defaultValue="">
+            <select name="service-interest" required aria-label="Service of Interest" className="h-11 rounded-[4px] border border-[#cdbb97] bg-white px-3 text-[0.95rem] text-[#55585a] outline-none lg:h-10 lg:px-4 lg:text-[0.75rem]" defaultValue="">
               <option value="" disabled>Service of Interest *</option>
               <option>Personal Injury Leads</option>
               <option>MVA Leads</option>
               <option>Mass Tort Leads</option>
+              <option>Class Action Leads</option>
+              <option>Pay-Per-Call</option>
+              <option>Outbound Client Acquisition</option>
               <option>Legal Intake</option>
+              <option>Retainer &amp; E-Sign</option>
+              <option>Live Chat &amp; Text</option>
+              <option>AI-Powered Booking</option>
               <option>Law Firm Marketing</option>
               <option>Paralegal / Law Firm Support</option>
+              <option>Legal Virtual Assistants</option>
             </select>
-            <input name="markets" aria-label="States or Markets" placeholder="States / Markets" className="h-7 rounded-[4px] border border-[#cdbb97] bg-white px-3 text-[0.55rem] outline-none lg:h-10 lg:px-4 lg:text-[0.75rem]" />
-            <select name="monthly-volume" aria-label="Approximate Monthly Volume" className="h-7 rounded-[4px] border border-[#cdbb97] bg-white px-3 text-[0.55rem] text-[#55585a] outline-none lg:h-10 lg:px-4 lg:text-[0.75rem]" defaultValue="">
+            <input name="markets" aria-label="States or Markets" placeholder="States / Markets" className="h-11 rounded-[4px] border border-[#cdbb97] bg-white px-3 text-[0.95rem] outline-none lg:h-10 lg:px-4 lg:text-[0.75rem]" />
+            <select name="monthly-volume" aria-label="Approximate Monthly Volume" className="h-11 rounded-[4px] border border-[#cdbb97] bg-white px-3 text-[0.95rem] text-[#55585a] outline-none lg:h-10 lg:px-4 lg:text-[0.75rem]" defaultValue="">
               <option value="" disabled>Approx. Monthly Volume</option>
               <option>Under 25</option>
               <option>25–100</option>
@@ -91,11 +102,11 @@ export default function ContactConversationContent({
               <option>500+</option>
             </select>
           </div>
-          <textarea name="requirements" aria-label="Additional Requirements" placeholder="Additional requirements" rows={3} className="resize-y rounded-[4px] border border-[#cdbb97] bg-white px-3 py-2 text-[0.55rem] outline-none lg:px-4 lg:text-[0.75rem]" />
+          <textarea name="requirements" aria-label="Additional Requirements" placeholder="Additional requirements" rows={3} className="resize-y rounded-[4px] border border-[#cdbb97] bg-white px-3 py-2 text-[0.95rem] outline-none lg:px-4 lg:text-[0.75rem]" />
           {/* SMS/call consent: unchecked by default and optional on this B2B form, per the SMS Terms.
               Wording is the policies draft and still needs counsel approval. */}
-          <label className="flex items-start gap-2 text-[0.5rem] leading-[1.45] text-[#55585a] lg:gap-2.5 lg:text-[0.68rem]">
-            <input type="checkbox" name="sms-consent" value="sms-terms:draft-1" className="mt-[0.15em] h-3 w-3 shrink-0 accent-[#404040] lg:h-3.5 lg:w-3.5" />
+          <label className="flex items-start gap-2 text-[0.78rem] leading-[1.5] text-[#55585a] lg:gap-2.5 lg:text-[0.68rem]">
+            <input type="checkbox" name="sms-consent" value="sms-terms:draft-1" className="mt-[0.15em] h-4 w-4 shrink-0 accent-[#404040] lg:h-3.5 lg:w-3.5" />
             <span>
               By checking this box, I agree that YMG Legal may call and text me at the number provided, including using automated technology and prerecorded messages, about my inquiry. Consent is not required to receive services. Msg &amp; data rates may apply. Msg frequency varies. Reply STOP to opt out, HELP for help. I agree to the{" "}
               <Link href="/terms" className="underline underline-offset-2">Terms of Use</Link>,{" "}
@@ -109,13 +120,13 @@ export default function ContactConversationContent({
         </form>
       </div>
 
-      <div className={`grid grid-cols-4 gap-2 lg:hidden ${isGold ? "text-[#404040]" : "text-[#D8B26B]"}`}>
+      <div className={`grid grid-cols-2 gap-x-4 gap-y-5 lg:hidden ${isGold ? "text-[#404040]" : "text-[#D8B26B]"}`}>
         {contactItems.map(({ icon, value }) => (
           <div key={value} className="flex flex-col items-center gap-2 text-center">
             <span className={`flex h-8 w-8 items-center justify-center rounded-[3px] ${isGold ? "border border-[#404040]/60" : ""}`}>
               <Image src={icon} alt="" width={14} height={14} className={`h-[13px] w-[13px] object-contain ${isGold ? "brightness-0" : ""}`} />
             </span>
-            <p className="whitespace-nowrap text-[0.42rem] font-medium">{value}</p>
+            <p className="break-all text-[0.85rem] font-medium">{value}</p>
           </div>
         ))}
       </div>

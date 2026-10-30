@@ -3,10 +3,13 @@ import Image from "next/image";
 import HowItWorksFunnel from "@/components/sections/HowItWorksFunnel";
 import HowItWorksFloatingIcon from "@/components/sections/HowItWorksFloatingIcon";
 import TestimonialContactSection from "@/components/sections/TestimonialContactSection";
+import LeadWheel from "@/components/home/LeadWheel";
+import { NextSteps } from "@/components/home/EngagementModels";
 
 export const metadata: Metadata = {
   title: "How It Works | YMG Legal",
-  description: "From lead to signed cases with YMG Legal.",
+  description:
+    "How YMG Legal takes a lead from first search to signed retainer and case support: acquire, qualify, intake, convert, support.",
 };
 
 const floatingIcons = [
@@ -74,6 +77,8 @@ export default function HowItWorksPage() {
       </section>
 
       <HowItWorksFunnel />
+      <LeadWheel />
+      <NextSteps />
       <TestimonialContactSection showTestimonials={false} contactVariant="home" />
     </>
   );

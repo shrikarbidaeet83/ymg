@@ -1,4 +1,4 @@
-import { ClipboardList, FileCheck2, Magnet, UsersRound } from "lucide-react";
+import { ClipboardList, FileCheck2, Layers, Magnet, UsersRound } from "lucide-react";
 import TouchPopCard from "@/components/sections/TouchPopCard";
 
 const solutions = [
@@ -9,6 +9,14 @@ const solutions = [
     title: "Personal Injury Leads",
     body: "Generate qualified personal injury opportunities aligned with your firm's case criteria.",
     tilt: "-rotate-[5deg] translate-y-2 sm:-rotate-[4deg] lg:-rotate-[6deg]",
+  },
+  {
+    icon: Layers,
+    iconBg: "bg-[#e3eefc]",
+    iconColor: "text-[#4f7fc0]",
+    title: "Mass Tort Leads",
+    body: "Build claimant pipelines around the mass tort campaigns your firm is actively pursuing.",
+    tilt: "rotate-[3deg] -translate-y-1 sm:rotate-[3deg] lg:rotate-[3deg] lg:-translate-y-2",
   },
   {
     icon: ClipboardList,
@@ -43,15 +51,15 @@ export function FullFunnelSolutionCards({
 }) {
   return (
     <div
-      className={`flex snap-x snap-mandatory overflow-x-auto px-12 pb-20 pt-24 [scrollbar-width:none] sm:px-4 sm:pb-8 sm:pt-5 lg:justify-center lg:overflow-visible lg:px-6 lg:pb-3 [&::-webkit-scrollbar]:hidden ${className}`}
+      className={`flex snap-x snap-mandatory overflow-x-auto px-12 pb-20 pt-24 [scrollbar-width:none] sm:px-4 sm:pb-8 sm:pt-5 lg:px-6 lg:pb-3 xl:justify-center xl:overflow-visible [&::-webkit-scrollbar]:hidden ${className}`}
     >
       {solutions.map(({ icon: Icon, iconBg, iconColor, title, body, tilt }, index) => (
         <TouchPopCard
           as="div"
           key={title}
           activeClassName="max-[1100px]:z-10 max-[1100px]:rotate-0 max-[1100px]:translate-y-0"
-          className={`group w-[165px] shrink-0 snap-start touch-manipulation transition-transform duration-300 ease-out hover:z-10 hover:rotate-0 hover:translate-y-0 sm:w-[250px] lg:w-[285px] ${
-            index !== 0 ? "-ml-4 sm:-ml-6 lg:-ml-8" : ""
+          className={`group w-[165px] shrink-0 snap-start touch-manipulation transition-transform duration-300 ease-out hover:z-10 hover:rotate-0 hover:translate-y-0 sm:w-[250px] lg:w-[260px] xl:w-[238px] 2xl:w-[262px] ${
+            index !== 0 ? "-ml-4 sm:-ml-6 xl:-ml-5" : ""
           } ${tilt}`}
         >
           <div className="flex h-full flex-col rounded-[10px] bg-white px-4 py-5 shadow-[0_10px_24px_rgba(21,16,10,0.12)] transition-all duration-300 ease-out group-data-[active=true]:-translate-y-3 group-data-[active=true]:scale-[1.04] group-hover:-translate-y-3 group-hover:scale-[1.04] group-hover:shadow-[0_16px_30px_rgba(21,16,10,0.16)] sm:px-6 sm:py-7">

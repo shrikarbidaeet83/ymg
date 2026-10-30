@@ -483,13 +483,11 @@ body {
 }
 
 .ymg-nav-cta {
-  height: 34px;
+  height: 40px;
   display: inline-flex;
   align-items: center;
-  padding: 0 16px !important;
-  border-radius: 5px !important;
-  font-size: 0.78rem !important;
-  background: rgba(255, 246, 229, 0.35);
+  padding: 0 18px !important;
+  border-radius: 999px !important;
 }
 
 .ymg-hero {
@@ -1130,11 +1128,14 @@ body {
   }
 }
 
-@media (max-width: 1023px) {
-  .ymg-practice-marquee {
-    animation: ymg-practice-marquee 18s linear infinite;
-    will-change: transform;
-  }
+/* Scrolls at every width now that the strip lists every case type and campaign. */
+.ymg-practice-marquee {
+  animation: ymg-practice-marquee 40s linear infinite;
+  will-change: transform;
+}
+
+.ymg-practice-bar:hover .ymg-practice-marquee {
+  animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1718,12 +1719,20 @@ html.dark .ymg-practice-marquee img {
   filter: brightness(0) saturate(100%) invert(77%) sepia(38%) saturate(681%) hue-rotate(359deg) brightness(91%) contrast(87%);
 }
 
+html.dark .ymg-practice-marquee svg {
+  color: #D8B26B !important;
+}
+
+html.dark .ymg-practice-marquee > .ymg-practice-category {
+  background-color: rgba(216, 178, 107, 0.12) !important;
+}
+
 html.dark .ymg-practice-marquee p {
   color: #D8B26B !important;
 }
 
 /* Gold only for standalone icons; icons inside colored tiles keep their own palette. */
-html.dark main :not([class*="bg-"]):not([style*="background"]) > svg:not([class*="bg-"]),
+html.dark main :not([class*="bg-"]):not([style*="background"]) > svg:not([class*="bg-"]):not(.ymg-scene svg),
 html.dark footer :not([class*="bg-"]):not([style*="background"]) > svg:not([class*="bg-"]) {
   color: #D8B26B !important;
   stroke: #D8B26B !important;
@@ -2007,6 +2016,20 @@ html.dark .active-campaign-card {
   box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28) !important;
 }
 
+html.dark .active-campaign-chip {
+  background-color: rgba(216, 178, 107, 0.1) !important;
+  border-color: rgba(216, 178, 107, 0.45) !important;
+  color: #ece3cf !important;
+}
+
+html.dark .active-campaign-chip svg {
+  color: #D8B26B !important;
+}
+
+html.dark .active-campaign-chip img {
+  filter: brightness(0) saturate(100%) invert(77%) sepia(38%) saturate(681%) hue-rotate(359deg) brightness(91%) contrast(87%);
+}
+
 .active-campaign-dark-flower {
   display: none;
 }
@@ -2163,5 +2186,306 @@ html.dark .ymg-nav-dropdown > div:first-child {
 
   .ymg-policy-body a {
     color: #000;
+  }
+}
+
+html.dark .ymg-view-all {
+  color: #D8B26B !important;
+}
+
+html.dark .ymg-view-all:hover {
+  color: #1f2023 !important;
+}
+
+/* Header CTA: same gold pill as the LinkedIn and theme buttons beside it. */
+.ymg-nav-cta {
+  border: 0 !important;
+  background: linear-gradient(135deg, rgba(248, 213, 140, 0.9), rgba(216, 169, 82, 0.72)) !important;
+  color: #172022 !important;
+  box-shadow:
+    0 7px 16px rgba(95, 72, 30, 0.24),
+    inset 0 -1px 0 rgba(137, 91, 24, 0.2) !important;
+}
+
+.ymg-nav-cta:hover {
+  background: linear-gradient(135deg, rgba(252, 224, 160, 0.94), rgba(226, 181, 96, 0.82)) !important;
+  box-shadow:
+    0 9px 18px rgba(95, 72, 30, 0.28),
+    inset 0 -1px 0 rgba(137, 91, 24, 0.18) !important;
+}
+
+html.dark .ymg-nav-cta {
+  border: 1px solid rgba(216, 178, 107, 0.18) !important;
+  background: linear-gradient(135deg, rgba(57, 57, 53, 0.86), rgba(30, 30, 28, 0.96)) !important;
+  color: #D8B26B !important;
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+}
+
+html.dark .ymg-nav-cta:hover {
+  border-color: rgba(216, 178, 107, 0.5) !important;
+  background: linear-gradient(135deg, rgba(216, 178, 107, 0.22), rgba(53, 47, 35, 0.94)) !important;
+  color: #E7C784 !important;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.4), 0 0 16px rgba(216, 178, 107, 0.16) !important;
+}
+
+/* Home redesign: dark-mode values for surfaces the global dark rules don't cover. */
+html.dark .ymg-mobile-action-bar {
+  background-color: rgba(25, 25, 23, 0.95) !important;
+  border-color: rgba(216, 178, 107, 0.4) !important;
+}
+
+html.dark .ymg-mobile-action-bar a:first-child {
+  color: #D8B26B !important;
+}
+
+html.dark .ymg-mobile-action-bar a:last-child {
+  background-color: #D8B26B !important;
+  color: #1f2023 !important;
+}
+
+html.dark main .ymg-call-card {
+  background-color: #262624 !important;
+  border: 1px solid rgba(216, 178, 107, 0.45);
+}
+
+html.dark main .ymg-call-card p,
+html.dark main .ymg-call-card .ymg-call-meta {
+  color: #d9d2c3 !important;
+}
+
+html.dark main .ymg-call-card .ymg-call-title {
+  color: #f5ecd8 !important;
+}
+
+html.dark main .ymg-problem-section dd,
+html.dark main .ymg-problem-section p {
+  color: #b9b3a6 !important;
+}
+
+html.dark main .ymg-stage-current {
+  background-color: #D8B26B !important;
+}
+
+html.dark main .ymg-stage-current span {
+  color: #1f2023 !important;
+}
+
+html.dark main .ymg-compliance-chip {
+  background-color: rgba(216, 178, 107, 0.1) !important;
+  border-color: rgba(216, 178, 107, 0.45) !important;
+  color: #ece3cf !important;
+}
+
+html.dark main .ymg-home-secondary,
+html.dark main .ymg-text-link {
+  color: #D8B26B !important;
+}
+
+html.dark main .ymg-stage:not(.ymg-stage-current) {
+  background-color: #191917 !important;
+  border-color: rgba(216, 178, 107, 0.45) !important;
+}
+
+/* ── Illustration scenes in dark mode ──────────────────────────────────────────
+   The global dark rules turn some scene parts dark and leave others light; these
+   scoped rules give the scenes one consistent dark surface instead. State colours
+   (done / now / reject / idle) come from useTone() in the components. */
+html.dark main .ymg-scene {
+  background-color: #1e1e1b !important;
+  border-color: rgba(216, 178, 107, 0.3) !important;
+}
+
+html.dark main .ymg-scene > span:nth-of-type(2) {
+  opacity: 0.25;
+}
+
+/* cards, panels, phone and browser screens */
+html.dark main .ymg-scene :is(.bg-white, [class~="bg-white/70"], [class~="bg-white/80"], .bg-\[\#fffaf0\], .bg-\[\#fbf7ef\], .bg-\[\#faf6ee\]) {
+  background-color: #282825 !important;
+  box-shadow: none !important;
+}
+
+html.dark main .ymg-scene :is(.border-\[\#ece2cc\], .border-\[\#e6ddca\], .border-\[\#efe7d6\], .border-\[\#ece3cf\], .border-\[\#e3d8c0\], .border-\[\#e3d2ad\], .border-\[\#e3d8c0\]) {
+  border-color: rgba(216, 178, 107, 0.22) !important;
+}
+
+html.dark main .ymg-scene .ring-\[\#ece2cc\] {
+  --tw-ring-color: rgba(216, 178, 107, 0.22) !important;
+}
+
+/* text: primary and muted */
+html.dark main .ymg-scene :is(.text-\[\#2f3236\], .text-\[\#4b4e52\]) {
+  color: #efe7d6 !important;
+}
+
+html.dark main .ymg-scene :is(.text-\[\#6b6e72\], .text-\[\#8a8c8f\], .text-\[\#85878a\], .text-\[\#9a9c9f\], .text-\[\#5b5e62\]) {
+  color: #aaa59a !important;
+}
+
+/* placeholder bars, pills and dividers inside the illustrations */
+html.dark main .ymg-scene :is(.bg-\[\#efe7d6\], .bg-\[\#e7dfcf\], .bg-\[\#efe9dc\], .bg-\[\#e3dccd\], .bg-\[\#e3d8c0\], .bg-\[\#d9d2c3\], .bg-\[\#cfc5b0\], .bg-\[\#f3eee3\]) {
+  background-color: #3a3833 !important;
+}
+
+/* the active tab of the practice-area switch */
+html.dark main .ymg-scene .bg-\[\#2f3236\] {
+  background-color: #D8B26B !important;
+  color: #1f2023 !important;
+}
+
+/* the outcome row keeps its "done" colour over the global paragraph grey */
+html.dark main .ymg-scene .ymg-scene-outcome {
+  color: #6fd1b8 !important;
+}
+
+html.dark main .ymg-scene figcaption button {
+  color: #D8B26B !important;
+}
+
+/* Scene cards keep a quiet border; state borders come from data-state. */
+html.dark main .ymg-scene [class*="rounded"][class*="border"] {
+  border-color: rgba(216, 178, 107, 0.22) !important;
+}
+
+html.dark main .ymg-scene [class*="border"][data-state="now"] {
+  border-color: #e9c27a !important;
+}
+
+html.dark main .ymg-scene [class*="border"][data-state="done"] {
+  border-color: rgba(111, 209, 184, 0.55) !important;
+}
+
+html.dark main .ymg-scene .text-\[\#2f5aa0\] {
+  color: #9cbcf0 !important;
+}
+
+/* Practice Areas page: alternate dark bands keep their own palette in dark mode. */
+html.dark main .ymg-area-dark {
+  background-color: #222220 !important;
+}
+
+html.dark .ymg-breadcrumb-link {
+  background-color: rgba(25, 25, 23, 0.7) !important;
+  color: #D8B26B !important;
+}
+
+html.dark .ymg-breadcrumb-current {
+  color: #a7a59f !important;
+}
+
+/* Header sizing: a fuller, more confident nav bar on desktop. */
+@media (min-width: 1100px) {
+  .ymg-navbar .ymg-navbar-inner {
+    height: 72px !important;
+    max-width: 1280px !important;
+  }
+
+  .ymg-navbar .ymg-navbar-logo img {
+    width: 132px !important;
+  }
+
+  .ymg-navbar .ymg-nav-pill {
+    height: 54px !important;
+    padding: 6px !important;
+    gap: 6px !important;
+  }
+
+  .ymg-navbar .ymg-nav-link {
+    height: 42px !important;
+    padding-inline: 18px !important;
+    font-size: 0.9rem !important;
+  }
+
+  .ymg-navbar .ymg-nav-cta {
+    height: 42px !important;
+    padding-inline: 22px !important;
+    font-size: 0.92rem !important;
+  }
+
+  /* The scrolled glass bar must match the pill's height, so the CTA sits inside it with an even
+     6px rim instead of its edge nearly lining up with the bar's edge (which read as a double border). */
+  .ymg-navbar-scrolled .ymg-nav-morph-surface,
+  html.dark .ymg-navbar .ymg-nav-morph-surface {
+    height: 54px;
+  }
+
+  .ymg-navbar .ymg-nav-action-button {
+    width: 46px !important;
+    height: 46px !important;
+  }
+}
+
+/* Hero film: soft colour orbs behind the glass frame. Static on purpose: blurred layers that move
+   force a repaint every frame on machines without GPU compositing. */
+.ymg-orb {
+  transform: translateZ(0);
+}
+
+/* Client logo marquee under the hero. */
+.ymg-logo-track {
+  animation: ymg-logo-marquee 38s linear infinite;
+  will-change: transform;
+}
+.ymg-logo-marquee:hover .ymg-logo-track {
+  animation-play-state: paused;
+}
+@keyframes ymg-logo-marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ymg-logo-track { animation: none; }
+}
+
+/* Home section backgrounds: only the three YMG colours (cream #FFF5E0, charcoal #3d4145, gold #D8B26B),
+   each lit by soft shades of YMG gold the way the hero is. The glow sits in a different place in each
+   section so it never reads as a repeated pattern. */
+/* Each glow is centred well inside its section and fades out before either edge, so the cream
+   sections meet without a visible seam. */
+.ymg-home-page .ymg-practice-panels {
+  background-image: radial-gradient(38% 38% at 10% 50%, rgba(235, 201, 130, 0.3), transparent 70%);
+}
+.ymg-home-page .ymg-reviews {
+  background-image: radial-gradient(40% 38% at 88% 55%, rgba(235, 201, 130, 0.3), transparent 70%);
+}
+.ymg-home-page .ymg-why-ymg {
+  background-image: radial-gradient(45% 30% at 30% 45%, rgba(235, 201, 130, 0.26), transparent 70%);
+}
+.ymg-home-page .ymg-engagement {
+  background-image: radial-gradient(38% 40% at 85% 50%, rgba(235, 201, 130, 0.28), transparent 70%);
+}
+.ymg-home-page .ymg-home-faq {
+  background-image: radial-gradient(35% 40% at 15% 50%, rgba(235, 201, 130, 0.26), transparent 70%);
+}
+.ymg-home-page .ymg-contact-section {
+  background-image:
+    radial-gradient(50% 70% at 20% 30%, rgba(255, 238, 196, 0.45), transparent 70%),
+    radial-gradient(40% 60% at 90% 90%, rgba(168, 123, 37, 0.25), transparent 70%);
+}
+
+/* Phones: once the page scrolls, the logo bar sits on a cream glass bar so it stays readable over any section. */
+@media (max-width: 899px) {
+  .ymg-navbar-mobile-bar {
+    top: 10px !important;
+  }
+  .ymg-navbar-mobile-bar .ymg-navbar-inner {
+    height: 56px !important;
+    margin-inline: 12px;
+    max-width: calc(100% - 24px) !important;
+    padding-inline: 18px !important;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(255, 249, 231, 0.94), rgba(244, 226, 186, 0.9));
+    box-shadow: 0 10px 26px rgba(47, 38, 24, 0.18), inset 0 -1px 0 rgba(145, 102, 35, 0.12);
+    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  }
+  html.dark .ymg-navbar-mobile-bar .ymg-navbar-inner {
+    background: linear-gradient(135deg, rgba(57, 57, 53, 0.92), rgba(30, 30, 28, 0.95));
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(216, 178, 107, 0.14);
+  }
+  .ymg-navbar-mobile-bar .ymg-navbar-logo img {
+    width: 96px !important;
   }
 }

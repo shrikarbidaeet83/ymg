@@ -1,139 +1,63 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import FullFunnelSolutionsSection from "@/components/sections/FullFunnelSolutionsSection";
-import {
-  BarChart3,
-  CalendarDays,
-  ClipboardList,
-  FileCheck2,
-  Mail,
-  Phone,
-  ShieldCheck,
-  Users,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import ContactConversationContent from "@/components/sections/ContactConversationContent";
+import { EngagementModels, NextSteps } from "@/components/home/EngagementModels";
+import { FullFunnelSolutionCards } from "@/components/sections/FullFunnelSolutionsSection";
 
-const planCards = [
-  {
-    title: "Call Services",
-    description:
-      "Reduce missed calls, capture every lead and be there for your clients - 24/7/365",
-    features: [
-      { icon: CalendarDays, text: "Office hours and after-hours phone coverage" },
-      { icon: Phone, text: "Live transfer and call routing" },
-      { icon: ClipboardList, text: "Appointment scheduling" },
-      { icon: BarChart3, text: "Reporting & analytics" },
-    ],
-  },
-  {
-    title: "Intake Services",
-    description:
-      "Screen potential clients and identify the right cases and opportunities",
-    features: [
-      { icon: FileCheck2, text: "24/7/365 new client intake" },
-      { icon: Users, text: "Web forms and online leads" },
-      { icon: Phone, text: "Outbound calling" },
-      { icon: ClipboardList, text: "CRM/CMS integration" },
-      {
-        icon: BarChart3,
-        text: "Large-scale advertising and marketing campaigns",
-      },
-    ],
-  },
-  {
-    title: "Contract & Retainer Services",
-    description: "Convert the right inquiries into paying clients",
-    features: [
-      { icon: Phone, text: "Resurrect lost leads" },
-      { icon: CalendarDays, text: "Scheduled call-backs" },
-      { icon: BarChart3, text: "Smart Lead tracking" },
-      { icon: Mail, text: "Personalized welcome email" },
-      { icon: ShieldCheck, text: "HIPAA compliant and secure" },
-    ],
-  },
-];
+export const metadata: Metadata = {
+  title: "Engagement Plans | YMG Legal",
+  description:
+    "Three ways to work with YMG Legal: Lead Generation + Intake, Full-Service Partnership, or Case Support Only. No long-term contracts required to start.",
+};
 
 export default function PlansPage() {
   return (
-    <>
-      <section className="ymg-standard-hero ymg-section-padding-x relative isolate overflow-hidden bg-[#FFF5E0] pb-[60px] pt-[118px] text-[#3d4145] lg:pt-[132px]">
+    <div className="bg-[#FFF5E0]">
+      <section className="ymg-section-padding relative isolate overflow-hidden !pt-[150px] lg:!pt-[170px]">
         <Image
-          src="/flowers/3rd-flower.svg"
+          src="/flowers/half-circleBG.svg"
           alt=""
-          width={573}
-          height={411}
+          width={1180}
+          height={848}
           priority
-          className="pointer-events-none absolute left-[5px] top-[500px] z-0 w-[143px] mix-blend-multiply sm:left-[10px] sm:top-[510px] sm:w-[215px] lg:left-[225px] lg:top-[600px] lg:w-[287px]"
+          className="pointer-events-none absolute right-[-80px] top-[45%] -z-10 w-[320px] -translate-y-1/2 opacity-70 mix-blend-multiply sm:w-[460px] lg:w-[580px]"
         />
-        <Image
-          src="/images/big_flowers.webp"
-          alt=""
-          width={220}
-          height={220}
-          priority
-          className="pointer-events-none absolute bottom-[-32px] left-[-34px] z-0 w-[120px] opacity-[0.08] brightness-90 sepia sm:w-[170px] lg:w-[210px]"
-        />
-        <Image
-          src="/images/small_flowers.webp"
-          alt=""
-          width={76}
-          height={76}
-          priority
-          className="pointer-events-none absolute bottom-[84px] left-[10%] z-0 w-[48px] opacity-[0.07] brightness-90 sepia sm:w-[62px]"
-        />
-
-        <div className="relative z-10 mx-auto max-w-7xl">
-          <h1 className="ymg-standard-hero-title mx-auto max-w-[1180px] text-center text-[#3d4145]">
-            <span className="block lg:whitespace-nowrap">
-              Our outbound call services are designed to increase your firm&apos;s revenue and
-            </span>
-            <span className="block lg:whitespace-nowrap">
-              enhance client engagement. Contact us to learn more.
-            </span>
+        <div className="mx-auto max-w-[1240px]">
+          <p className="text-[1rem] font-medium text-[#8a6420]">Engagement plans</p>
+          <h1 className="mt-4 max-w-[16ch] text-[2.6rem] leading-[1.04] text-[#2f3236] sm:text-[3.4rem] lg:text-[4rem]">
+            Choose how much of the case journey <span className="text-[#c9a14f]">we run for you.</span>
           </h1>
-
-          <div className="mx-auto mt-10 grid max-w-[1180px] auto-rows-fr gap-5 md:grid-cols-3 lg:mt-14 lg:gap-6">
-            {planCards.map(({ title, description, features }) => (
-              <article
-                key={title}
-                className="relative flex h-full min-h-[430px] overflow-hidden rounded-[6px] border border-[#dfbd78] bg-[#FFF5E0] px-6 py-7 shadow-[4px_5px_8px_rgba(86,65,31,0.16)] sm:min-h-[450px] lg:min-h-[470px]"
-              >
-                <div className="pointer-events-none absolute bottom-[-34px] left-[-20px] h-[150px] w-[150px] rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(223,189,120,0.16),rgba(223,189,120,0)_68%)]" />
-
-                <div className="relative z-10 flex h-full w-full flex-col">
-                  <h2 className="text-[1.25rem] font-semibold leading-tight text-[#3d4145] lg:text-[1.35rem]">
-                    {title}
-                  </h2>
-                  <p className="mt-4 max-w-[235px] text-[0.78rem] leading-[1.45] text-[#8a8c8e]">
-                    {description}
-                  </p>
-
-                  <ul className="mt-6 space-y-4">
-                    {features.map(({ icon: Icon, text }) => (
-                      <li
-                        key={text}
-                        className="flex items-start gap-3 text-[0.7rem] leading-snug text-[#55585a]"
-                      >
-                        <Icon className="mt-[-1px] h-4 w-4 shrink-0 text-[#3d4145]" strokeWidth={1.65} />
-                        <span>{text}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-auto pt-10">
-                    <Link
-                      href="/contact#booking"
-                      className="flex h-[52px] w-full items-center justify-center rounded-[4px] bg-[#d9ae5d] px-8 text-sm font-bold text-[#2e3032] shadow-[0_12px_28px_rgba(168,129,62,0.22)] transition-colors hover:bg-[#c89f4e]"
-                    >
-                      Get Started
-                    </Link>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
+          <p className="mt-6 max-w-[40rem] text-[1.08rem] leading-[1.6] text-[#55585c]">
+            Start with lead generation and intake, hand us the whole process, or bring us in for case support only. Every plan
+            is scoped to your firm, and no long-term contract is required to start.
+          </p>
+          <Link
+            href="/contact"
+            className="mt-8 inline-flex items-center gap-2 rounded-[6px] bg-[#D8B26B] px-6 py-4 font-semibold text-[#2f3236] shadow-[0_8px_18px_rgba(168,123,37,0.22)] hover:bg-[#cfa65b]"
+          >
+            Get a custom proposal <ArrowRight size={17} strokeWidth={1.8} aria-hidden="true" />
+          </Link>
         </div>
       </section>
-      <FullFunnelSolutionsSection />
-    </>
+
+      <EngagementModels showCompare={false} />
+
+      <section className="ymg-section-padding">
+        <div className="mx-auto max-w-[1240px]">
+          <h2 className="text-center text-[2rem] leading-[1.1] text-[#2f3236] sm:text-[2.5rem]">What a plan can include</h2>
+          <FullFunnelSolutionCards className="mt-6" />
+        </div>
+      </section>
+
+      <NextSteps />
+
+      <section className="ymg-contact-section ymg-section-padding relative isolate overflow-hidden bg-[#D8B26B] text-[#404040]">
+        <div className="relative z-10 mx-auto max-w-7xl">
+          <ContactConversationContent variant="gold" homeTypography />
+        </div>
+      </section>
+    </div>
   );
 }

@@ -27,35 +27,89 @@ type NavLink = {
   href: string;
   hasDropdown?: boolean;
   dropdownItems?: NavDropdownItem[];
+  /** The site-wide primary action, rendered as a button inside the nav. */
+  cta?: boolean;
 };
 
+// Header order per the content guide: the logo links home, Plans and Blog live in the footer,
+// and Contact becomes the "Talk to YMG Legal" button.
 const navLinks: NavLink[] = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
   {
     label: "Services",
     href: "/services",
     hasDropdown: true,
+    // Four categories (site map): every service page sits under exactly one of them.
     dropdownItems: [
       {
-        label: "Personal Injury Lead Generation",
-        href: "/services/personal-injury-leads",
-        description: "Qualified opportunities built around firm criteria",
+        label: "Case Acquisition",
+        href: "/services#case-acquisition",
+        description: "Leads, calls and claimants for your case types",
+        children: [
+          {
+            label: "Personal Injury Lead Generation",
+            href: "/services/personal-injury-leads",
+            description: "Qualified PI opportunities built around firm criteria",
+          },
+          {
+            label: "MVA Lead Generation",
+            href: "/services/mva-leads",
+            description: "Motor vehicle accident opportunities",
+          },
+          {
+            label: "Mass Tort & Class Action",
+            href: "/services/mass-tort-leads",
+            description: "Claimant pipelines for active campaigns",
+            group: "Mass tort & class action",
+          },
+          {
+            label: "Class Action Leads",
+            href: "/services/class-action-leads",
+            description: "Class members screened against the definition",
+            group: "Mass tort & class action",
+          },
+          {
+            label: "Pay-Per-Call",
+            href: "/services/pay-per-call",
+            description: "Live, pre-screened calls transferred to you",
+            group: "Calls & outreach",
+          },
+          {
+            label: "Outbound Client Acquisition",
+            href: "/services/outbound-client-acquisition",
+            description: "Consent-based follow-up and re-engagement",
+            group: "Calls & outreach",
+          },
+        ],
       },
       {
-        label: "MVA Lead Generation",
-        href: "/services/mva-leads",
-        description: "Motor vehicle accident opportunities",
-      },
-      {
-        label: "Mass Tort Lead Generation",
-        href: "/services/mass-tort-leads",
-        description: "Claimant pipelines for active campaigns",
-      },
-      {
-        label: "Legal Intake Services",
+        label: "Intake & Conversion",
         href: "/services/legal-intake",
-        description: "Screening, follow-up, and intake capacity",
+        description: "Answering, screening and signing new clients",
+        children: [
+          {
+            label: "Legal Intake Services",
+            href: "/services/legal-intake",
+            description: "24/7 answering, screening and follow-up",
+          },
+          {
+            label: "Legal Contract & Retainer",
+            href: "/services/retainer-signing",
+            description: "E-sign retainers and secure documents",
+            group: "Conversion tools",
+          },
+          {
+            label: "Live Chat & Text",
+            href: "/services/live-chat-text",
+            description: "Live website chat and two-way texting",
+            group: "Conversion tools",
+          },
+          {
+            label: "AI-Powered Booking",
+            href: "/services/ai-booking",
+            description: "Automated consultation scheduling",
+            group: "Conversion tools",
+          },
+        ],
       },
       {
         label: "Law Firm Marketing",
@@ -112,16 +166,29 @@ const navLinks: NavLink[] = [
         ],
       },
       {
-        label: "Outsourced Paralegal & Law Firm Support",
+        label: "Law Firm Support",
         href: "/services/law-firm-support",
-        description: "Flexible capacity for legal operations",
+        description: "Paralegal, case and admin capacity",
+        children: [
+          {
+            label: "Paralegal & Firm Support",
+            href: "/services/law-firm-support",
+            description: "Case, litigation and records support",
+          },
+          {
+            label: "Legal Virtual Assistants",
+            href: "/services/legal-virtual-assistants",
+            description: "Dedicated US-based remote support staff",
+          },
+        ],
       },
     ],
   },
-  { label: "Plans", href: "/plans" },
-  { label: "Blog", href: "/blog" },
   { label: "Practice Areas", href: "/practice-areas" },
-  { label: "Contact Us", href: "/contact" },
+  { label: "How It Works", href: "/how-it-works" },
+  { label: "About", href: "/about" },
+  { label: "FAQ", href: "/faqs" },
+  { label: "Talk to YMG Legal", href: "/contact", cta: true },
 ];
 
 function isDropdownItemActive(item: NavDropdownItem, pathname: string) {
@@ -198,6 +265,7 @@ function HeaderActions({
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [sideItemsHidden, setSideItemsHidden] = useState(false);
+  const [desktop, setDesktop] = useState(true);
   const [overDarkBackground, setOverDarkBackground] = useState(false);
   const [activePill, setActivePill] = useState<{ left: number; width: number } | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -246,6 +314,16 @@ export default function Navbar() {
     window.clearTimeout(dropdownHoverTimerRef.current);
     dropdownHoverTimerRef.current = window.setTimeout(() => setActiveDropdownIndex(index), 90);
   };
+
+  // Phones have no link pill to fall back on, so the logo bar never hides there.
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 900px)");
+    const update = () => setDesktop(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  const hideSides = sideItemsHidden && desktop;
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -419,8 +497,9 @@ export default function Navbar() {
         layoutRoot
         className={cn(
           "ymg-navbar fixed left-0 right-0 top-5 z-50 transition-all duration-300",
-          scrolled && sideItemsHidden && "ymg-navbar-scrolled",
-          overDarkBackground && sideItemsHidden && "ymg-navbar-over-dark"
+          scrolled && hideSides && "ymg-navbar-scrolled",
+          scrolled && !desktop && "ymg-navbar-mobile-bar",
+          overDarkBackground && hideSides && "ymg-navbar-over-dark"
         )}
       >
         <div className="ymg-navbar-shell mx-auto">
@@ -430,13 +509,13 @@ export default function Navbar() {
             className="ymg-navbar-logo shrink-0"
             initial={false}
             animate={{
-              opacity: sideItemsHidden ? 0 : 1,
-              y: sideItemsHidden ? -10 : 0,
-              scale: sideItemsHidden ? 0.92 : 1,
-              filter: sideItemsHidden ? "blur(5px)" : "blur(0px)",
+              opacity: hideSides ? 0 : 1,
+              y: hideSides ? -10 : 0,
+              scale: hideSides ? 0.92 : 1,
+              filter: hideSides ? "blur(5px)" : "blur(0px)",
             }}
             transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-            style={{ pointerEvents: sideItemsHidden ? "none" : "auto" }}
+            style={{ pointerEvents: hideSides ? "none" : "auto" }}
           >
             <YMGLogo asLink variant="gold" />
           </motion.div>
@@ -470,17 +549,19 @@ export default function Navbar() {
               const isActive = isNavLinkActive(link, pathname);
               const hasMenu = Boolean(link.dropdownItems?.length);
 
-              const navLinkClassName = cn(
-                "ymg-nav-link relative z-10 flex h-full items-center gap-1 whitespace-nowrap rounded-full px-4 text-[1.02rem] font-medium text-[#4f5356] transition-all duration-200 hover:text-[#1f2529]",
-                isActive ? "ymg-nav-active" : ""
-              );
+              const navLinkClassName = link.cta
+                ? "ymg-nav-cta relative z-10 ml-1 flex h-[40px] items-center whitespace-nowrap rounded-full px-5 text-[0.88rem] font-semibold transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a87b25]"
+                : cn(
+                    "ymg-nav-link relative z-10 flex h-full items-center gap-1 whitespace-nowrap rounded-full px-4 text-[1.02rem] font-medium text-[#4f5356] transition-all duration-200 hover:text-[#1f2529]",
+                    isActive ? "ymg-nav-active" : ""
+                  );
 
               const navLink = (
                 <Link
                   key={link.href}
                   href={link.href}
                   aria-current={isActive ? "page" : undefined}
-                  data-nav-active={isActive ? "true" : undefined}
+                  data-nav-active={isActive && !link.cta ? "true" : undefined}
                   className={navLinkClassName}
                 >
                   <span className="relative z-10 flex items-center gap-1">
@@ -509,10 +590,10 @@ export default function Navbar() {
                   }}
                   className="block rounded-[6px] px-3 py-2.5 text-left transition-colors duration-200 hover:bg-[#f4dfb7]/65"
                 >
-                  <span className="block text-[0.76rem] font-semibold leading-tight text-[#272c2f]">
+                  <span className="block text-[0.9rem] font-semibold leading-tight text-[#272c2f]">
                     {item.label}
                   </span>
-                  <span className="mt-1 block text-[0.62rem] leading-[1.3] text-[#65615a]">
+                  <span className="mt-1 block text-[0.78rem] leading-[1.35] text-[#65615a]">
                     {item.description}
                   </span>
                 </Link>
@@ -555,14 +636,14 @@ export default function Navbar() {
                   <div
                     className={cn(
                       "absolute left-1/2 top-full -translate-x-1/2 pt-[10px] transition-all duration-200",
-                      groups.length ? "w-[min(860px,calc(100vw-48px))]" : "w-[min(720px,calc(100vw-48px))]",
+                      groups.length ? "w-[min(980px,calc(100vw-48px))]" : "w-[min(800px,calc(100vw-48px))]",
                       desktopDropdownOpen
                         ? "pointer-events-auto visible translate-y-0 opacity-100"
                         : "pointer-events-none invisible translate-y-2 opacity-0"
                     )}
                   >
                     <div className="ymg-nav-dropdown flex rounded-[8px] border border-[#dfbd78]/70 bg-[#fff8e8]/95 shadow-[0_16px_34px_rgba(71,56,30,0.18)] backdrop-blur-xl">
-                      <div className="w-[260px] shrink-0 border-r border-[#dfbd78]/45 p-2">
+                      <div className="w-[290px] shrink-0 border-r border-[#dfbd78]/45 p-2">
                         {dropdownItems.map((item, index) => {
                           const isPreviewed = index === activeDropdownIndex;
 
@@ -584,14 +665,14 @@ export default function Navbar() {
                                 isPreviewed && "bg-[#f4dfb7]/65"
                               )}
                             >
-                              <span className="flex items-center justify-between gap-2 text-[0.76rem] font-semibold leading-tight text-[#272c2f]">
+                              <span className="flex items-center justify-between gap-2 text-[0.9rem] font-semibold leading-tight text-[#272c2f]">
                                 {item.label}
                                 <ChevronRight
                                   size={13}
                                   className={cn("shrink-0 opacity-0 transition-opacity duration-200", isPreviewed && "opacity-60")}
                                 />
                               </span>
-                              <span className="mt-1 block text-[0.62rem] leading-[1.3] text-[#65615a]">
+                              <span className="mt-1 block text-[0.78rem] leading-[1.35] text-[#65615a]">
                                 {item.description}
                               </span>
                             </Link>
@@ -605,7 +686,7 @@ export default function Navbar() {
                           <div className="grid grid-cols-3 gap-x-2">
                             {[{ title: activeItem.label, items: featured }, ...groups].map((group) => (
                               <div key={group.title} className="min-w-0">
-                                <p className="px-3 pb-1 pt-3 text-[0.61rem] font-bold uppercase tracking-[0.14em] text-[#9b7531]">
+                                <p className="px-3 pb-1 pt-3 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-[#9b7531]">
                                   {group.title}
                                 </p>
                                 {group.items.map(renderPanelLink)}
@@ -614,7 +695,7 @@ export default function Navbar() {
                           </div>
                         ) : (
                           <>
-                            <p className="px-3 pb-1 pt-3 text-[0.61rem] font-bold uppercase tracking-[0.14em] text-[#9b7531]">
+                            <p className="px-3 pb-1 pt-3 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-[#9b7531]">
                               {activeItem.label}
                             </p>
                             {activeItem.children?.length
@@ -634,13 +715,13 @@ export default function Navbar() {
             className="ymg-nav-actions hidden shrink-0 min-[900px]:flex"
             initial={false}
             animate={{
-              opacity: sideItemsHidden ? 0 : 1,
-              y: sideItemsHidden ? -10 : 0,
-              scale: sideItemsHidden ? 0.92 : 1,
-              filter: sideItemsHidden ? "blur(5px)" : "blur(0px)",
+              opacity: hideSides ? 0 : 1,
+              y: hideSides ? -10 : 0,
+              scale: hideSides ? 0.92 : 1,
+              filter: hideSides ? "blur(5px)" : "blur(0px)",
             }}
             transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-            style={{ pointerEvents: sideItemsHidden ? "none" : "auto" }}
+            style={{ pointerEvents: hideSides ? "none" : "auto" }}
           >
             <HeaderActions darkMode={darkMode} onToggleDarkMode={toggleDarkMode} />
           </motion.div>

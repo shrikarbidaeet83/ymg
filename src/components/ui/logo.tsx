@@ -19,6 +19,7 @@ export function YMGLogo({
       alt="YMG Legal"
       width={178}
       height={79}
+      priority
       className="h-auto w-[128px]"
     />
   );

@@ -3,68 +3,102 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import ServicesProcessSection from "@/components/sections/ServicesProcessSection";
+import ServiceShowcase from "@/components/home/ServiceShowcase";
+import { EngagementModels, NextSteps } from "@/components/home/EngagementModels";
 import TestimonialContactSection from "@/components/sections/TestimonialContactSection";
 import {
   ArrowRight,
+  Bot,
+  CalendarClock,
   ChartNoAxesCombined,
   FileCheck2,
-  MapPin,
+  FileSignature,
+  Headset,
+  MessagesSquare,
   MonitorSmartphone,
+  PhoneCall,
+  PhoneOutgoing,
+  Scale,
   Search,
   UsersRound,
+  type LucideIcon,
 } from "lucide-react";
 
-const services = [
+type HubService = { icon: LucideIcon; title: string; body: string; href: string };
+
+// Same four categories as the header's Services menu; each page sits under exactly one.
+const categories: { id: string; title: string; body: string; services: HubService[]; channels?: { label: string; href: string }[] }[] = [
   {
-    icon: FileCheck2,
-    iconBg: "bg-[#dce9ff]",
-    iconColor: "text-[#3f587c]",
-    title: "Personal Injury Lead Generation",
-    body: "Qualified opportunities built around your firm's PI case criteria.",
-    href: "/services/personal-injury-leads",
+    id: "case-acquisition",
+    title: "Case Acquisition",
+    body: "Leads, live calls and claimants built around the cases your firm handles.",
+    services: [
+      { icon: FileCheck2, title: "Personal Injury Lead Generation", body: "Qualified opportunities built around your firm's PI case criteria.", href: "/services/personal-injury-leads" },
+      { icon: Search, title: "MVA Lead Generation", body: "Motor vehicle accident opportunities aligned to your target markets.", href: "/services/mva-leads" },
+      { icon: UsersRound, title: "Mass Tort & Class Action", body: "Claimant pipelines for the campaigns your firm is actively pursuing.", href: "/services/mass-tort-leads" },
+      { icon: Scale, title: "Class Action Leads", body: "Class members screened against the class definition and documented.", href: "/services/class-action-leads" },
+      { icon: PhoneCall, title: "Pay-Per-Call", body: "Live, pre-screened calls warm-transferred to your intake team.", href: "/services/pay-per-call" },
+      { icon: PhoneOutgoing, title: "Outbound Client Acquisition", body: "Consent-based follow-up that turns old inquiries into consultations.", href: "/services/outbound-client-acquisition" },
+    ],
   },
   {
-    icon: Search,
-    iconBg: "bg-[#f2ddff]",
-    iconColor: "text-[#4d415c]",
-    title: "MVA Lead Generation",
-    body: "Motor vehicle accident opportunities aligned to your target markets.",
-    href: "/services/mva-leads",
+    id: "intake-conversion",
+    title: "Intake & Conversion",
+    body: "Every inquiry answered, screened and guided to a signed retainer.",
+    services: [
+      { icon: Headset, title: "Legal Intake Services", body: "24/7 answering, screening, follow-up and intake capacity.", href: "/services/legal-intake" },
+      { icon: FileSignature, title: "Legal Contract & Retainer", body: "E-sign retainers, guided signing and secure document handling.", href: "/services/retainer-signing" },
+      { icon: MessagesSquare, title: "Live Chat & Text", body: "Live website chat and two-way texting with prospects.", href: "/services/live-chat-text" },
+      { icon: CalendarClock, title: "AI-Powered Booking", body: "Automated consultation scheduling with people behind it.", href: "/services/ai-booking" },
+    ],
   },
   {
-    icon: UsersRound,
-    iconBg: "bg-[#d6f8ea]",
-    iconColor: "text-[#315d4d]",
-    title: "Mass Tort Lead Generation",
-    body: "Claimant pipelines for the campaigns your firm is actively pursuing.",
-    href: "/services/mass-tort-leads",
-  },
-  {
-    icon: MapPin,
-    iconBg: "bg-[#eceeef]",
-    iconColor: "text-[#596068]",
-    title: "Legal Intake Services",
-    body: "Structured screening, follow-up, and intake capacity for your firm.",
-    href: "/services/legal-intake",
-  },
-  {
-    icon: ChartNoAxesCombined,
-    iconBg: "bg-[#e9edf1]",
-    iconColor: "text-[#596068]",
+    id: "law-firm-marketing",
     title: "Law Firm Marketing",
-    body: "Marketing channels connected to lead quality, intake, and growth goals.",
-    href: "/services/law-firm-marketing",
+    body: "The channels we run to grow your firm's own brand and inquiries.",
+    services: [
+      { icon: ChartNoAxesCombined, title: "Law Firm Marketing", body: "Marketing channels connected to lead quality, intake and growth goals.", href: "/services/law-firm-marketing" },
+    ],
+    channels: [
+      { label: "Google Search Ads", href: "/services/google-search-ads" },
+      { label: "Meta Ads", href: "/services/meta-ads" },
+      { label: "Local Services Ads", href: "/services/local-services-ads" },
+      { label: "SEO", href: "/services/seo" },
+      { label: "AI Search (AIO)", href: "/services/ai-search" },
+      { label: "Organic Social Media", href: "/services/organic-social-media" },
+      { label: "Website Design", href: "/services/website-design" },
+    ],
   },
   {
-    icon: MonitorSmartphone,
-    iconBg: "bg-[#d9f8e2]",
-    iconColor: "text-[#345a41]",
-    title: "Outsourced Paralegal & Law Firm Support",
-    body: "Flexible operational capacity structured around your firm's workflow.",
-    href: "/services/law-firm-support",
+    id: "law-firm-support",
+    title: "Law Firm Support",
+    body: "Paralegal, case and administrative capacity after the client signs.",
+    services: [
+      { icon: MonitorSmartphone, title: "Paralegal & Firm Support", body: "Case, litigation, records and administrative support.", href: "/services/law-firm-support" },
+      { icon: Bot, title: "Legal Virtual Assistants", body: "Dedicated, US-based remote support staff for your team.", href: "/services/legal-virtual-assistants" },
+    ],
   },
 ];
+
+function HubCard({ service }: { service: HubService }) {
+  const { icon: Icon, title, body, href } = service;
+  return (
+    <Link
+      href={href}
+      className="group flex h-full flex-col rounded-[10px] border border-[#dfbd78] bg-[#fff4dd] p-5 shadow-[0_7px_12px_rgba(91,69,34,0.12)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_28px_rgba(91,69,34,0.18)]"
+    >
+      <span className="flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-[8px] bg-[#f7e3b8] text-[#7a5a1f]">
+        <Icon className="h-[20px] w-[20px]" strokeWidth={1.7} aria-hidden="true" />
+      </span>
+      <h3 className="mt-4 font-sans text-[1.02rem] font-semibold leading-[1.25] text-[#3d4145]">{title}</h3>
+      <p className="mt-2 text-[0.9rem] leading-[1.5] text-[#6f6c66]">{body}</p>
+      <span className="mt-auto flex items-center gap-1 pt-4 text-[0.85rem] font-semibold text-[#a87b25]">
+        Explore
+        <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.8} aria-hidden="true" />
+      </span>
+    </Link>
+  );
+}
 
 const heroReveal = {
   hidden: {},
@@ -133,37 +167,63 @@ export default function ServicesPage() {
             </p>
           </motion.div>
 
-          <motion.div variants={reduceMotion ? undefined : heroReveal} className="mx-auto mt-10 grid w-full max-w-[980px] gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map(({ icon: Icon, iconBg, iconColor, title, body, href }) => (
-              <motion.div
-                key={title}
-                variants={reduceMotion ? undefined : heroRevealItem}
-                className="min-w-0"
+          <nav aria-label="Service categories" className="mx-auto mt-8 flex max-w-[980px] flex-wrap justify-center gap-2">
+            {categories.map((category) => (
+              <a
+                key={category.id}
+                href={`#${category.id}`}
+                className="rounded-full border border-[#dfbd78] bg-[#fff4dd] px-4 py-2 text-[0.85rem] font-semibold text-[#5e4416] transition-colors hover:bg-[#f7e3b8]"
               >
-                <Link
-                  href={href}
-                  className="group flex h-full min-h-[185px] flex-col rounded-[7px] border border-[#dfbd78] bg-[#fff4dd] px-4 pb-4 pt-4 shadow-[0_7px_12px_rgba(91,69,34,0.15)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_28px_rgba(91,69,34,0.2)] sm:min-h-[225px]"
-                >
-                  <span className={`mb-4 flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-[5px] ${iconBg}`}>
-                    <Icon className={`h-[20px] w-[20px] ${iconColor}`} strokeWidth={1.7} />
-                  </span>
-                  <h3 className="font-sans text-[0.86rem] font-medium leading-[1.25] text-[#3d4145]">
-                    {title}
-                  </h3>
-                  <p className="mt-3 text-[0.68rem] leading-[1.45] text-[#85827b]">
-                    {body}
-                  </p>
-                  <span className="mt-auto flex items-center justify-end gap-1 pt-4 text-[0.64rem] font-medium text-[#D8B26B]">
-                    Explore More
-                    <ArrowRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.6} />
-                  </span>
-                </Link>
-              </motion.div>
+                {category.title}
+              </a>
             ))}
-          </motion.div>
+          </nav>
+
+          <div className="mx-auto mt-12 grid w-full max-w-[1100px] gap-14">
+            {categories.map((category) => (
+              <motion.section
+                key={category.id}
+                id={category.id}
+                variants={reduceMotion ? undefined : heroRevealItem}
+                className="scroll-mt-28"
+                aria-labelledby={`${category.id}-title`}
+              >
+                <div className="flex flex-col gap-2 border-b border-[#dfbd78]/60 pb-4 sm:flex-row sm:items-end sm:justify-between">
+                  <h2 id={`${category.id}-title`} className="font-heading text-[1.9rem] leading-tight text-[#3d4145] sm:text-[2.2rem]">
+                    {category.title}
+                  </h2>
+                  <p className="max-w-[440px] text-[0.95rem] leading-[1.5] text-[#6f6c66] sm:text-right">{category.body}</p>
+                </div>
+                <div className={`mt-6 grid gap-4 sm:grid-cols-2 ${category.services.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
+                  {category.services.map((service) => (
+                    <HubCard key={service.href} service={service} />
+                  ))}
+                  {category.channels && (
+                    <div className="rounded-[10px] border border-dashed border-[#dfbd78] p-5 sm:col-span-1 lg:col-span-2">
+                      <p className="text-[0.75rem] font-bold uppercase tracking-[0.12em] text-[#9b7531]">Channels we manage</p>
+                      <ul className="mt-3 flex flex-wrap gap-2">
+                        {category.channels.map((channel) => (
+                          <li key={channel.href}>
+                            <Link
+                              href={channel.href}
+                              className="inline-flex rounded-full bg-[#fff4dd] px-3.5 py-2 text-[0.88rem] font-medium text-[#3d4145] ring-1 ring-[#e8d2aa] transition-colors hover:bg-[#f7e3b8]"
+                            >
+                              {channel.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </motion.section>
+            ))}
+          </div>
         </motion.div>
       </section>
-      <ServicesProcessSection />
+      <ServiceShowcase showAll={false} />
+      <EngagementModels />
+      <NextSteps />
       <TestimonialContactSection contactVariant="home" />
     </div>
   );

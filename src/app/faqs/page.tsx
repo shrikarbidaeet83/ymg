@@ -6,56 +6,7 @@ import Image from "next/image";
 import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { useMemo, useState } from "react";
 import { cms } from "@/lib/cms";
-
-type Faq = { question: string; answer: string; answerHtml?: string };
-
-const builtInFaqs: Faq[] = [
-  {
-    question: "What services does YMG Legal provide?",
-    answer:
-      "YMG Legal provides lead generation, intake optimization, client follow-up systems, call handling, signed-retainer workflows, and legal growth support tailored for high-volume firms.",
-  },
-  {
-    question: "How does YMG Legal help law firms grow?",
-    answer:
-      "We generate qualified leads, optimize intake processes, and improve conversion rates to help firms secure more signed cases.",
-  },
-  {
-    question: "What types of law firms do you work with?",
-    answer:
-      "We work with plaintiff-focused firms across personal injury, mass torts, employment, and other practice areas that depend on efficient lead handling and consistent case acquisition.",
-  },
-  {
-    question: "How can I get started with YMG Legal?",
-    answer:
-      "You can get started by booking a strategy call with our team. We will review your goals, current intake process, and growth opportunities before recommending the right setup.",
-  },
-  {
-    question: "Do you provide exclusive leads?",
-    answer:
-      "Yes. Depending on campaign structure and market, we can build lead programs focused on exclusivity, higher qualification standards, and cleaner intake handoff.",
-  },
-  {
-    question: "Do you offer after-hours or weekend intake support?",
-    answer:
-      "Yes. We can support firms with extended coverage, after-hours workflows, and response systems that reduce missed opportunities outside normal business hours.",
-  },
-  {
-    question: "Can YMG Legal integrate with our CRM or case management tools?",
-    answer:
-      "Yes. We can align intake and lead workflows with your CRM, CMS, and reporting stack so your team has clearer visibility into every stage of the pipeline.",
-  },
-  {
-    question: "How do you track campaign and intake performance?",
-    answer:
-      "We use reporting dashboards, lead-source attribution, intake metrics, and conversion tracking to identify what is performing and where revenue opportunities are being lost.",
-  },
-  {
-    question: "Is your process compliant and secure?",
-    answer:
-      "Yes. Our workflows are designed with privacy, secure information handling, and professional intake standards in mind, including processes that support sensitive client communications.",
-  },
-];
+import { builtInFaqs, type Faq } from "@/data/faqs";
 
 // When the site is connected to the YMG CMS, the FAQs published there are the
 // whole list (deleting one there removes it here); the built-in list is only

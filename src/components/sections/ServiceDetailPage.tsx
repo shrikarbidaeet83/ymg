@@ -5,6 +5,22 @@ import MotionReveal from "@/components/ui/MotionReveal";
 import ServiceCardCarousel from "@/components/sections/ServiceCardCarousel";
 import ServiceFaqSection from "@/components/sections/ServiceFaqSection";
 import { MobileProofScroller, ProofBar, ServiceHeroFlowers } from "@/components/sections/ProofHighlights";
+import CaseOnboarding from "@/components/illustrations/CaseOnboarding";
+import CriteriaScreening from "@/components/illustrations/CriteriaScreening";
+import FollowUpSequence from "@/components/illustrations/FollowUpSequence";
+import IntakeNightShift from "@/components/illustrations/IntakeNightShift";
+import PayPerCall from "@/components/illustrations/PayPerCall";
+import RetainerSigning from "@/components/illustrations/RetainerSigning";
+
+// Animated scenes a service page can show in its "See it in action" section.
+const scenes = {
+  caseOnboarding: CaseOnboarding,
+  criteriaScreening: CriteriaScreening,
+  followUp: FollowUpSequence,
+  nightShift: IntakeNightShift,
+  payPerCall: PayPerCall,
+  retainer: RetainerSigning,
+};
 
 export type ServiceCard = {
   title: string;
@@ -40,6 +56,8 @@ export type ServicePageContent = {
   };
   faqs: { question: string; answer: string }[];
   disclaimer?: string;
+  /** Optional animated scene, shown in its own section after the criteria. */
+  scene?: { key: keyof typeof scenes; title: string; body: string };
 };
 
 // Same soft icon tiles and icon colours as the Law Firm Marketing and SEO cards.
@@ -232,6 +250,22 @@ function SplitTitle({ title }: { title: string }) {
   );
 }
 
+function SceneSection({ scene }: { scene: NonNullable<ServicePageContent["scene"]> }) {
+  const SceneComponent = scenes[scene.key];
+  return (
+    <section className="ymg-section-padding relative isolate overflow-hidden bg-[#FFF5E0] px-5 !pt-0 sm:px-10 lg:px-16">
+      <div className="mx-auto grid max-w-[1120px] items-center gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-14">
+        <MotionReveal direction="left">
+          <p className="text-[18px] font-normal text-[#474747]">See It in Action</p>
+          <h2 className="mt-4 font-heading text-[2rem] font-normal leading-[1.25] text-[#444] sm:text-[2.4rem]">{scene.title}</h2>
+          <p className="mt-5 text-[16px] leading-[1.6] text-[#5e5a55]">{scene.body}</p>
+        </MotionReveal>
+        <SceneComponent />
+      </div>
+    </section>
+  );
+}
+
 export default function ServiceDetailPage({ content }: { content: ServicePageContent }) {
   const { capabilities, criteria, workflow } = content;
   const fourUp = capabilities.cards.length === 4;
@@ -320,7 +354,7 @@ export default function ServiceDetailPage({ content }: { content: ServicePageCon
           </MotionReveal>
 
           {criteria.items && (
-            <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className={`mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 ${criteria.items.length % 4 === 0 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
               {criteria.items.map((item, index) => (
                 <MotionReveal key={item} direction="up" delay={index * 0.06} className="h-full">
                   <div className="flex h-full items-center gap-3 rounded-[6px] border border-[#dfbd78] bg-[#fffdfa] px-4 py-4 text-left shadow-[5px_7px_10px_rgba(91,69,34,0.14)]">
@@ -344,6 +378,8 @@ export default function ServiceDetailPage({ content }: { content: ServicePageCon
           )}
         </div>
       </section>
+
+      {content.scene && <SceneSection scene={content.scene} />}
 
       {/* Workflow */}
       <section id="process" className="relative isolate scroll-mt-24 overflow-hidden bg-[#404040] px-5 py-[62px] text-[#d9ae5d] sm:px-10 sm:py-[76px] lg:px-16 lg:py-[80px]">

@@ -39,6 +39,7 @@ type FunnelDataset = {
   description: string;
 };
 
+// One dataset per practice category (campaigns like hair relaxer sit inside Mass Tort).
 const funnelDatasets: FunnelDataset[] = [
   {
     leadType: "Motor Vehicle Accident",
@@ -55,7 +56,7 @@ const funnelDatasets: FunnelDataset[] = [
       { Icon: BarChart3, title: "More Signed Cases", body: "Our process is built to maximize results." },
     ],
     eyebrow: "Quality Prospects, Better Conversions.",
-    title: "High-Intent Leads",
+    title: "Personal Injury Leads",
     description: "We connect law firms with high-intent leads actively seeking legal help, helping you increase qualified consultations and signed cases efficiently.",
   },
   {
@@ -75,60 +76,6 @@ const funnelDatasets: FunnelDataset[] = [
     eyebrow: "Qualified Claims, Predictable Growth.",
     title: "Mass Tort Acquisition",
     description: "Targeted campaigns and structured screening deliver qualified mass tort prospects that match your firm’s active case criteria.",
-  },
-  {
-    leadType: "Personal Injury Lead",
-    location: "Las Vegas, NV",
-    tags: ["Urgent", "Screened", "Live Intake"],
-    status: "Intake complete",
-    time: "1 min ago",
-    stackTitle: "The Injury Intake Journey",
-    stack: ["Injury Leads", "Screening", "Live Intake", "Signed Cases"],
-    features: [
-      { Icon: Crosshair, title: "Local Intent", body: "We reach injured prospects in your market." },
-      { Icon: Headphones, title: "Live Intake", body: "Trained agents capture the complete case story." },
-      { Icon: ShieldCheck, title: "Quality Control", body: "Each lead is checked against your criteria." },
-      { Icon: BarChart3, title: "Higher Conversion", body: "Fast handoffs create more consultations." },
-    ],
-    eyebrow: "Fast Intake, Stronger Case Pipelines.",
-    title: "Personal Injury Leads",
-    description: "From first response to attorney handoff, qualified personal injury prospects move through a fast, consistent intake experience.",
-  },
-  {
-    leadType: "Hair Relaxer Claim",
-    location: "Atlanta, GA",
-    tags: ["Eligible", "Documents", "Booked"],
-    status: "Consultation booked",
-    time: "3 min ago",
-    stackTitle: "The Claimant Journey",
-    stack: ["Claimants", "Eligibility", "Documents", "Consultations"],
-    features: [
-      { Icon: Crosshair, title: "Focused Outreach", body: "Campaigns reach audiences with relevant exposure." },
-      { Icon: CheckCircle2, title: "Eligibility Check", body: "Key case details are screened and verified." },
-      { Icon: Clock3, title: "Automated Follow-Up", body: "Timely reminders keep prospects engaged." },
-      { Icon: BarChart3, title: "Booked Consults", body: "Qualified prospects arrive ready to speak." },
-    ],
-    eyebrow: "Focused Campaigns, Qualified Consultations.",
-    title: "Hair Relaxer Claims",
-    description: "Data-led outreach and careful eligibility screening help your firm connect with qualified hair relaxer claimants at scale.",
-  },
-  {
-    leadType: "Talcum Powder Claim",
-    location: "Chicago, IL",
-    tags: ["High Value", "Qualified", "Retainer Ready"],
-    status: "Retainer sent",
-    time: "5 min ago",
-    stackTitle: "The Retainer Journey",
-    stack: ["Prospects", "Screening", "Case Review", "Retainers"],
-    features: [
-      { Icon: Scale, title: "High-Value Prospects", body: "We prioritize qualified, case-ready inquiries." },
-      { Icon: Headphones, title: "Compassionate Intake", body: "Every conversation is handled with care." },
-      { Icon: ShieldCheck, title: "Secure Screening", body: "Sensitive case information stays protected." },
-      { Icon: BarChart3, title: "Retainer Ready", body: "Strong prospects advance without delays." },
-    ],
-    eyebrow: "Better Screening, Faster Retainers.",
-    title: "Talcum Powder Claims",
-    description: "A secure, empathetic intake process identifies qualified talcum powder claimants and moves them toward signed representation.",
   },
 ];
 
