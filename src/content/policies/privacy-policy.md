@@ -57,7 +57,7 @@ We use administrative, technical and physical safeguards, including encryption i
 
 Depending on where you live, you may have the right to request access to, correction of, or deletion of your personal information; to obtain a copy; to opt out of targeted advertising, "sale" or "sharing" of personal information; to limit use of sensitive information; and to appeal a denied request. We will not discriminate against you for exercising these rights.
 
-To make a request, email [privacy@ymg-legal.com](mailto:privacy@ymg-legal.com) [confirm address] or call [(313) 306-5055](tel:+13133065055). We will verify your request before acting on it. An authorized agent may submit a request on your behalf with proof of authorization. We honor Global Privacy Control (GPC) browser signals as an opt-out where required.
+To make a request, email [privacy@ymg-legal.com](mailto:privacy@ymg-legal.com) [confirm address]. We will verify your request before acting on it. An authorized agent may submit a request on your behalf with proof of authorization. We honor Global Privacy Control (GPC) browser signals as an opt-out where required.
 
 **Marketing opt-out:** reply STOP to any text, use the unsubscribe link in any email, or tell our representative to stop calling.
 
@@ -75,4 +75,4 @@ We may update this policy. We will post the new version with a revised "Last upd
 
 ## 12. Contact us
 
-YMG Legal · [Street address], Las Vegas, Nevada · [privacy@ymg-legal.com](mailto:privacy@ymg-legal.com) · [(313) 306-5055](tel:+13133065055)
+YMG Legal · [Street address], Las Vegas, Nevada · [privacy@ymg-legal.com](mailto:privacy@ymg-legal.com)

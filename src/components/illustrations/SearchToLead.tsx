@@ -6,11 +6,12 @@ import { OutcomeRow, Scene, scenePalette as c, text, useTone, useSceneInView, us
 
 // Deck, service 01 (Case Generation): paid search, Meta, YouTube and pay-per-call campaigns
 // built around the firm's case type and geography.
-const QUERY = "car accident lawyer near me";
+// A mass tort search, so the first service shown is not read as accident-only.
+const QUERY = "hair relaxer lawsuit";
 const facts = [
-  { item: "Search: “car accident lawyer near me”", detail: "Las Vegas, NV · 9:41 PM" },
+  { item: "Search: “hair relaxer lawsuit”", detail: "Atlanta, GA · 9:41 PM" },
   { item: "Your ad: Free Case Review", detail: "Targeted to your case types and markets" },
-  { item: "Case review form submitted", detail: "Accident 2 days ago · treatment started" },
+  { item: "Case review form submitted", detail: "Diagnosis confirmed · used products 5+ years" },
 ];
 // 0 empty search · 1 query typed · 2 results with your ad · 3 ad clicked, form sent · 4 lead captured
 const DELAYS = [600, 1100, 1100, 1000];
@@ -66,7 +67,7 @@ export default function SearchToLead() {
             >
               <span className="rounded-full bg-[#d8b26b] px-2 py-0.5 text-[0.6875rem] font-semibold text-[#2f3236]">Sponsored</span>
               <p className="mt-1.5 text-[0.875rem] font-semibold text-[#2f5aa0]">Free Case Review</p>
-              <p className="text-[0.75rem] text-[#6b6e72]">Injured in a car accident? Talk to a local attorney today.</p>
+              <p className="text-[0.75rem] text-[#6b6e72]">Used chemical hair relaxers? See if you qualify for a claim.</p>
               <motion.span
                 initial={false}
                 animate={{ opacity: step === 3 ? 1 : 0, scale: step === 3 ? 1 : 0.6 }}

@@ -4,7 +4,8 @@ import { getPolicy } from "@/lib/policies";
 
 export const metadata: Metadata = {
   title: "Terms of Use | YMG Legal",
-  description: "The terms that govern use of ymg-legal.com, YMG Legal landing pages, the client portal and related services.",
+  description:
+    "The terms that govern use of ymg-legal.com, YMG Legal landing pages, the client portal and related services.",
 };
 
 export default function TermsPage() {

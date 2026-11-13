@@ -4,9 +4,18 @@ import { servicePages } from "@/data/service-pages";
 
 export const metadata: Metadata = {
   title: "Legal Contract & Retainer Services | YMG Legal",
-  description: "E-sign retainers, guided signing, follow-up and secure document handling, from qualified lead to signed client.",
+  description:
+    "E-sign retainers, guided signing, follow-up and secure document handling, from qualified lead to signed client.",
 };
 
 export default function RetainerSigningPage() {
-  return <ServiceDetailPage content={servicePages.retainerSigning} />;
+  return (
+    <ServiceDetailPage
+      content={servicePages.retainerSigning}
+      crumb={{
+        current: "Contract & Retainer",
+        parent: { label: "Legal Intake", href: "/services/legal-intake" },
+      }}
+    />
+  );
 }

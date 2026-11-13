@@ -62,4 +62,4 @@ We may update these Terms by posting a revised version with a new "Last updated"
 
 ## 15. Contact
 
-YMG Legal · [Street address], Las Vegas, Nevada · [info@ymg-legal.com](mailto:info@ymg-legal.com) · [(313) 306-5055](tel:+13133065055)
+YMG Legal · [Street address], Las Vegas, Nevada · [info@ymg-legal.com](mailto:info@ymg-legal.com)

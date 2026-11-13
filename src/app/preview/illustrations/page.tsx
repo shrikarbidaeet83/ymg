@@ -17,27 +17,72 @@ export const metadata: Metadata = {
 };
 
 const scenes = [
-  { name: "24/7 intake", note: "Legal Intake, home page", Component: IntakeNightShift },
-  { name: "Lead screening", note: "PI, MVA, Mass Tort and Legal Intake pages", Component: CriteriaScreening },
-  { name: "Follow-up sequence", note: "Legal Intake, How It Works", Component: FollowUpSequence },
-  { name: "Case generation", note: "Law Firm Marketing, PI and MVA lead pages", Component: SearchToLead },
-  { name: "Retainer execution", note: "Legal Intake, home page", Component: RetainerSigning },
-  { name: "Case onboarding", note: "Paralegal & Law Firm Support", Component: CaseOnboarding },
-  { name: "Records and chronology", note: "Paralegal & Law Firm Support", Component: MedicalChronology },
-  { name: "Pay-per-call", note: "PI and MVA lead pages", Component: PayPerCall },
-  { name: "Pipeline board", note: "Home, How It Works, Legal Intake", Component: PipelineBoard },
-  { name: "Local search visibility", note: "SEO, Law Firm Marketing", Component: LocalVisibility },
+  {
+    name: "24/7 intake",
+    note: "Legal Intake, home page",
+    Component: IntakeNightShift,
+  },
+  {
+    name: "Lead screening",
+    note: "PI, MVA, Mass Tort and Legal Intake pages",
+    Component: CriteriaScreening,
+  },
+  {
+    name: "Follow-up sequence",
+    note: "Legal Intake, How It Works",
+    Component: FollowUpSequence,
+  },
+  {
+    name: "Case generation",
+    note: "Law Firm Marketing, PI and MVA lead pages",
+    Component: SearchToLead,
+  },
+  {
+    name: "Retainer execution",
+    note: "Legal Intake, home page",
+    Component: RetainerSigning,
+  },
+  {
+    name: "Case onboarding",
+    note: "Paralegal & Law Firm Support",
+    Component: CaseOnboarding,
+  },
+  {
+    name: "Records and chronology",
+    note: "Paralegal & Law Firm Support",
+    Component: MedicalChronology,
+  },
+  {
+    name: "Pay-per-call",
+    note: "PI and MVA lead pages",
+    Component: PayPerCall,
+  },
+  {
+    name: "Pipeline board",
+    note: "Home, How It Works, Legal Intake",
+    Component: PipelineBoard,
+  },
+  {
+    name: "Local search visibility",
+    note: "SEO, Law Firm Marketing",
+    Component: LocalVisibility,
+  },
 ];
 
 export default function IllustrationPreviewPage() {
   return (
     <section className="ymg-section-padding bg-[#FFF5E0] pt-[130px]">
       <div className="mx-auto grid max-w-[980px] gap-14">
-        <h1 className="text-[2.2rem] leading-tight text-[#2f3236]">Illustration prototypes</h1>
+        <h1 className="text-[2.2rem] leading-tight text-[#2f3236]">
+          Illustration prototypes
+        </h1>
         {scenes.map(({ name, note, Component }) => (
           <div key={name} className="grid gap-3">
             <h2 className="text-[1.3rem] text-[#2f3236]">
-              {name} <span className="text-[0.95rem] font-medium text-[#77797c]">· for {note}</span>
+              {name}{" "}
+              <span className="text-[0.95rem] font-medium text-[#77797c]">
+                · for {note}
+              </span>
             </h2>
             <Component />
           </div>

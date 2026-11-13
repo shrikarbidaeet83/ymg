@@ -10,7 +10,11 @@ export function generateStaticParams() {
   return cms.careers.map((j) => ({ slug: j.slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const job = getCmsJob((await params).slug);
   if (!job) return {};
   return {
@@ -21,12 +25,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-export default async function JobPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function JobPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const job = getCmsJob((await params).slug);
   if (!job) notFound();
   return (
-    <main className="min-h-screen bg-[#FFF5E0] pt-[110px]">
+    <div className="ymg-site min-h-screen bg-white pt-[110px]">
       <CmsContent html={job.html} />
-    </main>
+    </div>
   );
 }

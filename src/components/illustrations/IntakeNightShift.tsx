@@ -8,8 +8,8 @@ import { OutcomeRow, Scene, scenePalette as c, text, useTone, useSceneInView, us
 // and on holidays — so you never lose a lead to voicemail."
 const calls = [
   { when: "Fri 11:42 PM", type: "Motor vehicle accident", place: "Henderson, NV", answered: "answered in 6s", hour: 23.7 },
-  { when: "Sat 2:14 AM", type: "Slip & fall", place: "Las Vegas, NV", answered: "answered in 8s", hour: 26.23 },
-  { when: "Sun 5:30 AM", type: "Truck accident", place: "Reno, NV", answered: "answered in 5s", hour: 29.5 },
+  { when: "Sat 2:14 AM", type: "Workplace injury", place: "Las Vegas, NV", answered: "answered in 8s", hour: 26.23 },
+  { when: "Sun 5:30 AM", type: "Surgical error", place: "Reno, NV", answered: "answered in 5s", hour: 29.5 },
 ];
 const DELAYS = [900, 1300, 1300, 1000];
 // Window sky per step: night, deeper night, pre-dawn, first light, morning.

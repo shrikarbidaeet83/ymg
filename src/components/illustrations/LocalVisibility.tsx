@@ -47,9 +47,9 @@ export default function LocalVisibility() {
                     className="flex items-center gap-2.5 rounded-[10px] px-2.5 py-2"
                     style={you ? { background: tone.nowBg, boxShadow: `inset 0 0 0 1.5px ${done ? tone.done : tone.now}` } : undefined}
                   >
-                    <span className="w-4 text-center text-[0.75rem] font-semibold tabular-nums text-[#8a8c8f]">{i + 1}</span>
+                    <span className="w-4 text-center text-[0.75rem] font-semibold tabular-nums text-[#66696d]">{i + 1}</span>
                     <MapPin size={15} strokeWidth={2} color={you ? (done ? tone.done : tone.now) : tone.idleInk} />
-                    <span className={`truncate text-[0.875rem] ${you ? "font-semibold text-[#2f3236]" : "text-[#8a8c8f]"}`}>
+                    <span className={`truncate text-[0.875rem] ${you ? "font-semibold text-[#2f3236]" : "text-[#66696d]"}`}>
                       {you ? "Your Law Firm" : name}
                     </span>
                     {you && (
@@ -89,7 +89,7 @@ export default function LocalVisibility() {
               transition={{ duration: reduce ? 0 : 0.9, ease: [0.22, 1, 0.36, 1] }}
             />
           </svg>
-          <div className="mt-1 grid grid-cols-4 text-[0.75rem] text-[#8a8c8f]">
+          <div className="mt-1 grid grid-cols-4 text-[0.75rem] text-[#66696d]">
             {MONTHS.map((m, i) => (
               <span key={m} className={i <= step ? "font-semibold text-[#2f3236]" : undefined}>
                 {m}

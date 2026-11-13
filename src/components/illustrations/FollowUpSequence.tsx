@@ -21,7 +21,7 @@ const thread: Item[] = [
   {
     kind: "out",
     day: "Day 1 · Text",
-    text: "Hi Maria, this is the intake team following up on your accident inquiry. Is now a good time to talk?",
+    text: "Hi Maria, this is the intake team following up on your case inquiry. Is now a good time to talk?",
     note: "Sent with consent · Reply STOP to opt out",
   },
   { kind: "out", day: "Day 3 · Text", text: "Just checking in. A quick 5-minute call is all we need to review your case." },
@@ -55,7 +55,7 @@ export default function FollowUpSequence() {
                     className="h-3 w-3 shrink-0 rounded-full"
                     aria-hidden="true"
                   />
-                  <span className={current ? text.item : on ? "text-[1rem] leading-snug text-[#4b4e52]" : "text-[1rem] leading-snug text-[#9a9c9f]"}>
+                  <span className={current ? text.item : on ? "text-[1rem] leading-snug text-[#4b4e52]" : "text-[1rem] leading-snug text-[#66696d]"}>
                     {stage}
                     {current && step > 0 && <span className="sr-only"> (current)</span>}
                   </span>
@@ -105,7 +105,7 @@ export default function FollowUpSequence() {
                         <div className="rounded-[14px] rounded-br-[4px] px-3 py-2 text-[0.74rem] leading-snug text-white" style={{ background: c.navySoft }}>
                           {item.text}
                         </div>
-                        {item.note && <span className="mt-0.5 block text-right text-[0.56rem] text-[#8a8c8f]">{item.note}</span>}
+                        {item.note && <span className="mt-0.5 block text-right text-[0.56rem] text-[#66696d]">{item.note}</span>}
                       </div>
                     )}
                   </motion.div>

@@ -4,9 +4,21 @@ import { servicePages } from "@/data/service-pages";
 
 export const metadata: Metadata = {
   title: "Personal Injury Lead Generation for Law Firms | YMG Legal",
-  description: "Generate qualified personal injury leads for your law firm with MVA and selected PI campaigns built around your case criteria.",
+  description:
+    "Generate qualified personal injury leads for your law firm with MVA and selected PI campaigns built around your case criteria.",
 };
 
 export default function PersonalInjuryLeadsPage() {
-  return <ServiceDetailPage content={servicePages.personalInjuryLeads} />;
+  return (
+    <ServiceDetailPage
+      content={servicePages.personalInjuryLeads}
+      crumb={{
+        current: "Personal Injury Leads",
+        parent: {
+          label: "Case Acquisition",
+          href: "/services#case-acquisition",
+        },
+      }}
+    />
+  );
 }

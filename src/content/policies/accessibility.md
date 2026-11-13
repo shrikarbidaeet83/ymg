@@ -18,4 +18,4 @@ Some third-party tools, such as embedded booking calendars, may not fully meet t
 
 ## Feedback and assistance
 
-If you have trouble accessing any part of our website, contact us at [info@ymg-legal.com](mailto:info@ymg-legal.com) or [(313) 306-5055](tel:+13133065055). Tell us the page and the problem, and we will provide the information in an accessible format and work to fix the issue. We aim to respond within [2] business days.
+If you have trouble accessing any part of our website, contact us at [info@ymg-legal.com](mailto:info@ymg-legal.com). Tell us the page and the problem, and we will provide the information in an accessible format and work to fix the issue. We aim to respond within [2] business days.

@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Pause, Phone, Play, Star, Volume2, VolumeX } from "lucide-react";
+import { ArrowRight, Pause, Play, Star, Volume2, VolumeX } from "lucide-react";
 import { rating, reviewerInitials } from "@/data/social-proof";
 
 // YMG brand film. Plays muted in the frame; visitors can watch it with sound.
@@ -45,7 +45,7 @@ export default function HomeHero() {
           className="absolute -right-[10%] top-[8%] h-[80%] w-[70%] rounded-full opacity-60 blur-[90px] transition-[background-color] duration-[1500ms] dark:opacity-40"
           style={{ backgroundColor: "rgb(var(--amb) / 0.55)" }}
         />
-        <div className="absolute -left-[10%] bottom-[-20%] h-[60%] w-[50%] rounded-full bg-[radial-gradient(closest-side,rgba(216,178,107,0.35),transparent)] blur-2xl" />
+        <div data-parallax="-0.15" className="absolute -left-[10%] bottom-[-20%] h-[60%] w-[50%] rounded-full bg-[radial-gradient(closest-side,rgba(216,178,107,0.35),transparent)] blur-2xl" />
         <div
           className="absolute inset-0 opacity-60 dark:opacity-25"
           style={{
@@ -77,7 +77,7 @@ export default function HomeHero() {
 
             <motion.h1
               {...rise(0.08)}
-              className="mt-6 text-[2.7rem] leading-[1.02] tracking-[-0.02em] text-[#2b2d31] dark:text-[#f5ecd8] sm:text-[3.6rem] lg:text-[clamp(3rem,6.6vh,4.2rem)]"
+              className="mt-6 text-[2.7rem] leading-[1.02] tracking-[-0.02em] text-[#2b2d31] dark:text-[#f5ecd8] sm:text-[3.6rem] lg:text-[clamp(2.52rem,5.28vh,3.36rem)]"
             >
               Qualified Cases. <span className="text-[#b8893a] dark:text-[#EBC982]">Stronger Intake.</span>{" "}
               <span className="whitespace-nowrap">Scalable Support.</span>
@@ -102,19 +102,6 @@ export default function HomeHero() {
                   <ArrowRight size={18} strokeWidth={2.2} aria-hidden="true" />
                 </span>
               </Link>
-              <a
-                href="tel:+13133065055"
-                className="ymg-hero-call group inline-flex h-[58px] items-center gap-3 rounded-full border border-[#e3cf9f] bg-white/80 pl-2 pr-6 shadow-[0_10px_24px_rgba(82,64,34,0.08)] backdrop-blur transition-colors hover:border-[#c99a45] hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a87b25] dark:border-white/15 dark:bg-white/5 dark:hover:bg-white/10"
-              >
-                <span className="relative flex h-[42px] w-[42px] items-center justify-center rounded-full bg-[#e3f2ee] text-[#1d6b5e] dark:bg-[#23796b]/30 dark:text-[#8be0c8]">
-                  <span aria-hidden="true" className="absolute inset-0 rounded-full border border-[#23796b]/40 motion-safe:animate-ping" />
-                  <Phone size={17} strokeWidth={2} aria-hidden="true" />
-                </span>
-                <span className="text-left leading-tight">
-                  <span className="block text-[0.98rem] font-semibold text-[#2b2d31] dark:text-[#f5ecd8]">(313) 306-5055</span>
-                  <span className="block text-[0.76rem] text-[#6b6e72] dark:text-[#a9a59b]">A person answers, 24/7</span>
-                </span>
-              </a>
             </motion.div>
 
             <motion.div {...rise(0.3)}>

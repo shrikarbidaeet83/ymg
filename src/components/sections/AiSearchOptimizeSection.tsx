@@ -37,7 +37,7 @@ const optimizationItems = [
     body: "Strengthen your firm's online identity through consistent business information, citations, and trusted authority signals.",
     Icon: ShieldCheck,
     iconBg: "bg-[#d6f8ea]",
-    iconColor: "text-[#315d4d]",
+    iconColor: "text-[#315D4D]",
   },
   {
     title: "Technical SEO",

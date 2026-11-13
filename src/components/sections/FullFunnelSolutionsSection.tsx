@@ -87,7 +87,7 @@ export default function FullFunnelSolutionsSection() {
           <p className="mb-3 text-[0.8rem] font-medium text-[#EBC982]">
             About YMG - Legal
           </p>
-          <h2 className="font-heading text-[clamp(2rem,4.7vw,3.4rem)] font-normal leading-[1.12] tracking-[0] text-[#EBC982]">
+          <h2 className="font-heading text-[clamp(1.9rem,3.76vw,2.72rem)] font-normal leading-[1.12] tracking-[0] text-[#EBC982]">
             Full-Funnel Legal Growth Solutions
           </h2>
         </div>

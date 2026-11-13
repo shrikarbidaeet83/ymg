@@ -45,7 +45,7 @@ export default function CaseOnboarding() {
                     >
                       {on && <Check size={12} strokeWidth={3} color="#fff" />}
                     </motion.span>
-                    <span className={`text-[0.8125rem] ${on ? "text-[#2f3236]" : "text-[#8a8c8f]"}`}>{label}</span>
+                    <span className={`text-[0.8125rem] ${on ? "text-[#2f3236]" : "text-[#66696d]"}`}>{label}</span>
                   </li>
                 );
               })}

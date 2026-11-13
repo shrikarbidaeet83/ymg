@@ -24,7 +24,7 @@ const results = [
     body: "Dominate Google's first page.",
     Icon: Trophy,
     iconBg: "bg-[#d6f8ea]",
-    iconColor: "text-[#315d4d]",
+    iconColor: "text-[#315D4D]",
   },
   {
     title: "Better ROI",

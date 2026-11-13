@@ -54,7 +54,7 @@ export default function RetainerSigning() {
               />
             </svg>
             <span className="block h-px w-[140px] bg-[#cfc5b0]" />
-            <p className="mt-1 text-[0.6875rem] text-[#8a8c8f]">Client signature</p>
+            <p className="mt-1 text-[0.6875rem] text-[#66696d]">Client signature</p>
             <motion.span
               initial={false}
               animate={{ scale: signed ? 1 : 0, opacity: signed ? 1 : 0 }}

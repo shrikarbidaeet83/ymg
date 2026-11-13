@@ -14,9 +14,9 @@ Secondary audiences (named in the content guide, not the lead decision-maker): i
 
 ## Product Purpose
 
-YMG Legal helps plaintiff law firms acquire qualified cases, strengthen intake, and extend their teams. The website's job is to make a managing partner understand that within seconds and start a conversation ("Talk to YMG Legal").
+YMG Legal helps plaintiff law firms acquire qualified cases, strengthen intake, and extend their teams. The website's job is to make a managing partner understand that within seconds and book a call ("Book a free strategy call").
 
-Success: qualified inquiries from plaintiff firms through the contact form, booking calendar or phone.
+Success: qualified inquiries from plaintiff firms, through booked strategy calls (booking calendar on /contact) and the contact form. No phone number is shown anywhere: booking is the only call path.
 
 ## Positioning
 
@@ -26,17 +26,17 @@ Confirmed by YMG (Oct 2026, from the Service Deck): 15+ years in legal marketing
 
 ## Operating Context
 
-- Practice areas (6): Personal Injury, Mass Torts (hair relaxer, talcum powder, Tylenol pregnancy, Paraquat, Roundup, Depo-Provera, social media), Class Action, Medical Malpractice, Workers' Compensation, Social Security Disability. Campaign availability changes; the list lives in `src/data/practice-areas.ts` with an `active` flag per campaign.
+- Practice areas (6): Personal Injury, Mass Torts (hair relaxer, talcum powder, Paraquat, Roundup, Depo-Provera, social media), Class Action, Medical Malpractice, Workers' Compensation, Social Security Disability. Campaign availability changes; the list lives in `src/data/practice-areas.ts` with an `active` flag per campaign.
 - Services: Personal Injury Lead Generation, MVA Lead Generation, Mass Tort Lead Generation, Legal Intake Services, Law Firm Marketing (7 channel pages: Google Ads, Meta Ads, Local Services Ads, SEO, AI Search, Organic Social, Website Design), Outsourced Paralegal & Law Firm Support.
 - Delivery models: qualified leads, intake-verified leads, live qualified calls, docket-based delivery, signed-retainer opportunities. Exact terms are set per engagement before launch.
 - Firms define their own qualification criteria (geography, accident timing, injury, treatment, liability, insurance, existing representation).
-- Contact: (313) 306-5055 · info@ymg-legal.com · Las Vegas, Nevada · LinkedIn. Booking calendar via LeadConnector on /contact.
+- Contact: info@ymg-legal.com (no phone number on the site) · Las Vegas, Nevada · LinkedIn. Booking calendar via LeadConnector on /contact.
 
 ## Capabilities and Constraints
 
 - Next.js (App Router) + Tailwind v4 site; content for blog, FAQs, testimonials and careers can come from the YMG CMS at build time, falling back to built-in content.
 - Source of truth for copy and structure: *YMG Legal Website — Design & Content Guide* (Oct 6, 2026) and *Website Policies* (both PDFs from YMG).
-- Primary CTA site-wide: "Talk to YMG Legal" (→ /contact). Secondary: "Discuss Your Campaign". Contextual CTAs per service page.
+- Primary CTA site-wide, including the navbar and the mobile bar: "Book a free strategy call" (→ /contact#booking). This overrides the content guide. No phone CTA. Contextual CTAs per service page.
 - Only list campaigns YMG is actively generating or accepting.
 - YMG Legal is not a law firm and does not give legal advice; the footer note and Disclaimer page must stay.
 - Undecided: whether Plans pricing can be public; whether 24/7 intake, bilingual intake, live calls and signed-retainer delivery are available today; contact-form response window.

@@ -1,453 +1,476 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import TestimonialContactSection from "@/components/sections/TestimonialContactSection";
-import MarketingChannels from "@/components/sections/MarketingChannels";
-import MotionReveal from "@/components/ui/MotionReveal";
 import {
-  ChartNoAxesCombined,
-  Eye,
-  FileText,
   Gauge,
-  Handshake,
-  Infinity,
+  LineChart,
+  ArrowUpRight,
+  BarChart3,
+  ChevronRight,
+  Database,
   LayoutTemplate,
-  Mail,
-  MousePointerClick,
-  PanelsTopLeft,
-  Phone,
+  MapPin,
+  Megaphone,
+  PhoneCall,
+  RefreshCw,
   Search,
-  SearchCheck,
-  UserRoundCheck,
-  UsersRound,
+  Share2,
+  Sparkles,
+  TrendingUp,
   type LucideIcon,
 } from "lucide-react";
+import GlassIcon, { type GlassTone } from "@/components/ui/GlassIcon";
+import ScrollMotion from "@/components/home/ScrollMotion";
+import { BookCallButton } from "@/components/site/Cta";
+import HeroBackdrop from "@/components/site/HeroBackdrop";
+import HeroPoints from "@/components/site/HeroPoints";
+import ServiceOrbit, { HeroTrust } from "@/components/site/ServiceOrbit";
+import PhotoCard from "@/components/site/PhotoCard";
+import ClientProof from "@/components/site/ClientProof";
+import SearchToLead from "@/components/illustrations/SearchToLead";
+import PipelineBoard from "@/components/illustrations/PipelineBoard";
 
 export const metadata: Metadata = {
   title: "Law Firm Marketing Services | Legal Marketing Agency | YMG Legal",
-  description: "YMG Legal provides law firm marketing through Google, Meta, SEO, landing pages, conversion optimization, and performance tracking.",
+  description:
+    "YMG Legal provides law firm marketing through Google, Meta, SEO, landing pages, conversion optimization, and performance tracking.",
 };
 
-type MarketingService = {
-  title: string;
+type Channel = {
+  name: string;
+  body: string;
+  /** Channels link to their own page; conversion and tracking work runs across all of them. */
+  href?: string;
   Icon: LucideIcon;
-  className: string;
-  iconClassName: string;
+  tone: GlassTone;
 };
 
-const marketingServices: MarketingService[] = [
+const groups: { title: string; channels: Channel[] }[] = [
   {
-    title: "Search Engine\nOptimization",
-    Icon: SearchCheck,
-    className: "left-1/2 top-0 -translate-x-1/2",
-    iconClassName: "text-[#488b72]",
+    title: "Paid advertising",
+    channels: [
+      {
+        name: "Google Ads",
+        body: "Reach people searching for legal help right now.",
+        href: "/services/google-search-ads",
+        Icon: Search,
+        tone: "blue",
+      },
+      {
+        name: "Meta Ads",
+        body: "Facebook and Instagram campaigns for your case types.",
+        href: "/services/meta-ads",
+        Icon: Megaphone,
+        tone: "indigo",
+      },
+      {
+        name: "Local Services Ads",
+        body: "Appear first in Google's pay-per-lead local results.",
+        href: "/services/local-services-ads",
+        Icon: MapPin,
+        tone: "green",
+      },
+    ],
   },
   {
-    title: "Pay Per Click\nAdvertising",
-    Icon: MousePointerClick,
-    className: "left-0 top-[100px]",
-    iconClassName: "text-[#b98b2d]",
+    title: "Organic & web",
+    channels: [
+      {
+        name: "SEO",
+        body: "Rank for high-value searches without paying per click.",
+        href: "/services/seo",
+        Icon: TrendingUp,
+        tone: "teal",
+      },
+      {
+        name: "AI Search",
+        body: "Get recommended by AI-powered search.",
+        href: "/services/ai-search",
+        Icon: Sparkles,
+        tone: "violet",
+      },
+      {
+        name: "Organic Social",
+        body: "Consistent content that builds trust and referrals.",
+        href: "/services/organic-social-media",
+        Icon: Share2,
+        tone: "rose",
+      },
+      {
+        name: "Website Design",
+        body: "Fast, conversion-focused sites and landing pages.",
+        href: "/services/website-design",
+        Icon: LayoutTemplate,
+        tone: "amber",
+      },
+    ],
   },
   {
-    title: "Social Media\nAdvertising",
-    Icon: PanelsTopLeft,
-    className: "right-0 top-[100px]",
-    iconClassName: "text-[#8d6e70]",
-  },
-  {
-    title: "Content\nMarketing",
-    Icon: FileText,
-    className: "left-0 top-[236px]",
-    iconClassName: "text-[#708981]",
-  },
-  {
-    title: "Conversion Rate\nOptimization",
-    Icon: Gauge,
-    className: "right-0 top-[236px]",
-    iconClassName: "text-[#b65c4f]",
-  },
-  {
-    title: "Analytics &\nReporting",
-    Icon: ChartNoAxesCombined,
-    className: "bottom-0 left-1/2 -translate-x-1/2",
-    iconClassName: "text-[#846685]",
+    title: "Conversion & tracking",
+    channels: [
+      {
+        name: "Conversion Optimization",
+        body: "Analyze the journey from click to call or form submission and identify opportunities to improve conversion.",
+        Icon: Gauge,
+        tone: "blue",
+      },
+      {
+        name: "Tracking & Reporting",
+        body: "Measure campaign activity, lead flow, and downstream performance.",
+        Icon: LineChart,
+        tone: "green",
+      },
+    ],
   },
 ];
 
-const impactCards = [
+// Content guide: "Marketing Built Around Outcomes", the flow from traffic to retainers.
+const impact = [
   {
-    title: "More Visibility",
-    body: "Rank higher and get discovered by the right legal audience.",
-    Icon: Eye,
-    iconBackground: "bg-[#dbe9ff]",
+    title: "Traffic",
+    body: "Relevant visitors from search, social and local results.",
   },
   {
-    title: "Qualified Leads",
-    body: "Generate inquiries from prospects actively seeking legal help.",
-    Icon: UserRoundCheck,
-    iconBackground: "bg-[#f0dbff]",
+    title: "Leads",
+    body: "Calls and forms from people actively seeking legal help.",
   },
   {
-    title: "Lower Cost Per Lead",
-    body: "Improve efficiency and maximize marketing performance.",
-    Icon: Gauge,
-    iconBackground: "bg-[#d7f8ef]",
+    title: "Qualified Opportunities",
+    body: "Inquiries checked against the criteria your firm sets.",
   },
   {
-    title: "Higher Conversions",
-    body: "Turn website traffic into consultations and retained cases.",
-    Icon: Handshake,
-    iconBackground: "bg-[#fff1d8]",
+    title: "Intake",
+    body: "Each opportunity handled and documented by intake.",
+  },
+  {
+    title: "Retainers",
+    body: "Qualified clients guided to a signed retainer.",
   },
 ];
 
-const acquisitionInputs = [
-  { title: "Google Ads", Icon: Search, iconClassName: "text-[#4285f4]" },
-  { title: "Meta Ads", Icon: Infinity, iconClassName: "text-[#1677f2]" },
-  { title: "SEO", Icon: SearchCheck, iconClassName: "text-[#3f8c85]" },
-  { title: "Landing Pages", Icon: LayoutTemplate, iconClassName: "text-[#5e9c88]" },
+// The acquisition engine, in the order a lead travels through it.
+const engine: { title: string; Icon: LucideIcon }[] = [
+  { title: "Ads & SEO", Icon: Search },
+  { title: "Landing pages", Icon: LayoutTemplate },
+  { title: "Call tracking", Icon: PhoneCall },
+  { title: "CRM integration", Icon: Database },
+  { title: "Lead nurturing", Icon: RefreshCw },
+  { title: "Reporting", Icon: BarChart3 },
 ];
 
-const acquisitionOutputs = [
-  { title: "Call Tracking", Icon: Phone, iconClassName: "text-[#65a2e8]" },
-  { title: "CRM Integration", Icon: UsersRound, iconClassName: "text-[#a06ad4]" },
-  { title: "Lead Nurturing", Icon: Mail, iconClassName: "text-[#46b06a]" },
-  { title: "Performance Reporting", Icon: ChartNoAxesCombined, iconClassName: "text-[#d8ae63]" },
-];
-
-function AcquisitionCard({
-  title,
-  Icon,
-  iconClassName = "text-[#111]",
-}: {
-  title: string;
-  Icon: LucideIcon;
-  iconClassName?: string;
-}) {
-  return (
-    <div className="flex h-[46px] w-full items-center gap-4 rounded-[8px] border border-[#e2b75f] bg-white px-4 shadow-[0_5px_9px_rgba(91,69,34,0.17)]">
-      <Icon className={`h-5 w-5 shrink-0 ${iconClassName}`} strokeWidth={2.2} />
-      <span className="text-[20px] font-medium leading-none text-[#444] dark:text-[#D8B26B]">{title}</span>
-    </div>
-  );
-}
-
-function AcquisitionEngine() {
-  return (
-    <div className="relative mx-auto mt-[76px] grid w-full max-w-[1115px] gap-0 min-[1100px]:h-[240px] min-[1100px]:grid-cols-none min-[1100px]:gap-8">
-      <svg
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 hidden h-[240px] w-full min-[1100px]:block"
-        viewBox="0 0 1115 240"
-        fill="none"
-      >
-        <g stroke="#dfa94e" strokeWidth="1">
-          <path d="M304 23L464 80" />
-          <path d="M304 88L464 106" />
-          <path d="M304 153L464 135" />
-          <path d="M304 218L464 160" />
-        </g>
-        <g stroke="#dfa94e" strokeDasharray="11 11" strokeWidth="1">
-          <path d="M651 80L811 23" />
-          <path d="M651 106L811 88" />
-          <path d="M651 135L811 153" />
-          <path d="M651 160L811 218" />
-        </g>
-        <g fill="#dfb15d">
-          <circle cx="304" cy="23" r="5" />
-          <circle cx="304" cy="88" r="5" />
-          <circle cx="304" cy="153" r="5" />
-          <circle cx="304" cy="218" r="5" />
-          <circle cx="811" cy="23" r="5" />
-          <circle cx="811" cy="88" r="5" />
-          <circle cx="811" cy="153" r="5" />
-          <circle cx="811" cy="218" r="5" />
-        </g>
-      </svg>
-
-      <div className="relative mx-auto grid w-full max-w-[304px] gap-5 pb-8 pr-6 min-[1100px]:absolute min-[1100px]:left-0 min-[1100px]:top-0 min-[1100px]:w-[304px] min-[1100px]:pb-0 min-[1100px]:pr-0">
-        <svg
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 h-full w-full overflow-visible min-[1100px]:hidden"
-          viewBox="0 0 304 276"
-          preserveAspectRatio="none"
-          fill="none"
-        >
-          <g stroke="#D8B26B" strokeWidth="1.2">
-            <path d="M280 23H300" />
-            <path d="M280 89H300" />
-            <path d="M280 155H300" />
-            <path d="M280 221H300" />
-            <path d="M300 23V244L152 276" />
-          </g>
-        </svg>
-        {acquisitionInputs.map((item, index) => (
-          <MotionReveal key={item.title} direction="left" delay={index * 0.08} duration={0.68}>
-            <AcquisitionCard {...item} />
-          </MotionReveal>
-        ))}
-      </div>
-
-      <div className="relative z-10 mx-auto h-[194px] w-[194px] min-[1100px]:absolute min-[1100px]:left-1/2 min-[1100px]:top-[22px] min-[1100px]:-translate-x-1/2">
-        <MotionReveal direction="zoom" delay={0.16} className="h-full w-full">
-          <div className="flex h-full w-full items-center justify-center rounded-full border border-[#dba849] bg-white shadow-[0_5px_8px_rgba(83,62,27,0.22)]">
-            <div className="flex h-[156px] w-[156px] items-center justify-center rounded-full border border-[#c9c9c9] bg-[linear-gradient(145deg,#fafafa,#dedede)] text-center shadow-[inset_0_-8px_14px_rgba(80,80,80,0.08),0_2px_3px_rgba(0,0,0,0.15)]">
-              <p className="text-[14px] font-semibold leading-[1.35] text-[#444] dark:text-[#D8B26B]">
-                <span className="text-[#dfb15d]">Lead</span>
-                <br />
-                Generation
-              </p>
-            </div>
-          </div>
-        </MotionReveal>
-      </div>
-
-      <div className="relative mx-auto grid w-full max-w-[304px] gap-5 pl-6 pt-8 min-[1100px]:absolute min-[1100px]:right-0 min-[1100px]:top-0 min-[1100px]:w-[304px] min-[1100px]:pl-0 min-[1100px]:pt-0">
-        <svg
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 h-full w-full overflow-visible min-[1100px]:hidden"
-          viewBox="0 0 304 276"
-          preserveAspectRatio="none"
-          fill="none"
-        >
-          <g stroke="#D8B26B" strokeWidth="1.2">
-            <path d="M152 0L4 32V253" />
-            <path d="M4 55H24" />
-            <path d="M4 121H24" />
-            <path d="M4 187H24" />
-            <path d="M4 253H24" />
-          </g>
-        </svg>
-        {acquisitionOutputs.map((item, index) => (
-          <MotionReveal key={item.title} direction="right" delay={index * 0.08} duration={0.68}>
-            <AcquisitionCard {...item} />
-          </MotionReveal>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function ServiceCard({ service, index }: { service: MarketingService; index: number }) {
-  const { title, Icon, className, iconClassName } = service;
-
-  return (
-    <div className={`absolute z-10 ${className}`}>
-      <MotionReveal direction="zoom" delay={0.18 + index * 0.1} duration={0.7}>
-        <article className="flex h-[90px] w-[90px] flex-col items-center justify-center rounded-[13px] border border-[#e8d2aa] bg-white px-2 text-center shadow-[0_4px_6px_rgba(86,68,38,0.16)] transition-transform duration-500 ease-out hover:-translate-y-1.5 hover:scale-[1.03]">
-          <div className="relative mb-2 flex h-8 w-8 items-center justify-center">
-            <span className="absolute h-5 w-5 rounded-[5px] bg-[#f7dfac]" />
-            <Icon
-              aria-hidden="true"
-              className={`relative h-7 w-7 ${iconClassName}`}
-              strokeWidth={1.35}
-            />
-          </div>
-          <p className="whitespace-pre-line text-[8px] font-medium leading-[1.35] text-[#4d4c49]">
-            {title}
-          </p>
-        </article>
-      </MotionReveal>
-    </div>
-  );
-}
-
-function MarketingMap() {
-  return (
-    <div
-      className="relative mx-auto h-[426px] w-[406px] max-w-full"
-      aria-label="Law firm marketing services diagram"
-    >
-      <svg
-        aria-hidden="true"
-        className="absolute inset-0 h-full w-full overflow-visible"
-        viewBox="0 0 406 426"
-        fill="none"
-      >
-        <g stroke="#dfb15d" strokeWidth="1">
-          <path d="M203 90V145" />
-          <path d="M90 145L155 180" />
-          <path d="M316 145L251 180" />
-          <path d="M90 281L159 242" />
-          <path d="M316 281L247 242" />
-          <path d="M203 336V270" />
-        </g>
-        <g fill="#dfb15d">
-          <circle cx="203" cy="90" r="4.5" />
-          <circle cx="203" cy="145" r="2.5" />
-          <circle cx="90" cy="145" r="4.5" />
-          <circle cx="155" cy="180" r="2.5" />
-          <circle cx="316" cy="145" r="4.5" />
-          <circle cx="251" cy="180" r="2.5" />
-          <circle cx="90" cy="281" r="4.5" />
-          <circle cx="159" cy="242" r="2.5" />
-          <circle cx="316" cy="281" r="4.5" />
-          <circle cx="247" cy="242" r="2.5" />
-          <circle cx="203" cy="336" r="4.5" />
-          <circle cx="203" cy="270" r="2.5" />
-        </g>
-      </svg>
-
-      <div className="absolute left-1/2 top-[183px] z-10 -translate-x-1/2">
-        <MotionReveal direction="zoom" delay={0.08} duration={0.72}>
-          <div className="text-center font-heading text-[18px] leading-[1.28] text-[#4b4641]">
-            Law Firm
-            <br />
-            Marketing
-          </div>
-        </MotionReveal>
-      </div>
-
-      {marketingServices.map((service, index) => (
-        <ServiceCard key={service.title} service={service} index={index} />
-      ))}
-    </div>
-  );
-}
+const h2 = "text-[clamp(1.93rem,3.52vw,3.2rem)] leading-[1.03] tracking-[-0.015em]";
 
 export default function LawFirmMarketingPage() {
   return (
-    <div className="min-h-screen bg-[#FFF5E0] text-[#44413e]">
-      <section className="relative isolate flex min-h-[100svh] items-center overflow-hidden px-5 pb-[60px] pt-[110px] sm:px-10 lg:px-16">
-        <Image
-          src="/images/big_flowers.webp"
-          alt=""
-          width={190}
-          height={190}
-          priority
-          className="pointer-events-none absolute bottom-[-16px] left-[9%] z-0 h-auto w-[175px] opacity-[0.045]"
-        />
-        <Image
-          src="/images/small_flowers.webp"
-          alt=""
-          width={125}
-          height={125}
-          priority
-          className="pointer-events-none absolute left-[42%] top-[48%] z-0 h-auto w-[118px] opacity-[0.055]"
-        />
-
-        <div className="relative z-10 mx-auto grid w-full min-w-0 max-w-[1220px] grid-cols-[minmax(0,1fr)] items-center gap-16 lg:grid-cols-[minmax(0,470px)_minmax(480px,1fr)] lg:gap-[70px]">
-          <MotionReveal direction="left" duration={0.92} className="min-w-0 max-w-[470px] lg:-translate-y-3">
-            <p className="mb-5 text-[17px] font-normal text-[#4a4947]">
-              Core Services
-            </p>
-            <h1 className="font-heading text-[1.125rem] font-normal leading-[1.25] tracking-[-0.04em] text-[#403f3e] sm:hidden">
-              <span className="block whitespace-nowrap text-[#ddb66c]">Law Firm Marketing That</span>
-              <span className="block whitespace-nowrap">Drives Qualified Leads &amp; Real Cases.</span>
+    <div className="ymg-site">
+      <section className="ymg-dark-hero relative isolate overflow-hidden bg-[#0B231D] px-5 pb-20 pt-32 text-[#F5F1E8] sm:px-10 sm:pt-36 lg:px-12 lg:pb-24">
+        <HeroBackdrop src="/images/services/mkt-search.jpg" />
+        <div className="mx-auto max-w-[1320px]">
+          <nav
+            aria-label="Breadcrumb"
+            data-reveal
+            className="text-[0.88rem] text-[#F5F1E8]/60"
+          >
+            <ol className="flex flex-wrap items-center gap-1.5">
+              <li className="flex items-center gap-1.5">
+                <Link
+                  href="/services"
+                  className="inline-block py-2 hover:text-[#D6B263]"
+                >
+                  Services
+                </Link>
+                <ChevronRight size={14} aria-hidden="true" />
+              </li>
+              <li aria-current="page" className="text-[#F5F1E8]/85">
+                Law Firm Marketing
+              </li>
+            </ol>
+          </nav>
+          <div className="mt-8 grid gap-10 md:grid-cols-2 md:gap-x-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:grid-rows-[auto_1fr] lg:gap-x-16 lg:gap-y-8">
+            <h1
+              data-reveal
+              className="max-w-[20ch] self-end text-[clamp(2.1rem,4vw,3.52rem)] leading-[1.02] tracking-[-0.02em] md:col-span-2 lg:col-span-1 lg:col-start-1 lg:row-start-1"
+            >
+              Law Firm Marketing Services{" "}
+              <span className="text-[#D6B263]">for Plaintiff Firms</span>
             </h1>
-            <h1 className="hidden font-heading text-[38px] font-normal leading-[1.3] tracking-[-0.01em] text-[#403f3e] sm:block sm:text-[42px] lg:text-[40px]">
-              <span className="text-[#ddb66c]">Law Firm Marketing</span> That
-              <br />
-              Drives Qualified Leads
-              <br />
-              &amp; Real Cases.
-            </h1>
-            <p className="mt-4 max-w-[450px] text-[16px] leading-[1.34] text-[#55514e]">
-              Data-driven marketing strategies built exclusively
-              <br className="hidden sm:block" /> for law firms to attract high-intent prospects, increase
-              <br className="hidden sm:block" /> visibility, and generate predictable case growth.
-            </p>
-
-            <div className="mt-11 flex flex-col gap-5 sm:flex-row">
-              <Link
-                href="/contact#booking"
-                className="inline-flex h-[52px] min-w-[221px] items-center justify-center rounded-[4px] bg-[#d9ae5d] px-8 text-sm font-bold text-[#2e3032] shadow-[0_12px_28px_rgba(168,129,62,0.22)] transition-colors hover:bg-[#c89f4e]"
-              >
-                Book Strategy Call
-              </Link>
-              <Link
-                href="/how-it-works"
-                className="inline-flex h-[52px] min-w-[210px] items-center justify-center rounded-[4px] border border-[#dfbd78] bg-[#fff6e5]/40 px-8 text-sm font-semibold text-[#d3a65a] transition-colors hover:bg-[#fff6e5]/70 dark:!bg-transparent dark:!text-[#D8B26B] dark:hover:!bg-[#D8B26B]/10"
-              >
-                View Our Process
-              </Link>
+            <div
+              data-reveal
+              data-reveal-delay="120"
+              className="md:col-start-2 md:row-start-2 md:self-center lg:row-span-2 lg:row-start-1"
+            >
+              <ServiceOrbit
+                label={"Law Firm\nMarketing"}
+                cards={groups
+                  .flatMap((g) => g.channels)
+                  .filter((c) => c.href)
+                  .map(({ name, Icon }) => ({ title: name, Icon }))}
+              />
             </div>
-          </MotionReveal>
-
-          <MotionReveal direction="right" delay={0.12} duration={0.95} className="flex min-w-0 justify-center lg:justify-end">
-            <MarketingMap />
-          </MotionReveal>
+            <div
+              data-reveal
+              data-reveal-delay="200"
+              className="md:col-start-1 md:row-start-2 md:self-center lg:row-start-2 lg:self-start"
+            >
+              <p className="text-[1.25rem] leading-snug text-[#D6B263]">
+                Reach the Right Prospects. Build a Stronger Pipeline.
+              </p>
+              <p className="mt-4 max-w-[34rem] text-[1.08rem] leading-[1.65] text-[#C9C3B4]">
+                YMG Legal provides digital marketing solutions for law firms
+                looking to increase visibility, generate inquiries, and build
+                consistent acquisition channels. We combine campaign strategy,
+                paid media, search, landing pages, conversion optimization, and
+                performance tracking around your firm&apos;s growth objectives.
+              </p>
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <BookCallButton label="Talk to a Law Firm Marketing Specialist" />
+              </div>
+              <HeroPoints
+                points={[
+                  "Paid, organic and web",
+                  "Tracked from click to retainer",
+                ]}
+              />
+            </div>
+          </div>
+          <HeroTrust />
         </div>
       </section>
 
-      <section className="ymg-section-padding relative isolate overflow-hidden bg-[#393a39]">
-        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_36%,rgba(37,27,12,0.92)_0%,rgba(37,27,12,0.54)_25%,rgba(57,58,57,0)_58%)]" />
-        <Image
-          src="/images/big_flowers.webp"
-          alt=""
-          width={160}
-          height={160}
-          className="pointer-events-none absolute right-[5%] top-[28px] -z-0 h-auto w-[128px] opacity-[0.055]"
-        />
-        <Image
-          src="/images/small_flowers.webp"
-          alt=""
-          width={80}
-          height={80}
-          className="pointer-events-none absolute right-[15%] top-[66px] -z-0 h-auto w-[42px] opacity-[0.05]"
-        />
-        <Image
-          src="/images/small_flowers.webp"
-          alt=""
-          width={80}
-          height={80}
-          className="pointer-events-none absolute right-[11%] top-[160px] -z-0 h-auto w-[50px] opacity-[0.05]"
-        />
-
-        <div className="relative z-10 mx-auto max-w-[1084px]">
-          <MotionReveal direction="down" className="text-center">
-            <p className="text-[18px] font-normal text-[#edc269]">Real Impact</p>
-            <h2 className="mx-auto mt-5 max-w-[630px] font-heading text-[38px] font-normal leading-[1.32] text-[#EBC982] sm:text-[46px] lg:text-[48px]">
-              Law Firm Marketing That
-              <br />
-              Delivers What Matters
-            </h2>
-          </MotionReveal>
-
-          <div className="mt-[78px] grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {impactCards.map(({ title, body, Icon, iconBackground }, index) => (
-              <MotionReveal
-                key={title}
-                direction={index === 0 ? "left" : index === impactCards.length - 1 ? "right" : "up"}
-                delay={index * 0.09}
-                className="h-full"
-              >
-                <article className="h-full min-h-[258px] rounded-[19px] border border-[#e8c77f] bg-[#fffefd] px-[26px] py-[19px] shadow-[0_6px_12px_rgba(20,17,12,0.14)] transition-transform duration-500 ease-out hover:-translate-y-2">
-                  <div className={`flex h-[68px] w-[68px] items-center justify-center rounded-[7px] ${iconBackground}`}>
-                    <Icon className="h-[37px] w-[37px] text-[#46494b]" strokeWidth={1.7} />
-                  </div>
-                  <h3 className="mt-[14px] font-sans text-[20px] font-normal leading-tight text-[#464646]">
-                    {title}
-                  </h3>
-                  <p className="mt-[15px] max-w-[205px] text-[14px] leading-[1.4] text-[#989898]">
-                    {body}
-                  </p>
-                </article>
-              </MotionReveal>
+      {/* The channels, in two groups */}
+      <section className="bg-white px-5 py-24 sm:px-10 lg:px-12 lg:py-32">
+        <div className="mx-auto max-w-[1320px]">
+          <h2 data-reveal className={`${h2} max-w-[22ch] text-[#0B231D]`}>
+            The channels <span className="text-[#8C6B22]">we run for you.</span>
+          </h2>
+          <div className="mt-14 grid gap-12 lg:grid-cols-2 lg:gap-16">
+            {groups.map(({ title, channels }) => (
+              <div key={title}>
+                <p
+                  data-reveal
+                  className="text-[1.05rem] font-semibold text-[#4E5A54]"
+                >
+                  {title}
+                </p>
+                <ul
+                  data-reveal-group
+                  className="mt-4 border-t border-[#0B231D]/12"
+                >
+                  {channels.map(({ name, body, href, Icon, tone }) => {
+                    const inner = (
+                      <>
+                        <GlassIcon tone={tone} size="lg">
+                          <Icon
+                            size={22}
+                            strokeWidth={1.8}
+                            aria-hidden="true"
+                          />
+                        </GlassIcon>
+                        <span className="min-w-0 flex-1">
+                          <span className="ymg-num block text-[1.7rem] leading-tight text-[#0B231D] transition-colors group-hover:text-[#8C6B22]">
+                            {name}
+                          </span>
+                          <span className="mt-1 block text-[1.02rem] leading-[1.5] text-[#4E5A54]">
+                            {body}
+                          </span>
+                        </span>
+                      </>
+                    );
+                    return (
+                      <li key={name} className="border-b border-[#0B231D]/12">
+                        {href ? (
+                          <Link
+                            href={href}
+                            className="group flex items-center gap-5 py-6"
+                          >
+                            {inner}
+                            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#F0F4F1] text-[#0B231D] transition-colors group-hover:bg-[#0B231D] group-hover:text-[#D6B263]">
+                              <ArrowUpRight size={18} aria-hidden="true" />
+                            </span>
+                          </Link>
+                        ) : (
+                          <div className="flex items-center gap-5 py-6">
+                            {inner}
+                          </div>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="ymg-section-padding bg-[#FFF5E0]">
-        <div className="mx-auto max-w-[1180px]">
-          <MotionReveal direction="soft" className="text-center">
-            <p className="text-[21px] font-normal text-[#474747]">Our Acquisition Engine</p>
-            <h2 className="mt-6 font-heading text-[38px] font-normal leading-[1.28] text-[#444] sm:text-[48px] lg:text-[50px]">
-              A Complete System Built
-              <br />
-              For Case Growth
+      {/* One lead, followed from the search to the firm's pipeline */}
+      <section className="bg-[#F0F4F1] px-5 py-24 sm:px-10 lg:px-12 lg:py-32">
+        <div className="mx-auto max-w-[1320px]">
+          <div className="grid gap-6 lg:grid-cols-2 lg:items-end lg:gap-20">
+            <h2 data-reveal className={`${h2} max-w-[19ch] text-[#0B231D]`}>
+              Follow one lead{" "}
+              <span className="text-[#8C6B22]">from search to signed.</span>
             </h2>
-          </MotionReveal>
-
-          <MotionReveal direction="up" delay={0.12} duration={0.9}>
-            <AcquisitionEngine />
-          </MotionReveal>
+            <p
+              data-reveal
+              className="max-w-[30rem] text-[1.1rem] leading-[1.6] text-[#4E5A54] lg:pb-2"
+            >
+              Someone searches at 9:41 PM. Your ad answers, the form comes in,
+              and the lead lands in your pipeline already tagged by case type,
+              where intake moves it toward a retainer.
+            </p>
+          </div>
+          <div className="mx-auto mt-14 grid max-w-[1040px] gap-14">
+            <div data-reveal className="min-w-0">
+              <p className="mb-4 flex items-center gap-3 text-[1.02rem] font-semibold text-[#0B231D]">
+                <span className="ymg-num flex h-9 w-9 items-center justify-center rounded-full bg-[#0B231D] text-[0.95rem] text-[#D6B263]">
+                  1
+                </span>
+                The search becomes a lead
+              </p>
+              <SearchToLead />
+            </div>
+            <div data-reveal data-reveal-delay="160" className="min-w-0">
+              <p className="mb-4 flex items-center gap-3 text-[1.02rem] font-semibold text-[#0B231D]">
+                <span className="ymg-num flex h-9 w-9 items-center justify-center rounded-full bg-[#0B231D] text-[0.95rem] text-[#D6B263]">
+                  2
+                </span>
+                The lead moves to a signed case
+              </p>
+              <PipelineBoard />
+            </div>
+          </div>
         </div>
       </section>
 
-      <MarketingChannels />
-      <TestimonialContactSection showTestimonials={false} contactVariant="home" />
+      {/* The engine: one line from the first ad to the report */}
+      <section className="relative isolate overflow-hidden bg-[#0B231D] px-5 py-24 text-[#F5F1E8] sm:px-10 lg:px-12 lg:py-32">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-[radial-gradient(50%_60%_at_85%_20%,rgba(214,178,99,0.1),transparent_70%)]"
+        />
+        <div className="mx-auto max-w-[1320px]">
+          <div className="grid gap-6 lg:grid-cols-2 lg:items-end lg:gap-20">
+            <h2 data-reveal className={`${h2} max-w-[18ch]`}>
+              One system,{" "}
+              <span className="text-[#D6B263]">ad to retainer.</span>
+            </h2>
+            <p
+              data-reveal
+              className="max-w-[30rem] text-[1.1rem] leading-[1.6] text-[#C9C3B4] lg:pb-2"
+            >
+              No single-channel dependency. Every channel feeds the same
+              tracking, CRM and follow-up, so you see which spend becomes cases.
+            </p>
+          </div>
+          <ol
+            data-reveal-group
+            className="relative mt-16 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6 lg:gap-4"
+          >
+            <span
+              aria-hidden="true"
+              className="ymg-flow-spark absolute top-7 hidden h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D6B263] shadow-[0_0_14px_4px_rgba(214,178,99,0.55)] lg:block"
+            />
+            <span
+              aria-hidden="true"
+              className="absolute left-[8%] right-[8%] top-7 hidden h-px bg-[linear-gradient(90deg,transparent,rgba(214,178,99,0.55)_10%,rgba(214,178,99,0.55)_90%,transparent)] lg:block"
+            />
+            {engine.map(({ title, Icon }, i) => (
+              <li
+                key={title}
+                className="relative flex flex-col items-start gap-4 lg:items-center lg:text-center"
+              >
+                <span
+                  className="ymg-flow-node relative z-10 flex h-14 w-14 items-center justify-center rounded-full border border-[#D6B263]/60 bg-[#0B231D] text-[#D6B263]"
+                  style={{ animationDelay: `${i * 1.1 - 0.15}s` }}
+                >
+                  <Icon size={22} strokeWidth={1.8} aria-hidden="true" />
+                </span>
+                <span>
+                  <span className="ymg-num block text-[0.95rem] text-[#D6B263]">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="block text-[1.1rem] font-semibold">
+                    {title}
+                  </span>
+                </span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* Impact, four big lines */}
+      <section className="bg-white px-5 py-24 sm:px-10 lg:px-12 lg:py-32">
+        <div className="mx-auto grid max-w-[1320px] gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center lg:gap-20">
+          <div>
+            <h2 data-reveal className={`${h2} max-w-[16ch] text-[#0B231D]`}>
+              Marketing Built{" "}
+              <span className="text-[#8C6B22]">Around Outcomes</span>
+            </h2>
+            <p
+              data-reveal
+              className="mt-6 max-w-[30rem] text-[1.08rem] leading-[1.6] text-[#4E5A54]"
+            >
+              Traffic and impressions are only part of the picture. We focus on
+              the metrics that matter to law firms.
+            </p>
+            <div data-reveal className="mt-10">
+              <PhotoCard
+                photo={{
+                  src: "/images/home/svc-marketing-search.jpg",
+                  alt: "A Google search on a phone",
+                }}
+                highlights={["Every lead traced to its source"]}
+                sizes="(min-width: 1024px) 40vw, 100vw"
+              />
+            </div>
+          </div>
+          <ul data-reveal-group className="border-t border-[#0B231D]/12">
+            {impact.map(({ title, body }) => (
+              <li
+                key={title}
+                className="grid gap-2 border-b border-[#0B231D]/12 py-7 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:items-baseline sm:gap-8"
+              >
+                <span className="ymg-num text-[clamp(1.7rem,2.8vw,2.4rem)] leading-tight text-[#0B231D]">
+                  {title}
+                </span>
+                <span className="text-[1.04rem] leading-[1.55] text-[#4E5A54]">
+                  {body}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <ClientProof
+        photo={{
+          src: "/images/about/meeting.jpg",
+          alt: "A law firm team reviewing results",
+        }}
+        start={2}
+        tone="mist"
+      />
+
+      <section className="relative isolate overflow-hidden bg-[#071813] px-5 py-28 text-[#F5F1E8] sm:px-10 lg:px-12 lg:py-36">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-[radial-gradient(45%_70%_at_85%_50%,rgba(214,178,99,0.14),transparent_70%)]"
+        />
+        <div className="mx-auto flex max-w-[1320px] flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
+          <h2
+            data-reveal
+            className="max-w-[20ch] text-[clamp(2.18rem,4.48vw,4rem)] leading-[1] tracking-[-0.02em]"
+          >
+            Let&apos;s plan your{" "}
+            <span className="text-[#D6B263]">marketing.</span>
+          </h2>
+          <div data-reveal className="flex flex-col gap-3 sm:flex-row lg:pb-3">
+            <BookCallButton />
+          </div>
+        </div>
+      </section>
+      <ScrollMotion />
     </div>
   );
 }

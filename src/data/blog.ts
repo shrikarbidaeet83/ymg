@@ -8,6 +8,8 @@ export type Post = {
   category: string;
   readTime: string;
   body: string;
+  /** Cover photo; CMS posts bring their own, built-in posts use their topic's photo. */
+  cover?: string;
   /** Set for posts published from the YMG CMS: the full designed page, rendered by CmsContent. */
   cmsHtml?: string;
 };
@@ -56,10 +58,26 @@ const cmsPosts: Post[] = cms.blog.map((p) => ({
   category: p.category || "Blog",
   readTime: `${p.readingMinutes || 1} min read`,
   body: "",
+  cover: p.coverImage || undefined,
   cmsHtml: p.html,
 }));
 
 export const posts: Post[] = cms.enabled ? cmsPosts : builtInPosts;
+
+// Topic photos for posts without their own cover.
+const topicCovers: Record<string, string> = {
+  "Mass Torts": "/images/services/mass-tort.jpg",
+  "Personal Injury": "/images/services/pi-ambulance.jpg",
+  "Class Action": "/images/services/class-action-gavel.jpg",
+  Intake: "/images/services/legal-intake.jpg",
+  Marketing: "/images/home/svc-marketing-search.jpg",
+};
+
+export function coverFor(post: Post): string {
+  return (
+    post.cover || topicCovers[post.category] || "/images/about/boardroom.jpg"
+  );
+}
 
 export function getPostBySlug(slug: string): Post | undefined {
   return posts.find((p) => p.slug === slug);

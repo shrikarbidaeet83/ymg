@@ -1,0 +1,46 @@
+{
+  "title": "Choose the home page structure",
+  "question": "Three ways to build the new home page around a live lead pipeline, all in the current YMG brand. Lock one, steer it, or re-roll.",
+  "options": [
+    {
+      "id": "missed-call",
+      "label": "The Missed Call",
+      "kicker": "THE ROLL",
+      "lineage": "A real intake moment: the after-hours call most firms never answer",
+      "thesis": "The pipeline starts where firms lose cases: an unanswered call, then YMG answers it.",
+      "palette": ["#FFF5E0", "#3D4145", "#D8B26B", "#FFFFFF"],
+      "materials": ["sample call card", "five-stage lead track", "sourced Clio stat"],
+      "viewport": "Headline left, a ringing sample call card right with the 48% stat, and the five pipeline stages across the bottom.",
+      "risk": "Leans on the problem; the stat must stay sourced and the call card clearly labelled as a sample.",
+      "raised": [
+        { "from": "VU meter bridge (declined)", "raise": "The five stages are identical units in one row, read in a single sweep, so progress shows at a glance." }
+      ],
+      "html": ".impeccable/mocks/decision/missed-call.html"
+    },
+    {
+      "id": "criteria-builder",
+      "label": "The Criteria Builder",
+      "lineage": "YMG's positioning: campaigns built on the firm's own criteria",
+      "thesis": "The partner picks practice area, markets and delivery, and a matching sample lead appears.",
+      "palette": ["#FFF5E0", "#3D4145", "#D8B26B", "#FFFFFF"],
+      "materials": ["selectable chips", "matching sample lead", "prefilled contact handoff"],
+      "viewport": "Headline left; a working 'What cases does your firm want?' panel right that ends in 'Talk to YMG Legal about this campaign'.",
+      "risk": "Interactive hero needs real care on mobile and must never read as a price quote or guarantee.",
+      "html": ".impeccable/mocks/decision/criteria-builder.html"
+    },
+    {
+      "id": "case-file",
+      "label": "The Case File",
+      "lineage": "The intake file a firm actually receives",
+      "thesis": "One sample case file stays beside the page and completes stage by stage as you scroll.",
+      "palette": ["#FFF5E0", "#3D4145", "#D8B26B", "#FFFFFF"],
+      "materials": ["tabbed case file", "criteria checklist", "qualified stamp", "stage progress bar"],
+      "viewport": "Large headline left; a tabbed sample file right with fields, criteria checks, a QUALIFIED stamp and stage progress.",
+      "risk": "The sticky file must not crowd small screens; on phones it becomes one card per section.",
+      "html": ".impeccable/mocks/decision/case-file.html"
+    }
+  ],
+  "reroll": true,
+  "buildPath": { "value": "code" },
+  "steer": true
+}

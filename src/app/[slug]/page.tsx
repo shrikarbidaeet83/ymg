@@ -14,7 +14,11 @@ export function generateStaticParams() {
   return cms.pages.map((p) => ({ slug: p.slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const page = getCmsPage((await params).slug);
   if (!page) return {};
   return {
@@ -25,12 +29,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-export default async function CmsPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function CmsPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const page = getCmsPage((await params).slug);
   if (!page) notFound();
   return (
-    <main className="min-h-screen bg-[#FFF5E0] pt-[110px]">
+    <div className="ymg-site min-h-screen bg-white pt-[110px]">
       <CmsContent html={page.html} />
-    </main>
+    </div>
   );
 }

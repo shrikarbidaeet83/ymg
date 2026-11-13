@@ -17,7 +17,7 @@ export default function GuideEveryStepSection() {
             Step of the way
           </p>
 
-          <h2 className="mx-auto mt-6 max-w-[540px] font-heading text-[clamp(1.75rem,5.6vw,3rem)] font-semibold leading-[1.38] lg:mx-0">
+          <h2 className="mx-auto mt-6 max-w-[540px] font-heading text-[clamp(1.75rem,4.48vw,2.4rem)] font-semibold leading-[1.38] lg:mx-0">
             <span className="block whitespace-nowrap">How We Guide You</span>
             <span className="block whitespace-nowrap">Every Step of the Way</span>
           </h2>

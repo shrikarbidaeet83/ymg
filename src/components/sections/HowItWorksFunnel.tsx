@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import Image from "next/image";
+import GlassIcon from "@/components/ui/GlassIcon";
 import {
   BarChart3,
   Bell,
@@ -50,14 +50,31 @@ const funnelDatasets: FunnelDataset[] = [
     stackTitle: "The Conversion Journey",
     stack: ["Leads", "Qualification", "Intake", "Signed Cases"],
     features: [
-      { Icon: Crosshair, title: "High-Intent Leads", body: "We focus on quality over quantity." },
-      { Icon: Clock3, title: "24/7 Coverage", body: "Never miss a lead. We're always on." },
-      { Icon: ShieldCheck, title: "Case-Fit Screening", body: "Every prospect is checked before handoff." },
-      { Icon: BarChart3, title: "More Signed Cases", body: "Our process is built to maximize results." },
+      {
+        Icon: Crosshair,
+        title: "High-Intent Leads",
+        body: "We focus on quality over quantity.",
+      },
+      {
+        Icon: Clock3,
+        title: "24/7 Coverage",
+        body: "Never miss a lead. We're always on.",
+      },
+      {
+        Icon: ShieldCheck,
+        title: "Case-Fit Screening",
+        body: "Every prospect is checked before handoff.",
+      },
+      {
+        Icon: BarChart3,
+        title: "More Signed Cases",
+        body: "Our process is built to maximize results.",
+      },
     ],
     eyebrow: "Quality Prospects, Better Conversions.",
     title: "Personal Injury Leads",
-    description: "We connect law firms with high-intent leads actively seeking legal help, helping you increase qualified consultations and signed cases efficiently.",
+    description:
+      "We connect law firms with high-intent leads actively seeking legal help, helping you increase qualified consultations and signed cases efficiently.",
   },
   {
     leadType: "Mass Tort Claim",
@@ -68,18 +85,36 @@ const funnelDatasets: FunnelDataset[] = [
     stackTitle: "The Claim Qualification Journey",
     stack: ["Claim Leads", "Eligibility", "Verification", "Retainers"],
     features: [
-      { Icon: Scale, title: "Case-Matched Claims", body: "Campaign criteria guide every qualification." },
-      { Icon: Clock3, title: "Rapid Response", body: "Prospects are contacted while intent is high." },
-      { Icon: CheckCircle2, title: "Verified Details", body: "Exposure and eligibility details are confirmed." },
-      { Icon: BarChart3, title: "Scalable Volume", body: "Qualified claims flow into your pipeline." },
+      {
+        Icon: Scale,
+        title: "Case-Matched Claims",
+        body: "Campaign criteria guide every qualification.",
+      },
+      {
+        Icon: Clock3,
+        title: "Rapid Response",
+        body: "Prospects are contacted while intent is high.",
+      },
+      {
+        Icon: CheckCircle2,
+        title: "Verified Details",
+        body: "Exposure and eligibility details are confirmed.",
+      },
+      {
+        Icon: BarChart3,
+        title: "Scalable Volume",
+        body: "Qualified claims flow into your pipeline.",
+      },
     ],
     eyebrow: "Qualified Claims, Predictable Growth.",
     title: "Mass Tort Acquisition",
-    description: "Targeted campaigns and structured screening deliver qualified mass tort prospects that match your firm’s active case criteria.",
+    description:
+      "Targeted campaigns and structured screening deliver qualified mass tort prospects that match your firm’s active case criteria.",
   },
 ];
 
 const stackIcons = [UsersRound, ShieldCheck, Headphones, FileCheck2];
+const featureTones = ["teal", "blue", "violet", "green"] as const;
 const stackWidths = ["86%", "76%", "66%", "56%"];
 const swapTransition = { duration: 0.52, ease: [0.22, 1, 0.36, 1] as const };
 const flipTransition = { duration: 0.48, ease: [0.22, 1, 0.36, 1] as const };
@@ -138,7 +173,7 @@ export default function HowItWorksFunnel() {
           setStackIndex((current) => (current + 1) % funnelDatasets.length);
         }, 420),
         setTimeout(() => setConnected(true), 1900),
-        setTimeout(() => setShowStackCards(true), 3600),
+        setTimeout(() => setShowStackCards(true), 2300),
       );
     }, 8200);
 
@@ -150,9 +185,11 @@ export default function HowItWorksFunnel() {
   }, [reduceMotion, started]);
 
   return (
-    <section ref={sectionRef} className="ymg-section-padding relative isolate overflow-hidden bg-[#404040] text-[#f2d086] dark:bg-[#191917]">
-      <div aria-hidden="true" className="ymg-radial-classic pointer-events-none absolute left-1/2 top-1/2 z-0 h-[936px] w-[1536px] max-w-none -translate-x-1/2 -translate-y-1/2" />
-      <div className="relative z-10 mx-auto grid max-w-[1088px] gap-10 lg:grid-cols-[318px_170px_1px_minmax(390px,1fr)] lg:gap-x-[54px]">
+    <section
+      ref={sectionRef}
+      className="relative isolate overflow-hidden bg-[#F0F4F1] px-5 py-24 text-[#0B231D] sm:px-10 lg:px-12 lg:py-32"
+    >
+      <div className="relative z-10 mx-auto grid max-w-[1240px] gap-10 lg:grid-cols-[318px_230px_1px_minmax(340px,1fr)] lg:gap-x-[48px]">
         <div className="relative order-2 mx-auto min-h-[720px] w-full max-w-[318px] lg:order-none lg:min-h-[670px]">
           <AnimatePresence initial={false}>
             {connected && (
@@ -168,7 +205,14 @@ export default function HowItWorksFunnel() {
                 aria-hidden="true"
               >
                 <defs>
-                  <linearGradient id={`connector-fill-${activeIndex}`} x1="76" y1="0" x2="76" y2="88" gradientUnits="userSpaceOnUse">
+                  <linearGradient
+                    id={`connector-fill-${activeIndex}`}
+                    x1="76"
+                    y1="0"
+                    x2="76"
+                    y2="88"
+                    gradientUnits="userSpaceOnUse"
+                  >
                     <stop stopColor="#D8B26B" />
                     <stop offset="1" stopColor="#DEB972" />
                   </linearGradient>
@@ -195,10 +239,21 @@ export default function HowItWorksFunnel() {
                     strokeLinecap="round"
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
-                    transition={{ pathLength: { delay: 0.08 + index * 0.08, duration: 0.9, ease: "easeInOut" }, opacity: { delay: 0.08, duration: 0.18 } }}
+                    transition={{
+                      pathLength: {
+                        delay: 0.08 + index * 0.08,
+                        duration: 0.9,
+                        ease: "easeInOut",
+                      },
+                      opacity: { delay: 0.08, duration: 0.18 },
+                    }}
                   />
                 ))}
-                {[{ rx: 71.5, ry: 14.5 }, { rx: 57.5, ry: 11 }, { rx: 47, ry: 9.5 }].map(({ rx, ry }, index) => (
+                {[
+                  { rx: 71.5, ry: 14.5 },
+                  { rx: 57.5, ry: 11 },
+                  { rx: 47, ry: 9.5 },
+                ].map(({ rx, ry }, index) => (
                   <motion.ellipse
                     key={rx}
                     cx="72"
@@ -210,7 +265,14 @@ export default function HowItWorksFunnel() {
                     strokeWidth="1"
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
-                    transition={{ pathLength: { delay: 0.62 + index * 0.1, duration: 0.65, ease: "easeOut" }, opacity: { delay: 0.62, duration: 0.2 } }}
+                    transition={{
+                      pathLength: {
+                        delay: 0.62 + index * 0.1,
+                        duration: 0.65,
+                        ease: "easeOut",
+                      },
+                      opacity: { delay: 0.62, duration: 0.2 },
+                    }}
                   />
                 ))}
               </motion.svg>
@@ -224,30 +286,50 @@ export default function HowItWorksFunnel() {
               animate={{ rotateY: 0, rotateZ: 0, scale: 1 }}
               exit={{ rotateY: 90, rotateZ: 2, scale: 0.96 }}
               transition={{ ...flipTransition, duration: 0.42 }}
-              style={{ transformPerspective: 1200, backfaceVisibility: "hidden" }}
-              className="absolute left-1/2 top-0 z-30 h-[225px] w-[290px] -translate-x-1/2 rounded-[13px] border border-transparent bg-[#5b5b5b] px-[27px] py-[18px] text-white shadow-[0_16px_34px_rgba(0,0,0,0.14)] dark:border-[#D8B26B] dark:bg-[#191917] lg:left-0 lg:translate-x-0"
+              style={{
+                transformPerspective: 1200,
+                backfaceVisibility: "hidden",
+              }}
+              className="absolute left-1/2 top-0 z-30 h-[248px] w-[290px] -translate-x-1/2 rounded-[18px] bg-[#0B231D] px-[27px] py-[18px] text-white shadow-[0_24px_50px_rgba(11,35,29,0.25)] lg:left-0 lg:translate-x-0"
             >
-              <p className="font-sans text-[0.78rem] font-semibold text-[#f2d086]">New Qualified Lead</p>
-              <div className="absolute right-[16px] top-[-16px] flex h-[50px] w-[50px] items-center justify-center rounded-full border-2 border-[#e1b866] bg-[#FFF5E0] text-[#3f3f3f] shadow-[0_8px_15px_rgba(0,0,0,0.2)]">
-                <Bell size={22} fill="#404040" strokeWidth={1.7} />
+              <p className="font-sans text-[0.9rem] font-semibold text-[#D6B263]">
+                New qualified lead
+              </p>
+              <div className="absolute right-[16px] top-[-16px] flex h-[50px] w-[50px] items-center justify-center rounded-full border-2 border-[#C8A24E] bg-[#F5F1E8] text-[#0B231D] shadow-[0_8px_15px_rgba(0,0,0,0.2)]">
+                <Bell size={22} fill="#0B231D" strokeWidth={1.7} />
               </div>
-              <div className="mt-[21px] flex items-center gap-3">
-                <div className="flex h-[49px] w-[49px] shrink-0 items-center justify-center rounded-full border-2 border-[#e1b866] bg-[#FFF5E0] text-[#404040]">
-                  <UserRound size={27} fill="#404040" strokeWidth={1.4} />
+              <div className="mt-4 flex items-center gap-3">
+                <div className="flex h-[49px] w-[49px] shrink-0 items-center justify-center rounded-full border-2 border-[#C8A24E] bg-[#F5F1E8] text-[#0B231D]">
+                  <UserRound size={27} fill="#0B231D" strokeWidth={1.4} />
                 </div>
                 <div>
-                  <h3 className="font-sans text-[1rem] font-semibold leading-tight text-[#EBC982]">{active.leadType}</h3>
-                  <p className="mt-2 flex items-center gap-1 font-sans text-[0.72rem] text-white/70"><MapPin size={11} /> {active.location}</p>
+                  <h3 className="ymg-num text-[1.3rem] leading-tight text-[#F5F1E8]">
+                    {active.leadType}
+                  </h3>
+                  <p className="mt-2 flex items-center gap-1 font-sans text-[0.85rem] text-white/70">
+                    <MapPin size={13} /> {active.location}
+                  </p>
                 </div>
               </div>
-              <div className="mt-[32px] grid grid-cols-3 gap-[15px]">
+              <div className="mt-5 grid grid-cols-3 gap-[10px]">
                 {active.tags.map((label, index) => (
-                  <span key={label} className={`flex h-[21px] items-center justify-center rounded-[3px] border px-1 text-center text-[0.5rem] leading-none ${index === 0 ? "border-[#8fd093]/20 bg-[#6aa26e]/45 text-[#91dc95]" : index === 1 ? "border-[#89c9f0]/20 bg-[#5182a0]/55 text-[#a6d8f6]" : "border-white/20 bg-white/10 text-white/70"}`}>{label}</span>
+                  <span
+                    key={label}
+                    className={`flex h-[26px] items-center justify-center rounded-full border px-1 text-center text-[0.68rem] font-semibold leading-none ${index === 0 ? "border-[#8fd093]/20 bg-[#6aa26e]/45 text-[#91dc95]" : index === 1 ? "border-[#89c9f0]/20 bg-[#5182a0]/55 text-[#a6d8f6]" : "border-white/20 bg-white/10 text-white/70"}`}
+                  >
+                    {label}
+                  </span>
                 ))}
               </div>
-              <div className="mt-[18px] flex items-center gap-7 font-sans text-[0.76rem] text-white/65">
-                <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-[#75d382]" />{active.status}</span>
-                <span className="flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-white/30" />{active.time}</span>
+              <div className="mt-4 flex items-center gap-6 font-sans text-[0.85rem] text-white/70">
+                <span className="flex items-center gap-1.5">
+                  <span className="h-2 w-2 rounded-full bg-[#75d382]" />
+                  {active.status}
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-white/30" />
+                  {active.time}
+                </span>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -259,15 +341,21 @@ export default function HowItWorksFunnel() {
               animate={{ rotateY: 0, rotateZ: 0, scale: 1 }}
               exit={{ rotateY: -90, rotateZ: -2, scale: 0.97 }}
               transition={flipTransition}
-              style={{ transformPerspective: 1200, backfaceVisibility: "hidden" }}
-              className="absolute left-1/2 top-[300px] z-10 h-[393px] w-[290px] -translate-x-1/2 overflow-hidden rounded-[13px] border border-transparent bg-[#5b5b5b] dark:border-[#D8B26B] dark:bg-[#191917] lg:left-0 lg:top-[310px] lg:translate-x-0"
+              style={{
+                transformPerspective: 1200,
+                backfaceVisibility: "hidden",
+              }}
+              className="absolute left-1/2 top-[300px] z-10 h-[393px] w-[290px] -translate-x-1/2 overflow-hidden rounded-[18px] bg-[#0B231D] shadow-[0_24px_50px_rgba(11,35,29,0.25)] lg:left-0 lg:top-[310px] lg:translate-x-0"
             >
               <div className="relative flex h-full flex-col items-center gap-1 pt-[62px]">
                 <motion.h3
                   initial={false}
-                  animate={{ opacity: showStackCards ? 1 : 0, y: showStackCards ? 0 : -6 }}
+                  animate={{
+                    opacity: showStackCards ? 1 : 0,
+                    y: showStackCards ? 0 : -6,
+                  }}
                   transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute inset-x-4 top-[18px] text-center text-[1rem] font-medium leading-tight text-[#EBC982]"
+                  className="absolute inset-x-4 top-[18px] text-center text-[1.05rem] font-medium leading-tight text-[#F5F1E8]"
                 >
                   {stackActive.stackTitle}
                 </motion.h3>
@@ -277,23 +365,56 @@ export default function HowItWorksFunnel() {
                     <motion.div
                       key={`${label}-${index}`}
                       initial={false}
-                      animate={showStackCards ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: -10, scale: 0.96 }}
-                      transition={{ duration: showStackCards ? 0.65 : 0.28, delay: showStackCards ? (stackActive.stack.length - 1 - index) * 0.32 : 0, ease: [0.22, 1, 0.36, 1] }}
-                      className="relative z-10 flex h-[58px] shrink-0 flex-col items-center justify-center text-[#34383d] drop-shadow-[0_5px_8px_rgba(0,0,0,0.12)] dark:text-[#D8B26B]"
+                      animate={
+                        showStackCards
+                          ? { opacity: 1, y: 0, scale: 1 }
+                          : { opacity: 0, y: -10, scale: 0.96 }
+                      }
+                      transition={{
+                        duration: showStackCards ? 0.42 : 0.22,
+                        delay: showStackCards
+                          ? (stackActive.stack.length - 1 - index) * 0.14
+                          : 0,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                      className="relative z-10 flex h-[58px] shrink-0 flex-col items-center justify-center text-[#0B231D] drop-shadow-[0_5px_8px_rgba(0,0,0,0.18)]"
                       style={{ width: stackWidths[index] }}
                     >
-                      <svg viewBox="0 0 250 60" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" aria-hidden="true">
+                      <svg
+                        viewBox="0 0 250 60"
+                        preserveAspectRatio="none"
+                        className="absolute inset-0 h-full w-full"
+                        aria-hidden="true"
+                      >
                         <defs>
-                          <linearGradient id={`stack-card-${stackIndex}-${index}`} x1="0" y1="0" x2="250" y2="60" gradientUnits="userSpaceOnUse">
-                            <stop stopColor="#D9AD58" />
-                            <stop offset="0.52" stopColor="#F0CF87" />
-                            <stop offset="1" stopColor="#D8A94F" />
+                          <linearGradient
+                            id={`stack-card-${stackIndex}-${index}`}
+                            x1="0"
+                            y1="0"
+                            x2="250"
+                            y2="60"
+                            gradientUnits="userSpaceOnUse"
+                          >
+                            <stop stopColor="#C8A24E" />
+                            <stop offset="0.52" stopColor="#E9CF8E" />
+                            <stop offset="1" stopColor="#C8A24E" />
                           </linearGradient>
                         </defs>
-                        <path className="dark:fill-[#191917] dark:stroke-[#D8B26B]" d="M12 1H238C244 1 247 6 245 12L224 51C222 56 218 59 212 59H38C32 59 28 56 26 51L5 12C3 6 6 1 12 1Z" fill={`url(#stack-card-${stackIndex}-${index})`} stroke="rgba(255,255,255,0.82)" strokeWidth="1.2" />
+                        <path
+                          d="M12 1H238C244 1 247 6 245 12L224 51C222 56 218 59 212 59H38C32 59 28 56 26 51L5 12C3 6 6 1 12 1Z"
+                          fill={`url(#stack-card-${stackIndex}-${index})`}
+                          stroke="rgba(255,255,255,0.82)"
+                          strokeWidth="1.2"
+                        />
                       </svg>
-                      <StackIcon size={17} strokeWidth={1.8} className="relative z-10" />
-                      <span className="relative z-10 mt-0.5 text-[0.68rem] font-medium leading-none">{label}</span>
+                      <StackIcon
+                        size={17}
+                        strokeWidth={1.8}
+                        className="relative z-10"
+                      />
+                      <span className="relative z-10 mt-0.5 text-[0.78rem] font-semibold leading-none">
+                        {label}
+                      </span>
                     </motion.div>
                   );
                 })}
@@ -312,16 +433,34 @@ export default function HowItWorksFunnel() {
                         aria-hidden="true"
                       >
                         <defs>
-                          <linearGradient id={`bottom-connector-fill-${stackIndex}`} x1="177" y1="379" x2="177" y2="442" gradientUnits="userSpaceOnUse">
+                          <linearGradient
+                            id={`bottom-connector-fill-${stackIndex}`}
+                            x1="177"
+                            y1="379"
+                            x2="177"
+                            y2="442"
+                            gradientUnits="userSpaceOnUse"
+                          >
                             <stop stopColor="#D8B26B" />
                             <stop offset="1" stopColor="#F0CF87" />
                           </linearGradient>
-                          <radialGradient id={`bottom-connector-ring-${stackIndex}`} cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(177 433) scale(65 12)">
+                          <radialGradient
+                            id={`bottom-connector-ring-${stackIndex}`}
+                            cx="0"
+                            cy="0"
+                            r="1"
+                            gradientUnits="userSpaceOnUse"
+                            gradientTransform="translate(177 433) scale(65 12)"
+                          >
                             <stop stopColor="#F4D891" />
                             <stop offset="1" stopColor="#D8B26B" />
                           </radialGradient>
                         </defs>
-                        {[{ cx: 175, cy: 440, rx: 121.5, ry: 24 }, { cx: 175, cy: 439.5, rx: 96.5, ry: 19 }, { cx: 176, cy: 439, rx: 79.5, ry: 15.5 }].map((ring, index) => (
+                        {[
+                          { cx: 175, cy: 440, rx: 121.5, ry: 24 },
+                          { cx: 175, cy: 439.5, rx: 96.5, ry: 19 },
+                          { cx: 176, cy: 439, rx: 79.5, ry: 15.5 },
+                        ].map((ring, index) => (
                           <motion.ellipse
                             key={ring.rx}
                             {...ring}
@@ -329,12 +468,43 @@ export default function HowItWorksFunnel() {
                             strokeWidth="1.2"
                             initial={{ pathLength: 0, opacity: 0 }}
                             animate={{ pathLength: 1, opacity: 1 }}
-                            transition={{ pathLength: { delay: index * 0.12, duration: 0.6, ease: "easeOut" }, opacity: { delay: index * 0.12, duration: 0.2 } }}
+                            transition={{
+                              pathLength: {
+                                delay: index * 0.12,
+                                duration: 0.6,
+                                ease: "easeOut",
+                              },
+                              opacity: { delay: index * 0.12, duration: 0.2 },
+                            }}
                           />
                         ))}
-                        <motion.ellipse cx="177" cy="433" rx="49.5" ry="9" fill={`url(#bottom-connector-ring-${stackIndex})`} initial={{ opacity: 0, scale: 0.7 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3, duration: 0.5 }} style={{ transformOrigin: "177px 433px" }} />
-                        <motion.path d="M217.91 433.86C217.06 436.97 214.42 439.27 211.22 439.63C203.8 440.47 190.09 441.87 180 442C167.81 442.16 150.47 440.52 141.83 439.6C138.6 439.25 135.94 436.96 135.08 433.82L122.78 389.12C121.38 384.03 125.22 379 130.5 379H222.5C227.79 379 231.62 384.03 230.22 389.12L217.91 433.86Z" fill={`url(#bottom-connector-fill-${stackIndex})`} fillOpacity="0.4" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 0.9 }} />
-                        <motion.path d="M162.38 435.18C149.86 415.85 143.6 391.59 145.22 380.03C145.22 380.03 165.74 379 179.02 379C192.3 379 213.55 380.03 213.55 380.03C213.55 411.87 202.38 430.1 195.67 437.26C187 439.2 170 439.2 162.38 435.18Z" fill={`url(#bottom-connector-fill-${stackIndex})`} fillOpacity="0.2" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 0.9 }} />
+                        <motion.ellipse
+                          cx="177"
+                          cy="433"
+                          rx="49.5"
+                          ry="9"
+                          fill={`url(#bottom-connector-ring-${stackIndex})`}
+                          initial={{ opacity: 0, scale: 0.7 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 0.3, duration: 0.5 }}
+                          style={{ transformOrigin: "177px 433px" }}
+                        />
+                        <motion.path
+                          d="M217.91 433.86C217.06 436.97 214.42 439.27 211.22 439.63C203.8 440.47 190.09 441.87 180 442C167.81 442.16 150.47 440.52 141.83 439.6C138.6 439.25 135.94 436.96 135.08 433.82L122.78 389.12C121.38 384.03 125.22 379 130.5 379H222.5C227.79 379 231.62 384.03 230.22 389.12L217.91 433.86Z"
+                          fill={`url(#bottom-connector-fill-${stackIndex})`}
+                          fillOpacity="0.4"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 0.5, duration: 0.9 }}
+                        />
+                        <motion.path
+                          d="M162.38 435.18C149.86 415.85 143.6 391.59 145.22 380.03C145.22 380.03 165.74 379 179.02 379C192.3 379 213.55 380.03 213.55 380.03C213.55 411.87 202.38 430.1 195.67 437.26C187 439.2 170 439.2 162.38 435.18Z"
+                          fill={`url(#bottom-connector-fill-${stackIndex})`}
+                          fillOpacity="0.2"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 0.5, duration: 0.9 }}
+                        />
                         {[
                           "M196.28 433C211.54 414.95 215.4 390.2 213.55 380.02",
                           "M196.5 433C195.35 421.5 194.97 399.68 194.97 380.02",
@@ -352,7 +522,14 @@ export default function HowItWorksFunnel() {
                             strokeLinecap="round"
                             initial={{ pathLength: 0, opacity: 0 }}
                             animate={{ pathLength: 1, opacity: 1 }}
-                            transition={{ pathLength: { delay: 0.42 + index * 0.05, duration: 1.45, ease: "easeInOut" }, opacity: { delay: 0.42, duration: 0.22 } }}
+                            transition={{
+                              pathLength: {
+                                delay: 0.42 + index * 0.05,
+                                duration: 1.45,
+                                ease: "easeInOut",
+                              },
+                              opacity: { delay: 0.42, duration: 0.22 },
+                            }}
                           />
                         ))}
                       </motion.svg>
@@ -367,27 +544,34 @@ export default function HowItWorksFunnel() {
         <div className="relative order-3 mx-auto w-full max-w-[430px] lg:order-none lg:mx-0 lg:max-w-none">
           <div className="grid grid-cols-2 gap-0 overflow-visible lg:h-[620px] lg:grid-cols-1 lg:grid-rows-4 lg:overflow-hidden lg:pr-1">
             {active.features.map(({ Icon, title, body }, index) => (
-              <div key={title} className={`relative min-h-[132px] px-3 py-4 lg:flex lg:min-h-0 lg:flex-col lg:justify-center lg:px-0 lg:py-3 ${index % 2 === 0 ? "border-r border-[#d8b26b]/25 lg:border-r-0" : ""} ${index < 2 ? "border-b border-[#d8b26b]/20" : ""} ${index === 2 ? "lg:border-b lg:border-[#d8b26b]/20" : ""}`}>
-                <div className="mb-3 flex h-[42px] w-[42px] items-center justify-center rounded-full border-2 border-[#e1b866] bg-[#FFF5E0] text-[#404040] shadow-[0_8px_16px_rgba(0,0,0,0.18)] dark:bg-[#191917] dark:text-[#D8B26B] lg:mb-2.5 lg:h-[42px] lg:w-[42px]">
-                  <Icon size={20} strokeWidth={1.55} />
-                </div>
-                <h3 className="font-sans text-[0.88rem] font-semibold leading-tight text-[#EBC982] lg:text-[0.9rem]">{title}</h3>
-                <p className="mt-2 max-w-[140px] font-sans text-[0.64rem] leading-[1.25] text-white/70 lg:mt-1.5 lg:text-[0.66rem]">{body}</p>
+              <div
+                key={title}
+                className={`relative min-h-[150px] px-3 py-5 lg:flex lg:min-h-0 lg:flex-col lg:justify-center lg:px-0 lg:py-3 ${index % 2 === 0 ? "border-r border-[#0B231D]/10 lg:border-r-0" : ""} ${index < 2 ? "border-b border-[#0B231D]/10" : ""} ${index === 2 ? "lg:border-b lg:border-[#0B231D]/10" : ""}`}
+              >
+                <GlassIcon
+                  tone={featureTones[index % featureTones.length]}
+                  size="sm"
+                  className="mb-3"
+                >
+                  <Icon size={18} strokeWidth={1.8} />
+                </GlassIcon>
+                <h3 className="ymg-num text-[1.4rem] leading-tight text-[#0B231D]">
+                  {title}
+                </h3>
+                <p className="mt-1.5 max-w-[220px] font-sans text-[0.95rem] leading-[1.45] text-[#4E5A54]">
+                  {body}
+                </p>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="hidden h-[620px] w-px bg-[#d8b26b]/65 lg:block" />
+        <div className="hidden h-[620px] w-px bg-[#0B231D]/12 lg:block" />
 
-        <div className="relative order-1 flex items-center text-center lg:order-none lg:text-left" aria-live="polite">
-          <Image
-            src="/flowers/vcardBG.svg"
-            alt=""
-            width={273}
-            height={196}
-            className="pointer-events-none absolute right-[-96px] top-1/2 z-0 w-[460px] -translate-y-1/2"
-          />
+        <div
+          className="relative order-1 flex items-center text-center lg:order-none lg:text-left"
+          aria-live="polite"
+        >
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={`copy-${activeIndex}`}
@@ -397,9 +581,15 @@ export default function HowItWorksFunnel() {
               transition={swapTransition}
               className="relative z-10 mx-auto max-w-[390px] lg:mx-0 lg:max-w-[420px] lg:pt-[35px]"
             >
-              <p className="border-b border-[#d8b26b]/15 pb-[13px] font-sans text-[1.28rem] font-normal leading-tight text-[#f2d086] lg:text-[1.38rem]">{active.eyebrow}</p>
-              <h2 className="border-b border-[#d8b26b]/15 py-[15px] font-heading text-[clamp(2.25rem,7vw,2.65rem)] font-normal leading-[1.06] tracking-[0] text-[#EBC982]">{active.title}</h2>
-              <p className="mt-[17px] font-sans text-[1rem] leading-[1.38] text-white/45">{active.description}</p>
+              <h2 className="ymg-num text-[clamp(2.02rem,3.52vw,3.04rem)] font-normal leading-[1.03] tracking-[-0.015em] text-[#0B231D]">
+                {active.title}
+              </h2>
+              <p className="mt-4 text-[1.25rem] leading-snug text-[#8C6B22]">
+                {active.eyebrow}
+              </p>
+              <p className="mt-5 text-[1.08rem] leading-[1.6] text-[#4E5A54]">
+                {active.description}
+              </p>
             </motion.div>
           </AnimatePresence>
         </div>

@@ -36,7 +36,7 @@ const manageItems = [
     Icon: Phone,
     iconName: "messages",
     iconBg: "bg-[#d6f8ea]",
-    iconColor: "text-[#315d4d]",
+    iconColor: "text-[#315D4D]",
   },
   {
     title: "Budget & Bid Optimization",

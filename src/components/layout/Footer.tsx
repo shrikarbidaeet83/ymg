@@ -3,7 +3,7 @@
 import { Fragment } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { YMGLogo } from "@/components/ui/logo";
 import { cms } from "@/lib/cms";
 
@@ -38,7 +38,7 @@ const policyLinks = [
 const acquisitionLinks = [
   { label: "Personal Injury Leads", href: "/services/personal-injury-leads" },
   { label: "MVA Lead Generation", href: "/services/mva-leads" },
-  { label: "Mass Tort & Class Action", href: "/services/mass-tort-leads" },
+  { label: "Mass Tort Leads", href: "/services/mass-tort-leads" },
   { label: "Class Action Leads", href: "/services/class-action-leads" },
   { label: "Pay-Per-Call", href: "/services/pay-per-call" },
   { label: "Outbound Acquisition", href: "/services/outbound-client-acquisition" },
@@ -84,7 +84,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
   return (
     <Link
       href={href}
-      className="mb-2.5 block text-[0.9rem] text-body-dark/65 transition-colors duration-200 hover:text-dark"
+      className="block py-1.5 text-[0.9rem] text-body-dark/65 transition-colors duration-200 hover:text-dark"
     >
       {children}
     </Link>
@@ -112,12 +112,8 @@ export default function Footer() {
             </p>
             <ul className="mt-6 grid gap-2.5 text-[0.95rem] text-body-dark/75">
               <li className="flex items-center gap-2.5">
-                <Phone size={16} strokeWidth={1.8} aria-hidden="true" className="text-[#a87b25]" />
-                <a href="tel:+13133065055" className="hover:text-dark">(313) 306-5055</a>
-              </li>
-              <li className="flex items-center gap-2.5">
                 <Mail size={16} strokeWidth={1.8} aria-hidden="true" className="text-[#a87b25]" />
-                <a href="mailto:info@ymg-legal.com" className="hover:text-dark">info@ymg-legal.com</a>
+                <a href="mailto:info@ymg-legal.com" className="py-1.5 hover:text-dark">info@ymg-legal.com</a>
               </li>
               <li className="flex items-center gap-2.5">
                 <MapPin size={16} strokeWidth={1.8} aria-hidden="true" className="text-[#a87b25]" />
@@ -125,7 +121,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2.5">
                 <span aria-hidden="true" className="w-4 text-center text-[0.95rem] font-semibold leading-none text-[#a87b25]">in</span>
-                <a href="https://www.linkedin.com/company/ymglegal-attorney-marketing/" target="_blank" rel="noopener noreferrer" className="hover:text-dark">
+                <a href="https://www.linkedin.com/company/ymglegal-attorney-marketing/" target="_blank" rel="noopener noreferrer" className="py-1.5 hover:text-dark">
                   LinkedIn
                 </a>
               </li>

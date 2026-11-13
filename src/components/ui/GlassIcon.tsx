@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useId, useRef, type ReactNode } from "react";
 
 /*
  * Glass icon used across the home page: a clear glass tile about 80% full of its tone's liquid.
@@ -21,6 +21,13 @@ export const glassTones = {
 } as const;
 
 export type GlassTone = keyof typeof glassTones;
+
+/** Lets a page set one tone for every glass icon inside it (the home page keeps them all brass). */
+export const GlassToneOverride = createContext<GlassTone | null>(null);
+
+export function GlassToneScope({ tone, children }: { tone: GlassTone; children: ReactNode }) {
+  return <GlassToneOverride.Provider value={tone}>{children}</GlassToneOverride.Provider>;
+}
 
 /** Cycle used when a list of items each needs its own colour. */
 export const toneCycle: GlassTone[] = ["gold", "teal", "violet", "blue", "rose", "green", "amber", "indigo"];
@@ -59,7 +66,8 @@ export default function GlassIcon({
   className?: string;
   children: ReactNode;
 }) {
-  const t = glassTones[tone];
+  const override = useContext(GlassToneOverride);
+  const t = glassTones[override ?? tone];
   const s = sizes[size];
   const dark = surface === "dark";
   const id = useId().replace(/:/g, "");

@@ -32,7 +32,7 @@ const seoServices = [
     body: "Optimize every page for higher rankings.",
     Icon: FileText,
     iconBg: "bg-[#d6f8ea]",
-    iconColor: "text-[#315d4d]",
+    iconColor: "text-[#315D4D]",
   },
   {
     title: "Local SEO",

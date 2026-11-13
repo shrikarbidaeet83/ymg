@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 const contactItems = [
-  { icon: "/contact_icons/phone.png", value: "(313) 306-5055" },
   { icon: "/contact_icons/message.png", value: "info@ymg-legal.com" },
   { icon: "/contact_icons/location.png", value: "Las Vegas, Nevada" },
   { icon: "/contact_icons/Vector (4).png", value: "LinkedIn" },

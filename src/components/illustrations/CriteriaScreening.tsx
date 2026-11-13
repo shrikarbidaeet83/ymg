@@ -90,7 +90,7 @@ export default function CriteriaScreening() {
                   >
                     {on && <Check size={14} strokeWidth={3} color="#fff" />}
                   </motion.span>
-                  <span className={on || current ? text.item : "text-[1rem] leading-snug text-[#8a8c8f]"}>{item}</span>
+                  <span className={on || current ? text.item : "text-[1rem] leading-snug text-[#66696d]"}>{item}</span>
                 </li>
               );
             })}

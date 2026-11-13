@@ -4,7 +4,38 @@ import { Fragment, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, Moon, Sun, X, ChevronDown, ChevronRight } from "lucide-react";
+import {
+  Ambulance,
+  Briefcase,
+  ChartColumn,
+  CalendarCheck,
+  CarFront,
+  FilePen,
+  ChevronDown,
+  ChevronRight,
+  FolderOpen,
+  Headset,
+  Laptop,
+  MapPin,
+  Megaphone,
+  Menu,
+  MessageCircleHeart,
+  MessagesSquare,
+  MonitorSmartphone,
+  Moon,
+  PhoneIncoming,
+  Search,
+  Scale,
+  Send,
+  Share2,
+  Sparkles,
+  Sun,
+  TrendingUp,
+  UserPlus,
+  Users,
+  X,
+  type LucideIcon,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import { YMGLogo } from "@/components/ui/logo";
 
@@ -12,6 +43,7 @@ type NavSubItem = {
   label: string;
   href: string;
   description: string;
+  Icon: LucideIcon;
   group?: string;
 };
 
@@ -19,6 +51,7 @@ type NavDropdownItem = {
   label: string;
   href: string;
   description: string;
+  Icon: LucideIcon;
   children?: NavSubItem[];
 };
 
@@ -32,7 +65,7 @@ type NavLink = {
 };
 
 // Header order per the content guide: the logo links home, Plans and Blog live in the footer,
-// and Contact becomes the "Talk to YMG Legal" button.
+// and Contact becomes the "Book a free strategy call" button.
 const navLinks: NavLink[] = [
   {
     label: "Services",
@@ -43,143 +76,53 @@ const navLinks: NavLink[] = [
       {
         label: "Case Acquisition",
         href: "/services#case-acquisition",
-        description: "Leads, calls and claimants for your case types",
+        description: "Leads, calls and claimants",
+        Icon: UserPlus,
         children: [
-          {
-            label: "Personal Injury Lead Generation",
-            href: "/services/personal-injury-leads",
-            description: "Qualified PI opportunities built around firm criteria",
-          },
-          {
-            label: "MVA Lead Generation",
-            href: "/services/mva-leads",
-            description: "Motor vehicle accident opportunities",
-          },
-          {
-            label: "Mass Tort & Class Action",
-            href: "/services/mass-tort-leads",
-            description: "Claimant pipelines for active campaigns",
-            group: "Mass tort & class action",
-          },
-          {
-            label: "Class Action Leads",
-            href: "/services/class-action-leads",
-            description: "Class members screened against the definition",
-            group: "Mass tort & class action",
-          },
-          {
-            label: "Pay-Per-Call",
-            href: "/services/pay-per-call",
-            description: "Live, pre-screened calls transferred to you",
-            group: "Calls & outreach",
-          },
-          {
-            label: "Outbound Client Acquisition",
-            href: "/services/outbound-client-acquisition",
-            description: "Consent-based follow-up and re-engagement",
-            group: "Calls & outreach",
-          },
+          { label: "Personal Injury Leads", href: "/services/personal-injury-leads", description: "Qualified PI cases", Icon: Ambulance },
+          { label: "MVA Leads", href: "/services/mva-leads", description: "Car accident cases", Icon: CarFront },
+          { label: "Mass Tort Leads", href: "/services/mass-tort-leads", description: "Active campaigns", Icon: Scale, group: "Torts & class actions" },
+          { label: "Class Action Leads", href: "/services/class-action-leads", description: "Screened claimants", Icon: Users, group: "Torts & class actions" },
+          { label: "Pay-Per-Call", href: "/services/pay-per-call", description: "Live, screened calls", Icon: PhoneIncoming, group: "Calls & outreach" },
+          { label: "Outbound Acquisition", href: "/services/outbound-client-acquisition", description: "Opt-in outreach", Icon: Send, group: "Calls & outreach" },
         ],
       },
       {
         label: "Intake & Conversion",
         href: "/services/legal-intake",
-        description: "Answering, screening and signing new clients",
+        description: "Answer, screen and sign",
+        Icon: Headset,
         children: [
-          {
-            label: "Legal Intake Services",
-            href: "/services/legal-intake",
-            description: "24/7 answering, screening and follow-up",
-          },
-          {
-            label: "Legal Contract & Retainer",
-            href: "/services/retainer-signing",
-            description: "E-sign retainers and secure documents",
-            group: "Conversion tools",
-          },
-          {
-            label: "Live Chat & Text",
-            href: "/services/live-chat-text",
-            description: "Live website chat and two-way texting",
-            group: "Conversion tools",
-          },
-          {
-            label: "AI-Powered Booking",
-            href: "/services/ai-booking",
-            description: "Automated consultation scheduling",
-            group: "Conversion tools",
-          },
+          { label: "Legal Intake Services", href: "/services/legal-intake", description: "24/7 answering", Icon: Headset },
+          { label: "Retainer Signing", href: "/services/retainer-signing", description: "E-sign retainers", Icon: FilePen, group: "Conversion tools" },
+          { label: "Live Chat & Text", href: "/services/live-chat-text", description: "Chat and texting", Icon: MessagesSquare, group: "Conversion tools" },
+          { label: "AI Booking", href: "/services/ai-booking", description: "Auto-scheduled consults", Icon: CalendarCheck, group: "Conversion tools" },
         ],
       },
       {
         label: "Law Firm Marketing",
         href: "/services/law-firm-marketing",
-        description: "Campaigns connected to growth outcomes",
+        description: "Campaigns that win cases",
+        Icon: Megaphone,
         children: [
-          {
-            label: "Marketing Overview",
-            href: "/services/law-firm-marketing",
-            description: "Full-funnel marketing for law firms",
-          },
-          {
-            label: "Google Search Ads",
-            href: "/services/google-search-ads",
-            description: "High-intent search campaigns",
-            group: "Paid advertising",
-          },
-          {
-            label: "Meta Ads",
-            href: "/services/meta-ads",
-            description: "Facebook and Instagram campaigns",
-            group: "Paid advertising",
-          },
-          {
-            label: "Local Services Ads",
-            href: "/services/local-services-ads",
-            description: "Pay-per-lead campaigns for calls",
-            group: "Paid advertising",
-          },
-          {
-            label: "SEO",
-            href: "/services/seo",
-            description: "Organic visibility for legal searches",
-            group: "Organic & web",
-          },
-          {
-            label: "AI Search (AIO)",
-            href: "/services/ai-search",
-            description: "Visibility in AI search experiences",
-            group: "Organic & web",
-          },
-          {
-            label: "Organic Social Media",
-            href: "/services/organic-social-media",
-            description: "On-brand content that builds trust",
-            group: "Organic & web",
-          },
-          {
-            label: "Website Design",
-            href: "/services/website-design",
-            description: "Conversion-focused legal websites",
-            group: "Organic & web",
-          },
+          { label: "Marketing Overview", href: "/services/law-firm-marketing", description: "Every channel", Icon: ChartColumn },
+          { label: "Google Search Ads", href: "/services/google-search-ads", description: "High-intent search", Icon: Search, group: "Paid advertising" },
+          { label: "Meta Ads", href: "/services/meta-ads", description: "Social feed ads", Icon: Share2, group: "Paid advertising" },
+          { label: "Local Services Ads", href: "/services/local-services-ads", description: "Pay per lead", Icon: MapPin, group: "Paid advertising" },
+          { label: "SEO", href: "/services/seo", description: "Organic rankings", Icon: TrendingUp, group: "Organic & web" },
+          { label: "AI Search (AIO)", href: "/services/ai-search", description: "Seen in AI answers", Icon: Sparkles, group: "Organic & web" },
+          { label: "Organic Social", href: "/services/organic-social-media", description: "On-brand content", Icon: MessageCircleHeart, group: "Organic & web" },
+          { label: "Website Design", href: "/services/website-design", description: "Sites that convert", Icon: MonitorSmartphone, group: "Organic & web" },
         ],
       },
       {
         label: "Law Firm Support",
         href: "/services/law-firm-support",
-        description: "Paralegal, case and admin capacity",
+        description: "Paralegal and admin help",
+        Icon: Briefcase,
         children: [
-          {
-            label: "Paralegal & Firm Support",
-            href: "/services/law-firm-support",
-            description: "Case, litigation and records support",
-          },
-          {
-            label: "Legal Virtual Assistants",
-            href: "/services/legal-virtual-assistants",
-            description: "Dedicated US-based remote support staff",
-          },
+          { label: "Paralegal & Firm Support", href: "/services/law-firm-support", description: "Case and records", Icon: FolderOpen },
+          { label: "Legal Virtual Assistants", href: "/services/legal-virtual-assistants", description: "US-based remote staff", Icon: Laptop },
         ],
       },
     ],
@@ -188,8 +131,19 @@ const navLinks: NavLink[] = [
   { label: "How It Works", href: "/how-it-works" },
   { label: "About", href: "/about" },
   { label: "FAQ", href: "/faqs" },
-  { label: "Talk to YMG Legal", href: "/contact", cta: true },
+  { label: "Book a free strategy call", href: "/contact#booking", cta: true },
 ];
+
+function NavIcon({ Icon }: { Icon: LucideIcon }) {
+  return (
+    <span
+      aria-hidden="true"
+      className="ymg-nav-icon flex h-9 w-9 shrink-0 items-center justify-center rounded-[9px] border border-[#D6B263]/30 bg-[#D6B263]/[0.08] text-[#D6B263] transition-colors duration-200 group-hover:border-[#D6B263]/60 group-hover:bg-[#D6B263]/15"
+    >
+      <Icon size={17} strokeWidth={1.75} />
+    </span>
+  );
+}
 
 function isDropdownItemActive(item: NavDropdownItem, pathname: string) {
   return pathname === item.href || Boolean(item.children?.some((child) => pathname === child.href));
@@ -227,26 +181,16 @@ function HeaderActions({
   darkMode,
   onAction,
   onToggleDarkMode,
+  showThemeToggle = true,
 }: {
   darkMode: boolean;
   onAction?: () => void;
   onToggleDarkMode: () => void;
+  showThemeToggle?: boolean;
 }) {
   return (
     <div className="flex items-center gap-3">
-      <a
-        href="https://www.linkedin.com/company/ymglegal-attorney-marketing/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Open LinkedIn"
-        onClick={onAction}
-        className="ymg-nav-action-button inline-flex h-10 w-10 items-center justify-center rounded-full text-[#172022] transition-all duration-200 hover:-translate-y-0.5"
-      >
-        <span className="font-sans text-[1.45rem] font-medium leading-none tracking-[0]">
-          in
-        </span>
-      </a>
-      <button
+      {showThemeToggle && <button
         type="button"
         aria-label={darkMode ? "Switch to light theme" : "Switch to dark theme"}
         aria-pressed={darkMode}
@@ -257,7 +201,7 @@ function HeaderActions({
         className="ymg-nav-action-button inline-flex h-10 w-10 items-center justify-center rounded-full text-[#172022] transition-all duration-200 hover:-translate-y-0.5"
       >
         {darkMode ? <Moon size={20} strokeWidth={1.9} /> : <Sun size={20} strokeWidth={1.9} />}
-      </button>
+      </button>}
     </div>
   );
 }
@@ -273,6 +217,8 @@ export default function Navbar() {
   const [mobileOpenSubDropdown, setMobileOpenSubDropdown] = useState<string | null>(null);
   const [desktopDropdownOpen, setDesktopDropdownOpen] = useState(false);
   const [activeDropdownIndex, setActiveDropdownIndex] = useState(0);
+  // The menu bar sits right of centre, so the panel is shifted to centre on the screen instead.
+  const [panelShift, setPanelShift] = useState(0);
   const [darkMode, setDarkMode] = useState(false);
   const [themeReady, setThemeReady] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
@@ -280,6 +226,8 @@ export default function Navbar() {
   const dropdownCloseTimerRef = useRef<number | undefined>(undefined);
   const dropdownHoverTimerRef = useRef<number | undefined>(undefined);
   const pathname = usePathname();
+  // The site has one theme (evergreen and brass), so the visitor dark mode is retired everywhere.
+  const forceLight = true;
 
   useEffect(() => {
     return () => {
@@ -293,6 +241,8 @@ export default function Navbar() {
     if (desktopDropdownOpen) return;
     const currentIndex = items.findIndex((item) => isDropdownItemActive(item, pathname));
     setActiveDropdownIndex(currentIndex === -1 ? 0 : currentIndex);
+    const nav = desktopNavRef.current?.getBoundingClientRect();
+    if (nav) setPanelShift(document.documentElement.clientWidth / 2 - (nav.left + nav.width / 2));
     setDesktopDropdownOpen(true);
   };
 
@@ -446,9 +396,9 @@ export default function Navbar() {
   useEffect(() => {
     if (!themeReady) return;
 
-    document.documentElement.classList.toggle("dark", darkMode);
+    document.documentElement.classList.toggle("dark", darkMode && !forceLight);
     window.localStorage.setItem("ymg-theme", darkMode ? "dark" : "light");
-  }, [darkMode, themeReady]);
+  }, [darkMode, themeReady, forceLight]);
 
   useEffect(() => {
     let frameId = 0;
@@ -497,6 +447,7 @@ export default function Navbar() {
         layoutRoot
         className={cn(
           "ymg-navbar fixed left-0 right-0 top-5 z-50 transition-all duration-300",
+          scrolled && "ymg-navbar-past-top",
           scrolled && hideSides && "ymg-navbar-scrolled",
           scrolled && !desktop && "ymg-navbar-mobile-bar",
           overDarkBackground && hideSides && "ymg-navbar-over-dark"
@@ -588,13 +539,16 @@ export default function Navbar() {
                     closeDesktopDropdown();
                     event.currentTarget.blur();
                   }}
-                  className="block rounded-[6px] px-3 py-2.5 text-left transition-colors duration-200 hover:bg-[#f4dfb7]/65"
+                  className="group flex items-center gap-2.5 rounded-[6px] px-2.5 py-2.5 text-left transition-colors duration-200 hover:bg-[#f4dfb7]/65"
                 >
-                  <span className="block text-[0.9rem] font-semibold leading-tight text-[#272c2f]">
-                    {item.label}
-                  </span>
-                  <span className="mt-1 block text-[0.78rem] leading-[1.35] text-[#65615a]">
-                    {item.description}
+                  <NavIcon Icon={item.Icon} />
+                  <span className="min-w-0">
+                    <span className="ymg-nav-title block text-[0.9rem] font-semibold leading-tight text-[#272c2f]">
+                      {item.label}
+                    </span>
+                    <span className="ymg-nav-desc mt-0.5 block text-[0.78rem] leading-[1.35] text-[#65615a]">
+                      {item.description}
+                    </span>
                   </span>
                 </Link>
               );
@@ -636,14 +590,15 @@ export default function Navbar() {
                   <div
                     className={cn(
                       "absolute left-1/2 top-full -translate-x-1/2 pt-[10px] transition-all duration-200",
-                      groups.length ? "w-[min(980px,calc(100vw-48px))]" : "w-[min(800px,calc(100vw-48px))]",
+                      "w-[min(1040px,calc(100vw-40px))]",
                       desktopDropdownOpen
                         ? "pointer-events-auto visible translate-y-0 opacity-100"
                         : "pointer-events-none invisible translate-y-2 opacity-0"
                     )}
+                    style={{ marginLeft: panelShift }}
                   >
                     <div className="ymg-nav-dropdown flex rounded-[8px] border border-[#dfbd78]/70 bg-[#fff8e8]/95 shadow-[0_16px_34px_rgba(71,56,30,0.18)] backdrop-blur-xl">
-                      <div className="w-[290px] shrink-0 border-r border-[#dfbd78]/45 p-2">
+                      <div className="w-[272px] shrink-0 border-r xl:w-[290px] border-[#dfbd78]/45 p-2">
                         {dropdownItems.map((item, index) => {
                           const isPreviewed = index === activeDropdownIndex;
 
@@ -661,19 +616,22 @@ export default function Navbar() {
                                 event.currentTarget.blur();
                               }}
                               className={cn(
-                                "block rounded-[6px] px-3 py-2.5 text-left transition-colors duration-200 hover:bg-[#f4dfb7]/65",
+                                "group flex items-center gap-3 rounded-[6px] px-3 py-2.5 text-left transition-colors duration-200 hover:bg-[#f4dfb7]/65",
                                 isPreviewed && "bg-[#f4dfb7]/65"
                               )}
                             >
-                              <span className="flex items-center justify-between gap-2 text-[0.9rem] font-semibold leading-tight text-[#272c2f]">
-                                {item.label}
-                                <ChevronRight
-                                  size={13}
-                                  className={cn("shrink-0 opacity-0 transition-opacity duration-200", isPreviewed && "opacity-60")}
-                                />
-                              </span>
-                              <span className="mt-1 block text-[0.78rem] leading-[1.35] text-[#65615a]">
-                                {item.description}
+                              <NavIcon Icon={item.Icon} />
+                              <span className="min-w-0 flex-1">
+                                <span className="ymg-nav-title flex items-center justify-between gap-2 text-[0.9rem] font-semibold leading-tight text-[#272c2f]">
+                                  {item.label}
+                                  <ChevronRight
+                                    size={13}
+                                    className={cn("shrink-0 opacity-0 transition-opacity duration-200", isPreviewed && "opacity-60")}
+                                  />
+                                </span>
+                                <span className="ymg-nav-desc mt-0.5 block text-[0.78rem] leading-[1.35] text-[#65615a]">
+                                  {item.description}
+                                </span>
                               </span>
                             </Link>
                           );
@@ -686,7 +644,7 @@ export default function Navbar() {
                           <div className="grid grid-cols-3 gap-x-2">
                             {[{ title: activeItem.label, items: featured }, ...groups].map((group) => (
                               <div key={group.title} className="min-w-0">
-                                <p className="px-3 pb-1 pt-3 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-[#9b7531]">
+                                <p className="text-nowrap! px-3 pb-1 pt-3 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-[#9b7531]">
                                   {group.title}
                                 </p>
                                 {group.items.map(renderPanelLink)}
@@ -695,7 +653,7 @@ export default function Navbar() {
                           </div>
                         ) : (
                           <>
-                            <p className="px-3 pb-1 pt-3 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-[#9b7531]">
+                            <p className="text-nowrap! px-3 pb-1 pt-3 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-[#9b7531]">
                               {activeItem.label}
                             </p>
                             {activeItem.children?.length
@@ -723,7 +681,7 @@ export default function Navbar() {
             transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
             style={{ pointerEvents: hideSides ? "none" : "auto" }}
           >
-            <HeaderActions darkMode={darkMode} onToggleDarkMode={toggleDarkMode} />
+            <HeaderActions darkMode={darkMode} onToggleDarkMode={toggleDarkMode} showThemeToggle={!forceLight} />
           </motion.div>
 
           {/* Mobile hamburger */}
@@ -935,6 +893,7 @@ export default function Navbar() {
                 <div className="border-b border-gold/10 py-5">
                   <HeaderActions
                     darkMode={darkMode}
+                    showThemeToggle={!forceLight}
                     onAction={() => {
                       setMobileOpenDropdown(null);
                       setDrawerOpen(false);

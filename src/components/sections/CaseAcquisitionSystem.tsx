@@ -303,7 +303,7 @@ export default function CaseAcquisitionSystem({
             <p className={`mb-1 font-medium text-[#7a7c7e] sm:mb-2.5 ${homeTypography ? "text-[14px] lg:text-[15px] 2xl:text-[16px]" : "text-[0.52rem] sm:text-[0.78rem]"}`}>
               Our Proven 5-Step
             </p>
-            <h2 className={`font-semibold leading-tight text-[#202b36] ${homeTypography ? "text-[30px] sm:text-[36px] lg:text-[40px] xl:text-[44px] 2xl:text-[52px]" : "text-[1.38rem] sm:text-[clamp(1.3rem,6vw,3rem)]"}`}>
+            <h2 className={`font-semibold leading-tight text-[#202b36] ${homeTypography ? "text-[30px] sm:text-[36px] lg:text-[40px] xl:text-[44px] 2xl:text-[52px]" : "text-[1.38rem] sm:text-[clamp(1.3rem,4.8vw,2.4rem)]"}`}>
               Case Acquisition System
             </h2>
           </div>

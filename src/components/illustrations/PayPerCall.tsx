@@ -41,7 +41,7 @@ export default function PayPerCall() {
           <div className="relative rounded-[30px] p-2 shadow-[0_16px_30px_rgba(31,42,68,0.24)]" style={{ background: c.navy }}>
             <div className="flex h-[300px] flex-col items-center rounded-[23px] bg-white px-4 pb-5 pt-4 text-center">
               <span className="h-1.5 w-12 rounded-full bg-[#e3dccd]" />
-              <p className="mt-5 text-[0.75rem] font-semibold tracking-[0.08em] text-[#8a8c8f]">
+              <p className="mt-5 text-[0.75rem] font-semibold tracking-[0.08em] text-[#66696d]">
                 {ringing ? "INCOMING CALL" : "CONNECTED · 0:42"}
               </p>
               <p className="mt-1 text-[1.05rem] font-semibold text-[#2f3236]">(833) 555-0198</p>

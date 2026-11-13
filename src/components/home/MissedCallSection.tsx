@@ -79,7 +79,7 @@ export default function MissedCallSection() {
             </p>
             <span
               className={`shrink-0 rounded-full px-3 py-1.5 text-[0.72rem] font-semibold transition-colors duration-500 ${
-                answered ? "bg-[#284a37] text-[#bfe9cd]" : "bg-[#5a3b36] text-[#f6c9bd]"
+                answered ? "bg-[#284A37] text-[#bfe9cd]" : "bg-[#5a3b36] text-[#f6c9bd]"
               }`}
             >
               {answered ? "Picked up in 8 sec" : "Missed at most firms"}

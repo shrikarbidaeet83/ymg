@@ -7,6 +7,10 @@ export const metadata: Metadata = {
     "Personal injury, MVA and mass tort lead generation, 24/7 legal intake, law firm marketing, and outsourced paralegal and law firm support from YMG Legal.",
 };
 
-export default function ServicesLayout({ children }: { children: React.ReactNode }) {
+export default function ServicesLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return children;
 }

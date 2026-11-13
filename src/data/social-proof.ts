@@ -29,7 +29,7 @@ export const clientLogos = [
 // PLACEHOLDER case study for the "Why YMG Legal" section. Every figure is sample content: replace it
 // with one real client result (with the firm's written permission) before launch, or set `show` to false.
 export const caseStudy = {
-  show: true,
+  show: false,
   firm: "Personal injury firm",
   region: "Southwest US",
   period: "First 90 days with YMG",

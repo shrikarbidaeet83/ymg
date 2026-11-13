@@ -42,4 +42,4 @@ Personal information is collected only for the purpose it was provided, shared o
 
 ## Questions
 
-For compliance questions, contact [info@ymg-legal.com](mailto:info@ymg-legal.com) or call (313) 306-5055.
+For compliance questions, contact [info@ymg-legal.com](mailto:info@ymg-legal.com).

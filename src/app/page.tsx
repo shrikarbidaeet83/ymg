@@ -1,12 +1,20 @@
 import type { Metadata } from "next";
 import ActiveCampaignsSection from "@/components/sections/ActiveCampaignsSection";
-import HomeHero from "@/components/home/HomeHero";
-import ClientLogoStrip from "@/components/home/ClientLogoStrip";
-import { TestimonialCardsShowcase } from "@/components/sections/TestimonialContactSection";
 import ServiceShowcase from "@/components/home/ServiceShowcase";
 import { EngagementModels } from "@/components/home/EngagementModels";
-import { OnePartner, ProblemStats } from "@/components/home/HomeSections";
-import { FinalCta, HomeFaq } from "@/components/home/HomeClosing";
+import { HomeFaq } from "@/components/home/HomeClosing";
+import {
+  CaseQuote,
+  CloseStory,
+  ComplianceBand,
+  CostStory,
+  FilmFeature,
+  TrustBand,
+  StoryHero,
+  TailoredServices,
+} from "@/components/home/HomeStory";
+import { TestimonialCardsShowcase } from "@/components/sections/TestimonialContactSection";
+import ScrollMotion from "@/components/home/ScrollMotion";
 
 export const metadata: Metadata = {
   title: "YMG Legal | Legal Marketing, Lead Generation & Law Firm Support",
@@ -14,23 +22,27 @@ export const metadata: Metadata = {
     "YMG Legal helps plaintiff law firms with personal injury and mass tort lead generation, legal intake, law firm marketing, and outsourced legal support.",
 };
 
-// Home story, kept to one idea per section on one cream page (dark only in contained panels):
-// hero → who trusts YMG → what YMG runs → what firms are losing → practice areas → how to work with
-// YMG → reviews → why YMG over the alternatives → common questions → one call to action.
-// The lead journey, roadmap and contact form live on How It Works, Plans and Contact.
+// The home page is one designed brand page (the visitor's dark theme applies on other pages):
+// the people on film, the four service categories in turn, client words in rotation → the brand film, full screen then aside → the firms → the four services, each with a picture → what slow intake costs →
+// the seven services, each shown working → practice areas → three ways to work with YMG → proof → questions → the close.
 export default function HomePage() {
   return (
-    <div className="ymg-home-page">
-      <HomeHero />
-      <ClientLogoStrip />
+    <div className="ymg-home2">
+      <StoryHero />
+      <FilmFeature />
+      <TrustBand />
+      <TailoredServices />
+      <CostStory />
+      <ComplianceBand />
       <ServiceShowcase />
-      <ProblemStats />
       <ActiveCampaignsSection />
       <EngagementModels />
-      <TestimonialCardsShowcase />
-      <OnePartner />
+      <TestimonialCardsShowcase>
+        <CaseQuote />
+      </TestimonialCardsShowcase>
       <HomeFaq />
-      <FinalCta />
+      <CloseStory />
+      <ScrollMotion />
     </div>
   );
 }

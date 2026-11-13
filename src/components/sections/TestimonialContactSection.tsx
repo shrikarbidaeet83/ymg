@@ -39,22 +39,29 @@ const builtInTestimonials: Review[] = [
 
 // When the site is connected to the YMG CMS, its testimonials (featured first) replace the built-in
 // ones. Firm name comes from the CMS "Location".
-const testimonials: Review[] = cms.enabled
+export const testimonials: Review[] = cms.enabled
   ? cms.testimonials.map((t) => ({ name: t.title, firm: t.location || t.caseType, text: t.quote }))
   : builtInTestimonials;
 
 export function TestimonialCardsShowcase({
   className = "",
   showAllLink = true,
+  sand = false,
+  children,
 }: {
   className?: string;
   showAllLink?: boolean;
+  /** The home page sets the reviews on the sand tone. */
+  sand?: boolean;
+  /** Extra proof shown under the reviews (the home page adds the client result). */
+  children?: React.ReactNode;
 }) {
   if (!SHOW_TESTIMONIALS || testimonials.length === 0) return null;
   return (
-    <section className={`ymg-reviews ymg-section-padding relative bg-[#FFF5E0] dark:bg-[#191917] ${className}`}>
+    <section className={`ymg-reviews ymg-section-padding relative ${sand ? "ymg-tone-sand bg-[#F6E9CC]" : "bg-[#FFF5E0]"} dark:bg-[#191917] ${className}`}>
       <div className="mx-auto max-w-[1240px]">
         <ReviewCarousel reviews={testimonials} showAllLink={showAllLink} />
+        {children}
       </div>
     </section>
   );

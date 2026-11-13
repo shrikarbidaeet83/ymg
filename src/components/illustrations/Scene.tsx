@@ -181,7 +181,7 @@ export function Scene({
         className="pointer-events-none absolute -left-[15%] -top-[35%] -z-10 h-[90%] w-[70%] rounded-full bg-[radial-gradient(closest-side,rgba(246,215,150,0.55),rgba(246,215,150,0))]"
       />
       {children}
-      <figcaption className="mt-5 text-[0.8125rem] text-[#85878a]">{label}</figcaption>
+      <figcaption className="mt-5 text-[0.8125rem] text-[#66696d]">{label}</figcaption>
     </figure>
   );
 }

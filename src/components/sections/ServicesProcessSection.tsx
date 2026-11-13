@@ -242,7 +242,7 @@ export default function ServicesProcessSection() {
       </div>
 
       <div className="relative z-10 mx-auto hidden w-full md:flex md:max-w-[900px] md:flex-col md:pt-28 md:pb-8 lg:hidden">
-        <h2 className="process-title w-full text-center font-heading text-[clamp(2.25rem,5.2vw,3.4rem)] font-normal leading-[1.1] tracking-[0] text-[#EBC982]">
+        <h2 className="process-title w-full text-center font-heading text-[clamp(1.9rem,4.16vw,2.72rem)] font-normal leading-[1.1] tracking-[0] text-[#EBC982]">
           From First Contact{" "}
           <span className="md:inline">to Signed Retainer</span>
         </h2>

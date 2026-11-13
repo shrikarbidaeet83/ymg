@@ -48,18 +48,18 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 
   /* YMG Brand Colors */
-  --color-gold: #C9A96E;
-  --color-gold-light: #E2C898;
-  --color-gold-dark: #A8813E;
-  --color-dark: #1A1A18;
+  --color-gold: #c9a96e;
+  --color-gold-light: #e2c898;
+  --color-gold-dark: #a8813e;
+  --color-dark: #1a1a18;
   --color-dark-card: #242420;
-  --color-cream: #FFF5E0;
-  --color-cream-dark: #EDE7D9;
-  --color-purple: #7B5EA7;
-  --color-purple-light: #9B7EC7;
-  --color-body-dark: #2D2D2D;
-  --color-body-light: #FFF5E0;
-  --color-muted-ymg: #8A8478;
+  --color-cream: #fff5e0;
+  --color-cream-dark: #ede7d9;
+  --color-purple: #7b5ea7;
+  --color-purple-light: #9b7ec7;
+  --color-body-dark: #2d2d2d;
+  --color-body-light: #fff5e0;
+  --color-muted-ymg: #8a8478;
 
   /* Font families */
   --font-display: var(--font-display);
@@ -213,8 +213,8 @@
 
   body {
     @apply antialiased;
-    background-color: #FFF5E0;
-    color: #2D2D2D;
+    background-color: #fff5e0;
+    color: #2d2d2d;
     font-family: var(--font-sans), sans-serif;
   }
 
@@ -241,10 +241,39 @@
   }
 }
 
+/* Everything clickable shows the hand cursor (Tailwind's reset gives buttons the arrow). */
+:is(button, [role="button"], [role="tab"], summary, select, label[for]):not(
+  :disabled,
+  [aria-disabled="true"]
+) {
+  cursor: pointer;
+}
+:is(button, [role="button"], [role="tab"]):is(
+  :disabled,
+  [aria-disabled="true"]
+) {
+  cursor: not-allowed;
+}
+
+/* Practice-area panels (wide screens) open on hover, so they keep the plain arrow and their text is not selectable;
+   only the real links inside show the hand. */
+.ymg-practice-panels button:not(:disabled) {
+  cursor: default;
+}
+.ymg-practice-panels :is(button, button *, [id^="area-"], [id^="area-"] *) {
+  user-select: none;
+  cursor: default;
+}
+.ymg-practice-panels [id^="area-"] a,
+.ymg-practice-panels [id^="area-"] a * {
+  cursor: pointer;
+}
+
 /* Restored homepage visual layout */
+/* clip, not hidden: hidden turns html/body into scroll containers, which breaks position: sticky. */
 html,
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .ymg-navbar {
@@ -298,8 +327,11 @@ body {
   padding: 4px !important;
   border: 0 !important;
   border-radius: 999px !important;
-  background:
-    linear-gradient(135deg, rgba(255, 250, 235, 0.68), rgba(239, 213, 163, 0.42)) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 250, 235, 0.68),
+    rgba(239, 213, 163, 0.42)
+  ) !important;
   box-shadow:
     0 8px 20px rgba(71, 56, 30, 0.14),
     inset 0 -1px 0 rgba(177, 133, 58, 0.1);
@@ -324,8 +356,11 @@ body {
   transform: translate(-50%, -50%);
   border: 0;
   border-radius: 0;
-  background:
-    linear-gradient(135deg, rgba(255, 249, 231, 0.94), rgba(248, 235, 204, 0.84));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 249, 231, 0.94),
+    rgba(248, 235, 204, 0.84)
+  );
   box-shadow: 0 8px 24px rgba(71, 56, 30, 0.06);
   backdrop-filter: blur(18px) saturate(1.15);
   -webkit-backdrop-filter: blur(18px) saturate(1.15);
@@ -373,8 +408,11 @@ body {
   height: 44px;
   border: 0;
   border-radius: 999px;
-  background:
-    linear-gradient(135deg, rgba(252, 241, 212, 0.94), rgba(226, 191, 124, 0.9));
+  background: linear-gradient(
+    135deg,
+    rgba(252, 241, 212, 0.94),
+    rgba(226, 191, 124, 0.9)
+  );
   box-shadow:
     0 12px 30px rgba(47, 38, 24, 0.24),
     inset 0 -1px 0 rgba(145, 102, 35, 0.14);
@@ -384,8 +422,11 @@ body {
 
 .ymg-navbar-over-dark .ymg-nav-morph-surface {
   border: 0 !important;
-  background:
-    linear-gradient(135deg, rgba(28, 30, 31, 0.88), rgba(66, 64, 58, 0.8)) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(28, 30, 31, 0.88),
+    rgba(66, 64, 58, 0.8)
+  ) !important;
   box-shadow:
     0 10px 26px rgba(0, 0, 0, 0.34),
     inset 0 -1px 0 rgba(0, 0, 0, 0.22);
@@ -405,9 +446,9 @@ body {
 .ymg-nav-link {
   height: 34px !important;
   justify-content: center !important;
-  padding-inline: 14px !important;
+  padding-inline: 12px !important;
   border-radius: 999px !important;
-  font-size: 0.72rem !important;
+  font-size: 0.8rem !important;
   font-weight: 600 !important;
   line-height: 1 !important;
   color: #4c4c4c !important;
@@ -430,8 +471,11 @@ body {
   overflow: hidden;
   border-radius: 16px;
   border: 0;
-  background:
-    linear-gradient(135deg, rgba(248, 213, 140, 0.9), rgba(216, 169, 82, 0.72)) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(248, 213, 140, 0.9),
+    rgba(216, 169, 82, 0.72)
+  ) !important;
   box-shadow:
     0 7px 16px rgba(95, 72, 30, 0.24),
     inset 0 -1px 0 rgba(137, 91, 24, 0.2) !important;
@@ -452,8 +496,11 @@ body {
   position: relative;
   overflow: hidden;
   border: 0 !important;
-  background:
-    linear-gradient(135deg, rgba(248, 213, 140, 0.9), rgba(216, 169, 82, 0.72)) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(248, 213, 140, 0.9),
+    rgba(216, 169, 82, 0.72)
+  ) !important;
   box-shadow:
     0 7px 16px rgba(95, 72, 30, 0.24),
     inset 0 -1px 0 rgba(137, 91, 24, 0.2) !important;
@@ -471,8 +518,11 @@ body {
 }
 
 .ymg-nav-action-button:hover {
-  background:
-    linear-gradient(135deg, rgba(252, 224, 160, 0.94), rgba(226, 181, 96, 0.82)) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(252, 224, 160, 0.94),
+    rgba(226, 181, 96, 0.82)
+  ) !important;
   box-shadow:
     0 9px 18px rgba(95, 72, 30, 0.28),
     inset 0 -1px 0 rgba(137, 91, 24, 0.18) !important;
@@ -521,12 +571,12 @@ body {
 }
 
 .ymg-hero-title span {
-  color: #D8B26B !important;
+  color: #d8b26b !important;
   font-weight: 700 !important;
 }
 
 [class~="text-[#EBC982]"] {
-  color: #D8B26B !important;
+  color: #d8b26b !important;
 }
 
 .ymg-hero-text {
@@ -629,12 +679,13 @@ body {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background:
-    radial-gradient(circle at 50% 50%,
-      rgba(70, 51, 15, 0.82) 0%,
-      rgba(70, 51, 15, 0.58) 22%,
-      rgba(70, 51, 15, 0.22) 42%,
-      rgba(70, 51, 15, 0) 68%);
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(70, 51, 15, 0.82) 0%,
+    rgba(70, 51, 15, 0.58) 22%,
+    rgba(70, 51, 15, 0.22) 42%,
+    rgba(70, 51, 15, 0) 68%
+  );
 }
 
 .ymg-about-inner {
@@ -1162,19 +1213,40 @@ body {
   animation: ymg-view-reveal-up 680ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.ymg-campaign-feature-reveal:nth-child(1) { animation-delay: 40ms; }
-.ymg-campaign-feature-reveal:nth-child(2) { animation-delay: 100ms; }
-.ymg-campaign-feature-reveal:nth-child(3) { animation-delay: 160ms; }
-.ymg-campaign-feature-reveal:nth-child(4) { animation-delay: 220ms; }
-.ymg-campaign-feature-reveal:nth-child(5) { animation-delay: 280ms; }
-.ymg-campaign-feature-reveal:nth-child(6) { animation-delay: 340ms; }
-.ymg-campaign-feature-reveal:nth-child(7) { animation-delay: 400ms; }
-.ymg-campaign-feature-reveal:nth-child(8) { animation-delay: 460ms; }
-.ymg-campaign-feature-reveal:nth-child(9) { animation-delay: 520ms; }
-.ymg-campaign-feature-reveal:nth-child(10) { animation-delay: 580ms; }
+.ymg-campaign-feature-reveal:nth-child(1) {
+  animation-delay: 40ms;
+}
+.ymg-campaign-feature-reveal:nth-child(2) {
+  animation-delay: 100ms;
+}
+.ymg-campaign-feature-reveal:nth-child(3) {
+  animation-delay: 160ms;
+}
+.ymg-campaign-feature-reveal:nth-child(4) {
+  animation-delay: 220ms;
+}
+.ymg-campaign-feature-reveal:nth-child(5) {
+  animation-delay: 280ms;
+}
+.ymg-campaign-feature-reveal:nth-child(6) {
+  animation-delay: 340ms;
+}
+.ymg-campaign-feature-reveal:nth-child(7) {
+  animation-delay: 400ms;
+}
+.ymg-campaign-feature-reveal:nth-child(8) {
+  animation-delay: 460ms;
+}
+.ymg-campaign-feature-reveal:nth-child(9) {
+  animation-delay: 520ms;
+}
+.ymg-campaign-feature-reveal:nth-child(10) {
+  animation-delay: 580ms;
+}
 
 @keyframes ymg-about-float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate3d(0, 0, 0);
   }
 
@@ -1190,13 +1262,15 @@ body {
     filter: blur(7px);
   }
 
-  10%, 62% {
+  10%,
+  62% {
     opacity: 1;
     transform: translateY(0) scale(1);
     filter: blur(0);
   }
 
-  76%, 100% {
+  76%,
+  100% {
     opacity: 0;
     transform: translateY(86px) scale(0.72);
     filter: blur(8px);
@@ -1204,19 +1278,22 @@ body {
 }
 
 @keyframes ymg-vortex-lt {
-  0%, 12% {
+  0%,
+  12% {
     opacity: 0;
     transform: translate(-46px, -26px) scale(0.8) rotate(-12deg);
     filter: blur(5px);
   }
 
-  24%, 62% {
+  24%,
+  62% {
     opacity: 1;
     transform: translate(0, 0) scale(1) rotate(0deg);
     filter: blur(0);
   }
 
-  82%, 100% {
+  82%,
+  100% {
     opacity: 0;
     transform: translate(156px, 128px) scale(0.08) rotate(138deg);
     filter: blur(8px);
@@ -1224,19 +1301,22 @@ body {
 }
 
 @keyframes ymg-vortex-rt {
-  0%, 14% {
+  0%,
+  14% {
     opacity: 0;
     transform: translate(42px, -22px) scale(0.82) rotate(10deg);
     filter: blur(5px);
   }
 
-  26%, 62% {
+  26%,
+  62% {
     opacity: 1;
     transform: translate(0, 0) scale(1) rotate(0deg);
     filter: blur(0);
   }
 
-  82%, 100% {
+  82%,
+  100% {
     opacity: 0;
     transform: translate(-146px, 110px) scale(0.08) rotate(-148deg);
     filter: blur(8px);
@@ -1244,19 +1324,22 @@ body {
 }
 
 @keyframes ymg-vortex-lb {
-  0%, 16% {
+  0%,
+  16% {
     opacity: 0;
     transform: translate(-42px, 26px) scale(0.82) rotate(9deg);
     filter: blur(5px);
   }
 
-  28%, 62% {
+  28%,
+  62% {
     opacity: 1;
     transform: translate(0, 0) scale(1) rotate(0deg);
     filter: blur(0);
   }
 
-  82%, 100% {
+  82%,
+  100% {
     opacity: 0;
     transform: translate(142px, -118px) scale(0.08) rotate(-132deg);
     filter: blur(8px);
@@ -1264,19 +1347,22 @@ body {
 }
 
 @keyframes ymg-vortex-rb {
-  0%, 18% {
+  0%,
+  18% {
     opacity: 0;
     transform: translate(42px, 24px) scale(0.82) rotate(-8deg);
     filter: blur(5px);
   }
 
-  30%, 62% {
+  30%,
+  62% {
     opacity: 1;
     transform: translate(0, 0) scale(1) rotate(0deg);
     filter: blur(0);
   }
 
-  82%, 100% {
+  82%,
+  100% {
     opacity: 0;
     transform: translate(-118px, -106px) scale(0.08) rotate(128deg);
     filter: blur(8px);
@@ -1284,19 +1370,22 @@ body {
 }
 
 @keyframes ymg-vortex-center {
-  0%, 10% {
+  0%,
+  10% {
     opacity: 0;
     transform: translate(-50%, -50%) translateY(28px) scale(0.88);
     filter: blur(5px);
   }
 
-  22%, 62% {
+  22%,
+  62% {
     opacity: 1;
     transform: translate(-50%, -50%) translateY(0) scale(1);
     filter: blur(0);
   }
 
-  82%, 100% {
+  82%,
+  100% {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.08) rotate(160deg);
     filter: blur(10px);
@@ -1314,7 +1403,8 @@ body {
 }
 
 @keyframes ymg-about-bar {
-  0%, 100% {
+  0%,
+  100% {
     transform: scaleY(0.72);
     opacity: 1;
   }
@@ -1326,7 +1416,8 @@ body {
 }
 
 @keyframes ymg-about-progress {
-  0%, 100% {
+  0%,
+  100% {
     transform: scaleX(0.18);
   }
 
@@ -1336,7 +1427,8 @@ body {
 }
 
 @keyframes ymg-about-pulse-soft {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
 
@@ -1515,17 +1607,40 @@ body {
   pointer-events: none;
   opacity: 0.7;
   background:
-    radial-gradient(circle at 5% 25%, rgba(246, 214, 145, 0.95) 0 1px, transparent 2px),
-    radial-gradient(circle at 12% 75%, rgba(215, 163, 72, 0.8) 0 1px, transparent 2px),
-    radial-gradient(circle at 92% 20%, rgba(246, 214, 145, 0.9) 0 1px, transparent 2px),
-    radial-gradient(circle at 98% 70%, rgba(197, 141, 47, 0.72) 0 1px, transparent 2px);
+    radial-gradient(
+      circle at 5% 25%,
+      rgba(246, 214, 145, 0.95) 0 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 12% 75%,
+      rgba(215, 163, 72, 0.8) 0 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 92% 20%,
+      rgba(246, 214, 145, 0.9) 0 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 98% 70%,
+      rgba(197, 141, 47, 0.72) 0 1px,
+      transparent 2px
+    );
   filter: blur(0.25px);
   box-shadow: 0 0 12px rgba(216, 173, 92, 0.2);
 }
 
 @keyframes ymg-nav-glass-shimmer {
-  0%, 100% { opacity: 0.38; transform: translateX(-4%); }
-  50% { opacity: 0.8; transform: translateX(4%); }
+  0%,
+  100% {
+    opacity: 0.38;
+    transform: translateX(-4%);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateX(4%);
+  }
 }
 
 @media (max-width: 767px) {
@@ -1639,25 +1754,25 @@ body {
 html.dark {
   color-scheme: dark;
   --background: #191917;
-  --foreground: #8E8E8E;
+  --foreground: #8e8e8e;
   --card: #191917;
-  --card-foreground: #8E8E8E;
+  --card-foreground: #8e8e8e;
   --popover: #191917;
-  --popover-foreground: #8E8E8E;
+  --popover-foreground: #8e8e8e;
   --muted: #22221f;
-  --muted-foreground: #8E8E8E;
+  --muted-foreground: #8e8e8e;
   --border: rgba(216, 178, 107, 0.42);
   --input: rgba(216, 178, 107, 0.42);
-  --ring: #D8B26B;
+  --ring: #d8b26b;
 }
 
 html.dark body,
 html.dark main,
-html.dark main section,
+html.dark main section:not(.ymg-cinema section),
 html.dark footer {
   background-color: #191917 !important;
   background-image: none !important;
-  color: #8E8E8E !important;
+  color: #8e8e8e !important;
 }
 
 html.dark main article,
@@ -1706,7 +1821,7 @@ html.dark .ymg-practice-bar::after {
   position: absolute;
   inset: 0;
   z-index: 40;
-  border: 1px solid #D8B26B;
+  border: 1px solid #d8b26b;
   border-radius: inherit;
   pointer-events: none;
 }
@@ -1716,11 +1831,12 @@ html.dark .ymg-practice-marquee > div::after {
 }
 
 html.dark .ymg-practice-marquee img {
-  filter: brightness(0) saturate(100%) invert(77%) sepia(38%) saturate(681%) hue-rotate(359deg) brightness(91%) contrast(87%);
+  filter: brightness(0) saturate(100%) invert(77%) sepia(38%) saturate(681%)
+    hue-rotate(359deg) brightness(91%) contrast(87%);
 }
 
 html.dark .ymg-practice-marquee svg {
-  color: #D8B26B !important;
+  color: #d8b26b !important;
 }
 
 html.dark .ymg-practice-marquee > .ymg-practice-category {
@@ -1728,18 +1844,25 @@ html.dark .ymg-practice-marquee > .ymg-practice-category {
 }
 
 html.dark .ymg-practice-marquee p {
-  color: #D8B26B !important;
+  color: #d8b26b !important;
 }
 
 /* Gold only for standalone icons; icons inside colored tiles keep their own palette. */
-html.dark main :not([class*="bg-"]):not([style*="background"]) > svg:not([class*="bg-"]):not(.ymg-scene svg),
-html.dark footer :not([class*="bg-"]):not([style*="background"]) > svg:not([class*="bg-"]) {
-  color: #D8B26B !important;
-  stroke: #D8B26B !important;
+html.dark
+  main
+  :not([class*="bg-"]):not([style*="background"])
+  > svg:not([class*="bg-"]):not(.ymg-scene svg),
+html.dark
+  footer
+  :not([class*="bg-"]):not([style*="background"])
+  > svg:not([class*="bg-"]) {
+  color: #d8b26b !important;
+  stroke: #d8b26b !important;
 }
 
 html.dark main img[src*="contact_icons"] {
-  filter: brightness(0) saturate(100%) invert(77%) sepia(38%) saturate(681%) hue-rotate(359deg) brightness(91%) contrast(87%) !important;
+  filter: brightness(0) saturate(100%) invert(77%) sepia(38%) saturate(681%)
+    hue-rotate(359deg) brightness(91%) contrast(87%) !important;
 }
 
 html.dark .ymg-hero-orbit .ymg-orbit-card {
@@ -1750,7 +1873,7 @@ html.dark .ymg-hero-orbit .ymg-orbit-card {
 
 html.dark .ymg-hero-orbit .ymg-orbit-card-title,
 html.dark .ymg-hero-orbit .ymg-orbit-gold-text {
-  color: #D8B26B !important;
+  color: #d8b26b !important;
 }
 
 html.dark .ymg-hero-orbit .ymg-orbit-axis {
@@ -1763,8 +1886,8 @@ html.dark .ymg-hero-orbit .ymg-orbit-outreach {
 }
 
 html.dark .ymg-hero-orbit .ymg-orbit-stat svg {
-  color: #D8B26B !important;
-  stroke: #D8B26B !important;
+  color: #d8b26b !important;
+  stroke: #d8b26b !important;
 }
 
 html.dark .ymg-hero-orbit .ymg-orbit-donut-hole {
@@ -1776,7 +1899,7 @@ html.dark .ymg-hero-orbit .ymg-orbit-copy-line {
 }
 
 html.dark .ymg-hero-orbit .ymg-orbit-badge {
-  background: linear-gradient(180deg, #E1BC73 0%, #D8B26B 100%) !important;
+  background: linear-gradient(180deg, #e1bc73 0%, #d8b26b 100%) !important;
   box-shadow:
     0 12px 26px rgba(0, 0, 0, 0.42),
     inset 0 1px 1px rgba(255, 255, 255, 0.34),
@@ -1784,7 +1907,8 @@ html.dark .ymg-hero-orbit .ymg-orbit-badge {
 }
 
 html.dark .ymg-hero-orbit .ymg-orbit-badge > svg {
-  filter: brightness(0) saturate(100%) invert(10%) sepia(5%) saturate(358%) hue-rotate(22deg) brightness(96%) contrast(91%);
+  filter: brightness(0) saturate(100%) invert(10%) sepia(5%) saturate(358%)
+    hue-rotate(22deg) brightness(96%) contrast(91%);
 }
 
 html.dark .ymg-hero-orbit .ymg-orbit-center-surface {
@@ -1798,11 +1922,11 @@ html.dark .ymg-hero-orbit .ymg-orbit-center-surface > span {
 }
 
 html.dark .ymg-hero-orbit .ymg-orbit-target-glyph g {
-  stroke: #D8B26B !important;
+  stroke: #d8b26b !important;
 }
 
 html.dark .ymg-hero-orbit .ymg-orbit-target-glyph circle[fill="#fff"] {
-  fill: #D8B26B !important;
+  fill: #d8b26b !important;
 }
 
 html.dark .ymg-hero-orbit .ymg-orbit-target-glyph path {
@@ -1818,43 +1942,46 @@ html.dark .ymg-hero-orbit .ymg-orbit-gold-badge > svg {
   stroke: #232321 !important;
 }
 
-html.dark main h1,
-html.dark main h2,
-html.dark main h3,
-html.dark main h4,
-html.dark main h5,
-html.dark main h6,
+html.dark main h1:not(.ymg-own-colors, .ymg-own-colors *),
+html.dark main h2:not(.ymg-own-colors, .ymg-own-colors *),
+html.dark main h3:not(.ymg-own-colors, .ymg-own-colors *),
+html.dark main h4:not(.ymg-own-colors, .ymg-own-colors *),
+html.dark main h5:not(.ymg-own-colors, .ymg-own-colors *),
+html.dark main h6:not(.ymg-own-colors, .ymg-own-colors *),
 html.dark footer h1,
 html.dark footer h2,
 html.dark footer h3,
 html.dark footer h4,
 html.dark footer h5,
 html.dark footer h6,
-html.dark main .font-heading,
+html.dark main .font-heading:not(.ymg-own-colors, .ymg-own-colors *),
 html.dark footer .font-heading {
-  color: #D8B26B !important;
+  color: #d8b26b !important;
 }
 
-html.dark main :is(h1, h2, h3, h4, h5, h6) *,
+html.dark
+  main
+  :is(h1, h2, h3, h4, h5, h6)
+  *:not(.ymg-own-colors, .ymg-own-colors *),
 html.dark footer :is(h1, h2, h3, h4, h5, h6) *,
 html.dark main .ymg-standard-hero-eyebrow,
 html.dark main p:has(+ h1),
 html.dark main p:has(+ h2),
 html.dark main p:has(+ h3) {
-  color: #D8B26B !important;
+  color: #d8b26b !important;
 }
 
-html.dark main p,
-html.dark main li,
-html.dark main blockquote,
+html.dark main p:not(.ymg-own-colors, .ymg-own-colors *),
+html.dark main li:not(.ymg-own-colors, .ymg-own-colors *),
+html.dark main blockquote:not(.ymg-own-colors, .ymg-own-colors *),
 html.dark footer p,
 html.dark footer li,
 html.dark footer a {
-  color: #8E8E8E !important;
+  color: #8e8e8e !important;
 }
 
 html.dark footer a:hover {
-  color: #D8B26B !important;
+  color: #d8b26b !important;
 }
 
 html.dark main input,
@@ -1862,7 +1989,7 @@ html.dark main textarea,
 html.dark main select {
   border-color: rgba(216, 178, 107, 0.55) !important;
   background-color: #191917 !important;
-  color: #8E8E8E !important;
+  color: #8e8e8e !important;
 }
 
 html.dark main input::placeholder,
@@ -1877,8 +2004,11 @@ html.dark .ymg-navbar-over-dark .ymg-nav-morph-surface {
   height: 44px;
   border: 1px solid rgba(216, 178, 107, 0.13) !important;
   border-radius: 999px;
-  background:
-    linear-gradient(135deg, rgba(57, 57, 53, 0.82), rgba(30, 30, 28, 0.94)) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(57, 57, 53, 0.82),
+    rgba(30, 30, 28, 0.94)
+  ) !important;
   box-shadow:
     0 10px 26px rgba(0, 0, 0, 0.42),
     inset 0 1px 0 rgba(255, 255, 255, 0.06),
@@ -1888,8 +2018,10 @@ html.dark .ymg-navbar-over-dark .ymg-nav-morph-surface {
 }
 
 html.dark .ymg-nav-indicator {
-  background: linear-gradient(135deg, #E0BC78, #D8B26B) !important;
-  box-shadow: 0 7px 18px rgba(216, 178, 107, 0.28), inset 0 -1px 0 rgba(95, 69, 24, 0.28) !important;
+  background: linear-gradient(135deg, #e0bc78, #d8b26b) !important;
+  box-shadow:
+    0 7px 18px rgba(216, 178, 107, 0.28),
+    inset 0 -1px 0 rgba(95, 69, 24, 0.28) !important;
 }
 
 html.dark .ymg-nav-particle-trail {
@@ -1898,12 +2030,12 @@ html.dark .ymg-nav-particle-trail {
 }
 
 html.dark .ymg-nav-link:not(.ymg-nav-active) {
-  color: #B5B2AA !important;
+  color: #b5b2aa !important;
 }
 
 html.dark .ymg-nav-link:not(.ymg-nav-active):hover {
   background: rgba(216, 178, 107, 0.1) !important;
-  color: #D8B26B !important;
+  color: #d8b26b !important;
 }
 
 html.dark .ymg-nav-active {
@@ -1912,8 +2044,12 @@ html.dark .ymg-nav-active {
 
 html.dark .ymg-nav-action-button {
   border: 1px solid rgba(216, 178, 107, 0.18) !important;
-  background: linear-gradient(135deg, rgba(57, 57, 53, 0.86), rgba(30, 30, 28, 0.96)) !important;
-  color: #D8B26B !important;
+  background: linear-gradient(
+    135deg,
+    rgba(57, 57, 53, 0.86),
+    rgba(30, 30, 28, 0.96)
+  ) !important;
+  color: #d8b26b !important;
   box-shadow:
     0 8px 18px rgba(0, 0, 0, 0.34),
     inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
@@ -1923,13 +2059,19 @@ html.dark .ymg-nav-action-button {
 
 html.dark .ymg-nav-action-button:hover {
   border-color: rgba(216, 178, 107, 0.5) !important;
-  background: linear-gradient(135deg, rgba(216, 178, 107, 0.22), rgba(53, 47, 35, 0.94)) !important;
-  color: #E7C784 !important;
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.4), 0 0 16px rgba(216, 178, 107, 0.16) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(216, 178, 107, 0.22),
+    rgba(53, 47, 35, 0.94)
+  ) !important;
+  color: #e7c784 !important;
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.4),
+    0 0 16px rgba(216, 178, 107, 0.16) !important;
 }
 
 html.dark .ymg-navbar button[aria-label="Open menu"] {
-  color: #D8B26B !important;
+  color: #d8b26b !important;
 }
 
 html.dark .ymg-nav-dropdown {
@@ -1943,11 +2085,11 @@ html.dark .ymg-nav-dropdown a:hover {
 }
 
 html.dark .ymg-nav-dropdown a > span:first-child {
-  color: #D8B26B !important;
+  color: #d8b26b !important;
 }
 
 html.dark .ymg-nav-dropdown a > span:last-child {
-  color: #8E8E8E !important;
+  color: #8e8e8e !important;
 }
 
 html.dark .ymg-mobile-drawer {
@@ -1957,8 +2099,8 @@ html.dark .ymg-mobile-drawer {
 }
 
 html.dark .node-badge {
-  border-color: #D8B26B !important;
-  color: #D8B26B !important;
+  border-color: #d8b26b !important;
+  color: #d8b26b !important;
 }
 
 html.dark .case-results-mask {
@@ -1966,22 +2108,22 @@ html.dark .case-results-mask {
 }
 
 html.dark .result-panel {
-  background: #3F351F !important;
+  background: #3f351f !important;
   box-shadow: none !important;
 }
 
 html.dark .result-panel p,
 html.dark .result-panel .result-heading,
 html.dark .counter {
-  color: #D8B26B !important;
+  color: #d8b26b !important;
 }
 
 html.dark .bottom-bar {
-  background: #3A311F !important;
+  background: #3a311f !important;
 }
 
 html.dark .case-acquisition-arc {
-  stroke: #D8B26B !important;
+  stroke: #d8b26b !important;
   opacity: 0.82 !important;
 }
 
@@ -1999,7 +2141,7 @@ html.dark .case-acquisition-radial {
   aspect-ratio: 1;
   transform: translate(-50%, -50%);
   border-radius: 999px;
-  background: radial-gradient(circle, #46330F 0%, #191917 68%);
+  background: radial-gradient(circle, #46330f 0%, #191917 68%);
   pointer-events: none;
   animation: none !important;
   transition: none !important;
@@ -2007,11 +2149,15 @@ html.dark .case-acquisition-radial {
 
 html.dark main .active-campaigns-section {
   background-color: #191917 !important;
-  background-image: radial-gradient(circle at 50% 50%, #46330F 0%, #191917 46%) !important;
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    #46330f 0%,
+    #191917 46%
+  ) !important;
 }
 
 html.dark .active-campaign-card {
-  border-color: #D8B26B !important;
+  border-color: #d8b26b !important;
   background: #191917 !important;
   box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28) !important;
 }
@@ -2023,11 +2169,12 @@ html.dark .active-campaign-chip {
 }
 
 html.dark .active-campaign-chip svg {
-  color: #D8B26B !important;
+  color: #d8b26b !important;
 }
 
 html.dark .active-campaign-chip img {
-  filter: brightness(0) saturate(100%) invert(77%) sepia(38%) saturate(681%) hue-rotate(359deg) brightness(91%) contrast(87%);
+  filter: brightness(0) saturate(100%) invert(77%) sepia(38%) saturate(681%)
+    hue-rotate(359deg) brightness(91%) contrast(87%);
 }
 
 .active-campaign-dark-flower {
@@ -2053,7 +2200,11 @@ html.dark main .ymg-home-page > section {
   position: relative;
   z-index: 1;
   background-color: #191917 !important;
-  background-image: radial-gradient(circle at 50% 50%, #46330F 0%, #191917 46%) !important;
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    #46330f 0%,
+    #191917 46%
+  ) !important;
   background-attachment: scroll !important;
   background-repeat: no-repeat !important;
 }
@@ -2084,19 +2235,32 @@ html.dark main .ymg-home-page > .active-campaigns-section::before {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse 46% 28% at 50% 52%, rgba(70, 51, 15, 0.92) 0%, rgba(70, 51, 15, 0.48) 52%, transparent 100%);
+  background: radial-gradient(
+    ellipse 46% 28% at 50% 52%,
+    rgba(70, 51, 15, 0.92) 0%,
+    rgba(70, 51, 15, 0.48) 52%,
+    transparent 100%
+  );
 }
 
 html.dark main .ymg-home-page > .ymg-growth-partner-section {
   background-color: #191917 !important;
-  background-image: radial-gradient(ellipse at 50% 50%, #46330F 0%, #191917 22%) !important;
+  background-image: radial-gradient(
+    ellipse at 50% 50%,
+    #46330f 0%,
+    #191917 22%
+  ) !important;
   background-position: center !important;
   background-size: 150% 190% !important;
 }
 
 html.dark main .ymg-home-page > .ymg-testimonials-section {
   background-color: #191917 !important;
-  background-image: radial-gradient(circle at 50% 50%, #46330F 0%, #191917 40%) !important;
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    #46330f 0%,
+    #191917 40%
+  ) !important;
 }
 
 html.dark main .ymg-home-page > .ymg-practice-areas-strip-section {
@@ -2134,20 +2298,33 @@ html.dark .ymg-radial-none {
 
 html.dark .ymg-radial-classic {
   background-color: #191917 !important;
-  background-image: radial-gradient(circle at 50% 50%, #46330F 0%, #191917 46%) !important;
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    #46330f 0%,
+    #191917 46%
+  ) !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
 }
 
 html.dark .ymg-radial-wide {
-  background-image: radial-gradient(ellipse 46% 28% at 50% 52%, rgba(70, 51, 15, 0.92) 0%, rgba(70, 51, 15, 0.48) 52%, transparent 100%) !important;
+  background-image: radial-gradient(
+    ellipse 46% 28% at 50% 52%,
+    rgba(70, 51, 15, 0.92) 0%,
+    rgba(70, 51, 15, 0.48) 52%,
+    transparent 100%
+  ) !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
 }
 
 html.dark .ymg-radial-deep {
   background-color: #191917 !important;
-  background-image: radial-gradient(ellipse at 50% 50%, #46330F 0%, #191917 22%) !important;
+  background-image: radial-gradient(
+    ellipse at 50% 50%,
+    #46330f 0%,
+    #191917 22%
+  ) !important;
   background-position: center !important;
   background-size: 150% 190% !important;
   background-repeat: no-repeat !important;
@@ -2155,7 +2332,7 @@ html.dark .ymg-radial-deep {
 
 html.dark .ymg-radial-focus {
   background-color: #191917 !important;
-  background-image: radial-gradient(circle, #46330F 0%, #191917 68%) !important;
+  background-image: radial-gradient(circle, #46330f 0%, #191917 68%) !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
 }
@@ -2190,7 +2367,7 @@ html.dark .ymg-nav-dropdown > div:first-child {
 }
 
 html.dark .ymg-view-all {
-  color: #D8B26B !important;
+  color: #d8b26b !important;
 }
 
 html.dark .ymg-view-all:hover {
@@ -2200,7 +2377,11 @@ html.dark .ymg-view-all:hover {
 /* Header CTA: same gold pill as the LinkedIn and theme buttons beside it. */
 .ymg-nav-cta {
   border: 0 !important;
-  background: linear-gradient(135deg, rgba(248, 213, 140, 0.9), rgba(216, 169, 82, 0.72)) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(248, 213, 140, 0.9),
+    rgba(216, 169, 82, 0.72)
+  ) !important;
   color: #172022 !important;
   box-shadow:
     0 7px 16px rgba(95, 72, 30, 0.24),
@@ -2208,7 +2389,11 @@ html.dark .ymg-view-all:hover {
 }
 
 .ymg-nav-cta:hover {
-  background: linear-gradient(135deg, rgba(252, 224, 160, 0.94), rgba(226, 181, 96, 0.82)) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(252, 224, 160, 0.94),
+    rgba(226, 181, 96, 0.82)
+  ) !important;
   box-shadow:
     0 9px 18px rgba(95, 72, 30, 0.28),
     inset 0 -1px 0 rgba(137, 91, 24, 0.18) !important;
@@ -2216,8 +2401,12 @@ html.dark .ymg-view-all:hover {
 
 html.dark .ymg-nav-cta {
   border: 1px solid rgba(216, 178, 107, 0.18) !important;
-  background: linear-gradient(135deg, rgba(57, 57, 53, 0.86), rgba(30, 30, 28, 0.96)) !important;
-  color: #D8B26B !important;
+  background: linear-gradient(
+    135deg,
+    rgba(57, 57, 53, 0.86),
+    rgba(30, 30, 28, 0.96)
+  ) !important;
+  color: #d8b26b !important;
   box-shadow:
     0 8px 18px rgba(0, 0, 0, 0.34),
     inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
@@ -2225,9 +2414,15 @@ html.dark .ymg-nav-cta {
 
 html.dark .ymg-nav-cta:hover {
   border-color: rgba(216, 178, 107, 0.5) !important;
-  background: linear-gradient(135deg, rgba(216, 178, 107, 0.22), rgba(53, 47, 35, 0.94)) !important;
-  color: #E7C784 !important;
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.4), 0 0 16px rgba(216, 178, 107, 0.16) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(216, 178, 107, 0.22),
+    rgba(53, 47, 35, 0.94)
+  ) !important;
+  color: #e7c784 !important;
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.4),
+    0 0 16px rgba(216, 178, 107, 0.16) !important;
 }
 
 /* Home redesign: dark-mode values for surfaces the global dark rules don't cover. */
@@ -2237,11 +2432,11 @@ html.dark .ymg-mobile-action-bar {
 }
 
 html.dark .ymg-mobile-action-bar a:first-child {
-  color: #D8B26B !important;
+  color: #d8b26b !important;
 }
 
 html.dark .ymg-mobile-action-bar a:last-child {
-  background-color: #D8B26B !important;
+  background-color: #d8b26b !important;
   color: #1f2023 !important;
 }
 
@@ -2265,7 +2460,7 @@ html.dark main .ymg-problem-section p {
 }
 
 html.dark main .ymg-stage-current {
-  background-color: #D8B26B !important;
+  background-color: #d8b26b !important;
 }
 
 html.dark main .ymg-stage-current span {
@@ -2280,7 +2475,7 @@ html.dark main .ymg-compliance-chip {
 
 html.dark main .ymg-home-secondary,
 html.dark main .ymg-text-link {
-  color: #D8B26B !important;
+  color: #d8b26b !important;
 }
 
 html.dark main .ymg-stage:not(.ymg-stage-current) {
@@ -2302,12 +2497,33 @@ html.dark main .ymg-scene > span:nth-of-type(2) {
 }
 
 /* cards, panels, phone and browser screens */
-html.dark main .ymg-scene :is(.bg-white, [class~="bg-white/70"], [class~="bg-white/80"], .bg-\[\#fffaf0\], .bg-\[\#fbf7ef\], .bg-\[\#faf6ee\]) {
+html.dark
+  main
+  .ymg-scene
+  :is(
+    .bg-white,
+    [class~="bg-white/70"],
+    [class~="bg-white/80"],
+    .bg-\[\#fffaf0\],
+    .bg-\[\#fbf7ef\],
+    .bg-\[\#faf6ee\]
+  ) {
   background-color: #282825 !important;
   box-shadow: none !important;
 }
 
-html.dark main .ymg-scene :is(.border-\[\#ece2cc\], .border-\[\#e6ddca\], .border-\[\#efe7d6\], .border-\[\#ece3cf\], .border-\[\#e3d8c0\], .border-\[\#e3d2ad\], .border-\[\#e3d8c0\]) {
+html.dark
+  main
+  .ymg-scene
+  :is(
+    .border-\[\#ece2cc\],
+    .border-\[\#e6ddca\],
+    .border-\[\#efe7d6\],
+    .border-\[\#ece3cf\],
+    .border-\[\#e3d8c0\],
+    .border-\[\#e3d2ad\],
+    .border-\[\#e3d8c0\]
+  ) {
   border-color: rgba(216, 178, 107, 0.22) !important;
 }
 
@@ -2320,18 +2536,39 @@ html.dark main .ymg-scene :is(.text-\[\#2f3236\], .text-\[\#4b4e52\]) {
   color: #efe7d6 !important;
 }
 
-html.dark main .ymg-scene :is(.text-\[\#6b6e72\], .text-\[\#8a8c8f\], .text-\[\#85878a\], .text-\[\#9a9c9f\], .text-\[\#5b5e62\]) {
+html.dark
+  main
+  .ymg-scene
+  :is(
+    .text-\[\#6b6e72\],
+    .text-\[\#8a8c8f\],
+    .text-\[\#85878a\],
+    .text-\[\#9a9c9f\],
+    .text-\[\#5b5e62\]
+  ) {
   color: #aaa59a !important;
 }
 
 /* placeholder bars, pills and dividers inside the illustrations */
-html.dark main .ymg-scene :is(.bg-\[\#efe7d6\], .bg-\[\#e7dfcf\], .bg-\[\#efe9dc\], .bg-\[\#e3dccd\], .bg-\[\#e3d8c0\], .bg-\[\#d9d2c3\], .bg-\[\#cfc5b0\], .bg-\[\#f3eee3\]) {
+html.dark
+  main
+  .ymg-scene
+  :is(
+    .bg-\[\#efe7d6\],
+    .bg-\[\#e7dfcf\],
+    .bg-\[\#efe9dc\],
+    .bg-\[\#e3dccd\],
+    .bg-\[\#e3d8c0\],
+    .bg-\[\#d9d2c3\],
+    .bg-\[\#cfc5b0\],
+    .bg-\[\#f3eee3\]
+  ) {
   background-color: #3a3833 !important;
 }
 
 /* the active tab of the practice-area switch */
 html.dark main .ymg-scene .bg-\[\#2f3236\] {
-  background-color: #D8B26B !important;
+  background-color: #d8b26b !important;
   color: #1f2023 !important;
 }
 
@@ -2341,7 +2578,7 @@ html.dark main .ymg-scene .ymg-scene-outcome {
 }
 
 html.dark main .ymg-scene figcaption button {
-  color: #D8B26B !important;
+  color: #d8b26b !important;
 }
 
 /* Scene cards keep a quiet border; state borders come from data-state. */
@@ -2368,7 +2605,7 @@ html.dark main .ymg-area-dark {
 
 html.dark .ymg-breadcrumb-link {
   background-color: rgba(25, 25, 23, 0.7) !important;
-  color: #D8B26B !important;
+  color: #d8b26b !important;
 }
 
 html.dark .ymg-breadcrumb-current {
@@ -2432,11 +2669,17 @@ html.dark .ymg-breadcrumb-current {
   animation-play-state: paused;
 }
 @keyframes ymg-logo-marquee {
-  from { transform: translate3d(0, 0, 0); }
-  to { transform: translate3d(-50%, 0, 0); }
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 @media (prefers-reduced-motion: reduce) {
-  .ymg-logo-track { animation: none; }
+  .ymg-logo-track {
+    animation: none;
+  }
 }
 
 /* Home section backgrounds: only the three YMG colours (cream #FFF5E0, charcoal #3d4145, gold #D8B26B),
@@ -2445,24 +2688,52 @@ html.dark .ymg-breadcrumb-current {
 /* Each glow is centred well inside its section and fades out before either edge, so the cream
    sections meet without a visible seam. */
 .ymg-home-page .ymg-practice-panels {
-  background-image: radial-gradient(38% 38% at 10% 50%, rgba(235, 201, 130, 0.3), transparent 70%);
+  background-image: radial-gradient(
+    38% 38% at 10% 50%,
+    rgba(235, 201, 130, 0.3),
+    transparent 70%
+  );
 }
 .ymg-home-page .ymg-reviews {
-  background-image: radial-gradient(40% 38% at 88% 55%, rgba(235, 201, 130, 0.3), transparent 70%);
+  background-image: radial-gradient(
+    40% 38% at 88% 55%,
+    rgba(235, 201, 130, 0.3),
+    transparent 70%
+  );
 }
 .ymg-home-page .ymg-why-ymg {
-  background-image: radial-gradient(45% 30% at 30% 45%, rgba(235, 201, 130, 0.26), transparent 70%);
+  background-image: radial-gradient(
+    45% 30% at 30% 45%,
+    rgba(235, 201, 130, 0.26),
+    transparent 70%
+  );
 }
 .ymg-home-page .ymg-engagement {
-  background-image: radial-gradient(38% 40% at 85% 50%, rgba(235, 201, 130, 0.28), transparent 70%);
+  background-image: radial-gradient(
+    38% 40% at 85% 50%,
+    rgba(235, 201, 130, 0.28),
+    transparent 70%
+  );
 }
 .ymg-home-page .ymg-home-faq {
-  background-image: radial-gradient(35% 40% at 15% 50%, rgba(235, 201, 130, 0.26), transparent 70%);
+  background-image: radial-gradient(
+    35% 40% at 15% 50%,
+    rgba(235, 201, 130, 0.26),
+    transparent 70%
+  );
 }
 .ymg-home-page .ymg-contact-section {
   background-image:
-    radial-gradient(50% 70% at 20% 30%, rgba(255, 238, 196, 0.45), transparent 70%),
-    radial-gradient(40% 60% at 90% 90%, rgba(168, 123, 37, 0.25), transparent 70%);
+    radial-gradient(
+      50% 70% at 20% 30%,
+      rgba(255, 238, 196, 0.45),
+      transparent 70%
+    ),
+    radial-gradient(
+      40% 60% at 90% 90%,
+      rgba(168, 123, 37, 0.25),
+      transparent 70%
+    );
 }
 
 /* Phones: once the page scrolls, the logo bar sits on a cream glass bar so it stays readable over any section. */
@@ -2476,16 +2747,585 @@ html.dark .ymg-breadcrumb-current {
     max-width: calc(100% - 24px) !important;
     padding-inline: 18px !important;
     border-radius: 999px;
-    background: linear-gradient(135deg, rgba(255, 249, 231, 0.94), rgba(244, 226, 186, 0.9));
-    box-shadow: 0 10px 26px rgba(47, 38, 24, 0.18), inset 0 -1px 0 rgba(145, 102, 35, 0.12);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 249, 231, 0.94),
+      rgba(244, 226, 186, 0.9)
+    );
+    box-shadow:
+      0 10px 26px rgba(47, 38, 24, 0.18),
+      inset 0 -1px 0 rgba(145, 102, 35, 0.12);
     backdrop-filter: blur(14px) saturate(1.2);
     -webkit-backdrop-filter: blur(14px) saturate(1.2);
   }
   html.dark .ymg-navbar-mobile-bar .ymg-navbar-inner {
-    background: linear-gradient(135deg, rgba(57, 57, 53, 0.92), rgba(30, 30, 28, 0.95));
-    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(216, 178, 107, 0.14);
+    background: linear-gradient(
+      135deg,
+      rgba(57, 57, 53, 0.92),
+      rgba(30, 30, 28, 0.95)
+    );
+    box-shadow:
+      0 10px 26px rgba(0, 0, 0, 0.4),
+      inset 0 0 0 1px rgba(216, 178, 107, 0.14);
   }
   .ymg-navbar-mobile-bar .ymg-navbar-logo img {
     width: 96px !important;
   }
 }
+
+/* Home scroll motion (driven by components/home/ScrollMotion.tsx). Only opacity and transform move.
+   Content is hidden only after the script adds .ymg-motion, so the page still shows without JS. */
+html.ymg-motion [data-reveal] {
+  transition:
+    opacity 700ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 900ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+html.ymg-motion [data-reveal]:not([data-visible]) {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+}
+[data-parallax] {
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  /* Gentler, not gone: keep the fade, drop the movement. */
+  html.ymg-motion [data-reveal] {
+    transition: opacity 300ms ease-out;
+    transition-delay: 0ms;
+  }
+  html.ymg-motion [data-reveal]:not([data-visible]) {
+    transform: none;
+  }
+}
+
+/* Full-width charcoal bands on the home page (problem, compliance, final CTA). In dark mode they sit
+   a step lighter than the page so they still read as their own sections. */
+html.dark main .ymg-home-page > section.ymg-band {
+  background-color: #242422 !important;
+  background-image: none !important;
+  border-block: 1px solid rgba(216, 178, 107, 0.16);
+}
+
+/* Sand-toned home sections (practice areas, proof, FAQ) alternate with cream; in dark mode they sit a
+   half step lighter than the page so the alternation still reads. */
+html.dark main .ymg-home-page > section.ymg-tone-sand {
+  background-color: #1f1f1d !important;
+}
+
+/* ── Home page world: evergreen and brass on bone ───────────────────────────────────
+   Unlayered on purpose so it outranks each section's own background utility. The site's base rules set
+   type from --font-display / --font-sans (with !important), so the home page swaps those variables. */
+:is(.ymg-home2, .ymg-site) {
+  --font-display: var(--font-home-display);
+  --font-sans: var(--font-home-sans);
+  background-color: #ffffff;
+  color: #0B231D;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  /* Caslon Display ships one weight; never fake a bold from it. */
+  font-synthesis: none;
+}
+:is(.ymg-home2, .ymg-site) .ymg-num {
+  font-family: var(--font-display), serif;
+  font-weight: 700;
+}
+.ymg-home2 > section {
+  width: 100%;
+  background-color: #ffffff;
+  background-image: none;
+}
+.ymg-home2
+  > section:is(
+    .ymg-hx-hero,
+    .ymg-hx-film,
+    .ymg-hx-logos,
+    .ymg-hx-cost,
+    .ymg-hx-close
+  ) {
+  background-color: #0B231D;
+}
+/* Sand and bone alternate down the page; evergreen opens and closes it. */
+.ymg-home2 > section:is(.ymg-service-showcase, .ymg-engagement, .ymg-home-faq) {
+  background-color: #F0F4F1;
+}
+/* Shared section headings, sized to the Caslon display face. */
+:is(.ymg-home2, .ymg-site) .ymg-own-colors h2 {
+  font-size: clamp(2.4rem, 4.2vw, 3.8rem);
+  letter-spacing: -0.015em;
+  line-height: 1.04;
+}
+:is(.ymg-home2, .ymg-site)
+  :is(.bg-\[\#2f3236\], .bg-\[\#3d4145\], .bg-\[\#26272a\], .bg-\[\#2b2d31\]) {
+  background-color: #0B231D;
+}
+:is(.ymg-home2, .ymg-site) :is(.text-\[\#2f3236\], .text-\[\#2b2d31\]) {
+  color: #0B231D;
+}
+:is(.ymg-home2, .ymg-site) ::selection {
+  background: #0B231D;
+  color: #f5f1e8;
+}
+/* Hero film: the group of partners sits right of the headline on wide screens. */
+@media (min-width: 1024px) {
+  .ymg-hx-video {
+    transform: scale(1.3);
+    transform-origin: left center;
+  }
+}
+/* Brand film timeline: a thin track, brass up to the playhead, a round handle. */
+.ymg-film-range {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+}
+.ymg-film-range::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    #d6b263 var(--p, 0%),
+    rgba(245, 241, 232, 0.25) var(--p, 0%)
+  );
+}
+.ymg-film-range::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    #d6b263 var(--p, 0%),
+    rgba(245, 241, 232, 0.25) var(--p, 0%)
+  );
+}
+.ymg-film-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  margin-top: -5px;
+  border-radius: 50%;
+  background: #f5f1e8;
+  box-shadow: 0 0 0 4px rgba(214, 178, 99, 0.35);
+}
+.ymg-film-range::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: 0;
+  border-radius: 50%;
+  background: #f5f1e8;
+  box-shadow: 0 0 0 4px rgba(214, 178, 99, 0.35);
+}
+.ymg-film-range:focus-visible {
+  outline: 2px solid #d6b263;
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+/* Hero quote rotation: each bar fills over the quote's time; its end advances to the next quote. */
+.ymg-hx-progress {
+  transform-origin: left center;
+  animation-name: ymg-hx-progress;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+@keyframes ymg-hx-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Header on the home page: clear over the hero film, evergreen once past it, brass action. */
+body:has(.ymg-dark-hero)
+  .ymg-navbar:not(.ymg-navbar-past-top)
+  .ymg-nav-morph-surface {
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+/* Pages that open on a light section keep the header evergreen from the start. */
+body:not(:has(.ymg-dark-hero))
+  .ymg-navbar:not(.ymg-navbar-past-top)
+  .ymg-nav-morph-surface {
+  background: rgba(11, 35, 29, 0.98) !important;
+  box-shadow: 0 14px 34px rgba(7, 24, 19, 0.25) !important;
+}
+/* Past the hero the header is always evergreen, so its light links never sit on the light sections:
+   the full-width bar shown while scrolling up is painted on the header itself (edge to edge), and the
+   compact pill shown while scrolling down keeps its own surface. */
+@media (min-width: 900px) {
+  body .ymg-navbar.ymg-navbar-past-top:not(.ymg-navbar-scrolled) {
+    background: rgba(11, 35, 29, 0.94) !important;
+    box-shadow: 0 10px 30px rgba(7, 24, 19, 0.25);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+}
+body .ymg-navbar-past-top:not(.ymg-navbar-scrolled) .ymg-nav-morph-surface {
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+body .ymg-navbar-scrolled .ymg-nav-morph-surface {
+  background: rgba(11, 35, 29, 0.98) !important;
+  box-shadow: 0 14px 34px rgba(7, 24, 19, 0.3) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+}
+body .ymg-nav-link:not(.ymg-nav-active) {
+  color: rgba(245, 241, 232, 0.86) !important;
+}
+body .ymg-nav-link:not(.ymg-nav-active):hover {
+  background: rgba(245, 241, 232, 0.1);
+  color: #f5f1e8 !important;
+}
+body .ymg-nav-cta {
+  background: #f5f1e8 !important;
+  color: #0B231D !important;
+  box-shadow: none !important;
+}
+body .ymg-nav-cta:hover {
+  background: #ffffff !important;
+}
+body .ymg-nav-action-button {
+  background: transparent !important;
+  box-shadow: inset 0 0 0 1px rgba(245, 241, 232, 0.3) !important;
+  color: #f5f1e8 !important;
+}
+body .ymg-navbar button[aria-label="Open menu"] {
+  color: #f5f1e8;
+}
+body .ymg-navbar-mobile-bar .ymg-navbar-inner {
+  background: linear-gradient(
+    135deg,
+    rgba(11, 35, 29, 0.95),
+    rgba(7, 24, 19, 0.95)
+  );
+  box-shadow: 0 10px 26px rgba(7, 24, 19, 0.3);
+}
+body .ymg-mobile-action-bar {
+  background: rgba(11, 35, 29, 0.97);
+  border-color: rgba(245, 241, 232, 0.12);
+}
+body .ymg-mobile-action-bar a:first-child {
+  border-color: rgba(245, 241, 232, 0.35);
+  color: #f5f1e8;
+}
+body .ymg-mobile-action-bar a:last-child {
+  background: #f5f1e8;
+  color: #0B231D;
+}
+
+/* The shared sections inside the home page were drawn in the old cream-and-gold palette.
+   Here they take the hero's palette: paper cards on bone, evergreen hairlines and ink, brass accents. */
+:is(.ymg-home2, .ymg-site) .ymg-scene {
+  background-color: #ffffff;
+  border-color: rgba(11, 35, 29, 0.12);
+}
+:is(.ymg-home2, .ymg-site) .ymg-scene > span:nth-of-type(2) {
+  display: none; /* the warm yellow glow */
+}
+:is(.ymg-home2, .ymg-site)
+  :is(
+    .bg-white,
+    .bg-white\/70,
+    .bg-white\/75,
+    .bg-white\/80,
+    .bg-\[\#FFF8EA\],
+    .bg-\[\#fffaf0\],
+    .bg-\[\#fbf3e1\],
+    .bg-\[\#fff9ec\]
+  ) {
+  background-color: #ffffff;
+}
+:is(.ymg-home2, .ymg-site)
+  :is(
+    .border-\[\#eadbb7\],
+    .border-\[\#ecdcb6\],
+    .border-\[\#e3d6bb\],
+    .border-\[\#f0e4c8\],
+    .border-\[\#ead3a0\],
+    .border-\[\#e3cf9f\],
+    .border-\[\#e7cf98\],
+    .border-\[\#d9c9a4\],
+    .border-\[\#e6d3a6\]
+  ) {
+  border-color: rgba(11, 35, 29, 0.12);
+}
+:is(.ymg-home2, .ymg-site) :is(.ring-\[\#eadbb7\], .ring-\[\#e6d3a6\]) {
+  --tw-ring-color: rgba(11, 35, 29, 0.12);
+}
+:is(.ymg-home2, .ymg-site)
+  :is(.text-\[\#b8893a\], .text-\[\#a87b25\], .text-\[\#8a6420\]) {
+  color: #8c6b22;
+}
+:is(.ymg-home2, .ymg-site) :is(.bg-\[\#f3e6c8\], .bg-\[\#D8B26B\]\/20) {
+  background-color: rgba(200, 162, 78, 0.16);
+}
+:is(.ymg-home2, .ymg-site) .bg-\[\#D8B26B\] {
+  background-color: #c8a24e;
+}
+
+/* On wide screens the unselected service tabs stay open text, not paper tiles. */
+@media (min-width: 1024px) {
+  .ymg-home2 [role="tab"][aria-selected="false"] {
+    background-color: transparent;
+  }
+}
+
+/* Footer on the home page: evergreen like the hero and the close, without the cream flower art, in the page's type. */
+body footer {
+  --font-display: var(--font-home-display);
+  --font-sans: var(--font-home-sans);
+  font-synthesis: none;
+  background: #071813 !important;
+  border-top: 1px solid rgba(245, 241, 232, 0.08);
+  color: #f5f1e8;
+}
+body {
+  background-color: #071813;
+}
+body footer img[src*="vcardBG"] {
+  display: none;
+}
+body footer :is(h2, h3, h4, .font-heading) {
+  color: #d6b263 !important;
+  font-weight: 400 !important;
+}
+body footer :is(p, li, a, span) {
+  color: rgba(245, 241, 232, 0.72);
+}
+body footer a:hover {
+  color: #d6b263;
+}
+body footer :is(svg, [class*="text-[#a87b25]"]) {
+  color: #d6b263;
+}
+body footer [class*="border-"] {
+  border-color: rgba(245, 241, 232, 0.12);
+}
+
+/* Smoke at the ends of the client-logo strip: a slow drift so it reads as haze, not a flat fade. */
+.ymg-hx-smoke {
+  animation: ymg-hx-smoke 9s ease-in-out infinite alternate;
+}
+@keyframes ymg-hx-smoke {
+  from {
+    transform: translate3d(0, -50%, 0) scale(1);
+  }
+  to {
+    transform: translate3d(14px, -46%, 0) scale(1.18);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ymg-hx-smoke {
+    animation: none;
+  }
+}
+
+/* Services mega menu on the home page: evergreen like the header, brass group headings, cream links. */
+body .ymg-nav-dropdown {
+  background: rgba(11, 35, 29, 0.98) !important;
+  border-color: rgba(245, 241, 232, 0.14) !important;
+  box-shadow: 0 24px 54px rgba(7, 24, 19, 0.45) !important;
+}
+body .ymg-nav-dropdown > div:first-child {
+  border-color: rgba(245, 241, 232, 0.12) !important;
+}
+body .ymg-nav-dropdown a {
+  background: transparent;
+}
+body .ymg-nav-dropdown a:hover,
+body .ymg-nav-dropdown a[class*=" bg-[#f4dfb7]"],
+body .ymg-nav-dropdown a[data-active="true"] {
+  background: rgba(245, 241, 232, 0.09) !important;
+}
+body .ymg-nav-dropdown .ymg-nav-title {
+  color: #f5f1e8 !important;
+}
+body .ymg-nav-dropdown .ymg-nav-desc {
+  color: #b9b2a3 !important;
+}
+body .ymg-nav-dropdown p {
+  color: #d6b263 !important;
+}
+
+/* One type system across the site: Libre Caslon Display for headlines, Inter for text. */
+body {
+  --font-display: var(--font-home-display);
+  --font-sans: var(--font-home-sans);
+  font-synthesis: none;
+}
+
+/* Service pages: the qualification checklist ticks itself one item at a time once it scrolls in. */
+.ymg-tick {
+  transition:
+    background-color 400ms ease,
+    border-color 400ms ease;
+  transition-delay: calc(var(--i, 0) * 170ms + 350ms);
+}
+.ymg-tick svg {
+  opacity: 0;
+  transform: scale(0.4);
+  transition:
+    opacity 300ms ease,
+    transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-delay: inherit;
+}
+html:not(.ymg-motion) .ymg-tick,
+.ymg-checklist[data-visible] .ymg-tick {
+  background-color: #1e9e6a;
+  border-color: #1e9e6a;
+}
+html:not(.ymg-motion) .ymg-tick svg,
+.ymg-checklist[data-visible] .ymg-tick svg {
+  opacity: 1;
+  transform: scale(1);
+}
+/* Closing section: brass rings open out slowly behind the headline. */
+.ymg-close-ring {
+  animation: ymg-close-ring 7.8s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+  opacity: 0;
+}
+@keyframes ymg-close-ring {
+  0% {
+    transform: translate(-50%, -50%) scale(0.45);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.6);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ymg-close-ring {
+    animation: none;
+    opacity: 0.35;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .ymg-tick,
+  .ymg-tick svg {
+    transition-delay: 0ms;
+  }
+}
+
+/* Current page in the header: a soft cream tint with brass text, in place of the old gold pill. */
+body .ymg-nav-indicator {
+  background: rgba(245, 241, 232, 0.1) !important;
+  box-shadow: inset 0 0 0 1px rgba(214, 178, 99, 0.35) !important;
+}
+body .ymg-nav-particle-trail {
+  display: none !important;
+}
+body .ymg-nav-active {
+  color: #d6b263 !important;
+}
+
+/* Reviews on the redesigned pages sit on white, like the rest of the page's light sections. */
+.ymg-site .ymg-reviews {
+  background-color: #ffffff;
+}
+
+/* No line holds a lone word: balanced wrapping left single words on middle lines, so headlines fill
+   lines normally and HeadingGlue keeps their last two words together. */
+:is(h1, h2, h3, h4) {
+  text-wrap: pretty;
+}
+:is(blockquote, figcaption, summary) {
+  text-wrap: balance;
+}
+:is(p, li, dd) {
+  text-wrap: pretty;
+}
+
+/* Hero backdrop photos drift slowly in and out, like a held camera. */
+.ymg-hero-drift {
+  animation: ymg-hero-drift 26s ease-in-out infinite alternate;
+  transform-origin: 70% 40%;
+}
+@keyframes ymg-hero-drift {
+  from {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.14) translate3d(-1.5%, -1%, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ymg-hero-drift {
+    animation: none;
+    transform: scale(1.04);
+  }
+}
+
+/* A lead travelling the acquisition engine: a brass spark runs the line and each stage lights as it passes. */
+.ymg-flow-spark { animation: ymg-flow-spark 6s linear infinite; }
+@keyframes ymg-flow-spark { 0% { left: 8%; opacity: 0; } 3% { opacity: 1; } 92% { left: 92%; opacity: 1; } 96%, 100% { left: 92%; opacity: 0; } }
+.ymg-flow-node { animation: ymg-flow-node 6s ease-in-out infinite; }
+@keyframes ymg-flow-node {
+  0%, 14%, 100% { background-color: #0B231D; color: #D6B263; box-shadow: none; }
+  5% { background-color: #D6B263; color: #0B231D; box-shadow: 0 0 0 8px rgba(214,178,99,0.16); }
+}
+@media (prefers-reduced-motion: reduce) { .ymg-flow-spark, .ymg-flow-node { animation: none; } .ymg-flow-spark { display: none; } }
+
+
+/* ── Blended brand light (2026-11-10, revised) ─────────────────────────────────────────
+   Dark bands share one evergreen base (#0B231D). Their light is clean, not muddy: a wide emerald glow
+   on one side and a small, tight brass glow on the other (brass spread wide over green turns olive).
+   Both fade out before the band's top and bottom edges, so two dark bands that meet flow together.
+   The glow side alternates down the page. */
+:is(.ymg-home2, .ymg-site) section:is(.bg-\[\#0B231D\], .bg-\[\#071813\]),
+.ymg-home2 > section:is(.ymg-hx-film, .ymg-hx-logos, .ymg-hx-cost, .ymg-hx-close) {
+  background-color: #0b231d;
+  background-image:
+    radial-gradient(22% 30% at 84% 50%, rgba(214, 178, 99, 0.16), transparent 100%),
+    radial-gradient(48% 46% at 18% 50%, rgba(36, 128, 96, 0.3), transparent 100%);
+}
+:is(.ymg-home2, .ymg-site) section:is(.bg-\[\#0B231D\], .bg-\[\#071813\]):nth-of-type(even),
+.ymg-home2 > section:is(.ymg-hx-logos, .ymg-hx-close) {
+  background-image:
+    radial-gradient(22% 30% at 16% 50%, rgba(214, 178, 99, 0.15), transparent 100%),
+    radial-gradient(48% 46% at 82% 50%, rgba(36, 128, 96, 0.28), transparent 100%);
+}
+:is(.ymg-home2, .ymg-site) section.bg-\[\#F0F4F1\],
+.ymg-home2 > section:is(.ymg-service-showcase, .ymg-engagement, .ymg-home-faq) {
+  background-image:
+    radial-gradient(40% 42% at 88% 40%, rgba(214, 178, 99, 0.14), transparent 100%),
+    radial-gradient(36% 40% at 10% 62%, rgba(38, 140, 104, 0.1), transparent 100%);
+}
+
+/* The footer is its own, deeper band: near-black evergreen with no glow, opened by a fine brass rule
+   that fades out at both ends, so the closing call to action ends clearly where the footer begins. */
+body footer {
+  background-color: #06130e !important;
+  background-image: none !important;
+  border-top: 0 !important;
+}
+body footer::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(214, 178, 99, 0.55) 50%, transparent);
+  pointer-events: none;
+}
+
+
+/* Libre Caslon Text bold is taller and wider than the old Display cut: the tight leading and negative
+   tracking set for Display made ascenders and descenders touch between lines and letters crowd. One
+   rhythm for every headline, overriding the per-section leading/tracking utilities. */
+:is(.ymg-home2, .ymg-site) :is(h1, h2) {
+  line-height: 1.12 !important;
+  letter-spacing: -0.005em !important;
+}
+:is(.ymg-home2, .ymg-site) h3 {
+  line-height: 1.22 !important;
+  letter-spacing: 0 !important;
+}
+
+

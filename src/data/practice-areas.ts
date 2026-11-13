@@ -42,6 +42,8 @@ export type PracticeItem = {
   icon?: string;
   Icon?: LucideIcon;
   active: boolean;
+  /** Federal multidistrict litigation number and court, checked against the JPML's pending-MDL reports (2025–26). */
+  mdl?: string;
 };
 
 export type PracticeArea = {
@@ -130,6 +132,7 @@ export const practiceAreas: PracticeArea[] = [
         description: "Claims alleging chemical hair relaxer use led to uterine or ovarian cancer.",
         icon: "/Wha-We-Serve/Hair-Relaxer.png",
         active: true,
+        mdl: "MDL 3060 · N.D. Ill.",
       },
       {
         label: "Talcum Powder",
@@ -138,6 +141,7 @@ export const practiceAreas: PracticeArea[] = [
         description: "Claims alleging talc-based products led to ovarian cancer or mesothelioma.",
         icon: "/Wha-We-Serve/Talcum-Powder.png",
         active: true,
+        mdl: "MDL 2738 · D.N.J.",
       },
       {
         label: "Tylenol Pregnancy",
@@ -145,7 +149,10 @@ export const practiceAreas: PracticeArea[] = [
         short: "Tylenol Pregnancy",
         description: "Claims alleging acetaminophen use during pregnancy led to developmental disorders in children.",
         icon: "/Wha-We-Serve/Pregnancy-Lawsuits.png",
-        active: true,
+        // Off until ops confirm it: the CEO-approved deck's campaign list leaves it out, and the
+        // content guide says to remove it unless YMG confirms it is active. Past experience with it
+        // is still mentioned in the home page credentials.
+        active: false,
       },
       {
         label: "Paraquat",
@@ -154,6 +161,7 @@ export const practiceAreas: PracticeArea[] = [
         description: "Claims alleging occupational paraquat herbicide exposure contributed to Parkinson's disease.",
         Icon: SprayCan,
         active: true,
+        mdl: "MDL 3004 · S.D. Ill.",
       },
       {
         label: "Roundup",
@@ -162,6 +170,7 @@ export const practiceAreas: PracticeArea[] = [
         description: "Claims alleging Roundup herbicide exposure caused non-Hodgkin's lymphoma.",
         Icon: Sprout,
         active: true,
+        mdl: "MDL 2741 · N.D. Cal.",
       },
       {
         label: "Depo-Provera",
@@ -170,6 +179,7 @@ export const practiceAreas: PracticeArea[] = [
         description: "Claims alleging Depo-Provera contraceptive injections are linked to meningioma brain tumors.",
         Icon: Syringe,
         active: true,
+        mdl: "MDL 3140 · N.D. Fla.",
       },
       {
         label: "Social Media",
@@ -178,6 +188,7 @@ export const practiceAreas: PracticeArea[] = [
         description: "Claims alleging social media platforms were designed in ways that harmed young users.",
         Icon: Smartphone,
         active: true,
+        mdl: "MDL 3047 · N.D. Cal.",
       },
     ],
   },

@@ -13,7 +13,7 @@ export default function ReadyGrowCtaSection({
     <section className={`ymg-section-padding-x py-6 ${isCream ? "bg-[#FFF5E0] text-[#3d4145]" : "bg-[#404040] text-[#d9b46d]"}`}>
       <div className="mx-auto grid max-w-7xl items-center gap-8 text-left lg:grid-cols-[1fr_220px] lg:gap-12">
         <div>
-          <h2 className={`font-heading font-normal leading-tight tracking-[0] ${compactMobile ? "text-center text-[1.65rem] sm:text-[2rem] lg:text-left lg:text-[clamp(2rem,4.5vw,4rem)]" : "text-[clamp(2rem,4.5vw,4rem)]"} ${isCream ? "text-[#3d4145]" : "text-[#EBC982]"}`}>
+          <h2 className={`font-heading font-normal leading-tight tracking-[0] ${compactMobile ? "text-center text-[1.65rem] sm:text-[2rem] lg:text-left lg:text-[clamp(1.9rem,3.6vw,3.2rem)]" : "text-[clamp(1.9rem,3.6vw,3.2rem)]"} ${isCream ? "text-[#3d4145]" : "text-[#EBC982]"}`}>
             Ready to Grow Your Firm?
           </h2>
           <p className={`mt-4 font-medium ${compactMobile ? "text-center text-[0.8rem] lg:text-left lg:text-[1.25rem]" : "text-[1rem] sm:text-[1.25rem]"} ${isCream ? "text-[#3d4145]" : "text-[#ecd08c]"}`}>

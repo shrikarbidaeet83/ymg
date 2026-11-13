@@ -1,7 +1,6 @@
+import { redirect } from "next/navigation";
+
+// Answering is part of Legal Intake.
 export default function LegalAnsweringPage() {
-  return (
-    <main className="min-h-screen">
-      {/* Legal Answering Service — coming soon */}
-    </main>
-  );
+  redirect("/services/legal-intake");
 }

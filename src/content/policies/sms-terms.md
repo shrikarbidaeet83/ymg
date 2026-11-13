@@ -10,7 +10,7 @@ YMG Legal and the participating law firms it works with may contact you by phone
 
 ## 2. Consent
 
-By checking the consent box and submitting a form, you agree that YMG Legal and up to [number] participating law firms [or: the law firm named on the form] [counsel to confirm one-to-one consent wording] may contact you at the number you provided, including by autodialed calls, artificial or prerecorded voice messages, and automated text messages, even if your number is on a Do Not Call list. **Consent is not a condition of any purchase or of receiving services.** You may instead contact us directly at [(313) 306-5055](tel:+13133065055).
+By checking the consent box and submitting a form, you agree that YMG Legal and up to [number] participating law firms [or: the law firm named on the form] [counsel to confirm one-to-one consent wording] may contact you at the number you provided, including by autodialed calls, artificial or prerecorded voice messages, and automated text messages, even if your number is on a Do Not Call list. **Consent is not a condition of any purchase or of receiving services.** You may instead contact us directly at [info@ymg-legal.com](mailto:info@ymg-legal.com).
 
 ## 3. How to opt out
 
@@ -18,7 +18,7 @@ Reply **STOP** to any text message to stop receiving texts. You will receive one
 
 ## 4. Help
 
-Reply **HELP** for help, or contact [info@ymg-legal.com](mailto:info@ymg-legal.com) or [(313) 306-5055](tel:+13133065055).
+Reply **HELP** for help, or contact [info@ymg-legal.com](mailto:info@ymg-legal.com).
 
 ## 5. Carriers
 

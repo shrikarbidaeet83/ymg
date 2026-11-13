@@ -46,6 +46,7 @@ import {
   Settings,
   ShieldCheck,
   Smartphone,
+  Stethoscope,
   Target,
   Timer,
   Truck,
@@ -58,269 +59,1104 @@ import {
 import type { ServicePageContent } from "@/components/sections/ServiceDetailPage";
 
 const generalFaqs = [
-  { question: "Can YMG build campaigns around our firm's criteria?", answer: "Yes. Qualification requirements can be established around the criteria your firm uses to evaluate opportunities." },
-  { question: "Can YMG work with our existing intake process?", answer: "We can structure workflows around the systems and processes your firm uses, subject to technical compatibility and the scope of the engagement." },
+  {
+    question: "Can YMG build campaigns around our firm's criteria?",
+    answer:
+      "Yes. Qualification requirements can be established around the criteria your firm uses to evaluate opportunities.",
+  },
+  {
+    question: "Can YMG work with our existing intake process?",
+    answer:
+      "We can structure workflows around the systems and processes your firm uses, subject to technical compatibility and the scope of the engagement.",
+  },
 ];
 
 export const servicePages = {
   personalInjuryLeads: {
-    eyebrow: "Case Acquisition", hubLabel: "PI Case\nAcquisition", title: "Personal Injury Lead Generation for Law Firms", intro: "Generate qualified personal injury opportunities aligned with your firm's practice areas, geographic coverage, and case criteria. YMG Legal helps plaintiff law firms acquire personal injury prospects through targeted digital marketing, lead generation, qualification, and intake support.", cta: "Discuss a PI Campaign",
-    capabilities: { title: "What We Can Support", cards: [
-      { title: "Motor Vehicle Opportunities", text: "MVA, auto, and car accident opportunities aligned with your campaign.", Icon: CarFront },
-      { title: "Selected PI Campaigns", text: "Practice-area-specific acquisition for the personal injury cases your firm is prepared to handle.", Icon: Target },
-      { title: "Market Targeting", text: "Geographic and state targeting structured around your coverage.", Icon: MapPin },
-      { title: "Qualified Delivery", text: "Qualified leads, live qualified calls, and intake-verified opportunities.", Icon: BadgeCheck },
-      { title: "Campaign Visibility", text: "Campaign reporting and performance tracking across the delivery workflow.", Icon: BarChart3 },
-      { title: "Intake Support", text: "Structured screening, documentation, and follow-up where included in the engagement.", Icon: Headphones },
-    ] },
-    criteria: { title: "Built Around Your Criteria", body: "Every law firm has different requirements. Your team may have specific standards for liability, injury, treatment, insurance, geography, accident date, documentation, or other case factors. We can build campaign and qualification workflows around the requirements established by your firm." },
-    workflow: { title: "From Acquisition to Intake", body: "YMG Legal can support more than the initial lead, giving your team greater visibility into where opportunities enter the pipeline and how they move through the process.", steps: [
-      { title: "Marketing", Icon: Megaphone },
-      { title: "Lead Capture", Icon: MousePointerClick },
-      { title: "Screening", Icon: Filter },
-      { title: "Qualification", Icon: BadgeCheck },
-      { title: "Intake", Icon: ClipboardList },
-      { title: "Delivery", Icon: Send },
-      { title: "Follow-Up", Icon: PhoneForwarded },
-    ] },
+    photo: {
+      src: "/images/services/pi-ambulance.jpg",
+      alt: "An ambulance on a city street",
+    },
+    highlights: ["Screened on your case criteria", "Built around your markets"],
+    eyebrow: "Case Acquisition",
+    hubLabel: "PI Case\nAcquisition",
+    title: "Personal Injury Lead Generation for Law Firms",
+    intro:
+      "Generate qualified personal injury opportunities aligned with your firm's practice areas, geographic coverage, and case criteria. YMG Legal helps plaintiff law firms acquire personal injury prospects through targeted digital marketing, lead generation, qualification, and intake support. From motor vehicle accidents to other selected personal injury campaigns, we structure acquisition around the types of cases your firm is prepared to handle.",
+    cta: "Discuss a PI Campaign",
+    capabilities: {
+      title: "What We Can Support",
+      cards: [
+        {
+          title: "Motor Vehicle Opportunities",
+          text: "MVA, auto, and car accident opportunities aligned with your campaign.",
+          Icon: CarFront,
+        },
+        {
+          title: "Selected PI Campaigns",
+          text: "Practice-area-specific acquisition for the personal injury cases your firm is prepared to handle.",
+          Icon: Target,
+        },
+        {
+          title: "Market Targeting",
+          text: "Geographic and state targeting structured around your coverage.",
+          Icon: MapPin,
+        },
+        {
+          title: "Qualified Delivery",
+          text: "Qualified leads, live qualified calls, and intake-verified opportunities.",
+          Icon: BadgeCheck,
+        },
+        {
+          title: "Campaign Visibility",
+          text: "Campaign reporting and performance tracking across the delivery workflow.",
+          Icon: BarChart3,
+        },
+        {
+          title: "Intake Support",
+          text: "Structured screening, documentation, and follow-up where included in the engagement.",
+          Icon: Headphones,
+        },
+      ],
+    },
+    criteria: {
+      title: "Built Around Your Criteria",
+      body: "Every law firm has different requirements. Your team may have specific standards for liability, injury, treatment, insurance, geography, accident date, documentation, or other case factors. We can build campaign and qualification workflows around the requirements established by your firm.",
+    },
+    workflow: {
+      title: "From Acquisition to Intake",
+      body: "YMG Legal can support more than the initial lead. Depending on the engagement, our workflow may include the steps below, giving your team greater visibility into where opportunities enter the pipeline and how they move through the process.",
+      steps: [
+        { title: "Marketing", Icon: Megaphone },
+        { title: "Lead Capture", Icon: MousePointerClick },
+        { title: "Screening", Icon: Filter },
+        { title: "Qualification", Icon: BadgeCheck },
+        { title: "Intake", Icon: ClipboardList },
+        { title: "Delivery", Icon: Send },
+        { title: "Follow-Up", Icon: PhoneForwarded },
+      ],
+    },
     faqs: generalFaqs,
   },
   mvaLeads: {
-    eyebrow: "Case Acquisition", hubLabel: "MVA\nLeads", title: "MVA Lead Generation for Attorneys & Law Firms", intro: "Generate qualified motor vehicle accident opportunities for your personal injury practice. YMG Legal helps law firms acquire MVA leads through targeted campaigns, qualification, and intake support built around your firm's criteria.", cta: "Talk to Us About MVA Leads",
-    capabilities: { title: "MVA Campaigns Can Include", intro: "Specific campaign types and availability depend on current programs and client requirements.", cards: [
-      { title: "Car & Auto Accidents", text: "Campaigns for qualifying car and auto accident opportunities.", Icon: Car },
-      { title: "Motor Vehicle Accidents", text: "Targeted acquisition for motor vehicle injury claims.", Icon: CarFront },
-      { title: "Commercial Vehicles", text: "Opportunities involving commercial vehicle accidents.", Icon: Bus },
-      { title: "Truck Accidents", text: "Campaigns for qualifying truck accident opportunities.", Icon: Truck },
-      { title: "Rideshare Accidents", text: "Programs that may include rideshare-related accidents.", Icon: CarTaxiFront },
-      { title: "Qualified MVA Claims", text: "Other motor vehicle injury claims that meet agreed criteria.", Icon: ShieldCheck },
-    ] },
-    criteria: { title: "What Your Firm Defines", body: "The qualification workflow starts with the factors that matter to your firm.", items: ["States and geographic markets", "Accident timing", "Injury requirements", "Treatment requirements", "Liability standards", "Insurance requirements", "Property damage requirements", "Existing representation and other firm-specific criteria"], note: "The exact delivery model, acceptance criteria, pricing, and replacement terms are established before a campaign launches." },
-    workflow: { title: "Flexible Delivery Options", body: "Choose the delivery model that fits your campaign and intake structure.", steps: [
-      { title: "Qualified Leads", Icon: UserRoundCheck },
-      { title: "Intake-Verified Leads", Icon: ClipboardCheck },
-      { title: "Live Qualified Calls", Icon: PhoneCall },
-      { title: "Docket-Based Delivery", Icon: Gavel },
-      { title: "Signed-Retainer Opportunities", Icon: FileSignature },
-    ] },
-    faqs: [{ question: "What types of personal injury leads do you provide?", answer: "Our current personal injury acquisition work includes motor vehicle accident opportunities and selected other personal injury campaigns. Availability depends on current campaign inventory and your firm's requirements." }, ...generalFaqs],
+    photo: {
+      src: "/images/services/mva.jpg",
+      alt: "Two cars after a frontal collision",
+    },
+    highlights: [
+      "Accident details captured up front",
+      "Qualified before it reaches you",
+    ],
+    eyebrow: "Case Acquisition",
+    hubLabel: "MVA\nLeads",
+    title: "MVA Lead Generation for Attorneys & Law Firms",
+    intro:
+      "Generate qualified motor vehicle accident opportunities for your personal injury practice. YMG Legal helps law firms acquire MVA leads through targeted campaigns, qualification, and intake support built around your firm's criteria.",
+    cta: "Talk to Us About MVA Leads",
+    capabilities: {
+      title: "MVA Campaigns Can Include",
+      intro:
+        "Specific campaign types and availability depend on current programs and client requirements.",
+      cards: [
+        {
+          title: "Car & Auto Accidents",
+          text: "Campaigns for qualifying car and auto accident opportunities.",
+          Icon: Car,
+        },
+        {
+          title: "Motor Vehicle Accidents",
+          text: "Targeted acquisition for motor vehicle injury claims.",
+          Icon: CarFront,
+        },
+        {
+          title: "Commercial Vehicles",
+          text: "Opportunities involving commercial vehicle accidents.",
+          Icon: Bus,
+        },
+        {
+          title: "Truck Accidents",
+          text: "Campaigns for qualifying truck accident opportunities.",
+          Icon: Truck,
+        },
+        {
+          title: "Rideshare Accidents",
+          text: "Programs that may include rideshare-related accidents.",
+          Icon: CarTaxiFront,
+        },
+        {
+          title: "Qualified MVA Claims",
+          text: "Other motor vehicle injury claims that meet agreed criteria.",
+          Icon: ShieldCheck,
+        },
+      ],
+    },
+    criteria: {
+      title: "What Your Firm Defines",
+      body: "The qualification workflow starts with the factors that matter to your firm.",
+      items: [
+        "States and geographic markets",
+        "Accident timing",
+        "Injury requirements",
+        "Treatment requirements",
+        "Liability standards",
+        "Insurance requirements",
+        "Property damage requirements",
+        "Existing representation and other firm-specific criteria",
+      ],
+      note: "The exact delivery model, acceptance criteria, pricing, and replacement terms are established before a campaign launches.",
+    },
+    workflow: {
+      title: "Flexible Delivery Options",
+      body: "Choose the delivery model that fits your campaign and intake structure.",
+      steps: [
+        { title: "Qualified Leads", Icon: UserRoundCheck },
+        { title: "Intake-Verified Leads", Icon: ClipboardCheck },
+        { title: "Live Qualified Calls", Icon: PhoneCall },
+        { title: "Docket-Based Delivery", Icon: Gavel },
+        { title: "Signed-Retainer Opportunities", Icon: FileSignature },
+      ],
+    },
+    faqs: [
+      {
+        question: "What types of personal injury leads do you provide?",
+        answer:
+          "Our current personal injury acquisition work includes motor vehicle accident opportunities and selected other personal injury campaigns. Availability depends on current campaign inventory and your firm's requirements.",
+      },
+      ...generalFaqs,
+    ],
   },
   massTortLeads: {
-    eyebrow: "Case Acquisition", hubLabel: "Mass Tort\nCampaigns", title: "Mass Tort & Class Action Lead Generation for Plaintiff Law Firms", intro: "Build a qualified claimant pipeline around the mass tort and class action campaigns your firm is actively pursuing. YMG Legal combines targeted acquisition, claimant screening, and intake support to help firms build scalable mass tort campaigns around defined litigation criteria.", cta: "Discuss a Mass Tort Campaign",
-    capabilities: { title: "Our Mass Tort Support Can Include", cards: [
-      { title: "Campaign Acquisition", text: "Campaign-specific lead generation and targeted digital advertising.", Icon: Megaphone },
-      { title: "Campaign Landing Pages", text: "Focused landing experiences for claimant acquisition.", Icon: LayoutTemplate },
-      { title: "Claimant Screening", text: "Screening around the qualification factors your firm defines.", Icon: Filter },
-      { title: "Intake Verification", text: "Intake workflows that help organize eligible opportunities.", Icon: ClipboardCheck },
-      { title: "Lead Delivery", text: "Lead delivery and follow-up workflows aligned to the engagement.", Icon: Send },
-      { title: "Campaign Reporting", text: "Geographic targeting, volume scaling, and campaign reporting.", Icon: BarChart3 },
-    ] },
-    criteria: { title: "Campaigns Built Around Specific Litigation", body: "Mass tort marketing works best when acquisition and qualification are built around the actual requirements of the campaign. We can structure workflows around the criteria your firm provides, including exposure, product or drug history, injury or diagnosis, timing, documentation, and other relevant qualification factors.", note: "Campaign availability, jurisdictions, and qualification requirements change over time. Ask YMG Legal about currently active campaigns." },
-    workflow: { title: "A Clear Campaign Workflow", body: "Every campaign is organized around the litigation criteria and delivery model agreed with your firm.", steps: [
-      { title: "Campaign Setup", Icon: Settings },
-      { title: "Lead Capture", Icon: MousePointerClick },
-      { title: "Claimant Screening", Icon: Filter },
-      { title: "Intake Verification", Icon: ClipboardCheck },
-      { title: "Delivery", Icon: Send },
-      { title: "Reporting", Icon: BarChart3 },
-    ] },
-    faqs: [{ question: "Do you provide exclusive leads?", answer: "Delivery models vary by campaign and agreement. Availability of exclusive opportunities should be confirmed before launch." }, { question: "How do you determine which mass tort campaigns are available?", answer: "We only discuss campaigns that YMG Legal is actively generating or accepting, based on current program requirements and your firm's criteria." }],
+    photo: {
+      src: "/images/services/mass-tort.jpg",
+      alt: "Prescription pills spilling from a bottle",
+    },
+    highlights: [
+      "Screened against campaign criteria",
+      "Exposure and injury documented",
+    ],
+    eyebrow: "Case Acquisition",
+    hubLabel: "Mass Tort\nCampaigns",
+    title: "Mass Tort Lead Generation for Plaintiff Law Firms",
+    intro:
+      "Build a qualified claimant pipeline around the mass tort campaigns your firm is actively pursuing. YMG Legal combines targeted acquisition, claimant screening, and intake support to help firms build scalable mass tort campaigns around defined litigation criteria.",
+    cta: "Discuss a Mass Tort Campaign",
+    capabilities: {
+      title: "Our Mass Tort Support Can Include",
+      cards: [
+        {
+          title: "Campaign Acquisition",
+          text: "Campaign-specific lead generation and targeted digital advertising.",
+          Icon: Megaphone,
+        },
+        {
+          title: "Campaign Landing Pages",
+          text: "Focused landing experiences for claimant acquisition.",
+          Icon: LayoutTemplate,
+        },
+        {
+          title: "Claimant Screening",
+          text: "Screening around the qualification factors your firm defines.",
+          Icon: Filter,
+        },
+        {
+          title: "Intake Verification",
+          text: "Intake workflows that help organize eligible opportunities.",
+          Icon: ClipboardCheck,
+        },
+        {
+          title: "Lead Delivery",
+          text: "Lead delivery and follow-up workflows aligned to the engagement.",
+          Icon: Send,
+        },
+        {
+          title: "Campaign Reporting",
+          text: "Geographic targeting, volume scaling, and campaign reporting.",
+          Icon: BarChart3,
+        },
+      ],
+    },
+    criteria: {
+      title: "Campaigns Built Around Specific Litigation",
+      body: "Mass tort marketing works best when acquisition and qualification are built around the actual requirements of the campaign. We can structure workflows around the criteria your firm provides, including exposure, product or drug history, injury or diagnosis, timing, documentation, and other relevant qualification factors.",
+      note: "Campaign availability, jurisdictions, and qualification requirements change over time. Ask YMG Legal about currently active campaigns.",
+    },
+    campaigns: "mass-torts",
+    workflow: {
+      title: "A Clear Campaign Workflow",
+      body: "Every campaign is organized around the litigation criteria and delivery model agreed with your firm.",
+      steps: [
+        { title: "Campaign Setup", Icon: Settings },
+        { title: "Lead Capture", Icon: MousePointerClick },
+        { title: "Claimant Screening", Icon: Filter },
+        { title: "Intake Verification", Icon: ClipboardCheck },
+        { title: "Delivery", Icon: Send },
+        { title: "Reporting", Icon: BarChart3 },
+      ],
+    },
+    faqs: [
+      {
+        question: "Do you provide exclusive leads?",
+        answer:
+          "Delivery models vary by campaign and agreement. Availability of exclusive opportunities should be confirmed before launch.",
+      },
+      {
+        question:
+          "How do you determine which mass tort campaigns are available?",
+        answer:
+          "We only discuss campaigns that YMG Legal is actively generating or accepting, based on current program requirements and your firm's criteria.",
+      },
+    ],
   },
   legalIntake: {
-    eyebrow: "Intake Support", hubLabel: "Legal\nIntake", title: "Legal Intake Services for Law Firms", subhead: "Turn More Incoming Opportunities Into Organized, Qualified Intakes", intro: "YMG Legal provides intake support for law firms that need additional capacity to handle inquiries, screen prospective clients, manage follow-up, and keep their intake process organized. Our workflows can be built around your firm's practice areas, qualification criteria, geographic coverage, and intake process.", cta: "Discuss Your Intake Requirements",
-    capabilities: { title: "Intake Support Can Include", cards: [
-      { title: "Inbound Call Handling", text: "Respond to prospective clients and collect the information your firm requires.", Icon: PhoneIncoming },
-      { title: "Lead Screening & Qualification", text: "Apply your firm's intake criteria to help identify qualifying opportunities.", Icon: Filter },
-      { title: "Outbound Follow-Up", text: "Follow up with prospects who have not completed the next step in your intake process.", Icon: PhoneForwarded },
-      { title: "Appointment Coordination", text: "Help organize attorney callbacks, consultations, and other next steps.", Icon: CalendarCheck },
-      { title: "Intake Documentation", text: "Capture and maintain the information required by your firm's workflow.", Icon: FileText },
-      { title: "Status & Workflow Updates", text: "Maintain clear statuses and communication across the intake process.", Icon: RefreshCw },
-    ] },
-    criteria: { title: "Your Firm's Criteria. Your Firm's Process.", body: "We do not assume every law firm handles intake the same way. Your team defines the requirements. We help execute the process around those requirements.", note: "For firms that require extended coverage, YMG Legal can provide intake support beyond traditional business hours. Coverage, language support, staffing, and workflow are structured according to the engagement." },
-    workflow: { title: "Keep Every Opportunity Moving", body: "A structured intake workflow helps your team see the next step for every qualifying opportunity.", steps: [
-      { title: "Receive", Icon: PhoneIncoming },
-      { title: "Screen", Icon: Filter },
-      { title: "Document", Icon: FileText },
-      { title: "Follow Up", Icon: PhoneForwarded },
-      { title: "Coordinate", Icon: CalendarCheck },
-      { title: "Update", Icon: RefreshCw },
-    ] },
-    faqs: [{ question: "Can you support intake after the lead is delivered?", answer: "Yes. Depending on the engagement, YMG can provide intake, screening, follow-up, and workflow support." }, { question: "Do you provide 24/7 intake?", answer: "Extended or 24/7 intake coverage can be available depending on the scope and staffing requirements of the engagement." }],
+    photo: {
+      src: "/images/services/legal-intake.jpg",
+      alt: "An intake specialist on a headset at his desk",
+    },
+    highlights: [
+      "Every inquiry answered and screened",
+      "Coverage beyond business hours",
+    ],
+    eyebrow: "Intake Support",
+    hubLabel: "Legal\nIntake",
+    title: "Legal Intake Services for Law Firms",
+    subhead:
+      "Turn More Incoming Opportunities Into Organized, Qualified Intakes",
+    intro:
+      "YMG Legal provides intake support for law firms that need additional capacity to handle inquiries, screen prospective clients, manage follow-up, and keep their intake process organized. Our workflows can be built around your firm's practice areas, qualification criteria, geographic coverage, and intake process.",
+    cta: "Discuss Your Intake Requirements",
+    capabilities: {
+      title: "Intake Support Can Include",
+      cards: [
+        {
+          title: "Inbound Call Handling",
+          text: "Respond to prospective clients and collect the information your firm requires.",
+          Icon: PhoneIncoming,
+        },
+        {
+          title: "Lead Screening & Qualification",
+          text: "Apply your firm's intake criteria to help identify qualifying opportunities.",
+          Icon: Filter,
+        },
+        {
+          title: "Outbound Follow-Up",
+          text: "Follow up with prospects who have not completed the next step in your intake process.",
+          Icon: PhoneForwarded,
+        },
+        {
+          title: "Appointment Coordination",
+          text: "Help organize attorney callbacks, consultations, and other next steps.",
+          Icon: CalendarCheck,
+        },
+        {
+          title: "Intake Documentation",
+          text: "Capture and maintain the information required by your firm's workflow.",
+          Icon: FileText,
+        },
+        {
+          title: "Status & Workflow Updates",
+          text: "Maintain clear statuses and communication across the intake process.",
+          Icon: RefreshCw,
+        },
+      ],
+    },
+    criteria: {
+      title: "Your Firm's Criteria. Your Firm's Process.",
+      body: "We do not assume every law firm handles intake the same way. Your team defines the requirements. We help execute the process around those requirements.",
+      items: [
+        "Scripts approved by your firm",
+        "Your qualification criteria applied on every call",
+        "Live transfer or scheduled attorney callback",
+        "Disqualified inquiries logged separately",
+        "Intake data and call recordings synced to your CRM",
+        "Coverage beyond business hours when required",
+      ],
+      note: "24/7 coverage: for firms that require extended coverage, YMG Legal can provide intake support beyond traditional business hours. Coverage, language support, staffing, and workflow are structured according to the engagement.",
+    },
+    stat: {
+      value: "7x",
+      label:
+        "more likely to qualify a lead when it is contacted within one hour rather than later.",
+      source:
+        'Harvard Business Review, "The Short Life of Online Sales Leads" (2011)',
+      href: "https://hbr.org/2011/03/the-short-life-of-online-sales-leads",
+    },
+    workflow: {
+      title: "Keep Every Opportunity Moving",
+      body: "A structured intake workflow helps your team see the next step for every qualifying opportunity.",
+      steps: [
+        { title: "Receive", Icon: PhoneIncoming },
+        { title: "Screen", Icon: Filter },
+        { title: "Document", Icon: FileText },
+        { title: "Follow Up", Icon: PhoneForwarded },
+        { title: "Coordinate", Icon: CalendarCheck },
+        { title: "Update", Icon: RefreshCw },
+      ],
+    },
+    faqs: [
+      {
+        question: "Can you support intake after the lead is delivered?",
+        answer:
+          "Yes. Depending on the engagement, YMG can provide intake, screening, follow-up, and workflow support.",
+      },
+      {
+        question: "Do you provide 24/7 intake?",
+        answer:
+          "Extended or 24/7 intake coverage can be available depending on the scope and staffing requirements of the engagement.",
+      },
+      {
+        question: "Do you provide bilingual intake?",
+        answer:
+          "Bilingual support can be available depending on campaign and staffing requirements.",
+      },
+      {
+        question: "Can you work with our existing CRM or intake system?",
+        answer:
+          "We can structure workflows around the systems and processes your firm uses, subject to technical compatibility and the scope of the engagement.",
+      },
+    ],
   },
   lawFirmSupport: {
-    eyebrow: "Law Firm Support", hubLabel: "Firm\nSupport", title: "Outsourced Paralegal & Legal Support Services", subhead: "Extend Your Firm's Capacity Without Building Every Role In-House", intro: "YMG Legal provides flexible support services designed to help law firms manage operational workloads, organize matters, and keep cases moving. Support can be structured around your firm's workflow, practice area, staffing needs, and attorney supervision requirements.", cta: "Discuss Your Support Needs",
-    capabilities: { title: "Support Services Can Include", cards: [
-      { title: "Case & Matter Support", text: "Keep matters organized and visible.", Icon: FolderOpen, bullets: ["Case file organization", "Matter tracking", "Document organization", "Status updates", "Intake documentation"] },
-      { title: "Litigation Support", text: "Provide defined support for active case workflows.", Icon: Gavel, bullets: ["Discovery organization", "Document compilation", "Exhibit preparation support", "Litigation tracking", "Case file management"] },
-      { title: "Administrative Legal Support", text: "Extend capacity for day-to-day legal operations.", Icon: Keyboard, bullets: ["Data entry", "Document formatting", "Scheduling support", "Records organization", "Workflow administration"] },
-      { title: "Research & Documentation", text: "Help organize the information your team needs.", Icon: FileSearch, bullets: ["Public-record research", "Information gathering", "Document organization", "Research support", "Case information compilation"] },
-    ] },
-    criteria: { title: "Flexible Support. Defined Scope.", body: "Every firm's needs are different. We can structure support around specific functions, hours, matters, or workflows depending on the engagement." },
-    workflow: { title: "Support That Fits Your Workflow", body: "A defined scope and clear handoffs help make added capacity easier for your team to manage.", steps: [
-      { title: "Define Scope", Icon: Target },
-      { title: "Align Workflow", Icon: GitMerge },
-      { title: "Organize Work", Icon: FolderKanban },
-      { title: "Track Status", Icon: Activity },
-      { title: "Support Your Team", Icon: UsersRound },
-    ] },
-    faqs: [{ question: "What other support services do you provide?", answer: "Depending on the engagement, YMG can provide outsourced paralegal, administrative, document, case-support, and other law firm operational services." }, { question: "How is legal work supervised?", answer: "All legal work remains subject to the firm's direction, supervision, confidentiality requirements, and applicable professional obligations." }],
-    disclaimer: "All legal work remains subject to the firm's direction, supervision, confidentiality requirements, and applicable professional obligations.",
+    photo: {
+      src: "/images/services/firm-support.jpg",
+      alt: "A legal team reviewing case documents",
+    },
+    highlights: [
+      "Capacity without new hires",
+      "Under your attorneys' direction",
+    ],
+    eyebrow: "Law Firm Support",
+    hubLabel: "Firm\nSupport",
+    title: "Outsourced Paralegal & Legal Support Services",
+    subhead: "Extend Your Firm's Capacity Without Building Every Role In-House",
+    intro:
+      "YMG Legal provides flexible support services designed to help law firms manage operational workloads, organize matters, and keep cases moving. Support can be structured around your firm's workflow, practice area, staffing needs, and attorney supervision requirements.",
+    cta: "Discuss Your Support Needs",
+    capabilities: {
+      title: "Support Services Can Include",
+      cards: [
+        {
+          title: "Case & Matter Support",
+          text: "Keep matters organized and visible.",
+          Icon: FolderOpen,
+          bullets: [
+            "Case file organization",
+            "Matter tracking",
+            "Digital intake packets",
+            "Case status tracking",
+            "Intake documentation",
+          ],
+        },
+        {
+          title: "Medical Records & Chronologies",
+          text: "Organize the medical side of the file for your attorneys.",
+          Icon: Stethoscope,
+          bullets: [
+            "Medical record retrieval",
+            "Record review and summary",
+            "Medical chronologies ready for demand packages",
+            "Treatment and provider tracking",
+            "Records organized in the case file",
+          ],
+        },
+        {
+          title: "Litigation Support",
+          text: "Provide defined support for active case workflows.",
+          Icon: Gavel,
+          bullets: [
+            "Discovery organization",
+            "Document compilation",
+            "Exhibit preparation support",
+            "Litigation tracking",
+            "Case file management",
+          ],
+        },
+        {
+          title: "Administrative Legal Support",
+          text: "Extend capacity for day-to-day legal operations.",
+          Icon: Keyboard,
+          bullets: [
+            "Data entry",
+            "Document formatting",
+            "Scheduling support",
+            "Records organization",
+            "Workflow administration",
+          ],
+        },
+        {
+          title: "Research & Documentation",
+          text: "Help organize the information your team needs.",
+          Icon: FileSearch,
+          bullets: [
+            "Public-record research",
+            "Information gathering",
+            "Document organization",
+            "Research support",
+            "Case information compilation",
+          ],
+        },
+      ],
+    },
+    criteria: {
+      title: "Flexible Support. Defined Scope.",
+      body: "Every firm's needs are different. We can structure support around specific functions, hours, matters, or workflows depending on the engagement.",
+    },
+    workflow: {
+      title: "Support That Fits Your Workflow",
+      body: "A defined scope and clear handoffs help make added capacity easier for your team to manage.",
+      steps: [
+        { title: "Define Scope", Icon: Target },
+        { title: "Align Workflow", Icon: GitMerge },
+        { title: "Organize Work", Icon: FolderKanban },
+        { title: "Track Status", Icon: Activity },
+        { title: "Support Your Team", Icon: UsersRound },
+      ],
+    },
+    faqs: [
+      {
+        question: "What other support services do you provide?",
+        answer:
+          "Depending on the engagement, YMG can provide outsourced paralegal, administrative, document, case-support, and other law firm operational services.",
+      },
+      {
+        question: "How is legal work supervised?",
+        answer:
+          "All legal work remains subject to the firm's direction, supervision, confidentiality requirements, and applicable professional obligations.",
+      },
+    ],
+    disclaimer:
+      "All legal work remains subject to the firm's direction, supervision, confidentiality requirements, and applicable professional obligations.",
+    scene: {
+      key: "medicalChronology",
+      title: "Records turned into a chronology your attorneys can use",
+      body: "Medical records are retrieved, reviewed and summarized into a dated chronology, ready for the demand package.",
+    },
   },
 
   // ---- Case Acquisition (new) ----------------------------------------------
   classActionLeads: {
-    eyebrow: "Case Acquisition", hubLabel: "Class\nAction", title: "Class Action Lead Generation for Plaintiff Law Firms", intro: "Identify and organize class members for the consumer, data breach, product and employment actions your firm is pursuing. YMG Legal runs targeted outreach, screens each claimant against the class definition, and documents what your team needs to evaluate the claim.", cta: "Discuss a Class Action Campaign",
-    capabilities: { title: "Class Action Support Can Include", cards: [
-      { title: "Class Member Acquisition", text: "Targeted digital campaigns that reach people who may fall within the class.", Icon: Megaphone },
-      { title: "Class Definition Screening", text: "Questions built around the class definition, dates, and eligibility rules your firm sets.", Icon: Filter },
-      { title: "Claimant Documentation", text: "Purchase, account, exposure, or employment details captured in a consistent format.", Icon: FileStack },
-      { title: "Volume Intake", text: "Intake capacity that scales with the size of the class and the pace of the campaign.", Icon: Users },
-      { title: "Organized Delivery", text: "Claimant records delivered in the format your team and case systems use.", Icon: Database },
-      { title: "Campaign Reporting", text: "Visibility into volume, qualification rates, and geographic spread.", Icon: BarChart3 },
-    ] },
-    criteria: { title: "Screened Against the Class Definition", body: "Every action has its own eligibility rules. We build the screening around the criteria your firm provides, so the people who reach your team match the class you are pursuing.", items: ["Class period and dates", "Product, account, or service involved", "Geography and jurisdiction", "Proof of purchase or exposure", "Damages or harm reported", "Existing representation"], note: "Campaign availability and qualification requirements are agreed with your firm before launch." },
-    workflow: { title: "From Outreach to Organized Claimants", body: "A defined workflow keeps a large claimant pool consistent and easy for your team to review.", steps: [
-      { title: "Define the Class", Icon: Scale },
-      { title: "Outreach", Icon: Megaphone },
-      { title: "Screening", Icon: Filter },
-      { title: "Documentation", Icon: FileStack },
-      { title: "Delivery", Icon: Send },
-      { title: "Reporting", Icon: BarChart3 },
-    ] },
-    scene: { key: "criteriaScreening", title: "Every claimant checked before delivery", body: "Each person is screened against the criteria your firm sets, and only those who qualify move forward to your team." },
-    faqs: [{ question: "What types of class actions can you support?", answer: "Campaigns can be built for consumer, data breach, product, employment and other actions, depending on your firm's litigation and current availability." }, { question: "How are claimants screened?", answer: "Each claimant is screened against the class definition and the documentation requirements your firm sets before the record is delivered." }],
+    photo: {
+      src: "/images/services/class-action-gavel.jpg",
+      alt: "A judge's gavel",
+    },
+    highlights: [
+      "Screened against the class definition",
+      "Claimant records ready to review",
+    ],
+    eyebrow: "Case Acquisition",
+    hubLabel: "Class\nAction",
+    title: "Class Action Lead Generation for Plaintiff Law Firms",
+    intro:
+      "Identify and organize class members for the consumer, data breach, product and employment actions your firm is pursuing. YMG Legal runs targeted outreach, screens each claimant against the class definition, and documents what your team needs to evaluate the claim.",
+    cta: "Discuss a Class Action Campaign",
+    capabilities: {
+      title: "Class Action Support Can Include",
+      cards: [
+        {
+          title: "Class Member Acquisition",
+          text: "Targeted digital campaigns that reach people who may fall within the class.",
+          Icon: Megaphone,
+        },
+        {
+          title: "Class Definition Screening",
+          text: "Questions built around the class definition, dates, and eligibility rules your firm sets.",
+          Icon: Filter,
+        },
+        {
+          title: "Claimant Documentation",
+          text: "Purchase, account, exposure, or employment details captured in a consistent format.",
+          Icon: FileStack,
+        },
+        {
+          title: "Volume Intake",
+          text: "Intake capacity that scales with the size of the class and the pace of the campaign.",
+          Icon: Users,
+        },
+        {
+          title: "Organized Delivery",
+          text: "Claimant records delivered in the format your team and case systems use.",
+          Icon: Database,
+        },
+        {
+          title: "Campaign Reporting",
+          text: "Visibility into volume, qualification rates, and geographic spread.",
+          Icon: BarChart3,
+        },
+      ],
+    },
+    criteria: {
+      title: "Screened Against the Class Definition",
+      body: "Every action has its own eligibility rules. We build the screening around the criteria your firm provides, so the people who reach your team match the class you are pursuing.",
+      items: [
+        "Class period and dates",
+        "Product, account, or service involved",
+        "Geography and jurisdiction",
+        "Proof of purchase or exposure",
+        "Damages or harm reported",
+        "Existing representation",
+      ],
+      note: "Campaign availability and qualification requirements are agreed with your firm before launch.",
+    },
+    workflow: {
+      title: "From Outreach to Organized Claimants",
+      body: "A defined workflow keeps a large claimant pool consistent and easy for your team to review.",
+      steps: [
+        { title: "Define the Class", Icon: Scale },
+        { title: "Outreach", Icon: Megaphone },
+        { title: "Screening", Icon: Filter },
+        { title: "Documentation", Icon: FileStack },
+        { title: "Delivery", Icon: Send },
+        { title: "Reporting", Icon: BarChart3 },
+      ],
+    },
+    scene: {
+      key: "criteriaScreening",
+      title: "Every claimant checked before delivery",
+      body: "Each person is screened against the criteria your firm sets, and only those who qualify move forward to your team.",
+    },
+    faqs: [
+      {
+        question: "What types of class actions can you support?",
+        answer:
+          "Campaigns can be built for consumer, data breach, product, employment and other actions, depending on your firm's litigation and current availability.",
+      },
+      {
+        question: "How are claimants screened?",
+        answer:
+          "Each claimant is screened against the class definition and the documentation requirements your firm sets before the record is delivered.",
+      },
+    ],
   },
   payPerCall: {
-    eyebrow: "Case Acquisition", hubLabel: "Pay Per\nCall", title: "Pay-Per-Call Leads for Law Firms", intro: "Receive live, pre-screened phone calls from people who need legal help now. YMG Legal runs the campaigns, screens each caller against your criteria, and transfers qualifying calls straight to your intake team, so you pay for real conversations.", cta: "Discuss a Pay-Per-Call Campaign",
-    capabilities: { title: "Pay-Per-Call Campaigns Can Include", cards: [
-      { title: "High-Intent Call Campaigns", text: "Search, social and call-only campaigns built to make the phone ring.", Icon: PhoneIncoming },
-      { title: "Live Caller Screening", text: "Trained intake staff confirm case type, timing, and location before transfer.", Icon: Filter },
-      { title: "Warm Transfers", text: "Qualifying callers are connected to your team with a short summary.", Icon: PhoneForwarded },
-      { title: "Call Duration Rules", text: "Billable call length and qualifying criteria agreed before launch.", Icon: Timer },
-      { title: "Call Recording & Tracking", text: "Recorded, tracked calls so your team can review every billable call.", Icon: Headset },
-      { title: "Call Reporting", text: "Volume, answer rates, and qualified-call reporting by campaign.", Icon: BarChart3 },
-    ] },
-    criteria: { title: "You Only Pay for Calls That Fit", body: "Pay-per-call works when the definition of a billable call is clear. We agree the case types, markets, hours, and call length with your firm, and screen every caller against them before the transfer.", items: ["Case type and practice area", "States and markets", "Incident date and timing", "Injury or damages", "No existing attorney", "Minimum call duration"], note: "Pricing, billable call definitions, and return terms are set in writing before a campaign launches." },
-    workflow: { title: "From Ad to Live Conversation", body: "Each call moves through the same steps, so your team knows what it is receiving.", steps: [
-      { title: "Campaign", Icon: Megaphone },
-      { title: "Inbound Call", Icon: PhoneIncoming },
-      { title: "Live Screening", Icon: Filter },
-      { title: "Warm Transfer", Icon: PhoneForwarded },
-      { title: "Reporting", Icon: BarChart3 },
-    ] },
-    scene: { key: "payPerCall", title: "A live call, screened and transferred", body: "The caller is answered, screened against your criteria, and warm-transferred to your intake team with a short summary." },
-    faqs: [{ question: "What counts as a billable call?", answer: "A billable call is defined with your firm before launch, usually by case type, market, screening result, and minimum call duration." }, { question: "Can calls be transferred to our own intake team?", answer: "Yes. Qualifying calls can be warm-transferred to your team during agreed hours, or handled by YMG intake when your team is unavailable." }],
+    photo: {
+      src: "/images/services/pay-per-call.jpg",
+      alt: "A woman on a phone call at her desk",
+    },
+    highlights: ["Live, pre-screened callers", "Warm-transferred to your team"],
+    eyebrow: "Case Acquisition",
+    hubLabel: "Pay Per\nCall",
+    title: "Pay-Per-Call Leads for Law Firms",
+    intro:
+      "Receive live, pre-screened phone calls from people who need legal help now. YMG Legal runs the campaigns, screens each caller against your criteria, and transfers qualifying calls straight to your intake team, so you pay for real conversations.",
+    cta: "Discuss a Pay-Per-Call Campaign",
+    capabilities: {
+      title: "Pay-Per-Call Campaigns Can Include",
+      cards: [
+        {
+          title: "High-Intent Call Campaigns",
+          text: "Search, social and call-only campaigns built to make the phone ring.",
+          Icon: PhoneIncoming,
+        },
+        {
+          title: "Live Caller Screening",
+          text: "Trained intake staff confirm case type, timing, and location before transfer.",
+          Icon: Filter,
+        },
+        {
+          title: "Warm Transfers",
+          text: "Qualifying callers are connected to your team with a short summary.",
+          Icon: PhoneForwarded,
+        },
+        {
+          title: "Call Duration Rules",
+          text: "Billable call length and qualifying criteria agreed before launch.",
+          Icon: Timer,
+        },
+        {
+          title: "Call Recording & Tracking",
+          text: "Calls can be recorded and tracked so your team can review billable calls.",
+          Icon: Headset,
+        },
+        {
+          title: "Call Reporting",
+          text: "Volume, answer rates, and qualified-call reporting by campaign.",
+          Icon: BarChart3,
+        },
+      ],
+    },
+    criteria: {
+      title: "You Only Pay for Calls That Fit",
+      body: "Pay-per-call works when the definition of a billable call is clear. We agree the case types, markets, hours, and call length with your firm, and screen every caller against them before the transfer.",
+      items: [
+        "Case type and practice area",
+        "States and markets",
+        "Incident date and timing",
+        "Injury or damages",
+        "No existing attorney",
+        "Minimum call duration",
+      ],
+      note: "Pricing, billable call definitions, and return terms are set in writing before a campaign launches.",
+    },
+    workflow: {
+      title: "From Ad to Live Conversation",
+      body: "Each call moves through the same steps, so your team knows what it is receiving.",
+      steps: [
+        { title: "Campaign", Icon: Megaphone },
+        { title: "Inbound Call", Icon: PhoneIncoming },
+        { title: "Live Screening", Icon: Filter },
+        { title: "Warm Transfer", Icon: PhoneForwarded },
+        { title: "Reporting", Icon: BarChart3 },
+      ],
+    },
+    scene: {
+      key: "payPerCall",
+      title: "A live call, screened and transferred",
+      body: "The caller is answered, screened against your criteria, and warm-transferred to your intake team with a short summary.",
+    },
+    faqs: [
+      {
+        question: "What counts as a billable call?",
+        answer:
+          "A billable call is defined with your firm before launch, usually by case type, market, screening result, and minimum call duration.",
+      },
+      {
+        question: "Can calls be transferred to our own intake team?",
+        answer:
+          "Yes. Qualifying calls can be warm-transferred to your team during agreed hours, or handled by YMG intake when your team is unavailable.",
+      },
+    ],
   },
   outboundClientAcquisition: {
-    eyebrow: "Case Acquisition", hubLabel: "Outbound\nOutreach", title: "Outbound Client Acquisition for Law Firms", intro: "Reach the people who already raised their hand. YMG Legal follows up with prospects who submitted a form, called, or opted in to hear from your firm, and turns aged and unconverted inquiries into new consultations.", cta: "Discuss Outbound Outreach",
-    capabilities: { title: "Outbound Outreach Can Include", cards: [
-      { title: "Inquiry Follow-Up Calls", text: "Prompt callbacks to people who submitted a form or missed a call.", Icon: PhoneOutgoing },
-      { title: "Aged Lead Re-Engagement", text: "Structured outreach to older inquiries that never reached a consultation.", Icon: Repeat },
-      { title: "Text & Email Sequences", text: "Consent-based text and email touches that keep prospects engaged.", Icon: Mail },
-      { title: "Prospect Screening", text: "Each conversation screened against your firm's case criteria.", Icon: Filter },
-      { title: "Consultation Booking", text: "Interested prospects scheduled straight onto your calendar.", Icon: CalendarCheck },
-      { title: "Outreach Reporting", text: "Contact rates, conversations, and booked consultations by list.", Icon: BarChart3 },
-    ] },
-    criteria: { title: "Consent-Based, Compliance-First Outreach", body: "Outreach is limited to people who have contacted your firm or agreed to be contacted, and follows the consent, calling-hour, and opt-out rules that apply to your campaigns.", items: ["Prior inquiry or opt-in", "Calling hours by time zone", "Do-not-call and opt-out handling", "Approved scripts", "Text consent records", "Firm-defined case criteria"], note: "Outreach scripts and consent requirements are reviewed with your firm before any campaign starts." },
-    workflow: { title: "How Outbound Outreach Runs", body: "A repeatable cadence that reaches every prospect without overwhelming them.", steps: [
-      { title: "List & Consent Check", Icon: ListChecks },
-      { title: "Call & Text Cadence", Icon: PhoneOutgoing },
-      { title: "Screening", Icon: Filter },
-      { title: "Booking", Icon: CalendarCheck },
-      { title: "Reporting", Icon: BarChart3 },
-    ] },
-    scene: { key: "followUp", title: "Follow-up until they are ready to talk", body: "Over 80% of leads require multiple touches. A steady call, text and email cadence brings unconverted inquiries back to a consultation." },
-    faqs: [{ question: "Who do you contact?", answer: "Only people who have contacted your firm or opted in to be contacted, such as form submissions, missed calls, and earlier inquiries." }, { question: "Can you work our existing aged leads?", answer: "Yes. Older inquiries can be re-engaged once consent and contact history have been checked with your firm." }],
+    photo: {
+      src: "/images/services/outbound.jpg",
+      alt: "An outreach specialist on a headset call",
+    },
+    highlights: [
+      "Consent-based follow-up",
+      "Aged inquiries turned into consults",
+    ],
+    eyebrow: "Case Acquisition",
+    hubLabel: "Outbound\nOutreach",
+    title: "Outbound Client Acquisition for Law Firms",
+    intro:
+      "Reach the people who already raised their hand. YMG Legal follows up with prospects who submitted a form, called, or opted in to hear from your firm, and turns aged and unconverted inquiries into new consultations.",
+    cta: "Discuss Outbound Outreach",
+    capabilities: {
+      title: "Outbound Outreach Can Include",
+      cards: [
+        {
+          title: "Inquiry Follow-Up Calls",
+          text: "Prompt callbacks to people who submitted a form or missed a call.",
+          Icon: PhoneOutgoing,
+        },
+        {
+          title: "Aged Lead Re-Engagement",
+          text: "Structured outreach to older inquiries that never reached a consultation.",
+          Icon: Repeat,
+        },
+        {
+          title: "Text & Email Sequences",
+          text: "Consent-based text and email touches that keep prospects engaged.",
+          Icon: Mail,
+        },
+        {
+          title: "Prospect Screening",
+          text: "Each conversation screened against your firm's case criteria.",
+          Icon: Filter,
+        },
+        {
+          title: "Consultation Booking",
+          text: "Interested prospects scheduled straight onto your calendar.",
+          Icon: CalendarCheck,
+        },
+        {
+          title: "Lead Tracking & Dashboards",
+          text: "Every lead tagged with a real-time status, with pipeline dashboards showing contacts, conversations and booked consultations.",
+          Icon: BarChart3,
+        },
+      ],
+    },
+    criteria: {
+      title: "Consent-Based, Compliance-First Outreach",
+      body: "Outreach is limited to people who have contacted your firm or agreed to be contacted, and follows the consent, calling-hour, and opt-out rules that apply to your campaigns.",
+      items: [
+        "Prior inquiry or opt-in",
+        "Calling hours by time zone",
+        "Do-not-call and opt-out handling",
+        "Approved scripts",
+        "Text consent records",
+        "Firm-defined case criteria",
+      ],
+      note: "Outreach scripts and consent requirements are reviewed with your firm before any campaign starts.",
+    },
+    workflow: {
+      title: "How Outbound Outreach Runs",
+      body: "A repeatable cadence that reaches every prospect without overwhelming them.",
+      steps: [
+        { title: "List & Consent Check", Icon: ListChecks },
+        { title: "Call & Text Cadence", Icon: PhoneOutgoing },
+        { title: "Screening", Icon: Filter },
+        { title: "Booking", Icon: CalendarCheck },
+        { title: "Reporting", Icon: BarChart3 },
+      ],
+    },
+    scene: {
+      key: "followUp",
+      title: "Follow-up until they are ready to talk",
+      body: "Over 80% of leads require multiple touches (based on YMG client data). A steady call, text and email cadence brings unconverted inquiries back to a consultation.",
+    },
+    faqs: [
+      {
+        question: "Who do you contact?",
+        answer:
+          "Only people who have contacted your firm or opted in to be contacted, such as form submissions, missed calls, and earlier inquiries.",
+      },
+      {
+        question: "Can you work our existing aged leads?",
+        answer:
+          "Yes. Older inquiries can be re-engaged once consent and contact history have been checked with your firm.",
+      },
+    ],
   },
 
   // ---- Intake & Conversion (new) --------------------------------------------
   retainerSigning: {
-    eyebrow: "Intake Support", hubLabel: "Retainer\nSigning", title: "Legal Contract & Retainer Services for Law Firms", subhead: "From Qualified Lead to Signed Client, Securely", intro: "Close the gap between a qualified conversation and a signed client. YMG Legal sends your firm's retainer and intake documents for e-signature, follows up until they are signed, and files every document securely.", cta: "Discuss Retainer Support",
-    capabilities: { title: "Retainer Support Can Include", cards: [
-      { title: "E-Sign Retainers", text: "Your firm's agreements sent for secure electronic signature in minutes.", Icon: FileSignature },
-      { title: "Guided Signing", text: "Intake staff walk clients through the documents by phone when needed.", Icon: Headset },
-      { title: "Signature Follow-Up", text: "Reminders by call, text and email until documents are complete.", Icon: Repeat },
-      { title: "Intake Packets", text: "Medical authorizations, HIPAA forms and questionnaires sent with the retainer.", Icon: FileStack },
-      { title: "Secure Document Handling", text: "Signed documents stored and shared through secure, access-controlled tools.", Icon: Lock },
-      { title: "Status Visibility", text: "Clear sent, viewed and signed statuses for every client.", Icon: Activity },
-    ] },
-    criteria: { title: "Your Documents. Your Process.", body: "We use your firm's own retainer agreements and intake forms, and follow your rules for who signs, what is collected, and when an attorney steps in." },
-    workflow: { title: "From Agreement to Signed Client", body: "Every retainer moves through the same visible steps.", steps: [
-      { title: "Qualified Lead", Icon: UserRoundCheck },
-      { title: "Send for E-Sign", Icon: Send },
-      { title: "Guided Signing", Icon: PenLine },
-      { title: "Follow-Up", Icon: Repeat },
-      { title: "Secure Filing", Icon: Lock },
-    ] },
-    scene: { key: "retainer", title: "From agreement sent to retainer signed", body: "The retainer goes out for e-signature, the client is guided through it, and the signed file is stored securely." },
-    faqs: [{ question: "Do you use our own retainer agreement?", answer: "Yes. We send your firm's approved agreements and forms; the firm remains responsible for the terms of its engagement." }, { question: "Which e-signature tools do you support?", answer: "We can work with common e-signature platforms and your existing practice management tools, subject to technical compatibility." }],
-    disclaimer: "Retainer terms, fee agreements and attorney-client decisions remain the responsibility of the law firm.",
+    photo: {
+      src: "/images/services/retainer.jpg",
+      alt: "A client signing a retainer agreement",
+    },
+    highlights: ["Retainers sent for e-signature", "Followed up until signed"],
+    eyebrow: "Intake Support",
+    hubLabel: "Retainer\nSigning",
+    title: "Legal Contract & Retainer Services for Law Firms",
+    subhead: "From Qualified Lead to Signed Client, Securely",
+    intro:
+      "Close the gap between a qualified conversation and a signed client. YMG Legal sends your firm's retainer and intake documents for e-signature, follows up until they are signed, and files every document securely.",
+    cta: "Discuss Retainer Support",
+    capabilities: {
+      title: "Retainer Support Can Include",
+      cards: [
+        {
+          title: "E-Sign Retainers",
+          text: "Your firm's agreements sent for secure electronic signature.",
+          Icon: FileSignature,
+        },
+        {
+          title: "Guided Signing",
+          text: "Intake staff walk clients through the documents by phone when needed.",
+          Icon: Headset,
+        },
+        {
+          title: "Signature Follow-Up",
+          text: "Reminders by call, text and email until documents are complete.",
+          Icon: Repeat,
+        },
+        {
+          title: "Intake Packets",
+          text: "Digital intake packets with ID verification, incident details, insurance information and medical authorization releases.",
+          Icon: FileStack,
+        },
+        {
+          title: "Secure Document Handling",
+          text: "Signed documents stored and shared through secure, access-controlled tools.",
+          Icon: Lock,
+        },
+        {
+          title: "Status & CRM Sync",
+          text: "Sent, viewed and signed statuses for every client, with signed agreements synced to your CRM.",
+          Icon: Activity,
+        },
+      ],
+    },
+    criteria: {
+      title: "Your Documents. Your Process.",
+      body: "We use your firm's own retainer agreements and intake forms, and follow your rules for who signs, what is collected, and when an attorney steps in.",
+    },
+    workflow: {
+      title: "From Agreement to Signed Client",
+      body: "Every retainer moves through the same visible steps.",
+      steps: [
+        { title: "Qualified Lead", Icon: UserRoundCheck },
+        { title: "Send for E-Sign", Icon: Send },
+        { title: "Guided Signing", Icon: PenLine },
+        { title: "Follow-Up", Icon: Repeat },
+        { title: "Secure Filing", Icon: Lock },
+      ],
+    },
+    scene: {
+      key: "retainer",
+      title: "From agreement sent to retainer signed",
+      body: "The retainer goes out for e-signature, the client is guided through it, and the signed file is stored securely.",
+    },
+    faqs: [
+      {
+        question: "Do you use our own retainer agreement?",
+        answer:
+          "Yes. We send your firm's approved agreements and forms; the firm remains responsible for the terms of its engagement.",
+      },
+      {
+        question: "Which e-signature tools do you support?",
+        answer:
+          "We can work with common e-signature platforms and your existing practice management tools, subject to technical compatibility.",
+      },
+    ],
+    disclaimer:
+      "Retainer terms, fee agreements and attorney-client decisions remain the responsibility of the law firm.",
   },
   liveChatText: {
-    eyebrow: "Intake Support", hubLabel: "Chat &\nText", title: "Live Chat & Text Services for Law Firms", intro: "Answer website visitors the moment they reach out. YMG Legal staffs live chat on your site and handles two-way text conversations, screening each prospect and moving qualifying cases into your intake.", cta: "Discuss Live Chat & Text",
-    capabilities: { title: "Chat & Text Support Can Include", cards: [
-      { title: "Live Website Chat", text: "Real people answering chat on your website, day and night.", Icon: MessagesSquare },
-      { title: "Two-Way Texting", text: "Text conversations with prospects who prefer not to call.", Icon: MessageSquareText },
-      { title: "Chat Screening", text: "Your case criteria applied in the chat, before the handoff.", Icon: Filter },
-      { title: "Chat-to-Call Handoff", text: "Qualified prospects connected to a live intake call when ready.", Icon: PhoneForwarded },
-      { title: "Mobile-First Engagement", text: "Conversations that work on the phone, where most prospects start.", Icon: Smartphone },
-      { title: "Transcripts & Logs", text: "Every conversation saved and shared with your team.", Icon: FileText },
-    ] },
-    criteria: { title: "Every Conversation Follows Your Rules", body: "Chat and text replies follow your approved scripts, your case criteria, and the consent and opt-out rules for text messaging.", items: ["Approved greeting and scripts", "Case criteria and questions", "Coverage hours", "Text consent and opt-out", "Escalation to an attorney", "Handoff to intake"] },
-    workflow: { title: "From First Message to Intake", body: "Each conversation moves toward a clear next step.", steps: [
-      { title: "Visitor Message", Icon: MessagesSquare },
-      { title: "Live Reply", Icon: MessageSquareText },
-      { title: "Screening", Icon: Filter },
-      { title: "Handoff", Icon: PhoneForwarded },
-      { title: "Intake", Icon: ClipboardList },
-    ] },
-    scene: { key: "followUp", title: "Every message gets a reply", body: "Prospects who chat or text get a live reply, follow-up until they respond, and a clear handoff to intake." },
-    faqs: [{ question: "Are chats answered by people?", answer: "Yes. Chats and texts are handled by trained intake staff following your firm's approved scripts." }, { question: "Can chat work outside office hours?", answer: "Coverage hours, including evenings and weekends, are set by the scope of the engagement." }],
+    photo: {
+      src: "/images/services/live-chat.jpg",
+      alt: "A person texting on a smartphone",
+    },
+    highlights: [
+      "Live replies to chats and texts",
+      "Qualifying cases sent to intake",
+    ],
+    eyebrow: "Intake Support",
+    hubLabel: "Chat &\nText",
+    title: "Live Chat & Text Services for Law Firms",
+    intro:
+      "Answer website visitors the moment they reach out. YMG Legal staffs live chat on your site and handles two-way text conversations, screening each prospect and moving qualifying cases into your intake.",
+    cta: "Discuss Live Chat & Text",
+    capabilities: {
+      title: "Chat & Text Support Can Include",
+      cards: [
+        {
+          title: "Live Website Chat",
+          text: "Real people answering chat on your website during the hours your engagement covers.",
+          Icon: MessagesSquare,
+        },
+        {
+          title: "Two-Way Texting",
+          text: "Text conversations with prospects who prefer not to call.",
+          Icon: MessageSquareText,
+        },
+        {
+          title: "Chat Screening",
+          text: "Your case criteria applied in the chat, before the handoff.",
+          Icon: Filter,
+        },
+        {
+          title: "Chat-to-Call Handoff",
+          text: "Qualified prospects connected to a live intake call when ready.",
+          Icon: PhoneForwarded,
+        },
+        {
+          title: "Mobile-First Engagement",
+          text: "Conversations that work on the phone, where most prospects start.",
+          Icon: Smartphone,
+        },
+        {
+          title: "Transcripts & Logs",
+          text: "Every conversation saved and shared with your team.",
+          Icon: FileText,
+        },
+      ],
+    },
+    criteria: {
+      title: "Every Conversation Follows Your Rules",
+      body: "Chat and text replies follow your approved scripts, your case criteria, and the consent and opt-out rules for text messaging.",
+      items: [
+        "Approved greeting and scripts",
+        "Case criteria and questions",
+        "Coverage hours",
+        "Text consent and opt-out",
+        "Escalation to an attorney",
+        "Handoff to intake",
+      ],
+    },
+    workflow: {
+      title: "From First Message to Intake",
+      body: "Each conversation moves toward a clear next step.",
+      steps: [
+        { title: "Visitor Message", Icon: MessagesSquare },
+        { title: "Live Reply", Icon: MessageSquareText },
+        { title: "Screening", Icon: Filter },
+        { title: "Handoff", Icon: PhoneForwarded },
+        { title: "Intake", Icon: ClipboardList },
+      ],
+    },
+    scene: {
+      key: "followUp",
+      title: "Every message gets a reply",
+      body: "Prospects who chat or text get a live reply, follow-up until they respond, and a clear handoff to intake.",
+    },
+    faqs: [
+      {
+        question: "Are chats answered by people?",
+        answer:
+          "Yes. Chats and texts are handled by trained intake staff following your firm's approved scripts.",
+      },
+      {
+        question: "Can chat work outside office hours?",
+        answer:
+          "Coverage hours, including evenings and weekends, are set by the scope of the engagement.",
+      },
+    ],
   },
   aiBooking: {
-    eyebrow: "Intake Support", hubLabel: "AI\nBooking", title: "AI-Powered Booking for Law Firms", intro: "Let qualified prospects book a consultation the moment they are ready. YMG Legal sets up automated scheduling that checks your attorneys' availability, books the meeting, and sends reminders, with live intake staff ready to step in.", cta: "Discuss AI-Powered Booking",
-    capabilities: { title: "Booking Automation Can Include", cards: [
-      { title: "Instant Scheduling", text: "Prospects pick a time from live attorney availability, at any hour.", Icon: CalendarClock },
-      { title: "Smart Routing", text: "Bookings routed to the right attorney or office by case type and location.", Icon: Workflow },
-      { title: "Automated Reminders", text: "Text and email reminders that reduce missed consultations.", Icon: BellRing },
-      { title: "Easy Rescheduling", text: "Rescheduling links that keep the prospect engaged.", Icon: RefreshCw },
-      { title: "Calendar Sync", text: "Works with your firm's calendars and intake tools.", Icon: CalendarCheck },
-      { title: "Human Backup", text: "Live intake staff take over whenever a prospect needs help.", Icon: Headset },
-    ] },
-    criteria: { title: "Automation With People Behind It", body: "Booking follows the screening rules and availability your firm sets. Automation handles the scheduling, and our intake team handles anything that needs a person." },
-    workflow: { title: "From Qualified Lead to Booked Consultation", body: "A short, automated path that keeps the prospect moving.", steps: [
-      { title: "Qualified Lead", Icon: UserRoundCheck },
-      { title: "Pick a Time", Icon: CalendarClock },
-      { title: "Confirmation", Icon: CalendarCheck },
-      { title: "Reminders", Icon: BellRing },
-      { title: "Consultation", Icon: UsersRound },
-    ] },
-    scene: { key: "nightShift", title: "Reached out at night, booked by morning", body: "Prospects who reach out after hours are answered and scheduled, so your attorneys start the day with consultations on the calendar." },
-    faqs: [{ question: "Does AI talk to our prospects?", answer: "Automation handles scheduling, confirmations and reminders. Screening questions and any conversation that needs judgment are handled by trained intake staff." }, { question: "Which calendars does booking work with?", answer: "Booking can connect to common calendar and practice management tools, subject to technical compatibility." }],
+    photo: {
+      src: "/images/services/ai-booking.jpg",
+      alt: "A laptop and phone showing a scheduling calendar",
+    },
+    highlights: [
+      "Booked the moment they are ready",
+      "Reminders sent automatically",
+    ],
+    eyebrow: "Intake Support",
+    hubLabel: "AI\nBooking",
+    title: "AI-Powered Booking for Law Firms",
+    intro:
+      "Let qualified prospects book a consultation the moment they are ready. YMG Legal sets up automated scheduling that checks your attorneys' availability, books the meeting, and sends reminders, with live intake staff ready to step in.",
+    cta: "Discuss AI-Powered Booking",
+    capabilities: {
+      title: "Booking Automation Can Include",
+      cards: [
+        {
+          title: "Instant Scheduling",
+          text: "Prospects pick a time from live attorney availability, at any hour.",
+          Icon: CalendarClock,
+        },
+        {
+          title: "Smart Routing",
+          text: "Bookings routed to the right attorney or office by case type and location.",
+          Icon: Workflow,
+        },
+        {
+          title: "Automated Reminders",
+          text: "Text and email reminders that reduce missed consultations.",
+          Icon: BellRing,
+        },
+        {
+          title: "Easy Rescheduling",
+          text: "Rescheduling links that keep the prospect engaged.",
+          Icon: RefreshCw,
+        },
+        {
+          title: "Calendar Sync",
+          text: "Works with your firm's calendars and intake tools.",
+          Icon: CalendarCheck,
+        },
+        {
+          title: "Human Backup",
+          text: "Live intake staff take over whenever a prospect needs help.",
+          Icon: Headset,
+        },
+      ],
+    },
+    criteria: {
+      title: "Automation With People Behind It",
+      body: "Booking follows the screening rules and availability your firm sets. Automation handles the scheduling, and our intake team handles anything that needs a person.",
+    },
+    workflow: {
+      title: "From Qualified Lead to Booked Consultation",
+      body: "A short, automated path that keeps the prospect moving.",
+      steps: [
+        { title: "Qualified Lead", Icon: UserRoundCheck },
+        { title: "Pick a Time", Icon: CalendarClock },
+        { title: "Confirmation", Icon: CalendarCheck },
+        { title: "Reminders", Icon: BellRing },
+        { title: "Consultation", Icon: UsersRound },
+      ],
+    },
+    scene: {
+      key: "nightShift",
+      title: "Reached out at night, booked by morning",
+      body: "Prospects who reach out after hours are answered and scheduled, so your attorneys start the day with consultations on the calendar.",
+    },
+    faqs: [
+      {
+        question: "Does AI talk to our prospects?",
+        answer:
+          "Automation handles scheduling, confirmations and reminders. Screening questions and any conversation that needs judgment are handled by trained intake staff.",
+      },
+      {
+        question: "Which calendars does booking work with?",
+        answer:
+          "Booking can connect to common calendar and practice management tools, subject to technical compatibility.",
+      },
+    ],
   },
 
   // ---- Law Firm Support (new) -----------------------------------------------
   legalVirtualAssistants: {
-    eyebrow: "Law Firm Support", hubLabel: "Virtual\nAssistants", title: "Legal Virtual Assistants for Law Firms", subhead: "Trained Remote Support Staff, Working Inside Your Workflow", intro: "Add dedicated, US-based remote support without hiring in-house. YMG Legal's legal virtual assistants handle intake admin, scheduling, client communication, records, and data entry, working in your systems under your team's direction.", cta: "Discuss a Virtual Assistant",
-    capabilities: { title: "Virtual Assistants Can Support", cards: [
-      { title: "Client Communication", text: "Calls, emails and status updates handled professionally.", Icon: Headset },
-      { title: "Calendar & Scheduling", text: "Consultations, deadlines and appointments kept in order.", Icon: CalendarCheck },
-      { title: "Intake Administration", text: "New-client files opened and intake details entered.", Icon: Inbox },
-      { title: "Records Requests", text: "Medical and other records requested and tracked.", Icon: FileSearch },
-      { title: "Data Entry", text: "Case management systems kept accurate and current.", Icon: Keyboard },
-      { title: "Document Preparation", text: "Formatting, organizing and preparing documents for review.", Icon: FileText },
-    ] },
-    criteria: { title: "Dedicated Support, Defined Scope", body: "Each assistant works to a defined scope, schedule and set of tools agreed with your firm, so your team knows exactly what is covered.", items: ["Hours and coverage", "Tasks and responsibilities", "Systems and access", "Confidentiality requirements", "Reporting and check-ins", "Attorney supervision"] },
-    workflow: { title: "How a Virtual Assistant Starts", body: "A short onboarding gets your assistant productive quickly.", steps: [
-      { title: "Define Scope", Icon: Target },
-      { title: "Match Assistant", Icon: UserRoundSearch },
-      { title: "System Access", Icon: Lock },
-      { title: "Onboarding", Icon: ClipboardList },
-      { title: "Ongoing Support", Icon: UsersRound },
-    ] },
-    scene: { key: "caseOnboarding", title: "New clients set up without the busywork", body: "Your assistant opens the file, collects documents and keeps the case system current, so attorneys can focus on the law." },
-    faqs: [{ question: "Are your virtual assistants US-based?", answer: "Yes. YMG Legal's support staff are US-based and trained for law firm work." }, { question: "Do virtual assistants give legal advice?", answer: "No. Virtual assistants provide administrative and support work under the direction and supervision of your firm's attorneys." }],
-    disclaimer: "All legal work remains subject to the firm's direction, supervision, confidentiality requirements, and applicable professional obligations.",
+    photo: {
+      src: "/images/services/virtual-assistants.jpg",
+      alt: "A virtual assistant on a video call",
+    },
+    highlights: ["Dedicated US support", "Working in your systems"],
+    eyebrow: "Law Firm Support",
+    hubLabel: "Virtual\nAssistants",
+    title: "Legal Virtual Assistants for Law Firms",
+    subhead: "Trained Remote Support Staff, Working Inside Your Workflow",
+    intro:
+      "Add dedicated, US-based remote support without hiring in-house. YMG Legal's legal virtual assistants handle intake admin, scheduling, client communication, records, and data entry, working in your systems under your team's direction.",
+    cta: "Discuss a Virtual Assistant",
+    capabilities: {
+      title: "Virtual Assistants Can Support",
+      cards: [
+        {
+          title: "Client Communication",
+          text: "Calls, emails and status updates handled professionally.",
+          Icon: Headset,
+        },
+        {
+          title: "Calendar & Scheduling",
+          text: "Consultations, deadlines and appointments kept in order.",
+          Icon: CalendarCheck,
+        },
+        {
+          title: "Intake Administration",
+          text: "New-client files opened and intake details entered.",
+          Icon: Inbox,
+        },
+        {
+          title: "Records Requests",
+          text: "Medical and other records requested and tracked.",
+          Icon: FileSearch,
+        },
+        {
+          title: "Data Entry",
+          text: "Case management systems kept accurate and current.",
+          Icon: Keyboard,
+        },
+        {
+          title: "Document Preparation",
+          text: "Formatting, organizing and preparing documents for review.",
+          Icon: FileText,
+        },
+      ],
+    },
+    criteria: {
+      title: "Dedicated Support, Defined Scope",
+      body: "Each assistant works to a defined scope, schedule and set of tools agreed with your firm, so your team knows exactly what is covered.",
+      items: [
+        "Hours and coverage",
+        "Tasks and responsibilities",
+        "Systems and access",
+        "Confidentiality requirements",
+        "Reporting and check-ins",
+        "Attorney supervision",
+      ],
+    },
+    workflow: {
+      title: "How a Virtual Assistant Starts",
+      body: "A short onboarding gets your assistant productive quickly.",
+      steps: [
+        { title: "Define Scope", Icon: Target },
+        { title: "Match Assistant", Icon: UserRoundSearch },
+        { title: "System Access", Icon: Lock },
+        { title: "Onboarding", Icon: ClipboardList },
+        { title: "Ongoing Support", Icon: UsersRound },
+      ],
+    },
+    scene: {
+      key: "caseOnboarding",
+      title: "New clients set up without the busywork",
+      body: "Your assistant opens the file, collects documents and keeps the case system current, so attorneys can focus on the law.",
+    },
+    faqs: [
+      {
+        question: "Are your virtual assistants US-based?",
+        answer:
+          "Yes. YMG Legal's support staff are US-based and trained for law firm work.",
+      },
+      {
+        question: "Do virtual assistants give legal advice?",
+        answer:
+          "No. Virtual assistants provide administrative and support work under the direction and supervision of your firm's attorneys.",
+      },
+    ],
+    disclaimer:
+      "All legal work remains subject to the firm's direction, supervision, confidentiality requirements, and applicable professional obligations.",
   },
 } satisfies Record<string, ServicePageContent>;
-
